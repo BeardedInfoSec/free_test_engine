@@ -23,16 +23,28 @@ def log_question(question, choices, correct, folder, filename):
             file.write(f"{choice}\n")
         file.write(f"Answer: {correct}\n\n")
 
+def save_correct_questions(correct_questions_set, filename):
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    with open(filename, 'w') as file:
+        json.dump(list(correct_questions_set), file)
+
+def load_correct_questions(filename):
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            return set(json.load(file))
+    return set()
+
 def ask_question(question, choices, correct_answer, result_folder):
     clear_terminal()
 
-    print(Fore.WHITE + "('q!' to return to the main menu):\n")
     print(Fore.CYAN + f"Question: {question}")
     for choice in choices:
         print(Fore.YELLOW + f"  {choice}")
+
+    prompt_message = "\nq! or Your answer: " if not isinstance(correct_answer, list) else "\nq! or Enter all answers 'A B C D': "
     
     try:
-        user_answer = input(Fore.WHITE + "\nYour answer: ").upper()
+        user_answer = input(Fore.WHITE + prompt_message).upper()
     except EOFError:
         print(Fore.RED + "\nInput error occurred. Returning to the main menu.")
         return 'q!'
@@ -59,7 +71,7 @@ def ask_question(question, choices, correct_answer, result_folder):
     
     return correct
 
-def run_quiz(questions, result_folder, correct_questions_set, batch_size=15):
+def run_quiz(questions, result_folder, correct_questions_set, correct_questions_file, batch_size=15):
     correct_count = 0
     incorrect_questions = []
 
@@ -73,6 +85,7 @@ def run_quiz(questions, result_folder, correct_questions_set, batch_size=15):
             if result:
                 correct_count += 1
                 correct_questions_set.add(question)
+                save_correct_questions(correct_questions_set, correct_questions_file)
             else:
                 incorrect_questions.append(question_data)
 
@@ -87,13 +100,14 @@ def run_quiz(questions, result_folder, correct_questions_set, batch_size=15):
 
     return incorrect_questions
 
-def reset_progress(result_folder, correct_questions_set):
+def reset_progress(result_folder, correct_questions_set, correct_questions_file):
     if os.path.exists(result_folder):
         for file in os.listdir(result_folder):
             file_path = os.path.join(result_folder, file)
             if os.path.isfile(file_path):
                 open(file_path, 'w').close()
     correct_questions_set.clear()
+    save_correct_questions(correct_questions_set, correct_questions_file)
     print(Fore.GREEN + "Progress has been reset.")
 
 def select_question_set():
@@ -128,8 +142,6 @@ def select_question_set():
             time.sleep(2)
 
 def main():
-    correct_questions_set = set()
-
     while True:
         question_set = select_question_set()
         if question_set is None:
@@ -137,6 +149,9 @@ def main():
 
         questions = load_questions(os.path.join('questions', question_set))
         result_folder = os.path.join('results', os.path.splitext(question_set)[0])
+        tracking_folder = os.path.join(result_folder, 'question_tracking')
+        correct_questions_file = os.path.join(tracking_folder, 'correct_questions.json')
+        correct_questions_set = load_correct_questions(correct_questions_file)
 
         while True:
             print(Fore.CYAN + "\nChoose Mode:")
@@ -154,7 +169,7 @@ def main():
 
                 all_questions = questions_to_ask.copy()
                 while questions_to_ask:
-                    result = run_quiz(questions_to_ask, result_folder, correct_questions_set)
+                    result = run_quiz(questions_to_ask, result_folder, correct_questions_set, correct_questions_file)
                     if result == 'q!':
                         break
                     all_questions.extend(questions_to_ask)
@@ -188,11 +203,11 @@ def main():
                 else:
                     print(Fore.RED + f"Try again. Your score: {score:.2f}%")
             elif mode == '3' or mode == 'reset':
-                reset_progress(result_folder, correct_questions_set)
+                reset_progress(result_folder, correct_questions_set, correct_questions_file)
             elif mode == '4' or mode == 'change':
                 break
             elif mode == 'q!':
-                break
+                exit()
             else:
                 print(Fore.RED + "Invalid choice. Please try again.")
 
