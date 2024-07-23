@@ -1,0 +1,50 @@
+Question: Selected fields are displayed ________ each event in the results.
+  A. below
+  B. interesting fields
+  C. other fields
+  D. above
+Answer: A
+
+Question: Search terms are not case sensitive. (T/F)
+  T. True
+  F. False
+Answer: T
+
+Question: These two searches will NOT return the same results.
+SEARCH 1: login failure
+SEARCH 2: "login failure" (T/F)
+  T. True
+  F. False
+Answer: T
+
+Question: A space is implied ______________ in a search string.
+  A. OR
+  B. AND
+  C. ()
+  D. NOT
+Answer: B
+
+Question: You can not specify a relative time range, such as 45 seconds ago, for a search (T/F)
+  T. True
+  F. False
+Answer: F
+
+Question: Selected fields are displayed ________ each event in the results.
+A. below
+B. interesting fields
+C. other fields
+D. above
+Answer: A
+
+Question: Search terms are not case sensitive. (T/F)
+T. True
+F. False
+Answer: T
+
+Question: These two searches will NOT return the same results.
+SEARCH 1: login failure
+SEARCH 2: "login failure" (T/F)
+T. True
+F. False
+Answer: T
+

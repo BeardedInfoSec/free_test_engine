@@ -2,6 +2,10 @@ import json
 import os
 import random
 import time
+from colorama import Fore, Style, init
+
+# Initialize colorama
+init(autoreset=True)
 
 def clear_terminal():
     command = 'cls' if os.name == 'nt' else 'clear'
@@ -16,17 +20,26 @@ def log_question(question, choices, correct, folder, filename):
     with open(os.path.join(folder, filename), 'a') as file:
         file.write(f"Question: {question}\n")
         for choice in choices:
-            file.write(f"  {choice}\n")
+            file.write(f"{choice}\n")
         file.write(f"Answer: {correct}\n\n")
 
 def ask_question(question, choices, correct_answer, result_folder):
     clear_terminal()
 
-    print(f"Question: {question}")
+    print(Fore.WHITE + "('q!' to return to the main menu):\n")
+    print(Fore.CYAN + f"Question: {question}")
     for choice in choices:
-        print(f"  {choice}")
+        print(Fore.YELLOW + f"  {choice}")
     
-    user_answer = input("\nYour answer (enter the letter or 'q!' to return to the main menu): ").upper()
+    try:
+        user_answer = input(Fore.WHITE + "\nYour answer: ").upper()
+    except EOFError:
+        print(Fore.RED + "\nInput error occurred. Returning to the main menu.")
+        return 'q!'
+    except Exception as e:
+        print(Fore.RED + f"\nAn error occurred: {e}. Returning to the main menu.")
+        return 'q!'
+
     if user_answer == 'Q!':
         return 'q!'
 
@@ -36,16 +49,17 @@ def ask_question(question, choices, correct_answer, result_folder):
         correct = user_answer == correct_answer
 
     if correct:
-        print("Correct!")
+        print(Fore.GREEN + "Correct!")
         log_question(question, choices, correct_answer, result_folder, "correct_answers.txt")
+        time.sleep(0.5)
     else:
-        print(f"Incorrect. The correct answer is: {correct_answer}")
+        print(Fore.RED + f"Incorrect. The correct answer is: {correct_answer}")
         log_question(question, choices, correct_answer, result_folder, "incorrect_answers.txt")
         time.sleep(5)
     
     return correct
 
-def run_quiz(questions, result_folder, batch_size=15):
+def run_quiz(questions, result_folder, correct_questions_set, batch_size=15):
     correct_count = 0
     incorrect_questions = []
 
@@ -58,27 +72,29 @@ def run_quiz(questions, result_folder, batch_size=15):
                 return 'q!'
             if result:
                 correct_count += 1
+                correct_questions_set.add(question)
             else:
                 incorrect_questions.append(question_data)
 
         total_questions = len(batch)
         incorrect_count = total_questions - correct_count
-        print(f"\nBatch Results: {correct_count} correct, {incorrect_count} incorrect.")
+        print(Fore.CYAN + f"\nBatch Results: {correct_count} correct, {incorrect_count} incorrect.")
         percentage = (correct_count / total_questions) * 100
-        print(f"Percentage: {percentage:.2f}%\n")
+        print(Fore.CYAN + f"Percentage: {percentage:.2f}%\n")
         correct_count = 0
 
         time.sleep(5)
 
     return incorrect_questions
 
-def reset_progress(result_folder):
+def reset_progress(result_folder, correct_questions_set):
     if os.path.exists(result_folder):
         for file in os.listdir(result_folder):
             file_path = os.path.join(result_folder, file)
             if os.path.isfile(file_path):
                 open(file_path, 'w').close()
-    print("Progress has been reset.")
+    correct_questions_set.clear()
+    print(Fore.GREEN + "Progress has been reset.")
 
 def select_question_set():
     question_sets = os.listdir('questions')
@@ -86,17 +102,18 @@ def select_question_set():
 
     while True:
         clear_terminal()
+        print(Fore.CYAN + "Select a Question Set:\n")
         for i in range(index, min(index + 5, len(question_sets))):
-            print(f"{i + 1}. {question_sets[i]}")
+            print(Fore.YELLOW + f"{i + 1}. {question_sets[i]}")
         
         if len(question_sets) > 5:
             if index + 5 < len(question_sets):
-                print("\nN. Next")
+                print(Fore.MAGENTA + "\nN. Next")
             if index > 0:
-                print("B. Back")
+                print(Fore.MAGENTA + "B. Back")
 
-        print("\nEnter the number of the question set to select, or 'q!' to quit.")
-        choice = input("Choice: ").strip().upper()
+        print(Fore.MAGENTA + "\nEnter the number of the question set to select, or 'q!' to quit.")
+        choice = input(Fore.WHITE + "Choice: ").strip().upper()
 
         if choice == 'N' and index + 5 < len(question_sets):
             index += 5
@@ -107,10 +124,12 @@ def select_question_set():
         elif choice.isdigit() and 1 <= int(choice) <= len(question_sets):
             return question_sets[int(choice) - 1]
         else:
-            print("Invalid choice. Please try again.")
+            print(Fore.RED + "Invalid choice. Please try again.")
             time.sleep(2)
 
 def main():
+    correct_questions_set = set()
+
     while True:
         question_set = select_question_set()
         if question_set is None:
@@ -120,24 +139,35 @@ def main():
         result_folder = os.path.join('results', os.path.splitext(question_set)[0])
 
         while True:
-            mode = input("Choose mode: [quiz/test/reset/change] ").strip().lower()
-            if mode == 'quiz':
-                all_questions = questions.copy()
-                while questions:
-                    result = run_quiz(questions, result_folder)
+            print(Fore.CYAN + "\nChoose Mode:")
+            print(Fore.YELLOW + "  1. quiz")
+            print(Fore.YELLOW + "  2. test")
+            print(Fore.YELLOW + "  3. reset")
+            print(Fore.YELLOW + "  4. change")
+            mode = input(Fore.WHITE + "\nEnter your choice (1-4) or 'q!' to quit: ").strip().lower()
+
+            if mode == '1' or mode == 'quiz':
+                questions_to_ask = [q for q in questions if q['question'] not in correct_questions_set]
+                if not questions_to_ask:
+                    print(Fore.GREEN + "All questions have been answered correctly. Consider resetting progress to start over.")
+                    continue
+
+                all_questions = questions_to_ask.copy()
+                while questions_to_ask:
+                    result = run_quiz(questions_to_ask, result_folder, correct_questions_set)
                     if result == 'q!':
                         break
-                    all_questions.extend(questions)
-                    questions = all_questions[:]
-            elif mode == 'test':
+                    all_questions.extend(questions_to_ask)
+                    questions_to_ask = [q for q in all_questions if q['question'] not in correct_questions_set]
+            elif mode == '2' or mode == 'test':
                 num_questions = 65
                 try:
-                    num_questions = int(input(f"Enter number of questions for the test (default is 65): ").strip())
+                    num_questions = int(input(Fore.MAGENTA + f"Enter number of questions for the test (default is 65): ").strip())
                 except ValueError:
-                    print("Invalid input. Using default value of 65 questions.")
+                    print(Fore.RED + "Invalid input. Using default value of 65 questions.")
 
                 if len(questions) < num_questions:
-                    print("Not enough questions for a test.")
+                    print(Fore.RED + "Not enough questions for a test.")
                     continue
 
                 test_questions = random.sample(questions, num_questions)
@@ -154,17 +184,17 @@ def main():
                 total_questions = len(test_questions)
                 score = (correct_count / total_questions) * 100
                 if score > 75:
-                    print(f"You Passed with {score:.2f}%!")
+                    print(Fore.GREEN + f"You Passed with {score:.2f}%!")
                 else:
-                    print(f"Try again. Your score: {score:.2f}%")
-            elif mode == 'reset':
-                reset_progress(result_folder)
-            elif mode == 'change':
+                    print(Fore.RED + f"Try again. Your score: {score:.2f}%")
+            elif mode == '3' or mode == 'reset':
+                reset_progress(result_folder, correct_questions_set)
+            elif mode == '4' or mode == 'change':
                 break
             elif mode == 'q!':
                 break
             else:
-                print("Invalid choice. Please try again.")
+                print(Fore.RED + "Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()
