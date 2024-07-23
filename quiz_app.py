@@ -41,7 +41,7 @@ def ask_question(question, choices, correct_answer, result_folder):
     for choice in choices:
         print(Fore.YELLOW + f"  {choice}")
 
-    prompt_message = "\nq! or Your answer: " if not isinstance(correct_answer, list) else "\nq! or Enter all answers 'A B C D': "
+    prompt_message = "\nq! or Your answer: " if not isinstance(correct_answer, list) else "\nq! or Enter all answers: "
     
     try:
         user_answer = input(Fore.WHITE + prompt_message).upper()
@@ -79,6 +79,8 @@ def run_quiz(questions, result_folder, correct_questions_set, correct_questions_
         batch = questions[i:i + batch_size]
         for question_data in batch:
             question, choices, correct_answer = question_data['question'], question_data['choices'], question_data['answer']
+            if question in correct_questions_set:
+                continue
             result = ask_question(question, choices, correct_answer, result_folder)
             if result == 'q!':
                 return 'q!'
