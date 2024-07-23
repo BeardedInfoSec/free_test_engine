@@ -13,7 +13,7 @@ This Quiz Application is designed to help you study and test your knowledge usin
 
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/BeardedInfoSec/poweruser
+   git clone https://github.com/BeardedInfoSec/free_test_engine
    cd <repository_directory>
 ## Install Dependencies:
 Ensure you have Python installed. This script uses only the standard library, so no additional dependencies are needed.
