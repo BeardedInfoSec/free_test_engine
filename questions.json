@@ -1,0 +1,452 @@
+[
+    {
+        "question": "Selected fields are displayed ________ each event in the results.",
+        "choices": ["A. below", "B. interesting fields", "C. other fields", "D. above"],
+        "answer": "A"
+    },
+    {
+        "question": "Search terms are not case sensitive. (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "These two searches will NOT return the same results.\nSEARCH 1: login failure\nSEARCH 2: \"login failure\" (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "A space is implied ______________ in a search string.",
+        "choices": ["A. OR", "B. AND", "C. ()", "D. NOT"],
+        "answer": "B"
+    },
+    {
+        "question": "You can not specify a relative time range, such as 45 seconds ago, for a search (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "To use field value data from an event in a Workflow Action, we need to:",
+        "choices": ["A. Create tags for the fields.", "B. Select the GET method.", "C. Wrap the field in dollar signs."],
+        "answer": "C"
+    },
+    {
+        "question": "This Workflow Action type sends field values to external resources.",
+        "choices": ["A. POST", "B. GET", "C. Search"],
+        "answer": "A"
+    },
+    {
+        "question": "Workflow Actions can only be applied to a single field.",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "Hidden fields in a data model:",
+        "choices": ["A. will not be displayed to a Pivot user, but can be used to define other datasets", "B. will not be displayed in the dataset editor", "C. will be displayed to a Pivot user that has permissions to the field"],
+        "answer": "A"
+    },
+    {
+        "question": "_____ datasets can be added to a root dataset to narrow down the search.",
+        "choices": ["A. event", "B. child", "C. parent", "D. extracted"],
+        "answer": "B"
+    },
+    {
+        "question": "Which of these are NOT Data Model dataset types:",
+        "choices": ["A. Searches", "B. Events", "C. Transactions", "D. Lookups"],
+        "answer": "D"
+    },
+    {
+        "question": "You can normalize data for CIM use: Select all that apply.",
+        "choices": ["A. Using Knowledge Objects.", "B. At index time.", "C. Only after adding the CIM Add-on."],
+        "answer": ["A", "B"]
+    },
+    {
+        "question": "By default, data models in the CIM Add-on will search across all indexes.",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "The CIM Add-on indexes extra data and will affect license usage.",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "How many results are shown by default when using a Top or Rare Command?",
+        "choices": ["A. 10", "B. 20", "C. 5", "D. 15"],
+        "answer": "A"
+    },
+    {
+        "question": "Warm buckets in Splunk indexes are named by:",
+        "choices": ["A. the timestamps of first and last event in the bucket", "B. a naming convention the administrator determines", "C. the server that sent the events"],
+        "answer": "A"
+    },
+    {
+        "question": "Which of the following search modes automatically returns all extracted fields in the fields sidebar?",
+        "choices": ["A. fast", "B. smart", "C. verbose"],
+        "answer": "C"
+    },
+    {
+        "question": "Which type of visualization allows you to show a third dimension of data?",
+        "choices": ["A. bubble chart", "B. scatter chart", "C. pie chart", "D. area chart"],
+        "answer": "A"
+    },
+    {
+        "question": "Which option is NOT available with the chart and timechart commands?",
+        "choices": ["A. usefill", "B. useother", "C. limit"],
+        "answer": "A"
+    },
+    {
+        "question": "The ______ clause allows you to define which field is represented on the X axis of a chart.",
+        "choices": ["A. over", "B. by"],
+        "answer": "A"
+    },
+    {
+        "question": "Which of the following are valid options with the chart command? Select all that apply.",
+        "choices": ["A. usenull", "B. usefield", "C. fillfield", "D. useother"],
+        "answer": ["A", "D"]
+    },
+    {
+        "question": "The geom command allows you to create:",
+        "choices": ["A. radial gauges", "B. standard maps", "C. choropleth maps"],
+        "answer": "C"
+    },
+    {
+        "question": "If you want to format values without changing their characteristics, which would you use?",
+        "choices": ["A. The fieldformat command", "B. The eval tostring function"],
+        "answer": "A"
+    },
+    {
+        "question": "You can only use one eval command per search.",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "The eval command 'if' function requires the following three arguments (in order):",
+        "choices": ["A. result if false, result if true, boolean expression", "B. boolean expression, result if false, result if true", "C. boolean expression, result if true, result if false", "D. result if true, result if false, boolean expression"],
+        "answer": "C"
+    },
+    {
+        "question": "Mark the terms that fill in the blanks in the correct order: Use _____ to see results of a calculation, or group events on a field value. Use _____ to see events correlated together, or grouped by start and end values.",
+        "choices": ["A. transaction, stats", "B. stats, transaction"],
+        "answer": "B"
+    },
+    {
+        "question": "You can create a transaction based on multiple fields.",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "Which function should you use with the transaction command to set the maximum total time between the earliest and latest events returned?",
+        "choices": ["A. maxduration", "B. maxspan", "C. maxpause", "D. endswith"],
+        "answer": "B"
+    },
+    {
+        "question": "Users with this role can reassign Knowledge Objects.",
+        "choices": ["A. Admin", "B. User", "C. Power"],
+        "answer": "A"
+    },
+    {
+        "question": "Knowledge Objects can be used to normalize data.",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "What are the predefined ways Knowledge Objects can be shared?",
+        "choices": ["A. Specific App", "B. Private", "C. All Apps", "D. Sourcetype"],
+        "answer": ["A", "B", "C"]
+    },
+    {
+        "question": "When extracting fields, we may choose to use our own regular expressions.",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "During the validation step of the Field Extractor workflow:",
+        "choices": ["A. You cannot modify the field extraction", "B. You can validate where the data originated from", "C. You can remove values that aren't a match for the field you want to define"],
+        "answer": "B"
+    },
+    {
+        "question": "Once a field is created using the regex method, you cannot modify the underlying regular expression.",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "Calculated fields are based on underlying:",
+        "choices": ["A. eval expressions", "B. keyword searches", "C. stats commands"],
+        "answer": "A"
+    },
+    {
+        "question": "Field aliases are used to _____ data.",
+        "choices": ["A. transform", "B. clean", "C. calculate", "D. normalize"],
+        "answer": "D"
+    },
+    {
+        "question": "Field aliases can only be applied to a single source type, source, or host.",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "Tags can be added to Event Types.",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "These allow you to categorize events based on search terms.",
+        "choices": ["A. Macros", "B. Groups", "C. Event Types", "D. Tags"],
+        "answer": "C"
+    },
+    {
+        "question": "You can only add one tag per field value pair.",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "You can pipe the results of a macro to other commands.",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "What is the proper syntax for using a macro named \"us_sales\"?",
+        "choices": ["A. \"us_sales\"", "B. (us_sales)", "C. us_sales", "D. `us_sales`"],
+        "answer": "D"
+    },
+    {
+        "question": "The search expansion tool:",
+        "choices": ["A. Allows you to see what a macro will expand to before you run a search.", "B. Automatically fills in the variables before you run a search.", "C. Must be used before running a search with a macro."],
+        "answer": "A"
+    },
+    {
+        "question": "Using the export function, you can export a maximum of 2000 results.",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "Which of the following search control will not re-run the search? Select all that apply.",
+        "choices": ["A. zoom out", "B. selecting a bar on the timeline", "C. deselect", "D. selecting a range of bars on the timeline"],
+        "answer": ["B", "C", "D"]
+    },
+    {
+        "question": "Highlighted search terms indicate ______ search results in Splunk.",
+        "choices": ["A. display as a selected field", "B. Sorted", "C. Charred based on time", "D. Matching"],
+        "answer": "D"
+    },
+    {
+        "question": "The Splunk search language does not support wildcards.",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "Historical searches provide a static snapshot of events at a given time.",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "Which of the following statements about macros is true? Select all that apply.",
+        "choices": ["A. Arguments are defined at execution time.", "B. Arguments are defined when the macro is created.", "C. Argument values are used to resolve the search string at execution time.", "D. Argument values are used to resolve the search string when the macro is created"],
+        "answer": ["A", "C"]
+    },
+    {
+        "question": "What is required for a macro to accept three arguments?",
+        "choices": ["A. The macro's name ends with (3).", "B. The macro's name starts with (3).", "C. The macro's argument count setting is 3 or more.", "D. Nothing, all macros can accept any number of arguments."],
+        "answer": "A"
+    },
+    {
+        "question": "Which of the following statements describes POST workflow actions?",
+        "choices": ["A. POST workflow actions are always encrypted.", "B. POST workflow actions cannot use field values in their URI.", "C. POST workflow actions cannot be created on custom sourcetypes.", "D. POST workflow actions can open a web page in either the same window or a new one."],
+        "answer": "D"
+    },
+    {
+        "question": "Which of the following searches show a valid use of macro? Select all that apply.",
+        "choices": ["A. index=main source=mySource oldField=* | 'makeMyField(oldField)' | table _time newField", "B. index=main source=mySource oldField=* | state if ('makeMyField(oldField ' ) | table _time", "C. index=main source=mySource oldField=* | eval newField= 'makeMyField(oldField) ' | table _time", "D. index=main source=mySource oldField=* | \"'newField('makeMyField(oldField) \" ) ' \" | table _time"],
+        "answer": ["A", "C"]
+    },
+    {
+        "question": "Which of the following workflow actions can be executed from search results? Select all that apply.",
+        "choices": ["A. GET", "B. POST", "C. LOOKUP", "D. Search"],
+        "answer": ["A", "B", "D"]
+    },
+    {
+        "question": "Which of the following is the correct way to use the data model command to search field in the data model within the web dataset?",
+        "choices": ["A. | datamodel web search | filed web *", "B. | Search datamodel web web | filed web*", "C. | datamodel web web field | search web*", "D. Datamodel=web | search web | filed web*"],
+        "answer": "A"
+    },
+    {
+        "question": "Which of the following searches will return events containing a tag named Privileged?",
+        "choices": ["A. Tag= Priv", "B. Tag= Priv*", "C. Tag= Priv*", "D. Tag= Privileged"],
+        "answer": "D"
+    },
+    {
+        "question": "Which of the following statements describes this search? sourcetype=access_combined | transaction JSESSIONID | timechart avg (duration)",
+        "choices": ["A. This is a valid search and will display a timechart of the average duration, of each transaction event.", "B. This is a valid search and will display a stats table showing the maximum pause among transactions.", "C. No results will be returned because the transaction command must include the startswith and endswith options.", "D. No results will be returned because the transaction command must be the last command used in the search pipeline."],
+        "answer": "A"
+    },
+    {
+        "question": "Calculated fields can be based on which of the following?",
+        "choices": ["A. Tags", "B. Extracted fields", "C. Output fields for a lookup", "D. Fields generated from a search string"],
+        "answer": "B"
+    },
+    {
+        "question": "When multiple event types with different color values are assigned to the same event, what determines the color displayed for the events?",
+        "choices": ["A. Rank", "B. Weight", "C. Priority", "D. Precedence"],
+        "answer": "C"
+    },
+    {
+        "question": "Which of the following statements describes the command below? Select all that apply.\nsourcetype=access_combined | transaction JSESSIONID",
+        "choices": ["A. An additional field named maxspan is created.", "B. An additional field named duration is created.", "C. An additional field named eventcount is created.", "D. Events with the same JSESSIONID will be grouped together into a single event."],
+        "answer": ["B", "C"]
+    },
+    {
+        "question": "Which of the following can be used with the eval command tostring function? Select all that apply.",
+        "choices": ["A. 'hex'", "B. 'commas'", "C. 'Decimal'", "D. 'duration'"],
+        "answer": ["A", "B", "D"]
+    },
+    {
+        "question": "Historical searches provide a static snapshot of events at a given time (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "T"
+    },
+    {
+        "question": "Using the export function, you can export a maximum of 2000 results. (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "Which of the following search control will not re-run the search? Select all that apply.",
+        "choices": ["A. zoom out", "B. selecting a bar on the timeline", "C. deselect", "D. selecting a range of bars on the timeline"],
+        "answer": ["B", "C", "D"]
+    },
+    {
+        "question": "Highlighted search terms indicate ______ search results in Splunk.",
+        "choices": ["A. display as selected field", "B. sorted", "C. chart based on time", "D. matching"],
+        "answer": "D"
+    },
+    {
+        "question": "The Splunk search language does not support wildcards (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "The Splunk search language supports the + wildcard (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "When you mouse over and click to add a search term this/these boolean operator(s) is/are not implied. Select all that apply.",
+        "choices": ["A. OR", "B. ( )", "C. AND", "D. NOT"],
+        "answer": ["B"]
+    },
+    {
+        "question": "Using the export function, you can export search results as _____. Select all that apply.",
+        "choices": ["A. XML", "B. JSON", "C. HTML", "D. a PHP file"],
+        "answer": ["A", "B"]
+    },
+    {
+        "question": "These kinds of fields are identified in your data at INDEX time.",
+        "choices": ["A. data-specific fields", "B. default fields"],
+        "answer": "B"
+    },
+    {
+        "question": "Default fields are not added to every event in Splunk at INDEX time. (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "The fields sidebar does not show _____. Select all that apply.",
+        "choices": ["A. interesting fields", "B. selected fields", "C. all extracted fields"],
+        "answer": ["C"]
+    },
+    {
+        "question": "Only Splunk Admins can assign selected fields (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "This search user!=*",
+        "choices": ["A. displays only events that contain a value for the user", "B. displays all events", "C. displays only events that do not contain a value for the user"],
+        "answer": "C"
+    },
+    {
+        "question": "The interesting fields in the fields sidebar is based on what fields you have requested in the past. (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "Which mode automatically decides how to return fields based on your search?",
+        "choices": ["A. Verbose", "B. Fast", "C. Smart"],
+        "answer": "C"
+    },
+    {
+        "question": "Which search mode returns all fields?",
+        "choices": ["A. Verbose", "B. Fast", "C. Smart"],
+        "answer": "A"
+    },
+    {
+        "question": "Splunk alerts can be based on a search that run _____. Select all that apply.",
+        "choices": ["A. in real time", "B. on a regular schedule", "C. and have no matching events"],
+        "answer": ["A", "B"]
+    },
+    {
+        "question": "Alert throttling is used to ____.",
+        "choices": ["A. verify each alert", "B. stagger search request in a time-sequenced order", "C. stop spamming yourself with alerts", "D. check severity"],
+        "answer": "C"
+    },
+    {
+        "question": "Scheduled alerts must be scheduled to run with cron job syntax only (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "A report scheduled to run every 15 mins, but it takes 17 mins to complete, is in danger of being",
+        "choices": ["A. skipped or deferred", "B. automatically accelerated", "C. deleted", "D. all the above"],
+        "answer": "A"
+    },
+    {
+        "question": "Custom charts can be created in the fields sidebar (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "Which of the following are valid options to speed up reports? Select all that apply.",
+        "choices": ["A. Edit permissions", "B. Edit description", "C. Edit acceleration", "D. Edit schedule"],
+        "answer": ["C"]
+    },
+    {
+        "question": "After you create a pivot, you can save it as a _____. Select all that apply.",
+        "choices": ["A. tag", "B. eventtype", "C. report", "D. dashboard panel"],
+        "answer": ["C", "D"]
+    },
+    {
+        "question": "Pivot editor has a map visualization option (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "New pivots automatically populate with _____. Select all that apply.",
+        "choices": ["A. Split rows", "B. Split columns", "C. Count of hosts", "D. Time range filter"],
+        "answer": ["D"]
+    },
+    {
+        "question": "Internal fields, such as _raw and _time can be explicitly removed from results with fields command (T/F)",
+        "choices": ["T. True", "F. False"],
+        "answer": "F"
+    },
+    {
+        "question": "This function on the stats command allows you to return the sample standard deviation of a field.",
+        "choices": ["A. stdev", "B. dev", "C. count deviation", "D. by standarddev"],
+        "answer": "A"
+    },
+    {
+        "question": "This clause is used to group the output of a stats command by a specific name",
+        "choices": ["A. Rex", "B. As", "C. List", "D. By"],
+        "answer": "D"
+    },
+    {
+        "question": "When a search returns _________ you can view it as a list",
+        "choices": ["A. a list of events", "B. transactions", "C. statistical values"],
+        "answer": "C"
+    },
+    {
+        "question": "Clicking on a SEGMENT on a chart __________.",
+        "choices": ["A. drills down for that data", "B. highlights the field value across the chart", "C. adds the highlighted value to the search criteria"],
+        "answer": "C"
+    }
+]
