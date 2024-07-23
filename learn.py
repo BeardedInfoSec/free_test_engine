@@ -122,6 +122,7 @@ def ask_question(question, choices, correct_answer):
     if correct:
         print("Correct!")
         log_question(question, correct_answer, "correct_answers.txt")
+        time.sleep(2)
     else:
         print(f"Incorrect. The correct answer is: {correct_answer}")
         time.sleep(5)
