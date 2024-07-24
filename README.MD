@@ -14,7 +14,7 @@ git clone https://github.com/BeardedInfoSec/free_test_engine
 cd free_test_engine
 ```
 ## Install Dependencies:
-Ensure you have Python installed. Then, install the required packages using pip:
+Ensure you have Python3 installed. Then, install the required packages using pip:
 
 ```pip install -r requirements.txt```
 
