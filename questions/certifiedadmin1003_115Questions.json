@@ -1,1152 +1,272 @@
 [
-    {
-        "question": "Which one of the following statements about the search command is true?",
-        "choices": [
-            "A. It does not allow the use of wildcards.",
-            "B. It treats field values in a case-sensitive manner.",
-            "C. It can only be used at the beginning of the search pipeline.",
-            "D. It behaves exactly like search strings before the first pipe."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following actions can the eval command perform?",
-        "choices": [
-            "A. Remove fields from results.",
-            "B. Create or replace an existing field.",
-            "C. Group transactions by one or more fields.",
-            "D. Save SPL commands to be reused in other searches."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "When can a pipe follow a macro?",
-        "choices": [
-            "A. A pipe may always follow a macro.",
-            "B. The current user must own the macro.",
-            "C. The macro must be defined in the current app.",
-            "D. Only when sharing is set to global for the macro."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Data models are composed of one or more of which of the following datasets? (Choose all that apply.)",
-        "choices": [
-            "A. Events datasets",
-            "B. Search datasets",
-            "C. Transaction datasets",
-            "D. Any child of event, transaction, and search datasets"
-        ],
-        "answer": ["A", "B", "C", "D"]
-    },
-    {
-        "question": "When using the Field Extractor (FX), which of the following delimiters will work? (Choose all that apply.)",
-        "choices": [
-            "A. Tabs",
-            "B. Pipes",
-            "C. Colons",
-            "D. Spaces"
-        ],
-        "answer": ["A", "B", "D"]
-    },
-    {
-        "question": "Which group of users would most likely use pivots?",
-        "choices": [
-            "A. Users",
-            "B. Architects",
-            "C. Administrators",
-            "D. Knowledge Managers"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "When multiple event types with different color values are assigned to the same event, what determines the color displayed for the event?",
-        "choices": [
-            "A. Rank",
-            "B. Weight",
-            "C. Priority",
-            "D. Precedence"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Based on the macro definition shown below, what is the correct way to execute the macro in a search string?",
-        "choices": [
-            "A. 'convert_sales(euro,€, .79)'",
-            "B. 'convert_sales(euro,€, .79)'",
-            "C. 'convert_sales($euro$, $€, $.79$)'",
-            "D. 'convert_sales($euro$, $€, $.79$)'"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "There are several ways to access the field extractor. Which option automatically identifies the data type, source type, and sample event?",
-        "choices": [
-            "A. Event Actions > Extract Fields",
-            "B. Fields sidebar > Extract New Fields",
-            "C. Settings > Field Extractions > New Field Extraction",
-            "D. Settings > Field Extractions > Open Field Extractor"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following statements would help a user choose between the transaction and stats commands?",
-        "choices": [
-            "A. stats can only group events using IP addresses.",
-            "B. The transaction command is faster and more efficient.",
-            "C. There is a 1000 event limitation with the transaction command.",
-            "D. Use stats when the events need to be viewed as a single correlated event."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "By default, how is acceleration configured in the Splunk Common Information Model (CIM) add-on?",
-        "choices": [
-            "A. Turned off.",
-            "B. Turned on.",
-            "C. Determined automatically based on the sourcetype.",
-            "D. Determined automatically based on the data source."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following statements describe the Common Information Model (CIM)? (Choose all that apply.)",
-        "choices": [
-            "A. CIM is a methodology for normalizing data.",
-            "B. CIM can correlate data from different sources.",
-            "C. The Knowledge Manager uses the CIM to create knowledge objects.",
-            "D. CIM is an app that can coexist with other apps on a single Splunk deployment."
-        ],
-        "answer": ["A", "B"]
-    },
-    {
-        "question": "Which of the following knowledge objects represents the output of an eval expression?",
-        "choices": [
-            "A. Eval fields",
-            "B. Calculated fields",
-            "C. Field extractions",
-            "D. Calculated lookups"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "What do events in a transaction have in common?",
-        "choices": [
-            "A. All events in a transaction must have the same timestamp.",
-            "B. All events in a transaction must have the same sourcetype.",
-            "C. All events in a transaction must have the exact same set of fields.",
-            "D. All events in a transaction must be related by one or more fields."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which delimiters can the Field Extractor (FX) detect? (Choose all that apply.)",
-        "choices": [
-            "A. Tabs",
-            "B. Pipes",
-            "C. Spaces",
-            "D. Commas"
-        ],
-        "answer": ["A", "B", "C", "D"]
-    },
-    {
-        "question": "A data model consists of which three types of datasets?",
-        "choices": [
-            "A. Constraint, field, value.",
-            "B. Events, searches, transactions.",
-            "C. Field extraction, regex, delimited.",
-            "D. Transaction, session ID, metadata."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Where are the results of eval commands stored?",
-        "choices": [
-            "A. In a field.",
-            "B. In an index.",
-            "C. In a KV Store.",
-            "D. In a database."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following statements describe calculated fields? (Choose all that apply.)",
-        "choices": [
-            "A. Calculated fields can be used in the search bar.",
-            "B. Calculated fields can be based on an extracted field.",
-            "C. Calculated fields can only be applied to host and sourcetype.",
-            "D. Calculated fields are shortcuts for performing calculations using the eval command."
-        ],
-        "answer": ["A", "B", "D"]
-    },
-    {
-        "question": "Calculated fields can be based on which of the following?",
-        "choices": [
-            "A. Tags",
-            "B. Extracted fields",
-            "C. Output fields for a lookup",
-            "D. Fields generated from a search string"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "When should transaction be used?",
-        "choices": [
-            "A. Only in a large distributed Splunk environment.",
-            "B. When calculating results from one or more fields.",
-            "C. When event grouping is based on start/end values.",
-            "D. When grouping events results in over 1000 events in each group."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "When performing a regular expression (regex) field extraction using the Field Extractor (FX), what happens when the require option is used?",
-        "choices": [
-            "A. The regex can no longer be edited.",
-            "B. The field being extracted will be required for all future events.",
-            "C. The events without the required field will not display in searches.",
-            "D. Only events with the required string will be included in the extraction."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "When using | timechart by host, which field is represented in the x-axis?",
-        "choices": [
-            "A. date",
-            "B. host",
-            "C. time",
-            "D. _time"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following is the correct way to use the datamodel command to search fields in the Web data model within the Web dataset?",
-        "choices": [
-            "A. | datamodel Web Web search | fields Web*",
-            "B. | search datamodel Web Web | fields Web*",
-            "C. | datamodel Web Web fields | search Web*",
-            "D. datamodel=Web | search Web | fields Web*"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following statements describe the command below? (Choose all that apply.) sourcetype=access_combined | transaction JSESSIONID",
-        "choices": [
-            "A. An additional field named maxspan is created.",
-            "B. An additional field named duration is created.",
-            "C. An additional field named eventcount is created.",
-            "D. Events with the same JSESSIONID will be grouped together into a single event."
-        ],
-        "answer": ["B", "C", "D"]
-    },
-    {
-        "question": "Which of the following searches will return events containing a tag named Privileged?",
-        "choices": [
-            "A. tag=Priv",
-            "B. tag=Priv*",
-            "C. tag=priv*",
-            "D. tag=privileged"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Given the macro definition below, what should be entered into the Name and Arguments fields to correctly configure the macro?",
-        "choices": [
-            "A. The macro name is sessiontracker and the arguments are action, JESSIONID.",
-            "B. The macro name is sessiontracker(2) and the arguments are action, JESSIONID.",
-            "C. The macro name is sessiontracker and the arguments are $action$, $JESSIONID$.",
-            "D. The macro name is sessiontracker(2) and the Arguments are $action$, $JESSIONID$."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "What is required for a macro to accept three arguments?",
-        "choices": [
-            "A. The macro's name ends with (3).",
-            "B. The macro's name starts with (3).",
-            "C. The macro's argument count setting is 3 or more.",
-            "D. Nothing, all macros can accept any number of arguments."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which workflow action method can be used when the action type is set to link?",
-        "choices": [
-            "A. GET",
-            "B. PUT",
-            "C. Search",
-            "D. UPDATE"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following statements about tags is true? (Choose all that apply.)",
-        "choices": [
-            "A. Tags are case-insensitive.",
-            "B. Tags are based on field/value pairs.",
-            "C. Tags categorize events based on a search.",
-            "D. Tags are designed to make data more understandable."
-        ],
-        "answer": ["B", "D"]
-    },
-    {
-        "question": "Which of the following statements about macros is true? (Choose all that apply.)",
-        "choices": [
-            "A. Arguments are defined at execution time.",
-            "B. Arguments are defined when the macro is created.",
-            "C. Argument values are used to resolve the search string at execution time.",
-            "D. Argument values are used to resolve the search string when the macro is created."
-        ],
-        "answer": ["B", "C"]
-    },
-    {
-        "question": "Information needed to create a GET workflow action includes which of the following? (Choose all that apply.)",
-        "choices": [
-            "A. A name for the workflow action.",
-            "B. A URI where the user will be directed at search time.",
-            "C. A label that will appear in the Event Action menu at search time.",
-            "D. A name for the URI where the user will be directed at search time."
-        ],
-        "answer": ["A", "B", "C"]
-    },
-    {
-        "question": "Which of the following can be used with the eval command tostring function? (Choose all that apply.)",
-        "choices": [
-            "A. \"hex\"",
-            "B. \"commas\"",
-            "C. \"decimal\"",
-            "D. \"duration\""
-        ],
-        "answer": ["A", "B", "D"]
-    },
-    {
-        "question": "Which of the following searches show a valid use of a macro? (Choose all that apply.)",
-        "choices": [
-            "A. index=main source=mySource oldField=* |'makeMyField(oldField)'| table _time newField",
-            "B. index=main source=mySource oldField=* | stats if('makeMyField(oldField)') | table _time newField",
-            "C. index=main source=mySource oldField=* | eval newField='makeMyField(oldField)'| table _time newField",
-            "D. index=main source=mySource oldField=* | \"'newField('makeMyField(oldField)')'\" | table _time newField"
-        ],
-        "answer": ["A", "C"]
-    },
-    {
-        "question": "A user wants to convert numeric field values to strings and also to sort on those values. Which command should be used first, the eval or the sort?",
-        "choices": [
-            "A. It doesn't matter whether eval or sort is used first.",
-            "B. Convert the numeric to a string with eval first, then sort.",
-            "C. Use sort first, then convert the numeric to a string with eval.",
-            "D. You cannot use the sort command and the eval command on the same field."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which Knowledge Object does the Splunk Common Information Model (CIM) use to normalize data, in addition to field aliases, event types, and tags?",
-        "choices": [
-            "A. Macros",
-            "B. Lookups",
-            "C. Workflow actions",
-            "D. Field extractions"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following statements describe data model acceleration? (Choose all that apply.)",
-        "choices": [
-            "A. Root events cannot be accelerated.",
-            "B. Accelerated data models cannot be edited.",
-            "C. Private data models cannot be accelerated.",
-            "D. You must have administrative permissions or the accelerate_datamodel capability to accelerate a data model."
-        ],
-        "answer": ["B", "C", "D"]
-    },
-    {
-        "question": "How does a user display a chart in stack mode?",
-        "choices": [
-            "A. By using the stack command.",
-            "B. By turning on the Use Trellis Layout option.",
-            "C. By changing Stack Mode in the Format menu.",
-            "D. You cannot display a chart in stack mode, only a timechart."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "If no value is specified with the fillnull command, what default value will be used?",
-        "choices": [
-            "A. 0",
-            "B. N/A",
-            "C. ג€“",
-            "D. NULL"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "What other syntax will produce exactly the same results as | chart count over vendor_action by user?",
-        "choices": [
-            "A. | chart count by vendor_action, user",
-            "B. | chart count over vendor_action, user",
-            "C. | chart count by vendor_action over user",
-            "D. | chart count over user by vendor_action"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "What are the two parts of a root event dataset?",
-        "choices": [
-            "A. Fields and variables.",
-            "B. Fields and attributes.",
-            "C. Constraints and fields.",
-            "D. Constraints and lookups."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "When using timechart, how many fields can be listed after a by clause?",
-        "choices": [
-            "A. 0, because timechart doesn't support using a by clause.",
-            "B. 1, because _time is already implied as the x-axis.",
-            "C. 2, because one field would represent the x-axis and the other would represent the y-axis.",
-            "D. There is no limit specific to timechart."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "A field alias has been created based on an original field. A search without any transforming commands is then executed in Smart Mode. Which field name appears in the results?",
-        "choices": [
-            "A. Both will appear in the All Fields list, but only if the alias is specified in the search.",
-            "B. Both will appear in the Interesting Fields list, but only if they appear in at least 20 percent of events.",
-            "C. The original field only appears in All Fields list and the alias only appears in the Interesting Fields list.",
-            "D. The alias only appears in the All Fields list and the original field only appears in the Interesting Fields list."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following statements describes macros?",
-        "choices": [
-            "A. A macro is a reusable search string that must contain the full search.",
-            "B. A macro is a reusable search string that must have a fixed time range.",
-            "C. A macro is a reusable search string that may have a flexible time range.",
-            "D. A macro is a reusable search string that must contain only a portion of the search."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "In what order are the following knowledge objects/configurations applied?",
-        "choices": [
-            "A. Field Aliases, Field Extractions, Lookups",
-            "B. Field Extractions, Field Aliases, Lookups",
-            "C. Field Extractions, Lookups, Field Aliases",
-            "D. Lookups, Field Aliases, Field Extractions"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "In which of the following scenarios is an event type more effective than a saved search?",
-        "choices": [
-            "A. When a search should always include the same time range.",
-            "B. When a search needs to be added to other users' dashboards.",
-            "C. When the search string needs to be used in future searches.",
-            "D. When formatting needs to be included with the search string."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "When using the transaction command, what does the argument maxspan do?",
-        "choices": [
-            "A. Sets the maximum total time between events in a transaction.",
-            "B. Sets the maximum length of all the events within a transaction.",
-            "C. Sets the maximum total time between the earliest and latest events in a transaction.",
-            "D. Sets the maximum length that any single event can reach to be included in the transaction."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "When creating a Search workflow action, which field is required?",
-        "choices": [
-            "A. Search string",
-            "B. Data model name",
-            "C. Permission setting",
-            "D. An eval statement"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "To identify all of the contributing events within a transaction that contain at least one REJECT event, which syntax is correct?",
-        "choices": [
-            "A. index=main REJECT | transaction sessionid",
-            "B. index=main | transaction sessionid | search REJECT",
-            "C. index=main | transaction sessionid | where transaction=reject",
-            "D. index=main | transaction sessionid | where transaction=\"REJECT*\""
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "After manually editing a regular expression (regex), which of the following statements is true?",
-        "choices": [
-            "A. Changes made manually can be reverted in the Field Extractor (FX) UI.",
-            "B. It is no longer possible to edit the field extraction in the Field Extractor (FX) UI.",
-            "C. It is not possible to manually edit a regular expression (regex) that was created using the Field Extractor (FX) UI.",
-            "D. The Field Extractor (FX) UI keeps its own version of the field extraction in addition to the one that was manually edited."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following statements describes POST workflow actions?",
-        "choices": [
-            "A. Configuration of a POST workflow action includes choosing a sourcetype.",
-            "B. POST workflow actions can be configured to send email to the URI location.",
-            "C. By default, POST workflow actions are shown in both the event and field menus.",
-            "D. POST workflow actions can be configured to send POST arguments to the URI location."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following statements is true, especially in large environments?",
-        "choices": [
-            "A. Use the stats command when you need to group events by two or more fields.",
-            "B. The stats command is faster and more efficient than the transaction command.",
-            "C. The transaction command is faster and more efficient than the stats command.",
-            "D. Use the transaction command when you want to see the results of a calculation."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "What does the following search do? index=corndog type=mysterymeat action=eaten | stats count as corndog_count by user",
-        "choices": [
-            "A. Creates a table of the total count of users and split by corndogs.",
-            "B. Creates a table of the total count of mysterymeat corndogs split by user.",
-            "C. Creates a table with the count of all types of corndogs eaten split by user.",
-            "D. Creates a table that groups the total number of users by vegetarian corndogs."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following statements about event types is true? (Choose all that apply.)",
-        "choices": [
-            "A. Event types can be tagged.",
-            "B. Event types must include a time range.",
-            "C. Event types categorize events based on a search.",
-            "D. Event types can be a useful method for capturing and sharing knowledge."
-        ],
-        "answer": ["A", "C", "D"]
-    },
-    {
-        "question": "The Field Extractor (FX) is used to extract a custom field. A report can be created using this custom field. The created report can then be shared with other people in the organization. If another person in the organization runs the shared report and no results are returned, why might this be? (Choose all that apply.)",
-        "choices": [
-            "A. Fast mode is enabled.",
-            "B. The dashboard is private.",
-            "C. The extraction is private.",
-            "D. The person in the organization running the report does not have access to the index."
-        ],
-        "answer": ["C", "D"]
-    },
-    {
-        "question": "Which of the following statements describe the search string below? | datamodel Application_State All_Application_State search",
-        "choices": [
-            "A. Events will be returned from dataset named Application_State.",
-            "B. Events will be returned from the data model named Application_State.",
-            "C. Events will be returned from the data model named All_Application_State.",
-            "D. No events will be returned because the pipe should occur after the datamodel command."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "What is the correct syntax to search for a tag associated with a value on a specific field?",
-        "choices": [
-            "A. tag=<field>",
-            "B. tag=<field>(<tagname>)",
-            "C. tag=<field>::<tagname>",
-            "D. tag::<field>=<tagname>"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "In most large Splunk environments, what is the most efficient command that can be used to group events by fields?",
-        "choices": [
-            "A. join",
-            "B. stats",
-            "C. streamstats",
-            "D. transaction"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which workflow uses field values to perform a secondary search?",
-        "choices": [
-            "A. POST",
-            "B. Action",
-            "C. Search",
-            "D. Sub-search"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following statements describes field aliases?",
-        "choices": [
-            "A. Field alias names replace the original field name.",
-            "B. Field aliases can be used in lookup file definitions.",
-            "C. Field aliases only normalize data across sources and sourcetypes.",
-            "D. Field alias names are not case sensitive when used as part of a search."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which statement is true?",
-        "choices": [
-            "A. Pivot is used for creating datasets.",
-            "B. Data models are randomly structured datasets.",
-            "C. Pivot is used for creating reports and dashboards.",
-            "D. In most cases, each Splunk user will create their own data model."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following statements describes the use of the Field Extractor (FX)?",
-        "choices": [
-            "A. The Field Extractor automatically extracts all fields at search time.",
-            "B. The Field Extractor uses PERL to extract fields from the raw events.",
-            "C. Fields extracted using the Field Extractor persist as knowledge objects.",
-            "D. Fields extracted using the Field Extractor do not persist and must be defined for each search."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following searches would return a report of sales by product_name?",
-        "choices": [
-            "A. chart sales by product_name",
-            "B. chart sum(price) as sales by product_name",
-            "C. stats sum(price) as sales over product_name",
-            "D. timechart list(sales), values(product_name)"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following data models are included in the Splunk Common Information Model (CIM) add-on? (Choose all that apply.)",
-        "choices": [
-            "A. Alerts",
-            "B. Email",
-            "C. Databases",
-            "D. User permissions"
-        ],
-        "answer": ["A", "B", "C"]
-    },
-    {
-        "question": "What is a limitation of searches generated by workflow actions?",
-        "choices": [
-            "A. Searches generated by workflow actions cannot use macros.",
-            "B. Searches generated by workflow actions must be less than 256 characters long.",
-            "C. Searches generated by workflow actions must run in the same app as the workflow action.",
-            "D. Searches generated by workflow actions run with the same permissions as the user running them."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following searches would create a graph similar to the one below?",
-        "choices": [
-            "A. index=_internal sourcetype=SavedSplunker | fields sourcetype, status | transaction status maxspan=1d | stats count by status",
-            "B. index=_internal sourcetype=SavedSplunker | fields sourcetype, status | transaction status maxspan=1d | chart count OVER status by _time",
-            "C. index=_internal sourcetype=SavedSplunker | fields sourcetype, status | transaction status maxspan=1d | timechart count by status",
-            "D. None of these searches would generate a similar graph."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "What does the transaction command do?",
-        "choices": [
-            "A. Groups a set of transactions based on time.",
-            "B. Creates a single event from a group of events.",
-            "C. Separates two events based on one or more values.",
-            "D. Returns the number of credit card transactions found in the event logs."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "What is the relationship between data models and pivots?",
-        "choices": [
-            "A. Data models provide the datasets for pivots.",
-            "B. Pivots and data models have no relationship.",
-            "C. Pivots and data models are the same thing.",
-            "D. Pivots provide the datasets for data models."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following statements describes Search workflow actions?",
-        "choices": [
-            "A. By default, Search workflow actions will run as a real-time search.",
-            "B. Search workflow actions can be configured as scheduled searches.",
-            "C. The user can define the time range of the search when created the workflow action.",
-            "D. Search workflow actions cannot be configured with a search string that includes the transaction command."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following commands support the same set of functions?",
-        "choices": [
-            "A. stats, eval, table",
-            "B. search, where, eval",
-            "C. stats, chart, timechart",
-            "D. transaction, chart, timechart"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "The eval command allows you to do which of the following? (Choose all that apply.)",
-        "choices": [
-            "A. Format values",
-            "B. Convert values",
-            "C. Perform calculations",
-            "D. Use conditional statements"
-        ],
-        "answer": ["A", "B", "C", "D"]
-    },
-    {
-        "question": "When using the timechart command, how can a user group the events into buckets based on time?",
-        "choices": [
-            "A. Using the span argument.",
-            "B. Using the duration argument.",
-            "C. Using the interval argument.",
-            "D. Adjusting the fieldformat options."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following statements about data models and pivot are true? (Choose all that apply.)",
-        "choices": [
-            "A. They are both knowledge objects.",
-            "B. Data models are created out of datasets called pivots.",
-            "C. Pivot requires users to input SPL searches on data models.",
-            "D. Pivot allows the creation of data visualizations that present different aspects of a data model."
-        ],
-        "answer": ["D"]
-    },
-    {
-        "question": "Data model fields can be added using the Auto-Extracted method. Which of the following statements describe Auto-Extracted fields? (Choose all that apply.)",
-        "choices": [
-            "A. Auto-Extracted fields can be hidden in Pivot.",
-            "B. Auto-Extracted fields can have their data type changed.",
-            "C. Auto-Extracted fields can be given a friendly name for use in Pivot.",
-            "D. Auto-Extracted fields can be added if they already exist in the dataset with constraints."
-        ],
-        "answer": ["A", "B", "C", "D"]
-    },
-    {
-        "question": "Which type of visualization shows relationships between discrete values in three dimensions?",
-        "choices": [
-            "A. Pie chart",
-            "B. Line chart",
-            "C. Bubble chart",
-            "D. Scatter chart"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following is a function of the Splunk Common Information Model (CIM)?",
-        "choices": [
-            "A. Normalizing data across a Splunk deployment.",
-            "B. Providing templates for reports and dashboards.",
-            "C. Algorithmically shifting events to other indexes.",
-            "D. Reingesting previously indexed data with new field names."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "What information must be included when using the datamodel command?",
-        "choices": [
-            "A. status field",
-            "B. Multiple indexes",
-            "C. Data model field name.",
-            "D. Data model dataset name."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following workflow actions can be executed from search results? (Choose all that apply.)",
-        "choices": [
-            "A. GET",
-            "B. POST",
-            "C. LOOKUP",
-            "D. Search"
-        ],
-        "answer": ["A", "B", "D"]
-    },
-    {
-        "question": "Which of the following eval command functions is valid?",
-        "choices": [
-            "A. int()",
-            "B. count()",
-            "C. print()",
-            "D. tostring()"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "A calculated field may be based on which of the following?",
-        "choices": [
-            "A. Lookup tables",
-            "B. Extracted fields",
-            "C. Regular expressions",
-            "D. Fields generated within a search string"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "A data model can consist of what three types of datasets?",
-        "choices": [
-            "A. Pivot, searches, and events.",
-            "B. Pivot, events, and transactions.",
-            "C. Searches, transactions, and pivot.",
-            "D. Events, searches, and transactions."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "When is a GET workflow action needed?",
-        "choices": [
-            "A. To send field values to an external resource.",
-            "B. To retrieve information from an external resource.",
-            "C. To use field values to perform a secondary search.",
-            "D. To define how events flow from forwarders to indexes."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following statements describe GET workflow actions?",
-        "choices": [
-            "A. GET workflow actions must be configured with POST arguments.",
-            "B. Configuration of GET workflow actions includes choosing a sourcetype.",
-            "C. Label names for GET workflow actions must include a field name surrounded by dollar signs.",
-            "D. GET workflow actions can be configured to open the URI link in the current window or in a new window."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which are valid ways to create an event type? (Choose all that apply.)",
-        "choices": [
-            "A. By using the searchtypes command in the search bar.",
-            "B. By editing the event_type stanza in the props.conf file.",
-            "C. By going to the Settings menu and clicking Event Types > New.",
-            "D. By selecting an event in search results and clicking Event Actions > Build Event Type."
-        ],
-        "answer": ["C", "D"]
-    },
-    {
-        "question": "Which command can include both an over and a by clause to divide results into sub-groupings?",
-        "choices": [
-            "A. chart",
-            "B. stats",
-            "C. xyseries",
-            "D. transaction"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "When should you use the transaction command instead of the stats command?",
-        "choices": [
-            "A. When you need to group on multiple values.",
-            "B. When duration is irrelevant in search results.",
-            "C. When you have over 1000 events in a transaction.",
-            "D. When you need to group based on start and end constraints."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following statements describes POST workflow actions?",
-        "choices": [
-            "A. POST workflow actions are always encrypted.",
-            "B. POST workflow actions cannot use field values in their URI.",
-            "C. POST workflow actions cannot be created on custom sourcetypes.",
-            "D. POST workflow actions can open a web page in either the same window or a new window."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "What does the Splunk Common Information Model (CIM) add-on include? (Choose all that apply.)",
-        "choices": [
-            "A. Custom visualizations",
-            "B. Pre-configured data models",
-            "C. Fields and event category tags",
-            "D. Automatic data model acceleration"
-        ],
-        "answer": ["B", "C"]
-    },
-    {
-        "question": "Which of the following statements about tags is true?",
-        "choices": [
-            "A. Tags are case insensitive.",
-            "B. Tags are created at index time.",
-            "C. Tags can make your data more understandable.",
-            "D. Tags are searched by using the syntax tag::<fieldname>"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following file formats can be extracted using a delimiter field extraction?",
-        "choices": [
-            "A. CSV",
-            "B. PDF",
-            "C. XML",
-            "D. JSON"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "A user wants to create a new field alias for a field that appears in two sourcetypes. How many field aliases need to be created?",
-        "choices": [
-            "A. One.",
-            "B. Two.",
-            "C. It depends on whether the original fields have the same name.",
-            "D. It depends on whether the two sourcetypes are associated with the same index."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "In the following eval statement, what is the value of description if the status is 503? index=main | eval description=case(status==200, \"OK\", status==404, \"Not found\", status==500, \"Internal Server Error\")",
-        "choices": [
-            "A. The description field would contain no value.",
-            "B. The description field would contain the value 0.",
-            "C. The description field would contain the value \"Internal Server Error\".",
-            "D. This statement would produce an error in Splunk because it is incomplete."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "In which Settings section are macros defined?",
-        "choices": [
-            "A. Fields",
-            "B. Tokens",
-            "C. Advanced Search",
-            "D. Searches, Reports, Alerts"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following statements describes calculated fields?",
-        "choices": [
-            "A. Calculated fields are only used on fields added by lookups.",
-            "B. Calculated fields are a shortcut for repetitive and complex eval commands.",
-            "C. Calculated fields are a shortcut for repetitive and complex calc commands.",
-            "D. Calculated fields automatically calculate the simple moving average for indexed fields."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following are required to create a POST workflow action?",
-        "choices": [
-            "A. Label, URI, search string.",
-            "B. XML attributes, URI, name.",
-            "C. Label, URI, post arguments.",
-            "D. URI, search string, time range picker."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following is one of the pre-configured data models included in the Splunk Common Information Model (CIM) add-on?",
-        "choices": [
-            "A. Access",
-            "B. Accounting",
-            "C. Authorization",
-            "D. Authentication"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following statements describe the search below? (Choose all that apply.) index=main | transaction clientip host maxspan=30s maxpause=5s",
-        "choices": [
-            "A. Events in the transaction occurred within 5 seconds.",
-            "B. It groups events that share the same clientip and host.",
-            "C. The first and last events are no more than 5 seconds apart.",
-            "D. The first and last events are no more than 30 seconds apart"
-        ],
-        "answer": ["A", "B", "D"]
-    },
-    {
-        "question": "Consider the following search: index=web sourcetype=access_combined The log shows several events that share the same JSESSIONID value (SD421K26502F783). View the events as a group. From the following list, which search groups events by JSESSIONID?",
-        "choices": [
-            "A. index-web sourcetype=access_combined | transaction JSESSIONID | search SD42IK26502F783",
-            "B. index-web sourcetype=access_combined | highlight JSESSIONID | search SD421K26502F783",
-            "C. index=web sourcetype=access_combined SD42IK26502F783 | table JSESSIONID",
-            "D. index=web sourcetype=access_combined JSESSIONID <SD421K26502F783>"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "When defining a macro, what are the required elements?",
-        "choices": [
-            "A. Name and a validation error message.",
-            "B. Definition and arguments.",
-            "C. Name and arguments.",
-            "D. Name and definition."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Where are the descriptions of the data models that come with the Splunk Common Information Model (CIM) Add-on documented?",
-        "choices": [
-            "A. Pivot users manual.",
-            "B. Search and reporting user manual.",
-            "C. CIM Add-on manual.",
-            "D. Data model command reference guide."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "What is the correct syntax to find events associated with a tag?",
-        "choices": [
-            "A. tag::<field>=<value>",
-            "B. tags=<value>",
-            "C. tags:<field>=<value>",
-            "D. tag=<value>"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following is true about the Splunk Common Information Model (CIM)?",
-        "choices": [
-            "A. The CIM contains 28 pre-configured datasets.",
-            "B. The data models included in the CIM are configured with data model acceleration turned on.",
-            "C. The data models included in the CIM are configured with data model acceleration turned off.",
-            "D. The CIM is an app that needs to run on the indexer."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Consider the following search run over a time range of last 7 days: index=web sourcetype=access_combined | timechart avg(bytes) by product_name. Which option is used to change the default time span so that results are grouped into 12 hour intervals?",
-        "choices": [
-            "A. timespan=12",
-            "B. span=12h",
-            "C. timespan=12h",
-            "D. span=12"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "When would transaction be used instead of stats?",
-        "choices": [
-            "A. To have a faster and more efficient search.",
-            "B. To see results of a calculation.",
-            "C. To group events based on start/end values.",
-            "D. To group events based on a single field value."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Given the following eval statement: ... | eval field1 = if(isnotnull(fieid1),field1,0), field2 = if(isnull...",
-        "choices": [
-            "A. There is no equivalent expression using fillnull.",
-            "B. ... | fillnull values=(0,\"NO-VALUE\") fields=(field1,field2)",
-            "C. ... | fillnull field1|' fillnull value=\"NO-VALUE\" field2",
-            "D. ... | fillnull value=0 field1 | fillnull field2"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "The Splunk Common Information Model (CIM) is a collection of what type of knowledge object?",
-        "choices": [
-            "A. Saved searches",
-            "B. Lookups",
-            "C. KV Store",
-            "D. Data models"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "How is a Search Workflow Action configured to run at the same time range as the original search?",
-        "choices": [
-            "A. Select the 'Use the same time range as the search that created the field listing' checkbox.",
-            "B. Set the earliest time to match the original search.",
-            "C. Select the same time range from the time-range picker.",
-            "D. Select the 'Overwrite time range with the original search' checkbox."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "A calculated field is a shortcut for performing repetitive, long, or complex transformations using which of the following commands?",
-        "choices": [
-            "A. transaction",
-            "B. eval",
-            "C. lookup",
-            "D. stats"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "When using the transaction command, how are evicted transactions identified?",
-        "choices": [
-            "A. _txn field is set to 1, or true.",
-            "B. open_txn field is set to l, or true.",
-            "C. max_txn field is set to 0, or false.",
-            "D. closed_txn field is set to 0, or false."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "How are arguments defined within the macro search string?",
-        "choices": [
-            "A. 'arg'",
-            "B. %arg%",
-            "C. $arg$",
-            "D. 'arg'"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following objects can a calculated field use as a source?",
-        "choices": [
-            "A. An alias of a field.",
-            "B. A field added by an automatic lookup.",
-            "C. The tag field.",
-            "D. The eventtype field."
-        ],
-        "answer": ["A", "B"]
-    },
-    {
-        "question": "How are event types different from saved reports?",
-        "choices": [
-            "A. Event types can be shared with Splunk users and added to dashboards.",
-            "B. Event types include formatting of the search results.",
-            "C. Event types do not include a time range.",
-            "D. Event types cannot be used to organize data into categories."
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "When creating a data model, which root dataset requires at least one constraint?",
-        "choices": [
-            "A. Root event dataset",
-            "B. Root transaction dataset",
-            "C. Root search dataset",
-            "D. Root child dataset"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which search retrieves events with the event type web_errors?",
-        "choices": [
-            "A. tag=web_errors",
-            "B. eventtype=web_errors",
-            "C. eventtype(web_errors)",
-            "D. eventtype 'web_errors'"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "When used with the timechart command, which value of the limit argument returns all values?",
-        "choices": [
-            "A. limit=none",
-            "B. limit=all",
-            "C. limit=0",
-            "D. limit=*"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following statements best describes a macro?",
-        "choices": [
-            "A. A macro is a method of categorizing events based on a search.",
-            "B. A macro is a knowledge object that enables you to schedule searches for specific events.",
-            "C. A macro is a portion of a search that can be reused in multiple places.",
-            "D. A macro is a way to associate an additional (new) name with an existing field name."
-        ],
-        "answer": "C"
-    }
+  {
+    "question": "Which setting in indexes.conf allows data retention to be controlled by time?",
+    "choices": [
+      "A. maxDaysToKeep",
+      "B. moveToFrozenAfter",
+      "C. maxDataRetentionTime",
+      "D. frozenTimePeriodInSecs"
+    ],
+    "answer": "D"
+  },
+  {
+    "question": "The universal forwarder has which capabilities when sending data? (Choose all that apply.)",
+    "choices": [
+      "A. Sending alerts",
+      "B. Compressing data",
+      "C. Obfuscating/hiding data",
+      "D. Indexer acknowledgement"
+    ],
+    "answer": ["B", "D"]
+  },
+  {
+    "question": "In case of a conflict between a whitelist and a blacklist input setting, which one is used?",
+    "choices": [
+      "A. Blacklist",
+      "B. Whitelist",
+      "C. They cancel each other out.",
+      "D. Whichever is entered into the configuration first."
+    ],
+    "answer": "A"
+  },
+  {
+    "question": "In which Splunk configuration is the SEDCMD used?",
+    "choices": [
+      "A. props.conf",
+      "B. inputs.conf",
+      "C. indexes.conf",
+      "D. transforms.conf"
+    ],
+    "answer": "A"
+  },
+  {
+    "question": "Which of the following are supported configuration methods to add inputs on a forwarder? (Choose all that apply.)",
+    "choices": [
+      "A. CLI",
+      "B. Edit inputs.conf",
+      "C. Edit forwarder.conf",
+      "D. Forwarder Management"
+    ],
+    "answer": ["A", "B", "D"]
+  },
+  {
+    "question": "Which parent directory contains the configuration files in Splunk?",
+    "choices": [
+      "A. $SPLUNK_HOME/etc",
+      "B. $SPLUNK_HOME/var",
+      "C. $SPLUNK_HOME/conf",
+      "D. $SPLUNK_HOME/default"
+    ],
+    "answer": "A"
+  },
+  {
+    "question": "Which forwarder type can parse data prior to forwarding?",
+    "choices": [
+      "A. Universal forwarder",
+      "B. Heaviest forwarder",
+      "C. Hyper forwarder",
+      "D. Heavy forwarder"
+    ],
+    "answer": "D"
+  },
+  {
+    "question": "Which Splunk component consolidates the individual results and prepares reports in a distributed environment?",
+    "choices": [
+      "A. Indexers",
+      "B. Forwarder",
+      "C. Search head",
+      "D. Search peers"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "Which Splunk component distributes apps and certain other configuration updates to search head cluster members?",
+    "choices": [
+      "A. Deployer",
+      "B. Cluster master",
+      "C. Deployment server",
+      "D. Search head cluster master"
+    ],
+    "answer": "A"
+  },
+  {
+    "question": "Where should apps be located on the deployment server that the clients pull from?",
+    "choices": [
+      "A. $SPLUNK_HOME/etc/apps",
+      "B. $SPLUNK_HOME/etc/search",
+      "C. $SPLUNK_HOME/etc/master-apps",
+      "D. $SPLUNK_HOME/etc/deployment-apps"
+    ],
+    "answer": "D"
+  },
+  {
+    "question": "This file has been manually created on a universal forwarder: /opt/splunkforwarder/etc/apps/my_TA/local/inputs.conf [monitor:///var/log/messages] sourcetype=syslog index=syslog. A new Splunk admin comes in and connects the universal forwarders to a deployment server and deploys the same app with a new inputs.conf file: /opt/splunk/etc/deployment-apps/my_TA/local/inputs.conf [monitor:///var/log/maillog] sourcetype=maillog index=syslog. Which file is now monitored?",
+    "choices": [
+      "A. /var/log/messages",
+      "B. /var/log/maillog",
+      "C. /var/log/maillog and /var/log/messages",
+      "D. none of the above"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "In which phase of the index time process does the license metering occur?",
+    "choices": [
+      "A. Input phase",
+      "B. Parsing phase",
+      "C. Indexing phase",
+      "D. Licensing phase"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "You update a props.conf file while Splunk is running. You do not restart Splunk and you run this command: splunk btool props list -debug. What will the output be?",
+    "choices": [
+      "A. A list of all the configurations on-disk that Splunk contains.",
+      "B. A verbose list of all configurations as they were when splunkd started.",
+      "C. A list of props.conf configurations as they are on-disk along with a file path from which the configuration is located.",
+      "D. A list of the current running props.conf configurations along with a file path from which the configuration was made."
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "When running the command shown below, what is the default path in which deploymentserver.conf is created? splunk set deploy-poll deployServer:port",
+    "choices": [
+      "A. SPLUNK_HOME/etc/deployment",
+      "B. SPLUNK_HOME/etc/system/local",
+      "C. SPLUNK_HOME/etc/system/default",
+      "D. SPLUNK_HOME/etc/apps/deployment"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "The priority of layered Splunk configuration files depends on the file's:",
+    "choices": [
+      "A. Owner",
+      "B. Weight",
+      "C. Context",
+      "D. Creation time"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "When configuring monitor inputs with whitelists or blacklists, what is the supported method of filtering the lists?",
+    "choices": [
+      "A. Slash notation",
+      "B. Regular expression",
+      "C. Irregular expression",
+      "D. Wildcard-only expression"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "What is required when adding a native user to Splunk? (Choose all that apply.)",
+    "choices": [
+      "A. Password",
+      "B. Username",
+      "C. Full Name",
+      "D. Default app"
+    ],
+    "answer": ["A", "B"]
+  },
+  {
+    "question": "What are the minimum required settings when creating a network input in Splunk?",
+    "choices": [
+      "A. Protocol, port number",
+      "B. Protocol, port, location",
+      "C. Protocol, username, port",
+      "D. Protocol, IP, port number"
+    ],
+    "answer": "A"
+  },
+  {
+    "question": "Which Splunk component requires a Forwarder license?",
+    "choices": [
+      "A. Search head",
+      "B. Heavy forwarder",
+      "C. Heaviest forwarder",
+      "D. Universal forwarder"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "Which optional configuration setting in inputs.conf allows you to selectively forward the data to specific indexer(s)?",
+    "choices": [
+      "A. _TCP_ROUTING",
+      "B. _INDEXER_LIST",
+      "C. _INDEXER_GROUP",
+      "D. _INDEXER_ROUTING"
+    ],
+    "answer": "A"
+  },
+  {
+    "question": "To set up a network input in Splunk, what needs to be specified?",
+    "choices": [
+      "A. File path.",
+      "B. Username and password.",
+      "C. Network protocol and port number.",
+      "D. Network protocol and MAC address."
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "Which Splunk forwarder type allows parsing of data before forwarding to an indexer?",
+    "choices": [
+      "A. Universal forwarder",
+      "B. Parsing forwarder",
+      "C. Heavy forwarder",
+      "D. Advanced forwarder"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "Which of the following statements describe deployment management? (Choose all that apply.)",
+    "choices": [
+      "A. Requires an Enterprise license.",
+      "B. Is responsible for sending apps to forwarders.",
+      "C. Once used, is the only way to manage forwarders.",
+      "D. Can automatically restart the host OS running the forwarder."
+    ],
+    "answer": ["A", "B"]
+  },
+  {
+    "question": "During search time, which directory of configuration files has the highest precedence?",
+    "choices": [
+      "A. $SPLUNK_HOME/etc/system/local",
+      "B. $SPLUNK_HOME/etc/system/default",
+      "C. $SPLUNK_HOME/etc/apps/app1/local",
+      "D. $SPLUNK_HOME/etc/users/admin/local"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "Within props.conf, which stanzas are valid for data modification? (Choose all that apply.)",
+    "choices": [
+      "A. Host",
+      "B. Server",
+      "C. Source",
+      "D. Sourcetype"
+    ],
+    "answer": ["A", "C", "D"]
+  },
+  {
+    "question": "What is the correct order of steps in Duo Multifactor Authentication?",
+    "choices": [
+      "A. 1. Request Login 2. Connect to SAML server 3. Duo MFA 4. Create User session 5. Authentication Granted 6. Log into Splunk",
+      "B. 1. Request Login 2. Duo MFA 3. Authentication Granted 4. Connect to SAML server 5. Log into Splunk 6. Create User session",
+      "C. 1. Request Login 2. Check authentication / group mapping 3. Authentication Granted 4. Duo MFA 5. Create User session 6. Log into Splunk",
+      "D. 1. Request Login 2. Duo MFA 3. Check authentication / group mapping 4. Create User session 5. Authentication Granted 6. Log into Splunk"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "Where can scripts for scripted inputs reside on the host file system? (Choose all that apply.)",
+    "choices": [
+      "A. $SPLUNK_HOME/bin/scripts",
+      "B. $SPLUNK_HOME/etc/apps/bin",
+      "C. $SPLUNK_HOME/etc/system/bin",
+      "D. $SPLUNK_HOME/etc/apps/<your_app>/bin"
+    ],
+    "answer": ["A", "C", "D"]
+  }
 ]
