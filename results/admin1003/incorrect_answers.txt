@@ -1,0 +1,39 @@
+Question: The universal forwarder has which capabilities when sending data? (Choose all that apply.)
+A. Sending alerts
+B. Compressing data
+C. Obfuscating/hiding data
+D. Indexer acknowledgement
+Answer: ['B', 'D']
+
+Question: Which of the following are supported configuration methods to add inputs on a forwarder? (Choose all that apply.)
+A. CLI
+B. Edit inputs.conf
+C. Edit forwarder.conf
+D. Forwarder Management
+Answer: ['A', 'B', 'D']
+
+Question: When running the command shown below, what is the default path in which deploymentserver.conf is created? splunk set deploy-poll deployServer:port
+A. SPLUNK_HOME/etc/deployment
+B. SPLUNK_HOME/etc/system/local
+C. SPLUNK_HOME/etc/system/default
+D. SPLUNK_HOME/etc/apps/deployment
+Answer: B
+
+Question: Which optional configuration setting in inputs.conf allows you to selectively forward the data to specific indexer(s)?
+A. _TCP_ROUTING
+B. _INDEXER_LIST
+C. _INDEXER_GROUP
+D. _INDEXER_ROUTING
+Answer: A
+
+
+Question: A & B
+Answer: None
+
+Question: Within props.conf, which stanzas are valid for data modification? (Choose all that apply.)
+A. Host
+B. Server
+C. Source
+D. Sourcetype
+Answer: None
+

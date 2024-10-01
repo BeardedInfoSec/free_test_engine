@@ -237,12 +237,7 @@
             "C. Once used, is the only way to manage forwarders.",
             "D. Can automatically restart the host OS running the forwarder."
         ],
-        "answer": null
-    },
-    {
-        "question": "A & B",
-        "choices": [],
-        "answer": null
+        "answer": ["A", "B"]
     },
     {
         "question": "During search time, which directory of configuration files has the highest precedence?",
@@ -262,12 +257,11 @@
             "C. Source",
             "D. Sourcetype"
         ],
-        "answer": null
-    },
-    {
-        "question": "A,C,D",
-        "choices": [],
-        "answer": null
+        "answer": [
+            "A",
+            "C",
+            "D"
+        ]
     },
     {
         "question": "What is the correct order of steps in Duo Multifactor Authentication?",
@@ -287,12 +281,7 @@
             "C. $SPLUNK_HOME/etc/system/bin",
             "D. $SPLUNK_HOME/etc/apps/<your_app>/bin"
         ],
-        "answer": null
-    },
-    {
-        "question": "A C D",
-        "choices": [],
-        "answer": null
+        "answer": ["A","C", "D"]
     },
     {
         "question": "How does the Monitoring Console monitor forwarders?",
@@ -312,13 +301,9 @@
             "C. Limit the number of concurrent search jobs.",
             "D. Allow or restrict indexes that can be searched."
         ],
-        "answer": null
+        "answer": ["A", "C", "D"]
     },
-    {
-        "question": "A C D",
-        "choices": [],
-        "answer": null
-    },
+
     {
         "question": "Which of the following are supported options when configuring optional network inputs?",
         "choices": [
@@ -423,14 +408,7 @@
             "C. Cluster master",
             "D. Deployment server"
         ],
-        "answer": null
-    },
-    {
-        "question": "Reveal Solution",
-        "choices": [
-            "A. Indexer"
-        ],
-        "answer": null
+        "answer": "A"
     },
     {
         "question": "Which layers are involved in Splunk configuration file layering? (Choose all that apply.)",
@@ -440,12 +418,7 @@
             "C. Global context",
             "D. Forwarder context"
         ],
-        "answer": null
-    },
-    {
-        "question": "A B C",
-        "choices": [],
-        "answer": null
+        "answer": ["A", "B", "C"]
     },
     {
         "question": "Which of the following are methods for adding inputs in Splunk? (Choose all that apply.)",
@@ -455,12 +428,7 @@
             "C. Editing inpits.conf",
             "D. Editing monitor.conf"
         ],
-        "answer": null
-    },
-    {
-        "question": "A,B,C (assuming its a typo, inputs.conf)",
-        "choices": [],
-        "answer": null
+        "answer":["A", "B", "C"]
     },
     {
         "question": "Which of the following authentication types requires scripting in Splunk?",
@@ -510,12 +478,7 @@
             "C. Warm buckets",
             "D. Frozen buckets"
         ],
-        "answer": null
-    },
-    {
-        "question": "A B C",
-        "choices": [],
-        "answer": null
+        "answer": ["A","B","C"]
     },
     {
         "question": "How do you remove missing forwarders from the Monitoring Console?",
@@ -859,20 +822,10 @@
             "C. outputs.conf",
             "D. servers.conf"
         ],
-        "answer": null
+        "answer": "A"
     },
     {
-        "question": "inputs.conf",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "The Splunk administrator wants to ensure data is distributed evenly amongst the indexers. To do this, he runs the following search over the last 24 hours: index=*",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "What field can the administrator check to see the data distribution?",
+        "question": "The Splunk administrator wants to ensure data is distributed evenly amongst the indexers. To do this, he runs the following search over the last 24 hours: index=* \nWhat field can the administrator check to see the data distribution?",
         "choices": [
             "A. host",
             "B. index",
@@ -882,24 +835,14 @@
         "answer": "D"
     },
     {
-        "question": "Social Security Numbers (PII) data is found in log events, which is against company policy. SSN format is as follows: 123-44-5678.",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "Which configuration file and stanza pair will mask possible SSNs in the log events?",
+        "question": "Social Security Numbers (PII) data is found in log events, which is against company policy. SSN format is as follows: 123-44-5678.,Which configuration file and stanza pair will mask possible SSNs in the log events?",
         "choices": [
             "A. props.conf [mask-SSN] REX = (?ms)^(.)\\<[SSN>\\d{3}-?\\d{2}-?(\\d{4}.*)$\" FORMAT = $1<SSN>###-##-$2 KEY = _raw",
             "B. props.conf [mask-SSN] REGEX = (?ms)^(.)\\<[SSN>\\d{3}-?\\d{2}-?(\\d{4}.*)$\" FORMAT = $1<SSN>###-##-$2 DEST_KEY = _raw",
             "C. transforms.conf [mask-SSN] REX = (?ms)^(.)\\<[SSN>\\d{3}-?\\d{2}-?(\\d{4}.*)$\" FORMAT = $1<SSN>###-##-$2 DEST_KEY = _raw",
             "D. transforms.conf [mask-SSN] REGEX = (?ms)^(.)\\<[SSN>\\d{3}-?\\d{2}-?(\\d{4}.*)$\" FORMAT = $1<SSN>###-##-$2 DEST_KEY = _raw"
         ],
-        "answer": null
-    },
-    {
-        "question": "B",
-        "choices": [],
-        "answer": null
+        "answer": "B"
     },
     {
         "question": "Where are deployment server apps mapped to clients?",
@@ -942,12 +885,7 @@
         "answer": "D"
     },
     {
-        "question": "Who provides the Application Secret, Integration, and Secret keys, as well as the API Hostname when setting up Duo for Multi-Factor Authentication in Splunk",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "Enterprise?",
+        "question": "Who provides the Application Secret, Integration, and Secret keys, as well as the API Hostname when setting up Duo for Multi-Factor Authentication in Splunk Enterprise",
         "choices": [
             "A. Duo Administrator",
             "B. LDAP Administrator",
@@ -1117,23 +1055,6 @@
         "answer": "C"
     },
     {
-        "question": "What action is required to enable forwarder management in Splunk Web?",
-        "choices": [
-            "A. Navigate to Settings > Server Settings > General Settings, and set an App"
-        ],
-        "answer": null
-    },
-    {
-        "question": "server port.",
-        "choices": [
-            "B. Navigate to Settings > Forwarding and receiving, and click on Enable Forwarding.",
-            "C. Create a server class and map it to a client in SPLUNK_HOME/etc/system/local/serverclass.conf.",
-            "D. Place an app in the SPLUNK_HOME/etc/deployment-apps directory of the deployment server.",
-            "C. Create a server class and map it to a client in SPLUNK_HOME/etc/system/local/serverclass.conf."
-        ],
-        "answer": null
-    },
-    {
         "question": "Which of the following is accurate regarding the input phase?",
         "choices": [
             "A. Breaks data into events with timestamps.",
@@ -1191,22 +1112,7 @@
             "C. colddb",
             "D. db"
         ],
-        "answer": null
-    },
-    {
-        "question": "C & D",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "109. The LINE_BREAKER attribute is configured in which configuration file?",
-        "choices": [
-            "A. props.conf",
-            "B. indexes.conf",
-            "C. inputs.conf",
-            "D. transforms.conf"
-        ],
-        "answer": "A"
+        "answer": ["C","D"]
     },
     {
         "question": "After automatic load balancing is enabled on a forwarder, the time interval for switching indexers can be updated by using which of the following attributes?",
@@ -1450,21 +1356,6 @@
             "D. Search Heads"
         ],
         "answer": "A"
-    },
-    {
-        "question": "An add-on has configured field aliases for source IP address and destination IP address fields. A specific user prefers not to have those fields present in their user context. Based on the default props.conf below, which SPLUNK_HOME/etc/users/buttercup/myTA/local/props.conf stanza can be added to the user's local context to disable the field aliases?",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "FIELDALIAS-cim-src_ip =",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "FIELDALIAS-cim-dest_ip =",
-        "choices": [],
-        "answer": null
     },
     {
         "question": "Which forwarder is recommended by Splunk to use in a production environment?",
