@@ -425,7 +425,7 @@
         "choices": [
             "A. CLI",
             "B. Splunk Web",
-            "C. Editing inpits.conf",
+            "C. Editing inputs.conf",
             "D. Editing monitor.conf"
         ],
         "answer":["A", "B", "C"]
@@ -461,7 +461,7 @@
         "answer": "C"
     },
     {
-        "question": "What type of data is counted against the Enterprise license at a fixed 150 bytes per event?",
+        "question": "What type of data is counted against the Enterprise license at no more than 150 bytes per event?",
         "choices": [
             "A. License data",
             "B. Metrics data",
@@ -516,7 +516,7 @@
             "A. _licence",
             "B. _internal",
             "C. _external",
-            "D. _thefishbucke"
+            "D. _thefishbucket"
         ],
         "answer": [
             "B",
@@ -822,7 +822,7 @@
             "C. outputs.conf",
             "D. servers.conf"
         ],
-        "answer": "A"
+        "answer": "C"
     },
     {
         "question": "The Splunk administrator wants to ensure data is distributed evenly amongst the indexers. To do this, he runs the following search over the last 24 hours: index=* \nWhat field can the administrator check to see the data distribution?",
@@ -842,7 +842,7 @@
             "C. transforms.conf [mask-SSN] REX = (?ms)^(.)\\<[SSN>\\d{3}-?\\d{2}-?(\\d{4}.*)$\" FORMAT = $1<SSN>###-##-$2 DEST_KEY = _raw",
             "D. transforms.conf [mask-SSN] REGEX = (?ms)^(.)\\<[SSN>\\d{3}-?\\d{2}-?(\\d{4}.*)$\" FORMAT = $1<SSN>###-##-$2 DEST_KEY = _raw"
         ],
-        "answer": "B"
+        "answer": "D"
     },
     {
         "question": "Where are deployment server apps mapped to clients?",
@@ -872,7 +872,7 @@
             "C. Add all 10 TB in a single 24 hour period.",
             "D. Add 200 GB of historical data each day for 50 days."
         ],
-        "answer": "B"
+        "answer": "C"
     },
     {
         "question": "After how many warnings within a rolling 30-day period will a license violation occur with an enforced Enterprise license?",
@@ -932,7 +932,7 @@
             "C. Data is initially written to disk.",
             "D. Data is measured by the license meter."
         ],
-        "answer": "C"
+        "answer": "A"
     },
     {
         "question": "Which option on the Add Data menu is most useful for testing data ingestion without creating inputs.conf?",
@@ -942,7 +942,7 @@
             "C. Monitor option",
             "D. Download option"
         ],
-        "answer": "C"
+        "answer": "A"
     },
     {
         "question": "An organization wants to collect Windows performance data from a set of clients, however, installing Splunk software on these clients is not allowed. What option is available to collect this data in Splunk Enterprise?",
@@ -952,7 +952,7 @@
             "C. Use Local Windows network monitoring.",
             "D. Use an index with an Index Data Type of Metrics."
         ],
-        "answer": "D"
+        "answer": "B"
     },
     {
         "question": "Which of the following must be done to define user permissions when integrating Splunk with LDAP?",
@@ -972,7 +972,7 @@
             "C. Indexing phase",
             "D. Searching phase"
         ],
-        "answer": "C"
+        "answer": "C" 
     },
     {
         "question": "Which of the following statements describes how distributed search works?",
@@ -982,7 +982,7 @@
             "C. The search head dispatches searches to the search peers.",
             "D. Search results are replicated within the indexer cluster."
         ],
-        "answer": "D"
+        "answer": "C"
     },
     {
         "question": "Which feature in Splunk allows Event Breaking, Timestamp extractions, and any advanced configurations found in props.conf to be validated all through the UI?",
@@ -992,7 +992,7 @@
             "C. Data preview",
             "D. Forwarder inputs"
         ],
-        "answer": "B"
+        "answer": "C"
     },
     {
         "question": "Which of the following statements accurately describes using SSL to secure the feed from a forwarder?",
@@ -1032,7 +1032,7 @@
             "C. Search heads",
             "D. Search peers"
         ],
-        "answer": "C"
+        "answer": "D"
     },
     {
         "question": "Using SEDCMD in props.conf allows raw data to be modified. With the given event below, which option will mask the first three digits of the AcctID field resulting output: [22/Oct/2018:15:50:21] VendorID=1234 Code=B AcctID=xxx5309Event:[22/Oct/2018:15:50:21] VendorID=1234 Code=B AcctID=xxx5309",
@@ -1042,7 +1042,7 @@
             "C. SEDCMD-1acct = s/AcctID=\\d{3}(\\d{4})/AcctID=\\1xxx/g",
             "D. SEDCMD-1acct = s/AcctID=\\d{3}(\\d{4})/AcctID=xxx\\1/g"
         ],
-        "answer": "C"
+        "answer": "D"
     },
     {
         "question": "Which of the following accurately describes HTTP Event Collector indexer acknowledgement?",
@@ -1052,7 +1052,7 @@
             "C. It can be enabled at the global setting level.",
             "D. It stores status information on the Splunk server."
         ],
-        "answer": "C"
+        "answer": "A"
     },
     {
         "question": "Which of the following is accurate regarding the input phase?",
@@ -1093,16 +1093,6 @@
             "D. [monitor:///var/log/www/secure.]"
         ],
         "answer": "A"
-    },
-    {
-        "question": "What are the values for host and index for [stanza1] used by Splunk during index time, given the following configuration files?",
-        "choices": [
-            "A. host=server1 index=unixinfo",
-            "B. host=server1 index=searchinfo",
-            "C. host=searchsvr1 index=searchinfo",
-            "D. host=unixsvr1 index=unixinfo"
-        ],
-        "answer": "B"
     },
     {
         "question": "An index stores its data in buckets. Which default directories does Splunk use to store buckets? (Choose all that apply.)",
@@ -1183,16 +1173,6 @@
             "D. LDAP user is automatically deleted from authentication.conf."
         ],
         "answer": "C"
-    },
-    {
-        "question": "Consider the following stanza in inputs.conf:What will the value of the source filed be for events generated by this scripts input?",
-        "choices": [
-            "A. /opt/splunk/etc/apps/search/bin/lister.sh",
-            "B. unknown",
-            "C. lister",
-            "D. lister.sh"
-        ],
-        "answer": "A"
     },
     {
         "question": "Which of the following applies only to Splunk index data integrity check?",
@@ -1332,10 +1312,10 @@
         "choices": [
             "A. Restart Splunk on the deployment server.",
             "B. Enable the deployment client in Splunk Web under Forwarder Management.",
-            "C. Restart Splunk on the deployment client.",
+            "C. Restart Splunk on the forwarder.",
             "D. Wait for up to the time set in the phoneHomeIntervalInSecs setting."
         ],
-        "answer": "A"
+        "answer": "C"
     },
     {
         "question": "When using a directory monitor input, specific source type can be selectively overridden using which configuration file?",
