@@ -135,6 +135,7 @@
 </head>
 <body>
   <div class="sidebar">
+    <input type="file" id="questionFileInput" accept=".json" />
     <button onclick="startTest()">Test Mode (T)</button>
     <button onclick="startLearn()">Learn Mode (L)</button>
     <button onclick="startSmartStudy()">Smart Study Mode (S)</button>
@@ -143,6 +144,7 @@
     <button onclick="resetProgress()">Reset Progress</button>
     <div class="question-nav" id="questionNav"></div>
   </div>
+
   <div class="main-content">
     <div class="card" id="card">
       <div id="question">Loading...</div>
@@ -159,16 +161,29 @@
       </div>
     </div>
   </div>
+
   <script>
     let questions = [], current = 0, correct = new Set(), missed = [], answeredStatus = [], flags = [], startTime, timerId, mode = "learn";
 
-    async function loadQuestions() {
-      const res = await fetch('questions.json');
-      questions = await res.json();
-      answeredStatus = Array(questions.length).fill('unanswered');
-      flags = Array(questions.length).fill(false);
-      startLearn();
+    function loadQuestionsFromFile(file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          questions = JSON.parse(e.target.result);
+          answeredStatus = Array(questions.length).fill('unanswered');
+          flags = Array(questions.length).fill(false);
+          startLearn();
+        } catch (err) {
+          alert("Invalid JSON file: " + err.message);
+        }
+      };
+      reader.readAsText(file);
     }
+
+    document.getElementById("questionFileInput").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (file) loadQuestionsFromFile(file);
+    });
 
     function displayQuestion() {
       const q = questions[current];
@@ -336,8 +351,6 @@
         if (buttons[idx]) buttons[idx].click();
       }
     });
-
-    loadQuestions();
   </script>
 </body>
 </html>
