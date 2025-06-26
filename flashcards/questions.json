@@ -1,0 +1,1872 @@
+[
+  {
+    "question": "Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+    "choices": [
+      "A. Setting the cluster search factor to N-1",
+      "B. Decreasing the data model acceleration range",
+      "C. Setting the cluster replication factor to N-1",
+      "D. Increasing the number of buckets per index"
+    ],
+    "answer": "C",
+    "explanation": "Reducing the replication factor (RF) directly reduces the number of replicated copies of indexed data across indexers. By setting RF to N-1, you store fewer copies, reducing overall disk usage."
+  },
+  {
+    "question": "A customer has a Splunk Enterprise deployment and wants to collect data from universal forwarders. What is the best step to secure log traffic?",
+    "choices": [
+      "A. Ensure all forwarder traffic is routed through a web application firewall (WAF).",
+      "B. Create signed SSL certificates and use them to encrypt data between the search heads and indexers.",
+      "C. Use the Splunk provided SSL certificates to encrypt data between the forwarders and indexers.",
+      "D. Create signed SSL certificates and use them to encrypt data between the forwarders and indexers."
+    ],
+    "answer": "D",
+    "explanation": "The best practice for securing data from Universal Forwarders is to encrypt log traffic using your own signed SSL/TLS certificates between UFs and indexers, ensuring authenticity and integrity."
+  },
+  {
+    "question": "What is this search trying to determine?\n\nindex=_internal sourcetype=splunkd (\"pipelines finished\" OR \"My GUID\")\n| transaction startswith=\"My GUID\" endswith=\"pipelines finished\" keepevicted=true keeporphans=true\n| search closed_txn=0",
+    "choices": [
+      "A. splunkd crash",
+      "B. Total indexing volume",
+      "C. Failed user logon",
+      "D. Missing input source"
+    ],
+    "answer": "A",
+    "explanation": "The transaction search is detecting incomplete processing pipelines. A closed_txn=0 means the transaction didn’t complete, which helps identify crashes in splunkd."
+  },
+  {
+    "question": "How does IT Service Intelligence (ITSI) impact the planning of a Splunk deployment?",
+    "choices": [
+      "A. ITSI in a Splunk deployment does not require additional hardware resources.",
+      "B. The amount of users using ITSI will not impact performance.",
+      "C. ITSI requires a dedicated deployment server.",
+      "D. Depending on the Key Performance Indicators that are being tracked, additional infrastructure may be needed."
+    ],
+    "answer": "D",
+    "explanation": "ITSI tracks many KPIs and runs multiple scheduled searches. Depending on the number and complexity of those KPIs, the deployment may need more infrastructure to support the load."
+  },
+  {
+    "question": "Other than high availability, which of the following is a benefit of search head clustering?",
+    "choices": [
+      "A. Fewer network ports are required to be opened between search heads.",
+      "B. Automatic replication of user knowledge objects.",
+      "C. Input settings are synchronized between search heads.",
+      "D. Allows indexers to maintain multiple searchable copies of all data."
+    ],
+    "answer": "B",
+    "explanation": "SHC provides automatic replication of user knowledge objects (like saved searches, macros, lookups, etc.) ensuring consistency across the cluster."
+  },
+  {
+    "question": "Splunk Enterprise performs a cyclic redundancy check (CRC) against the first and last bytes to prevent the same file from being re-indexed if it is rotated or renamed. What is the number of bytes sampled by default?",
+    "choices": [
+      "A. 256",
+      "B. 128",
+      "C. 64",
+      "D. 512"
+    ],
+    "answer": "A",
+    "explanation": "By default, Splunk uses the first 256 bytes of a file to compute its CRC. This helps detect duplicate files, especially during log rotation."
+  },
+  {
+    "question": "What problem does a static captain address for a search head cluster?",
+    "choices": [
+      "A. Faster raft elections and captain replacement when the captain fails.",
+      "B. Recovery of a search head cluster that could not reach consensus.",
+      "C. Increased search head cluster resiliency in case the dynamic captain fails.",
+      "D. Prevents network interruption from stopping communication between two sites."
+    ],
+    "answer": "B",
+    "explanation": "A static captain is useful when consensus cannot be reached. It prevents the cluster from becoming inoperable by forcing a known node to lead without election."
+  },
+  {
+    "question": "The current IT environment is required when planning a Splunk deployment. What information should the topology include? (select all that apply)",
+    "choices": [
+      "A. Location of data centers.",
+      "B. Authentication system(s) in place.",
+      "C. The type of hardware being used for network servers.",
+      "D. Security restrictions between sites."
+    ],
+    "answer": ["A", "B", "C", "D"],
+    "explanation": "All these are important: data center locations affect latency; auth systems define access needs; hardware affects performance; site security restrictions impact communications and design."
+  },
+  {
+    "question": "Splunk Enterprise platform instrumentation refers to data that the Splunk Enterprise deployment logs in the _introspection index. Which of the following logs are included in this index? (select all that apply)",
+    "choices": [
+      "A. disk_objects.log",
+      "B. resource_usage.log",
+      "C. metrics.log",
+      "D. audit.log"
+    ],
+    "answer": ["A", "B"],
+    "explanation": "Only `disk_objects.log` and `resource_usage.log` are part of the _introspection index used for platform instrumentation and performance monitoring."
+  },
+  {
+    "question": "Which of the following are possible causes of a crash in Splunk? (select all that apply)",
+    "choices": [
+      "A. Running out of disk space.",
+      "B. Incorrect ulimit settings.",
+      "C. Insufficient disk IOPS.",
+      "D. Insufficient memory."
+    ],
+    "answer": ["A", "B", "C", "D"],
+    "explanation": "All options listed can lead to Splunk crashing by causing resource exhaustion, OS errors, or I/O bottlenecks. Always validate your system limits and hardware capacity."
+  },
+  {
+    "question": "Which of the following is true regarding Splunk Enterprise performance? (select all that apply)",
+    "choices": [
+      "A. Adding search peers increases the maximum size of search results.",
+      "B. Adding search heads provides additional CPU cores to run more concurrent searches.",
+      "C. Adding RAM to an existing search head provides additional search capacity.",
+      "D. Adding search peers increases the search throughput as search load increases."
+    ],
+    "answer": ["B", "D"],
+    "explanation": "Adding search heads helps with concurrency by providing more CPU cores. Adding search peers (indexers) improves search throughput and scalability. RAM helps with performance but doesn’t scale search capacity alone."
+  },
+  {
+    "question": "How many cluster managers are required for a multisite indexer cluster?",
+    "choices": [
+      "A. Two for the entire cluster.",
+      "B. One for each site.",
+      "C. Two for each site.",
+      "D. One for the entire cluster."
+    ],
+    "answer": "D",
+    "explanation": "A single cluster manager (also called a master node) manages the entire cluster regardless of the number of sites. This ensures consistent configuration and replication."
+  },
+  {
+    "question": "Which of the following is a benefit of using SmartStore?",
+    "choices": [
+      "A. Knowledge Object replication.",
+      "B. Cluster Manager is no longer required.",
+      "C. Automatic selection of replication and search factors.",
+      "D. Separating storage from compute."
+    ],
+    "answer": "D",
+    "explanation": "SmartStore decouples compute and storage, enabling the use of remote object storage (like S3). This helps scale independently and reduces storage costs."
+  },
+  {
+    "question": "Which indexes.conf attribute would prevent an index from participating in an indexer cluster?",
+    "choices": [
+      "A. site_mappings = default_mapping",
+      "B. available_sites = none",
+      "C. repFactor = auto",
+      "D. repFactor = 0"
+    ],
+    "answer": "D",
+    "explanation": "Setting `repFactor = 0` disables replication for that index, effectively opting it out of clustering. The correct value for clustered indexes is `repFactor = auto`."
+  },
+  {
+    "question": "Which of the following is a minimum search head specification for a distributed Splunk environment?",
+    "choices": [
+      "A. 128 GB RAM.",
+      "B. A 1Gb Ethernet NIC, optional 2nd NIC for a management network.",
+      "C. An x86 32-bit chip architecture.",
+      "D. Two physical CPU cores, or four vCPU at 2Ghz or greater speed per core."
+    ],
+    "answer": "B",
+    "explanation": "Minimum specs include a 64-bit x86 architecture, 12GB RAM, and a 1Gb NIC. Optionally, a second NIC can be added for management."
+  },
+  {
+    "question": "What are the minimum supported requirements to run a search head cluster (SHC)?",
+    "choices": [
+      "A. Three search heads, a deployer, and a deployment server.",
+      "B. Three search heads and a deployer.",
+      "C. Two search heads and a deployer.",
+      "D. Two search heads and a deployment server."
+    ],
+    "answer": "B",
+    "explanation": "SHC requires at least 3 search heads (to maintain quorum) and 1 deployer to manage configuration bundles."
+  },
+  {
+    "question": "Indexing is slow in a Splunk environment with two indexers and one search head. There is ample CPU and memory available on the indexers. Which of the following is most likely to improve indexing performance?",
+    "choices": [
+      "A. Increase the maximum number of hot buckets in server.conf",
+      "B. Increase the number of parallel ingestion pipelines in inputs.conf",
+      "C. Increase the maximum number of hot buckets in indexes.conf",
+      "D. Increase the number of parallel ingestion pipelines in server.conf"
+    ],
+    "answer": "D",
+    "explanation": "Parallel ingestion pipelines in server.conf allow Splunk to process multiple data streams concurrently, improving throughput on CPU-capable systems."
+  },
+  {
+    "question": "What command will decommission a search peer from an indexer cluster?",
+    "choices": [
+      "A. splunk decommission --enforce-counts",
+      "B. splunk disablepeer --enforce-counts",
+      "C. splunk remove cluster-peers --enforce-counts",
+      "D. splunk offline --enforce-counts"
+    ],
+    "answer": "D",
+    "explanation": "The `splunk offline --enforce-counts` command safely removes a peer from the cluster and ensures bucket replication is accounted for."
+  },
+  {
+    "question": "Which search will show all deployment client messages from the client (UF)?",
+    "choices": [
+      "A. index=_audit component=DC* host=<uf> | stats count by message",
+      "B. index=_internal component=DS* host=<ds> | stats count by message",
+      "C. index=_internal component=DC* host=<uf> | stats count by message",
+      "D. index=_audit component=DC* host=<ds> | stats count by message"
+    ],
+    "answer": "C",
+    "explanation": "Deployment Client messages from Universal Forwarders (UFs) appear in the internal logs with component=DC*. So `index=_internal component=DC* host=<uf>` captures these."
+  },
+  {
+    "question": "Where can files be placed in a configuration bundle on a search peer that will persist after a new configuration bundle has been deployed?",
+    "choices": [
+      "A. In the $SPLUNK_HOME/etc/master-apps/<app-name>/local folder.",
+      "B. In the $SPLUNK_HOME/etc/slave-apps/_cluster/local folder.",
+      "C. In the $SPLUNK_HOME/etc/slave-apps/<app-name>/local folder.",
+      "D. Nowhere; the entire configuration bundle is overwritten with each push."
+    ],
+    "answer": "B",
+    "explanation": "Custom configuration files should be placed in `_cluster/local` to persist across bundle updates. This directory is not overwritten by the cluster manager."
+  },
+  {
+    "question": "When is a collected diag package in the diag server deleted by default?",
+    "choices": [
+      "A. After 7 days",
+      "B. Never; delete it manually.",
+      "C. After 30 days",
+      "D. At midnight"
+    ],
+    "answer": "B",
+    "explanation": "Diag packages created using `splunk diag` are stored indefinitely. Splunk does not automatically delete them; you must manually remove them when no longer needed."
+  },
+  {
+    "question": "Which component in the splunkd.log will log information related to bad event breaking?",
+    "choices": [
+      "A. EventBreaking",
+      "B. IndexingPipeline",
+      "C. AggregatorMiningProcessor",
+      "D. AuditTrail"
+    ],
+    "answer": "C",
+    "explanation": "`AggregatorMiningProcessor` is the component responsible for event breaking, timestamp recognition, and line merging. It logs when events are improperly formed or misparsed."
+  },
+  {
+    "question": "Which of the following statements describe a Search Head Cluster (SHC) captain? (select all that apply)",
+    "choices": [
+      "A. Is the job scheduler for the entire SHC.",
+      "B. Replicates the SHC's knowledge bundle to the search peers.",
+      "C. Manages alert action suppressions (throttling).",
+      "D. Synchronizes the member list with the KV store primary."
+    ],
+    "answer": ["A", "B", "C"],
+    "explanation": "The SHC captain coordinates job scheduling, knowledge object replication to peers, and handles alert suppression. It does not manage KV store member synchronization."
+  },
+  {
+    "question": "Which of the following resources should be collected to gather requirements for a Splunk deployment? (select all that apply)",
+    "choices": [
+      "A. Data sources",
+      "B. Which users can access data",
+      "C. Use cases",
+      "D. Current log storage device mapping"
+    ],
+    "answer": ["A", "B", "C", "D"],
+    "explanation": "All are critical: understanding data sources, user roles, business use cases, and the current log storage setup ensures a deployment is correctly sized and aligned to business needs."
+  },
+  {
+    "question": "What is a recommended way to improve search performance?",
+    "choices": [
+      "A. Use the shortest query possible.",
+      "B. Use non-streaming commands as early as possible.",
+      "C. Leverage the NOT expression to limit returned results.",
+      "D. Filter as much as possible in the initial search."
+    ],
+    "answer": "D",
+    "explanation": "Filtering early (e.g., by index, sourcetype, host) limits the volume of data scanned and speeds up searches. This is one of the most effective ways to improve performance."
+  },
+  {
+    "question": "What is the role of the deployer in a Search Head Cluster?",
+    "choices": [
+      "A. Schedules jobs on the cluster members.",
+      "B. Deploys apps and configuration bundles to SHC members.",
+      "C. Manages KV Store synchronization.",
+      "D. Balances search loads across indexers."
+    ],
+    "answer": "B",
+    "explanation": "The deployer is used to push configuration bundles (apps, props.conf, transforms.conf, etc.) to all members of a search head cluster. It does not manage job scheduling or search load."
+  },
+  {
+    "question": "Which file contains the event processing pipeline configurations?",
+    "choices": [
+      "A. transforms.conf",
+      "B. inputs.conf",
+      "C. pipelines.conf",
+      "D. limits.conf"
+    ],
+    "answer": "C",
+    "explanation": "`pipelines.conf` defines the indexing pipelines, including parsing and merging stages. It's key to tuning performance and behavior of data flow through Splunk."
+  },
+  {
+    "question": "Which of the following components is responsible for parsing incoming data?",
+    "choices": [
+      "A. indexer",
+      "B. forwarder",
+      "C. parser",
+      "D. search head"
+    ],
+    "answer": "A",
+    "explanation": "The indexer is responsible for parsing, indexing, and storing incoming data. While forwarders can do light parsing (like UF -> no parsing, HF -> some parsing), final parsing happens at the indexer."
+  },
+  {
+    "question": "What is the purpose of the fishbucket?",
+    "choices": [
+      "A. Track user authentication history",
+      "B. Prevent duplicate indexing of log files",
+      "C. Store acceleration summaries",
+      "D. Manage index retention settings"
+    ],
+    "answer": "B",
+    "explanation": "The fishbucket is an internal index (`_fishbucket`) that stores CRC and seek pointers for file inputs. It prevents re-indexing of the same data after log rotation or restarts."
+  },
+  {
+    "question": "Which command is used to check the status of the indexer cluster?",
+    "choices": [
+      "A. splunk status cluster",
+      "B. splunk show cluster-status",
+      "C. splunk show cluster-status --verbose",
+      "D. splunk show cluster-status --debug"
+    ],
+    "answer": "C",
+    "explanation": "`splunk show cluster-status --verbose` provides a detailed view of indexer cluster health, including bucket replication status and peer state."
+  },
+  {
+    "question": "Which of the following is true regarding TSIDX reduction?",
+    "choices": [
+      "A. TSIDX reduction deletes raw data.",
+      "B. TSIDX reduction reduces bucket size by trimming metadata.",
+      "C. TSIDX reduction applies to hot buckets.",
+      "D. TSIDX reduction impacts summary indexing."
+    ],
+    "answer": "B",
+    "explanation": "TSIDX reduction reduces the size of older (cold/frozen) buckets by removing or trimming metadata used to speed up search. Raw event data is retained, but some search performance is sacrificed."
+  },
+  {
+    "question": "Which of the following applies when using an indexer cluster?",
+    "choices": [
+      "A. Replication factor affects the number of searchable copies.",
+      "B. Search factor is always greater than replication factor.",
+      "C. Buckets are replicated only for real-time searches.",
+      "D. Search heads do not need to be cluster-aware."
+    ],
+    "answer": "A",
+    "explanation": "In an indexer cluster, the replication factor controls how many copies of bucket data exist, and the search factor determines how many of those copies are made searchable."
+  },
+  {
+    "question": "What happens if a search peer is offline during a bundle push?",
+    "choices": [
+      "A. The deployer retries indefinitely.",
+      "B. The peer gets the bundle when it reconnects.",
+      "C. The SHC fails to function.",
+      "D. The peer must be manually updated."
+    ],
+    "answer": "B",
+    "explanation": "Search peers that are temporarily offline when a bundle is pushed will automatically retrieve the latest bundle when they reconnect to the cluster."
+  },
+  {
+    "question": "Which of the following occurs during hot to warm bucket transition?",
+    "choices": [
+      "A. The bucket is replicated to cold storage.",
+      "B. The bucket is closed and made read-only.",
+      "C. All indexers reindex the bucket.",
+      "D. The bucket is sent to the license master."
+    ],
+    "answer": "B",
+    "explanation": "When a hot bucket transitions to warm, it is closed (no longer written to) and becomes read-only. It's also eligible for replication and backup operations."
+  },
+  {
+    "question": "What does the deployer do in a SHC environment?",
+    "choices": [
+      "A. Deploys configuration bundles to indexers.",
+      "B. Pushes knowledge objects to search peers.",
+      "C. Sends apps and config to SHC members.",
+      "D. Manages license usage."
+    ],
+    "answer": "C",
+    "explanation": "The deployer is responsible for pushing apps, configuration files, and other runtime knowledge object definitions to the members of the search head cluster."
+  },
+  {
+    "question": "In which location can frozen buckets be archived?",
+    "choices": [
+      "A. Any NFS share listed in indexes.conf",
+      "B. Directly to a KV store location",
+      "C. To a location defined by `coldPath`",
+      "D. To a location specified in `coldToFrozenScript`"
+    ],
+    "answer": "D",
+    "explanation": "Frozen buckets can be archived or deleted using the `coldToFrozenScript` setting in indexes.conf. This allows administrators to specify custom archiving destinations."
+  },
+  {
+    "question": "What is the role of the Monitoring Console?",
+    "choices": [
+      "A. Configures Splunk security settings.",
+      "B. Monitors and visualizes Splunk infrastructure health.",
+      "C. Queries Splunkbase for app updates.",
+      "D. Manages all lookup tables."
+    ],
+    "answer": "B",
+    "explanation": "The Monitoring Console provides a centralized interface to track the health and performance of a Splunk deployment, including indexing rate, hardware usage, and search concurrency."
+  },
+  {
+    "question": "What occurs if `repFactor` is set to 0 in indexes.conf?",
+    "choices": [
+      "A. No hot buckets are created.",
+      "B. The index won't replicate in a clustered environment.",
+      "C. Only search heads can write to the index.",
+      "D. TSIDX reduction is automatically enabled."
+    ],
+    "answer": "B",
+    "explanation": "Setting `repFactor = 0` in `indexes.conf` disables replication for that index, which means it won't participate in an indexer cluster’s redundancy and failover features."
+  },
+  {
+    "question": "Which of the following impacts data model acceleration?",
+    "choices": [
+      "A. Number of buckets in hot state",
+      "B. Time range for acceleration summaries",
+      "C. Size of TSIDX files",
+      "D. Configuration of license master"
+    ],
+    "answer": "B",
+    "explanation": "Data model acceleration uses summary ranges to determine how far back to summarize events. A longer time range requires more storage and compute to maintain those summaries."
+  },
+  {
+    "question": "Which type of index bucket contains both raw data and tsidx files but is read-only?",
+    "choices": [
+      "A. Hot",
+      "B. Warm",
+      "C. Cold",
+      "D. Frozen"
+    ],
+    "answer": "B",
+    "explanation": "Warm buckets are read-only and contain raw data along with TSIDX (index) files. They were previously hot but have been closed and made immutable."
+  },
+  {
+    "question": "Which of the following index types is best for storing Splunk internal logs?",
+    "choices": [
+      "A. Summary index",
+      "B. Event index",
+      "C. Metrics index",
+      "D. Internal index"
+    ],
+    "answer": "D",
+    "explanation": "The internal index is used by Splunk to store logs about Splunk’s own internal operations (e.g., _internal index stores logs like metrics.log, splunkd.log, etc.)."
+  },
+  {
+    "question": "What is the function of the `coldToFrozenDir` parameter in indexes.conf?",
+    "choices": [
+      "A. Specifies the cold bucket staging path",
+      "B. Sets the location for hot bucket rotation",
+      "C. Designates where frozen buckets are archived",
+      "D. Configures frozen buckets for deletion"
+    ],
+    "answer": "C",
+    "explanation": "`coldToFrozenDir` is used in `indexes.conf` to archive cold buckets before they are deleted. It provides a file-system path for storage of frozen data."
+  },
+  {
+    "question": "Which command is used to convert a peer from searchable to offline in a cluster?",
+    "choices": [
+      "A. splunk stop peer --safe",
+      "B. splunk offline --enforce-counts",
+      "C. splunk disable peer",
+      "D. splunk remove searchpeer"
+    ],
+    "answer": "B",
+    "explanation": "The `splunk offline --enforce-counts` command is used to gracefully remove a peer from a cluster while ensuring bucket replication meets the defined search and replication factors."
+  },
+  {
+    "question": "Which log file contains metrics on Splunk data pipeline throughput?",
+    "choices": [
+      "A. splunkd.log",
+      "B. web_service.log",
+      "C. metrics.log",
+      "D. introspection.log"
+    ],
+    "answer": "C",
+    "explanation": "`metrics.log` tracks internal performance metrics including indexing pipeline stats, throughput, and component-level latencies. It’s essential for Monitoring Console insights."
+  },
+  {
+    "question": "How does a search head cluster (SHC) maintain high availability?",
+    "choices": [
+      "A. By indexing data redundantly across members",
+      "B. Through a deployer actively load balancing queries",
+      "C. By replicating search artifacts and knowledge objects",
+      "D. By running each search on every member"
+    ],
+    "answer": "C",
+    "explanation": "An SHC maintains high availability by replicating knowledge objects (saved searches, dashboards, lookups) and search artifacts (like job results) across all members."
+  },
+  {
+    "question": "Which of the following statements is true regarding search factors?",
+    "choices": [
+      "A. Search factor controls how many raw data copies exist.",
+      "B. Search factor determines searchable copies in a cluster.",
+      "C. Search factor must be lower than replication factor.",
+      "D. Search factor only applies to cold buckets."
+    ],
+    "answer": "B",
+    "explanation": "Search factor defines the number of searchable copies of data within an indexer cluster, ensuring high availability of searchable buckets during peer failures."
+  },
+  {
+    "question": "Which setting should be tuned to improve parallel ingestion performance?",
+    "choices": [
+      "A. parallelIngestionPipelines in server.conf",
+      "B. ingestionThreads in inputs.conf",
+      "C. maxThreads in props.conf",
+      "D. pipelineBatchSize in limits.conf"
+    ],
+    "answer": "A",
+    "explanation": "`parallelIngestionPipelines` in `server.conf` determines how many concurrent ingestion pipelines can be run, improving throughput when CPU resources are available."
+  },
+  {
+    "question": "Which command creates a backup of the KV store data?",
+    "choices": [
+      "A. kvstore backup",
+      "B. splunk backup kvstore",
+      "C. kvstoreexport",
+      "D. kvstoretool --backup"
+    ],
+    "answer": "D",
+    "explanation": "Use the `kvstoretool --backup` command to create a backup of the KV Store's data. This is important for preserving configurations, lookups, or app-specific data."
+  },
+  {
+    "question": "What is the minimum number of indexers required to support a replication factor of 3?",
+    "choices": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "answer": "C",
+    "explanation": "Replication factor of 3 requires at least 3 indexers because each copy of the data must reside on a separate indexer node for redundancy and failover."
+  },
+  {
+    "question": "Which of the following components is responsible for deploying apps to UFs?",
+    "choices": [
+      "A. Search Head",
+      "B. Indexer",
+      "C. Cluster Master",
+      "D. Deployment Server"
+    ],
+    "answer": "D",
+    "explanation": "The Deployment Server (DS) is used to manage configurations and app deployment to Universal Forwarders (UFs) across a distributed environment."
+  },
+  {
+    "question": "How can you prevent a configuration file from being overwritten during deployment updates in a clustered environment?",
+    "choices": [
+      "A. Place it in $SPLUNK_HOME/etc/apps/",
+      "B. Use the deployer server",
+      "C. Put it under _cluster/local in the configuration bundle",
+      "D. Edit it via the Monitoring Console"
+    ],
+    "answer": "C",
+    "explanation": "Files placed under `$SPLUNK_HOME/etc/slave-apps/_cluster/local` will persist across configuration bundle updates from the Cluster Manager. This is the proper location for custom settings you don't want overwritten."
+  },
+  {
+    "question": "What is the role of the deployer in a search head cluster (SHC)?",
+    "choices": [
+      "A. It distributes apps and configurations to the indexers.",
+      "B. It acts as a backup node in the SHC.",
+      "C. It is used to push configurations to search head members.",
+      "D. It performs search job scheduling across members."
+    ],
+    "answer": "C",
+    "explanation": "In an SHC, the deployer is a Splunk instance used exclusively to push apps and configurations to search head members. It does not participate in search activities."
+  },
+  {
+    "question": "Which setting in indexes.conf disables indexing replication for a specific index?",
+    "choices": [
+      "A. repFactor=1",
+      "B. repFactor=0",
+      "C. replicationFactor=none",
+      "D. indexReplicated=false"
+    ],
+    "answer": "B",
+    "explanation": "Setting `repFactor=0` in `indexes.conf` tells Splunk not to replicate the data for that index. This is commonly used for non-critical indexes or those stored on standalone indexers."
+  },
+  {
+    "question": "What is the default TCP port for receiving data from Universal Forwarders (UFs)?",
+    "choices": [
+      "A. 8089",
+      "B. 8000",
+      "C. 9997",
+      "D. 514"
+    ],
+    "answer": "C",
+    "explanation": "The default TCP port for data ingestion from Universal Forwarders is 9997. This is configured on the indexers or heavy forwarders that receive the data."
+  },
+  {
+    "question": "Which of the following components is required in a distributed environment using SmartStore?",
+    "choices": [
+      "A. License Master",
+      "B. Deployer",
+      "C. Indexers with access to remote object storage",
+      "D. Cluster Manager with data-mover role"
+    ],
+    "answer": "C",
+    "explanation": "SmartStore separates compute from storage, requiring indexers to be able to access remote object storage (e.g., AWS S3, GCS, etc.). No special data mover is needed."
+  },
+  {
+    "question": "What happens if a bucket is missing from the indexer cluster?",
+    "choices": [
+      "A. Search Head replaces it from backup",
+      "B. It is automatically rebuilt by the Cluster Master",
+      "C. The peer with the primary copy pushes it to a new peer",
+      "D. It causes an immediate outage"
+    ],
+    "answer": "C",
+    "explanation": "The cluster ensures high availability by having peers replicate data as needed. If a peer loses a bucket, another peer with a primary copy will re-replicate it to maintain the replication factor."
+  },
+  {
+    "question": "How is knowledge bundle replication handled in a Search Head Cluster?",
+    "choices": [
+      "A. Each member pulls the bundle from the deployer",
+      "B. The SHC captain pushes the bundle to all members",
+      "C. It is managed by the Cluster Manager",
+      "D. Bundle replication is disabled by default"
+    ],
+    "answer": "B",
+    "explanation": "In a Search Head Cluster, the captain is responsible for pushing the knowledge bundle (search-time configs) to all other SHC members to ensure consistent behavior."
+  },
+  {
+    "question": "Which command is used to view license usage?",
+    "choices": [
+      "A. splunk list licenses",
+      "B. splunk show license-usage",
+      "C. splunk license report",
+      "D. splunk display licenses"
+    ],
+    "answer": "A",
+    "explanation": "The correct command to list license usage information and installed licenses is `splunk list licenses`. This is useful for tracking volume, quota, and expiration."
+  },
+  {
+    "question": "Which file determines the default search time range?",
+    "choices": [
+      "A. times.conf",
+      "B. user-prefs.conf",
+      "C. limits.conf",
+      "D. authorize.conf"
+    ],
+    "answer": "B",
+    "explanation": "`user-prefs.conf` controls UI preferences for users, including the default time range selected in the search bar and dashboard views."
+  },
+  {
+    "question": "What is the purpose of the introspection logs in Splunk?",
+    "choices": [
+      "A. To record user search history",
+      "B. To measure hardware resource usage by Splunk processes",
+      "C. To capture network input failures",
+      "D. To store audit events"
+    ],
+    "answer": "B",
+    "explanation": "Introspection logs such as `resource_usage.log` and `disk_objects.log` contain data on CPU, memory, and I/O usage by Splunk services. These logs feed into the Monitoring Console."
+  },
+  {
+    "question": "Which component in a Splunk environment is responsible for scheduling saved searches in a search head cluster?",
+    "choices": [
+      "A. Deployer",
+      "B. Cluster Manager",
+      "C. Search Head Captain",
+      "D. License Master"
+    ],
+    "answer": "C",
+    "explanation": "The Search Head Captain manages scheduled searches, distributes jobs across members, and ensures consistent alert throttling and knowledge bundle replication."
+  },
+  {
+    "question": "What is the function of the 'aggregatorMiningProcessor' component in splunkd.log?",
+    "choices": [
+      "A. Processes summary indexing",
+      "B. Handles event breaking and line merging",
+      "C. Aggregates cluster state",
+      "D. Encrypts and decrypts internal logs"
+    ],
+    "answer": "B",
+    "explanation": "The `AggregatorMiningProcessor` is responsible for handling event breaking and line merging logic, critical for proper parsing of events."
+  },
+  {
+    "question": "Which type of search is best suited for improving performance by minimizing data scanned?",
+    "choices": [
+      "A. Streaming search",
+      "B. Subsearch",
+      "C. tstats search",
+      "D. lookup search"
+    ],
+    "answer": "C",
+    "explanation": "The `tstats` command accesses indexed metadata directly, offering performance advantages by scanning only summary data or accelerated data models."
+  },
+  {
+    "question": "What component allows multiple search heads to share a consistent view of users' knowledge objects?",
+    "choices": [
+      "A. Distributed KV Store",
+      "B. License Master",
+      "C. Indexer Clustering",
+      "D. Search Head Pooling"
+    ],
+    "answer": "A",
+    "explanation": "In a Search Head Cluster, a distributed KV Store ensures consistent configuration and knowledge object sharing across all members."
+  },
+  {
+    "question": "Which command is used to validate configuration file syntax in Splunk?",
+    "choices": [
+      "A. splunk check syntax",
+      "B. splunk validate conf",
+      "C. btool check",
+      "D. splunk cmd btool"
+    ],
+    "answer": "D",
+    "explanation": "The `splunk cmd btool` utility checks the active configuration and can be used to validate and troubleshoot .conf file hierarchies."
+  },
+  {
+    "question": "What is the function of the 'metrics.log' file in Splunk?",
+    "choices": [
+      "A. Stores errors and exceptions",
+      "B. Contains REST API call logs",
+      "C. Tracks performance counters for system and Splunk components",
+      "D. Records user authentication events"
+    ],
+    "answer": "C",
+    "explanation": "The `metrics.log` file logs various internal performance counters (like indexing rate, search concurrency, and pipeline latency), used by the Monitoring Console."
+  },
+  {
+    "question": "Which of the following is true about Splunk btool?",
+    "choices": [
+      "A. It launches the UI in debug mode.",
+      "B. It shows merged configuration settings across contexts.",
+      "C. It imports saved searches.",
+      "D. It manages clustered deployment clients."
+    ],
+    "answer": "B",
+    "explanation": "`btool` displays effective configuration settings after all inheritance, layering, and precedence rules have been applied. It's a vital troubleshooting tool."
+  },
+  {
+    "question": "What is required to configure multisite clustering in Splunk?",
+    "choices": [
+      "A. site attribute in server.conf",
+      "B. site_replication_factor and site_search_factor in indexes.conf",
+      "C. The use of multisite=true in server.conf",
+      "D. All of the above"
+    ],
+    "answer": "D",
+    "explanation": "Multisite clustering requires all of the following: `multisite=true`, setting the node's `site` value, and specifying site-specific replication and search factors in `indexes.conf`."
+  },
+  {
+    "question": "When is a search considered 'finalized'?",
+    "choices": [
+      "A. When it exceeds memory limits",
+      "B. When the user hits 'Stop'",
+      "C. When `dispatch.finalize` is set to true",
+      "D. Any of the above"
+    ],
+    "answer": "D",
+    "explanation": "A search may be finalized due to timeout, memory/resource constraints, or manual intervention. It halts further processing and returns partial results."
+  },
+  {
+    "question": "What is the function of the 'closed_txn=0' search in the internal logs?",
+    "choices": [
+      "A. Detects memory leaks",
+      "B. Identifies slow dashboards",
+      "C. Detects unfinished transactions (e.g., crashes)",
+      "D. Finds expired user sessions"
+    ],
+    "answer": "C",
+    "explanation": "The field `closed_txn=0` in transaction-based searches identifies incomplete transactions, often used to detect crashed or interrupted processes such as `splunkd` crashes."
+  },
+  {
+    "question": "In which log can you find information related to KV Store performance?",
+    "choices": [
+      "A. metrics.log",
+      "B. kvstore.log",
+      "C. mongod.log",
+      "D. disk_objects.log"
+    ],
+    "answer": "B",
+    "explanation": "The `kvstore.log` file records performance and error information for the KV Store. It is the primary log to monitor KV Store health and behavior."
+  },
+  {
+    "question": "What Splunk component distributes configuration updates in a Search Head Cluster?",
+    "choices": [
+      "A. Cluster Master",
+      "B. License Master",
+      "C. Deployer",
+      "D. Monitoring Console"
+    ],
+    "answer": "C",
+    "explanation": "The deployer pushes configuration bundles to all members of a Search Head Cluster to ensure consistent settings and app deployment."
+  },
+  {
+    "question": "How is data redundancy achieved in an indexer cluster?",
+    "choices": [
+      "A. RAID configuration",
+      "B. Replication factor",
+      "C. Search factor",
+      "D. Multiple search heads"
+    ],
+    "answer": "B",
+    "explanation": "The replication factor defines how many searchable and redundant copies of data buckets are maintained across indexers for redundancy and fault tolerance."
+  },
+  {
+    "question": "Which search would identify all failed login attempts to Splunk Web?",
+    "choices": [
+      "A. index=_internal sourcetype=splunk_web_access status=200",
+      "B. index=_audit action=login status=failed",
+      "C. index=_internal action=login_failed",
+      "D. index=main eventtype=web_login_failure"
+    ],
+    "answer": "B",
+    "explanation": "Failed login attempts are recorded in the `_audit` index with `action=login` and `status=failed`, which provides insight into authentication failures."
+  },
+  {
+    "question": "Which of the following indexes stores Splunk internal log data?",
+    "choices": [
+      "A. _metrics",
+      "B. _audit",
+      "C. _internal",
+      "D. main"
+    ],
+    "answer": "C",
+    "explanation": "The `_internal` index is used to store logs from Splunk components such as `splunkd`, `scheduler`, `metrics.log`, and more. It’s essential for monitoring Splunk health."
+  },
+  {
+    "question": "What field can be used to identify the app context of a search?",
+    "choices": [
+      "A. user_context",
+      "B. app",
+      "C. search_context",
+      "D. sourcetype"
+    ],
+    "answer": "B",
+    "explanation": "The `app` field in logs such as `_audit` identifies the app under which a search was executed, which is useful for understanding access and scope."
+  },
+  {
+    "question": "How can you view all active forwarders in a deployment?",
+    "choices": [
+      "A. REST call to /services/deployment/server/clients",
+      "B. splunk list forwarders",
+      "C. btool check forwarding",
+      "D. REST call to /services/data/indexes"
+    ],
+    "answer": "A",
+    "explanation": "You can use the REST endpoint `/services/deployment/server/clients` to list active deployment clients (forwarders) currently phoning home to the Deployment Server."
+  },
+  {
+    "question": "What configuration is required to push apps to a universal forwarder from a deployment server?",
+    "choices": [
+      "A. outputs.conf on the forwarder",
+      "B. serverclass.conf on the deployment server",
+      "C. indexes.conf on the deployment server",
+      "D. transforms.conf on the forwarder"
+    ],
+    "answer": "B",
+    "explanation": "The `serverclass.conf` file on the deployment server defines which apps go to which clients, enabling app deployment and versioning across environments."
+  },
+  {
+    "question": "Where are performance metrics about indexing pipelines written?",
+    "choices": [
+      "A. _introspection",
+      "B. _metrics",
+      "C. metrics.log",
+      "D. pipeline_stats.log"
+    ],
+    "answer": "C",
+    "explanation": "The `metrics.log` file contains performance counters for indexing pipelines, such as latency, queue sizes, and event throughput."
+  },
+  {
+    "question": "What happens if the replication factor is greater than the number of indexers in the cluster?",
+    "choices": [
+      "A. The cluster refuses to ingest data",
+      "B. Buckets are replicated only to available peers",
+      "C. Splunk switches to standalone indexing",
+      "D. Search head fails to dispatch searches"
+    ],
+    "answer": "B",
+    "explanation": "When replication factor exceeds available peers, Splunk replicates as much as it can. It will continue operating, but cluster health will show warnings due to unmet replication."
+  },
+  {
+    "question": "What is the primary role of the Monitoring Console (MC) in a Splunk deployment?",
+    "choices": [
+      "A. To manage authentication sources",
+      "B. To view deployment server app status",
+      "C. To configure index-time field extractions",
+      "D. To monitor Splunk component performance and health"
+    ],
+    "answer": "D",
+    "explanation": "The Monitoring Console is used to assess the health and performance of Splunk infrastructure, including indexing throughput, search concurrency, and system utilization."
+  },
+  {
+    "question": "Which of the following can be used to validate Splunk configuration settings?",
+    "choices": [
+      "A. metrics.log",
+      "B. btool",
+      "C. server.conf",
+      "D. diag"
+    ],
+    "answer": "B",
+    "explanation": "The `btool` command-line utility is used to troubleshoot and validate configuration settings, including locating configuration file precedence."
+  },
+  {
+    "question": "Which Splunk capability allows you to define subsets of data a user is allowed to search?",
+    "choices": [
+      "A. Roles",
+      "B. Indexes",
+      "C. Capabilities",
+      "D. Macros"
+    ],
+    "answer": "A",
+    "explanation": "Roles in Splunk define which indexes and search-time access controls apply to a user, thereby controlling which data they can view and query."
+  },
+  {
+    "question": "What is a benefit of Data Model Acceleration (DMA)?",
+    "choices": [
+      "A. Real-time alerting",
+      "B. Faster ad hoc search execution",
+      "C. Summarization for improved performance in Pivot and dashboards",
+      "D. Index-time field extraction"
+    ],
+    "answer": "C",
+    "explanation": "DMA creates summaries that accelerate searches built on data models, allowing fast visualization and Pivot-based analytics in Splunk Enterprise Security and ITSI."
+  },
+  {
+    "question": "Which of the following controls what data gets indexed in Splunk?",
+    "choices": [
+      "A. props.conf",
+      "B. inputs.conf",
+      "C. outputs.conf",
+      "D. limits.conf"
+    ],
+    "answer": "B",
+    "explanation": "The `inputs.conf` file is responsible for specifying what data Splunk will monitor, ingest, and index. It defines input types like files, TCP, UDP, scripts, etc."
+  },
+  {
+    "question": "How do you configure indexer acknowledgment for universal forwarders?",
+    "choices": [
+      "A. Set `indexAck = true` in props.conf",
+      "B. Set `ack = true` in outputs.conf",
+      "C. Set `forceAck = true` in inputs.conf",
+      "D. It is enabled by default on indexers"
+    ],
+    "answer": "B",
+    "explanation": "To enable indexer acknowledgment (for guaranteed delivery), the universal forwarder must have `ack = true` in `outputs.conf` to require confirmation from the indexer."
+  },
+  {
+    "question": "Which of the following causes hot buckets to roll to warm?",
+    "choices": [
+      "A. Bucket hits 50MB",
+      "B. Restart of indexer",
+      "C. Time-based rolling policy in indexes.conf",
+      "D. Bucket reaches maxHotSpanSecs or max size"
+    ],
+    "answer": "D",
+    "explanation": "Hot buckets roll to warm based on conditions like reaching the `maxHotSpanSecs` or size limits defined in `indexes.conf`. Indexer restart can also trigger a roll."
+  },
+  {
+    "question": "Which component is responsible for forwarding data to indexers?",
+    "choices": [
+      "A. Search Head",
+      "B. Deployment Server",
+      "C. Universal Forwarder",
+      "D. License Master"
+    ],
+    "answer": "C",
+    "explanation": "The Universal Forwarder (UF) is a lightweight Splunk agent that forwards logs and machine data to receiving indexers, typically over SSL-encrypted TCP."
+  },
+  {
+    "question": "How do you schedule a report to be emailed on a weekly basis?",
+    "choices": [
+      "A. Set a cron schedule and enable PDF delivery",
+      "B. Use report acceleration",
+      "C. Modify inputs.conf",
+      "D. Only saved searches can be emailed"
+    ],
+    "answer": "A",
+    "explanation": "To schedule a report, use the 'Schedule PDF Delivery' option with a cron-style schedule or preset weekly setting. Ensure email settings are configured in `alert_actions.conf`."
+  },
+  {
+    "question": "What happens when a forwarder cannot connect to any indexers?",
+    "choices": [
+      "A. It switches to standalone indexing",
+      "B. Data is lost",
+      "C. It queues data locally until a connection is restored",
+      "D. It alerts the Deployment Server"
+    ],
+    "answer": "C",
+    "explanation": "Forwarders cache data in a persistent queue when no indexer is available. This ensures no data is lost during brief disconnections or network outages."
+  },
+  {
+    "question": "Which tool would you use to collect a snapshot of a Splunk deployment’s configuration and system state?",
+    "choices": [
+      "A. btool",
+      "B. diag",
+      "C. metrics.log",
+      "D. server.conf"
+    ],
+    "answer": "B",
+    "explanation": "The `splunk diag` command generates a support bundle that includes configurations, logs, and system information, useful for troubleshooting or submitting to Splunk support."
+  },
+  {
+    "question": "Which component manages app deployment to Universal Forwarders?",
+    "choices": [
+      "A. License Master",
+      "B. Search Head",
+      "C. Cluster Manager",
+      "D. Deployment Server"
+    ],
+    "answer": "D",
+    "explanation": "The Deployment Server manages app and configuration deployment to Universal Forwarders and other clients via server classes defined in deploymentclient.conf."
+  },
+  {
+    "question": "How do you exclude specific events from being indexed in Splunk?",
+    "choices": [
+      "A. Use nullQueue in transforms.conf",
+      "B. Set blacklist = true in inputs.conf",
+      "C. Disable the source type",
+      "D. Use queue=drop in props.conf"
+    ],
+    "answer": "A",
+    "explanation": "Using `transforms.conf` with `DEST_KEY=queue` and `FORMAT=nullQueue` allows you to discard matching events before they are indexed, conserving resources and licensing."
+  },
+  {
+    "question": "What Splunk feature reduces data size using compression and deduplication before indexing?",
+    "choices": [
+      "A. Fishbucket",
+      "B. Index-time field extraction",
+      "C. Raw event digesting",
+      "D. TSIDX compression"
+    ],
+    "answer": "D",
+    "explanation": "TSIDX files use compression and indexing optimizations to reduce the storage footprint and speed up search operations. This improves performance and reduces disk usage."
+  },
+  {
+    "question": "Which search command is best suited for querying accelerated data models?",
+    "choices": [
+      "A. stats",
+      "B. datamodel",
+      "C. tstats",
+      "D. table"
+    ],
+    "answer": "C",
+    "explanation": "The `tstats` command is optimized for querying accelerated data models and summary indexes. It bypasses raw event access, improving speed significantly over traditional searches."
+  },
+  {
+    "question": "What is the default retention period for a Splunk license usage log?",
+    "choices": [
+      "A. 30 days",
+      "B. 90 days",
+      "C. 60 days",
+      "D. Indefinite"
+    ],
+    "answer": "B",
+    "explanation": "By default, license usage data is retained for 90 days in the _internal index, allowing administrators to monitor and audit license consumption trends over time."
+  },
+  {
+    "question": "Which of the following is required for distributed search to work between search head and indexers?",
+    "choices": [
+      "A. Port 8089 open between them",
+      "B. Both must be on the same subnet",
+      "C. Use the same license server",
+      "D. Have identical inputs.conf"
+    ],
+    "answer": "A",
+    "explanation": "Port 8089 is used for communication between Splunk components like search heads and indexers. It must be open for distributed search to function correctly."
+  },
+  {
+    "question": "Where is the Fishbucket located by default?",
+    "choices": [
+      "A. $SPLUNK_HOME/fishbucket/",
+      "B. $SPLUNK_HOME/var/lib/splunk/fishbucket/",
+      "C. $SPLUNK_HOME/etc/apps/fishbucket/",
+      "D. /tmp/fishbucket/"
+    ],
+    "answer": "B",
+    "explanation": "The fishbucket directory tracks CRCs and seek pointers of files being monitored, helping Splunk determine whether a file has already been indexed. It’s located at var/lib/splunk/fishbucket/."
+  },
+  {
+    "question": "Which conf file defines calculated fields?",
+    "choices": [
+      "A. transforms.conf",
+      "B. inputs.conf",
+      "C. props.conf",
+      "D. fields.conf"
+    ],
+    "answer": "D",
+    "explanation": "The `fields.conf` file is used to configure calculated fields, including eval-based fields, and control their behavior across search time and UI rendering."
+  },
+  {
+    "question": "What does the deploymentclient.conf file define?",
+    "choices": [
+      "A. Server classes and app assignments",
+      "B. Deployment server credentials",
+      "C. Settings for forwarder to connect to a deployment server",
+      "D. App install locations"
+    ],
+    "answer": "C",
+    "explanation": "`deploymentclient.conf` is used on the Universal Forwarder to define how it connects to the Deployment Server, including target IP, port, and client name."
+  },
+  {
+    "question": "What is the main role of the Deployer in a Search Head Cluster?",
+    "choices": [
+      "A. Runs scheduled searches",
+      "B. Deploys apps and configurations to search heads",
+      "C. Manages KV Store replication",
+      "D. Handles license compliance"
+    ],
+    "answer": "B",
+    "explanation": "In a Search Head Cluster (SHC), the Deployer is a standalone Splunk instance responsible for pushing configuration bundles, apps, and knowledge objects to all members of the cluster."
+  },
+  {
+    "question": "Which Splunk log provides information about licensing warnings?",
+    "choices": [
+      "A. license_usage.log",
+      "B. metrics.log",
+      "C. splunkd.log",
+      "D. audit.log"
+    ],
+    "answer": "C",
+    "explanation": "License warnings and violations are logged in splunkd.log. These entries help administrators diagnose issues related to licensing volume or violations."
+  },
+  {
+    "question": "Which of the following is a benefit of using event hashing in data models?",
+    "choices": [
+      "A. Encrypts data in motion",
+      "B. Improves search accuracy",
+      "C. Reduces duplicated search results",
+      "D. Enables summary indexing"
+    ],
+    "answer": "C",
+    "explanation": "Event hashing prevents duplicate events from being stored or displayed during acceleration, improving storage efficiency and search result clarity."
+  },
+  {
+    "question": "How many total Splunk Enterprise nodes are required at minimum to form a functional multisite indexer cluster?",
+    "choices": [
+      "A. 3",
+      "B. 5",
+      "C. 6",
+      "D. 4"
+    ],
+    "answer": "C",
+    "explanation": "A functional multisite indexer cluster requires at least 6 nodes: 3 indexers per site (minimum per-site redundancy), plus a single cluster manager node shared across sites."
+  },
+  {
+    "question": "What is required to configure TLS between a Universal Forwarder and an Indexer?",
+    "choices": [
+      "A. Enable SSL in deploymentclient.conf",
+      "B. Add serverCert and SSLConfig settings in inputs.conf",
+      "C. Modify outputs.conf to include SSL keys and certs",
+      "D. Set TLS=true in props.conf"
+    ],
+    "answer": "C",
+    "explanation": "Secure communication between forwarders and indexers is configured in outputs.conf, which includes SSL-related parameters like serverCert, rootCA, sslPassword, etc."
+  },
+  {
+    "question": "Which index receives license usage data by default?",
+    "choices": [
+      "A. _audit",
+      "B. _introspection",
+      "C. _internal",
+      "D. _license_usage"
+    ],
+    "answer": "C",
+    "explanation": "License usage data is stored in the _internal index by default, and can be accessed for reporting via specific license-related sourcetypes like `license_usage.log`."
+  },
+  {
+    "question": "Which of the following causes Splunk to re-index a file?",
+    "choices": [
+      "A. Changing host name in inputs.conf",
+      "B. Changing index name in outputs.conf",
+      "C. Renaming the file without changing contents",
+      "D. Truncating and reappending content"
+    ],
+    "answer": "D",
+    "explanation": "Splunk uses CRC and seek pointers to detect changes. If a file is truncated and content is appended again, Splunk will interpret it as a new file and re-index it."
+  },
+  {
+    "question": "Which Splunk feature provides the ability to restrict field values to a specific set of allowed inputs?",
+    "choices": [
+      "A. Lookups",
+      "B. Eventtypes",
+      "C. Field aliases",
+      "D. Data model constraints"
+    ],
+    "answer": "D",
+    "explanation": "Data model constraints allow you to restrict the field values that can appear in accelerated or structured data sets, which can improve data hygiene and search accuracy."
+  },
+  {
+    "question": "Which file controls indexing queue behavior in Splunk?",
+    "choices": [
+      "A. indexes.conf",
+      "B. server.conf",
+      "C. props.conf",
+      "D. inputs.conf"
+    ],
+    "answer": "B",
+    "explanation": "Queue behavior, such as pipeline settings, ingestion parallelization, and resource throttling, is configured in server.conf under [queue] and related stanzas."
+  },
+  {
+    "question": "Which component writes metrics about Splunk’s internal performance?",
+    "choices": [
+      "A. btool",
+      "B. introspection daemon",
+      "C. forwarder management",
+      "D. license manager"
+    ],
+    "answer": "B",
+    "explanation": "The introspection daemon collects internal telemetry, including CPU, memory, and I/O usage of Splunk processes, and writes to `resource_usage.log` and `disk_objects.log`."
+  },
+  {
+    "question": "Which Splunk command shows real-time performance statistics for all search processes?",
+    "choices": [
+      "A. | rest /services/search/jobs",
+      "B. | tstats summariesonly=t",
+      "C. | jobstats",
+      "D. | introspect"
+    ],
+    "answer": "D",
+    "explanation": "The `| introspect` command provides information about memory usage, execution time, and resource consumption of searches, making it useful for performance monitoring and tuning."
+  },
+  {
+    "question": "How can a Splunk administrator reduce the load on the search head caused by scheduled reports?",
+    "choices": [
+      "A. By enabling data model acceleration",
+      "B. By running reports manually",
+      "C. By converting reports to real-time alerts",
+      "D. By using summary indexing"
+    ],
+    "answer": "D",
+    "explanation": "Summary indexing allows scheduled reports to write results to an index, significantly reducing the compute cost of rerunning the full search every time the report is needed."
+  },
+  {
+    "question": "What is the function of the 'deployment server' in a Splunk environment?",
+    "choices": [
+      "A. It manages authentication for all components",
+      "B. It collects all Universal Forwarder logs",
+      "C. It deploys configurations to clients like UFs and heavy forwarders",
+      "D. It processes search head replication bundles"
+    ],
+    "answer": "C",
+    "explanation": "The Deployment Server is used to centrally manage and push configurations, apps, and updates to Splunk clients like Universal Forwarders and Heavy Forwarders."
+  },
+  {
+    "question": "Which of the following affects the bucket aging process in Splunk?",
+    "choices": [
+      "A. Number of hot buckets",
+      "B. Time period set in `frozenTimePeriodInSecs`",
+      "C. Bucket span",
+      "D. Indexer parallel ingestion setting"
+    ],
+    "answer": "B",
+    "explanation": "`frozenTimePeriodInSecs` determines how long indexed data is retained before being rolled to frozen stage or deleted. It directly impacts when data becomes eligible for archival/removal."
+  },
+  {
+    "question": "What determines the replication of knowledge objects in a search head cluster?",
+    "choices": [
+      "A. The number of configured bundles in master-apps",
+      "B. The cluster manager's peer config",
+      "C. The deployer's push frequency",
+      "D. The captain’s replication of the KV store"
+    ],
+    "answer": "D",
+    "explanation": "In SHC, the captain manages knowledge object replication using the KV store to ensure consistent runtime objects across all members."
+  },
+  {
+    "question": "What does Splunk use to prevent duplicate event ingestion when indexing the same file?",
+    "choices": [
+      "A. Source checksum",
+      "B. CRC hash of file beginning and end",
+      "C. Timestamps and host validation",
+      "D. Checkpointing field"
+    ],
+    "answer": "B",
+    "explanation": "Splunk performs a CRC check using a hash of the first and last bytes of a file to avoid re-indexing duplicate files after log rotation or renaming."
+  },
+  {
+    "question": "Which of the following contributes to search acceleration in data models?",
+    "choices": [
+      "A. Summary indexing",
+      "B. Enabling automatic lookups",
+      "C. Enabling acceleration and choosing root events",
+      "D. Using tscollect"
+    ],
+    "answer": "C",
+    "explanation": "To accelerate data models, admins must enable acceleration and define Root Event datasets to be summarized for efficient querying."
+  },
+  {
+    "question": "What component ensures peer nodes replicate data correctly in an indexer cluster?",
+    "choices": [
+      "A. Deployment Server",
+      "B. License Master",
+      "C. Cluster Manager (Master)",
+      "D. Monitoring Console"
+    ],
+    "answer": "C",
+    "explanation": "The Cluster Manager is responsible for coordinating replication of buckets across peer nodes in an indexer cluster, maintaining the replication factor and search factor."
+  },
+  {
+    "question": "Which of the following conditions triggers a search head to leave the cluster?",
+    "choices": [
+      "A. Restart of the captain node",
+      "B. Out-of-sync KV store status",
+      "C. Manual remove command or network partition",
+      "D. Unused disk space exceeds 80%"
+    ],
+    "answer": "C",
+    "explanation": "Search heads can leave the cluster if explicitly removed (e.g. `splunk remove shcluster-member`) or due to network partitioning that breaks consensus."
+  },
+  {
+    "question": "Which Splunk utility gathers diagnostic data from an instance for troubleshooting?",
+    "choices": [
+      "A. splunk report",
+      "B. splunk diag",
+      "C. splunk debug",
+      "D. splunk check-config"
+    ],
+    "answer": "B",
+    "explanation": "`splunk diag` collects logs, configs, and other runtime data from an instance into a tarball that can be shared with support or used for internal troubleshooting."
+  },
+  {
+    "question": "What is the role of the deployer in a Splunk Search Head Cluster (SHC)?",
+    "choices": [
+      "A. Manages license usage across all SHC members.",
+      "B. Distributes configuration files and apps to all SHC members.",
+      "C. Coordinates KV store replication.",
+      "D. Acts as the static captain during cluster failure."
+    ],
+    "answer": "B",
+    "explanation": "The deployer is a Splunk instance used to distribute apps, configurations, and knowledge objects to members of a Search Head Cluster. It is not a cluster member itself but pushes updates to SHC nodes."
+  },
+  {
+    "question": "Which Splunk feature helps minimize the chance of data loss in the event of an indexer failure?",
+    "choices": [
+      "A. Search head pooling",
+      "B. Data model acceleration",
+      "C. Replication factor",
+      "D. Summary indexing"
+    ],
+    "answer": "C",
+    "explanation": "The replication factor determines how many copies of a bucket are stored across indexers in a cluster. A higher replication factor helps ensure data redundancy and availability in case of indexer failure."
+  },
+  {
+    "question": "When configuring a Splunk multisite indexer cluster, what does the `site_replication_factor` control?",
+    "choices": [
+      "A. The number of license servers per site.",
+      "B. The number of hot buckets per site.",
+      "C. How many copies of data are stored per site.",
+      "D. The number of peers allowed to forward data to another site."
+    ],
+    "answer": "C",
+    "explanation": "`site_replication_factor` controls how many searchable and replicated copies of data are stored across the sites in a multisite indexer cluster. It defines redundancy and resiliency policies per site."
+  },
+  {
+    "question": "Which option is recommended to improve performance for scheduled searches in Splunk?",
+    "choices": [
+      "A. Schedule searches to run during peak usage times.",
+      "B. Use real-time search mode for all reports.",
+      "C. Distribute searches evenly across time using staggered scheduling.",
+      "D. Run searches as admin to bypass role restrictions."
+    ],
+    "answer": "C",
+    "explanation": "Staggering scheduled searches helps distribute load more evenly across time, reducing resource contention and improving performance for concurrent searches."
+  },
+  {
+    "question": "What is the minimum number of peer nodes required for a valid Splunk indexer cluster?",
+    "choices": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 5"
+    ],
+    "answer": "3",
+    "explanation": "A valid indexer cluster must have at least three peer nodes to meet the minimum requirements for redundancy and cluster functionality, especially in production environments."
+  },
+  {
+    "question": "In which file is the `repFactor = auto` setting configured for an index?",
+    "choices": [
+      "A. inputs.conf",
+      "B. server.conf",
+      "C. indexes.conf",
+      "D. outputs.conf"
+    ],
+    "answer": "C",
+    "explanation": "The `repFactor` attribute is defined in `indexes.conf` and controls whether an index participates in replication. `repFactor = auto` allows the index to inherit the cluster-wide replication behavior."
+  },
+  {
+    "question": "What benefit does summary indexing provide in Splunk?",
+    "choices": [
+      "A. It indexes log files without parsing them.",
+      "B. It encrypts search results automatically.",
+      "C. It enables long-term data archiving.",
+      "D. It improves performance for repeated searches by indexing results."
+    ],
+    "answer": "D",
+    "explanation": "Summary indexing stores the results of a search into a new index, allowing repeated access without re-executing expensive searches. This improves performance and resource usage."
+  },
+  {
+    "question": "Which deployment type is most suitable for small Splunk environments with limited resources?",
+    "choices": [
+      "A. Search Head Cluster and Indexer Cluster",
+      "B. Multisite Cluster with Deployer",
+      "C. Single-instance deployment",
+      "D. Heavy forwarders with license pool"
+    ],
+    "answer": "C",
+    "explanation": "A single-instance Splunk deployment runs all components—search head, indexer, and forwarder—on the same machine. It is recommended for testing, POCs, or small production use cases."
+  },
+  {
+    "question": "How does the Splunk platform identify duplicate events during file ingestion?",
+    "choices": [
+      "A. By validating timestamps and host fields",
+      "B. Using a file CRC of the beginning and end",
+      "C. By comparing line count between files",
+      "D. By querying existing events in the index"
+    ],
+    "answer": "B",
+    "explanation": "Splunk uses CRC checks on the beginning and end of a file to determine if it's already been indexed. This helps prevent duplicate ingestion when logs are renamed or rotated."
+  },
+  {
+    "question": "What is the primary purpose of the Search Head Captain in a SHC?",
+    "choices": [
+      "A. Handle licensing and data forwarding",
+      "B. Assign search jobs and replicate artifacts",
+      "C. Push configurations to indexers",
+      "D. Monitor disk usage across the cluster"
+    ],
+    "answer": "B",
+    "explanation": "The SHC captain coordinates search job assignment, alert throttling, and artifact replication. It ensures consistency across cluster members and maintains SHC health."
+  },
+  {
+    "question": "What setting should be used to temporarily remove an indexer from a cluster while ensuring data integrity?",
+    "choices": [
+      "A. splunk disable cluster-peer",
+      "B. splunk offline --enforce-counts",
+      "C. splunk stop indexer",
+      "D. splunk decommission peer"
+    ],
+    "answer": "B",
+    "explanation": "Using `splunk offline --enforce-counts` ensures that data replication requirements are met before the indexer is removed from the cluster. It safely drains the buckets and allows the cluster to re-balance."
+  },
+  {
+    "question": "Which file controls the authentication methods available in Splunk?",
+    "choices": [
+      "A. server.conf",
+      "B. authentication.conf",
+      "C. authorize.conf",
+      "D. inputs.conf"
+    ],
+    "answer": "B",
+    "explanation": "`authentication.conf` defines which authentication mechanisms (LDAP, SAML, etc.) are used by Splunk for login and access control."
+  },
+  {
+    "question": "Which of the following is the best approach for parsing multi-line events such as Java stack traces?",
+    "choices": [
+      "A. Set BREAK_ONLY_BEFORE to the first line pattern",
+      "B. Set MAX_EVENTS to 1",
+      "C. Disable line merging",
+      "D. Use sed scripts"
+    ],
+    "answer": "A",
+    "explanation": "BREAK_ONLY_BEFORE is used to define a pattern that indicates the start of a new event, which is useful for identifying the beginning of multi-line events like stack traces."
+  },
+  {
+    "question": "What is the purpose of the fishbucket in Splunk?",
+    "choices": [
+      "A. It stores indexed events for replay.",
+      "B. It logs user search history.",
+      "C. It tracks file ingestion and CRCs.",
+      "D. It caches alert results for dashboards."
+    ],
+    "answer": "C",
+    "explanation": "The fishbucket is an internal index used by Splunk to track CRCs and seek pointers for files being monitored to prevent duplicate indexing."
+  },
+  {
+    "question": "Which command displays the number of events per sourcetype in a given index?",
+    "choices": [
+      "A. index=my_index | stats count by eventtype",
+      "B. index=my_index | chart sourcetype by count",
+      "C. index=my_index | stats count by sourcetype",
+      "D. index=my_index | top sourcetype by eventcount"
+    ],
+    "answer": "C",
+    "explanation": "`stats count by sourcetype` will count the number of events for each sourcetype present in the index."
+  },
+  {
+    "question": "Which log file contains information about searches dispatched in Splunk?",
+    "choices": [
+      "A. splunkd.log",
+      "B. metrics.log",
+      "C. search.log",
+      "D. audit.log"
+    ],
+    "answer": "C",
+    "explanation": "`search.log` provides detailed information about the execution of a search, including timing, results, and pipeline performance. It’s created per search job."
+  },
+  {
+    "question": "Which component pushes configuration bundles to peer nodes in an indexer cluster?",
+    "choices": [
+      "A. Search head",
+      "B. Deployer",
+      "C. Cluster manager",
+      "D. License master"
+    ],
+    "answer": "C",
+    "explanation": "The cluster manager (also known as the master node) is responsible for pushing configuration bundles to peer nodes in an indexer cluster."
+  },
+  {
+    "question": "Which field is used by Splunk to uniquely identify an event?",
+    "choices": [
+      "A. _raw",
+      "B. _cd",
+      "C. _time",
+      "D. _indextime"
+    ],
+    "answer": "B",
+    "explanation": "The `_cd` (component descriptor) field uniquely identifies the event within a bucket and is composed of the bucket ID and event offset."
+  },
+  {
+    "question": "How does Splunk prevent data duplication in rolling log files?",
+    "choices": [
+      "A. File name hashing",
+      "B. Line-by-line comparison",
+      "C. CRC comparison of first 256 bytes",
+      "D. Timestamp validation"
+    ],
+    "answer": "C",
+    "explanation": "Splunk uses a CRC check on the first 256 bytes of a file to determine if it has already been ingested. This helps detect renamed or rotated files and prevents duplicate indexing."
+  },
+  {
+    "question": "What is the purpose of the deployment server in Splunk?",
+    "choices": [
+      "A. Load balancing search requests",
+      "B. Managing licensing and quotas",
+      "C. Distributing configurations to forwarders",
+      "D. Indexing remote syslog data"
+    ],
+    "answer": "C",
+    "explanation": "The deployment server is used to manage and distribute configuration apps and settings to a fleet of universal and heavy forwarders from a centralized Splunk instance."
+  },
+  {
+    "question": "What setting allows an index to not replicate across the indexer cluster?",
+    "choices": [
+      "A. repFactor = 1",
+      "B. repFactor = auto",
+      "C. repFactor = none",
+      "D. repFactor = 0"
+    ],
+    "answer": "D",
+    "explanation": "Setting `repFactor = 0` in indexes.conf prevents an index from participating in replication within an indexer cluster. This is typically used for local-only indexes."
+  },
+  {
+    "question": "In a Splunk multisite indexer cluster, what is the function of origin site replication?",
+    "choices": [
+      "A. All searchable data is stored at the search head site",
+      "B. Ensures data is replicated only to the originating site",
+      "C. Ensures data is replicated to the site where data was ingested",
+      "D. Ensures data is backed up to all peer sites"
+    ],
+    "answer": "C",
+    "explanation": "Origin site replication ensures that a full set of searchable data is kept at the site where the data was ingested, enhancing search performance and resiliency."
+  },
+  {
+    "question": "What is the primary use of the `btprobe` command in Splunk?",
+    "choices": [
+      "A. Troubleshooting search jobs",
+      "B. Managing the bucket list cache",
+      "C. Checking bloom filter efficiency",
+      "D. Debugging indexing performance"
+    ],
+    "answer": "B",
+    "explanation": "`btprobe` is a diagnostic tool used to examine and manipulate Splunk's bucket list database, often for debugging indexing-related issues and ensuring data integrity."
+  },
+  {
+    "question": "What mechanism does Splunk use to assign indexing load evenly across indexers?",
+    "choices": [
+      "A. Round-robin DNS",
+      "B. Search affinity",
+      "C. Auto load-balancing in forwarders",
+      "D. Indexing pools"
+    ],
+    "answer": "C",
+    "explanation": "Universal Forwarders automatically load balance data across indexers when multiple indexers are specified, ensuring even data distribution and preventing overload."
+  },
+  {
+    "question": "What happens to buckets when an indexer is taken offline using --enforce-counts?",
+    "choices": [
+      "A. They are deleted from the cluster",
+      "B. They are reassigned to another manager",
+      "C. They are replicated to meet RF/SF before removal",
+      "D. They remain read-only until rebooted"
+    ],
+    "answer": "C",
+    "explanation": "Using `--enforce-counts` ensures that Splunk replicates data as necessary to meet replication and search factors before gracefully removing the indexer from the cluster."
+  },
+  {
+    "question": "Which of the following would require KV Store?",
+    "choices": [
+      "A. Monitoring Console",
+      "B. Lookup-based throttling",
+      "C. Search head clustering",
+      "D. ITSI service health scores"
+    ],
+    "answer": "D",
+    "explanation": "Splunk ITSI uses KV Store extensively to track service health scores, KPI values, and entity data. It’s required for storing structured application data."
+  },
+  {
+    "question": "What configuration allows peer nodes to register to the cluster manager?",
+    "choices": [
+      "A. manager.conf",
+      "B. cluster.conf",
+      "C. server.conf [indexer_discovery]",
+      "D. indexes.conf"
+    ],
+    "answer": "C",
+    "explanation": "The `[indexer_discovery]` stanza in `server.conf` is used to configure peer discovery and registration with the cluster manager node."
+  },
+  {
+    "question": "Which command is used to initiate the KV Store backup process?",
+    "choices": [
+      "A. splunk kvstore backup",
+      "B. splunk backup kvstore",
+      "C. splunk show kvstore-backup",
+      "D. splunk backup kv"
+    ],
+    "answer": "A",
+    "explanation": "`splunk kvstore backup` is used to back up the KV Store data to a tarball that can be restored later using the appropriate restore command."
+  },
+  {
+    "question": "What component handles the scheduling of alerts across a Search Head Cluster?",
+    "choices": [
+      "A. Search peer",
+      "B. Deployer",
+      "C. Captain",
+      "D. Indexer"
+    ],
+    "answer": "C",
+    "explanation": "The SHC captain is responsible for scheduling alerts, managing suppressions, and distributing knowledge bundles to peers and search heads."
+  },
+  {
+    "question": "What is the primary use of a `tstats` search in Splunk?",
+    "choices": [
+      "A. For report acceleration",
+      "B. To bypass indexing queues",
+      "C. To perform fast searches over indexed fields",
+      "D. To generate summary indexes"
+    ],
+    "answer": "C",
+    "explanation": "`| tstats` leverages indexed fields and data model acceleration to perform fast statistical searches without parsing raw events, improving performance."
+  },
+  {
+    "question": "How can you ensure knowledge bundles are replicated properly in a search head cluster?",
+    "choices": [
+      "A. Use the deployer to push configuration bundles to peers",
+      "B. Restart the cluster periodically",
+      "C. Manually copy the local directory across members",
+      "D. Enable replication in server.conf"
+    ],
+    "answer": "A",
+    "explanation": "The deployer pushes configuration bundles (excluding local/ settings) to all members of the SHC. This ensures consistent replication of knowledge objects."
+  },
+  {
+    "question": "What does the `splunk offline --enforce-counts` command do?",
+    "choices": [
+      "A. Removes a search peer temporarily",
+      "B. Removes a peer and rebalances buckets to maintain RF/SF",
+      "C. Restarts the peer with clean state",
+      "D. Removes an index from replication"
+    ],
+    "answer": "B",
+    "explanation": "This command safely removes a peer from the cluster while enforcing replication and search factor requirements to avoid data loss."
+  },
+  {
+    "question": "What is a key feature of multisite clustering in Splunk?",
+    "choices": [
+      "A. Enables data forwarding between UFs",
+      "B. Supports RAID configuration for buckets",
+      "C. Allows specifying RF/SF per site",
+      "D. Disables SmartStore compatibility"
+    ],
+    "answer": "C",
+    "explanation": "Multisite clustering allows defining replication and search factors per site, which improves resilience and performance across geographically separated sites."
+  },
+  {
+    "question": "Which configuration file sets up the cluster manager node?",
+    "choices": [
+      "A. server.conf",
+      "B. manager.conf",
+      "C. clustering.conf",
+      "D. indexes.conf"
+    ],
+    "answer": "A",
+    "explanation": "Cluster manager setup is configured in the `[clustering]` stanza of `server.conf`, defining mode=manager and cluster parameters."
+  },
+  {
+    "question": "What action should be taken to reduce hot bucket contention?",
+    "choices": [
+      "A. Increase the number of search heads",
+      "B. Enable SmartStore",
+      "C. Increase maxHotBuckets in indexes.conf",
+      "D. Lower the bucket replication interval"
+    ],
+    "answer": "C",
+    "explanation": "Increasing `maxHotBuckets` allows more hot buckets per index, reducing contention and improving indexing performance in high-throughput environments."
+  },
+  {
+    "question": "Which of the following is required for a search head to participate in a cluster?",
+    "choices": [
+      "A. Knowledge of all peer nodes",
+      "B. License master role",
+      "C. Configuration from the deployer",
+      "D. Cluster label in server.conf"
+    ],
+    "answer": "C",
+    "explanation": "In a Search Head Cluster, configuration from the deployer is required to push consistent app and knowledge object settings to all SHC members."
+  },
+  {
+    "question": "How is `tstats` able to outperform regular `stats` searches?",
+    "choices": [
+      "A. It indexes raw event data",
+      "B. It performs searches directly against compressed buckets",
+      "C. It searches against accelerated data models and indexed fields",
+      "D. It automatically parallelizes queries"
+    ],
+    "answer": "C",
+    "explanation": "`tstats` performs statistical analysis on indexed fields and accelerated data models, significantly improving performance by avoiding raw event parsing."
+  },
+  {
+    "question": "What configuration attribute controls data retention based on storage size in SmartStore?",
+    "choices": [
+      "A. frozenTimePeriodInSecs",
+      "B. maxVolumeDataSizeMB",
+      "C. maxTotalDataSizeMB",
+      "D. remoteRetentionDays"
+    ],
+    "answer": "C",
+    "explanation": "`maxTotalDataSizeMB` defines the maximum disk space an index can consume. When exceeded, older buckets are rolled to frozen or deleted, enabling SmartStore's dynamic retention."
+  },
+  {
+    "question": "Which of the following causes replicated buckets to become searchable?",
+    "choices": [
+      "A. Buckets in frozen state",
+      "B. Buckets with replicated metadata only",
+      "C. Buckets that meet the search factor",
+      "D. Buckets that are compressed"
+    ],
+    "answer": "C",
+    "explanation": "Buckets become searchable when the replication factor and search factor are met. Until then, they remain in pending state and are not searchable."
+  },
+  {
+    "question": "How can Splunk admins ensure alert suppressions are honored across a Search Head Cluster?",
+    "choices": [
+      "A. Enable distributed suppression in web.conf",
+      "B. Use throttle.conf across members",
+      "C. Delegate all suppression to the captain",
+      "D. Replicate suppressions via deployer"
+    ],
+    "answer": "C",
+    "explanation": "The SHC captain centrally manages alert suppressions (throttling) to avoid duplicate alerting across cluster members. It tracks and enforces suppression rules."
+  },
+  {
+    "question": "What is a primary benefit of using the KV Store in Splunk?",
+    "choices": [
+      "A. Stores bucket metadata for SmartStore",
+      "B. Replicates deployment server configurations",
+      "C. Provides a centralized key-value database for apps",
+      "D. Stores license usage metrics"
+    ],
+    "answer": "C",
+    "explanation": "KV Store provides a flexible key-value database built into Splunk, useful for storing persistent data needed by apps, such as lookups or session data."
+  },
+  {
+    "question": "What role does the captain play in a Search Head Cluster during a search?",
+    "choices": [
+      "A. Executes searches on all peers",
+      "B. Balances indexing load across SHC members",
+      "C. Assigns jobs and coordinates result merging",
+      "D. Disables redundant alerts"
+    ],
+    "answer": "C",
+    "explanation": "The captain assigns searches based on load balancing, gathers and merges search results, and replicates knowledge bundles. It's key to distributed search coordination."
+  },
+  {
+    "question": "What must be enabled to accelerate data models for faster dashboard rendering?",
+    "choices": [
+      "A. Summary indexing",
+      "B. Report acceleration",
+      "C. Data model acceleration",
+      "D. Event sampling"
+    ],
+    "answer": "C",
+    "explanation": "Data model acceleration pre-computes and stores results from indexed fields, improving performance for Pivot and dashboards that use those data models."
+  },
+  {
+    "question": "Which type of index is used for internal performance and audit data?",
+    "choices": [
+      "A. _default",
+      "B. _audit",
+      "C. _internal",
+      "D. _metrics"
+    ],
+    "answer": "C",
+    "explanation": "The `_internal` index stores operational data such as component logs, performance metrics, and system events from Splunk itself."
+  },
+  {
+    "question": "Why is `crcSalt` used in inputs.conf for file monitoring?",
+    "choices": [
+      "A. To randomize index selection",
+      "B. To enable file encryption at rest",
+      "C. To avoid duplicate indexing when filenames change",
+      "D. To optimize compression"
+    ],
+    "answer": "C",
+    "explanation": "`crcSalt` adds a unique value (like the full path) to a file's CRC computation, preventing files with the same content but different names from being treated as duplicates."
+  },
+  {
+    "question": "What tool is used to generate a diagnostic archive for support troubleshooting?",
+    "choices": [
+      "A. splunk diag",
+      "B. btool",
+      "C. introspect",
+      "D. crashdump"
+    ],
+    "answer": "A",
+    "explanation": "`splunk diag` generates a tarball with logs, configs, and system information used by Splunk Support to diagnose issues."
+  },
+  {
+    "question": "What does the 'Execution Costs > Components' section in Job Inspector help identify?",
+    "choices": [
+      "A. Raw event matching count",
+      "B. Query acceleration metrics",
+      "C. Time spent in each search processing phase",
+      "D. Alert throttle history"
+    ],
+    "answer": "C",
+    "explanation": "This section breaks down how much time each search processing component consumed, helping to identify bottlenecks."
+  },
+  {
+    "question": "Which indexer clustering component ensures peer consistency and bucket replication?",
+    "choices": [
+      "A. Search Head",
+      "B. License Master",
+      "C. Cluster Manager",
+      "D. Indexer Peer"
+    ],
+    "answer": "C",
+    "explanation": "The Cluster Manager oversees peer membership, bucket replication, and RF/SF compliance in an indexer cluster."
+  },
+  {
+    "question": "When is a hot bucket rolled to warm?",
+    "choices": [
+      "A. On license reset",
+      "B. On file rename",
+      "C. When size/time thresholds are reached or Splunk restarts",
+      "D. Only during indexer upgrades"
+    ],
+    "answer": "C",
+    "explanation": "Hot buckets roll to warm when they reach size limits, age limits, or the indexer restarts. This ensures data is closed and searchable."
+  },
+  {
+    "question": "Which file defines default roles and capabilities for users?",
+    "choices": [
+      "A. roles.conf",
+      "B. authentication.conf",
+      "C. authorize.conf",
+      "D. capabilities.conf"
+    ],
+    "answer": "C",
+    "explanation": "`authorize.conf` is used to define roles, map capabilities to roles, and configure permissions in Splunk Enterprise security."
+  }
+]
