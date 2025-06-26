@@ -1,0 +1,154 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #121212;
+  color: #f1f1f1;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #1e1e1e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+}
+
+.sidebar button {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #2c2c2c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background-color: #444;
+}
+
+.question-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 15px;
+  flex-grow: 1;
+  align-content: flex-start;
+  max-height: calc(100vh - 350px); /* Adjust to fit screen better */
+  overflow-y: auto;
+}
+
+
+.question-nav div {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  line-height: 28px;
+  border-radius: 50%;
+  background-color: #444;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.correct-marker { background-color: green !important; }
+.incorrect-marker { background-color: red !important; }
+.unanswered-marker { background-color: #777 !important; }
+.selected-marker { box-shadow: 0 0 0 2px white inset; }
+
+.flagged-marker::after {
+  content: '⚑';
+  position: absolute;
+  font-size: 12px;
+  color: orange;
+  top: -4px;
+  right: -2px;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.card {
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 850px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#question {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.choices button {
+  display: block;
+  margin: 12px 0;
+  padding: 12px;
+  background-color: #2c2c2c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+
+
+.choices button.correct { background-color: green !important; }
+.choices button.incorrect { background-color: red !important; }
+.choices button.selected { background-color: #0066ff !important; }
+.choices button:hover { background-color: #3a3a3a; }
+
+.explanation {
+  margin-top: 15px;
+  font-style: italic;
+  color: #bbb;
+}
+
+.status-bar {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.nav-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-buttons button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+#timer {
+  font-weight: bold;
+  color: #ffd700;
+  margin-bottom: 10px;
+}
+.answered-marker {
+  background-color: #0066ff !important;
+}
