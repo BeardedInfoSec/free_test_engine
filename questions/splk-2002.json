@@ -1,16 +1,206 @@
 [
     {
-        "question": "Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "question": "[Q1] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q2] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q3] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q4] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
             "A. Increasing the search factor in the cluster.",
-            "B. Increasing the replication factor in the cluster.",
-            "C. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
             "D. Increasing the number of CPUs on the indexers in the cluster."
         ],
         "answer": "A"
     },
     {
-        "question": "Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "question": "[Q5] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster search factor to N-1",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q6] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster search factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q7] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q8] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q9] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q10] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q11] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q12] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q13] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster search factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q14] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q15] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Decreasing the data model acceleration range",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q16] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q17] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Setting the cluster search factor to N-1",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q18] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q19] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q20] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q21] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
             "A. Setting the cluster search factor to N-1",
             "B. Increasing the number of buckets per index",
@@ -20,1028 +210,1293 @@
         "answer": "A"
     },
     {
-        "question": "Search dashboards in the Monitoring Console indicate that the distributed deployment is approaching its capacity. Which of the following options will provide the most search performance improvement?",
+        "question": "[Q22] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. Replace the indexer storage to solid state drives (SSD).",
-            "B. Add more search heads and redistribute users based on the search type.",
-            "C. Look for slow searches and reschedule them to run during an off-peak time.",
-            "D. Add more search peers and make sure forwarders distribute data evenly across all indexers."
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
         ],
         "answer": "D"
     },
     {
-        "question": "A Splunk architect has inherited the Splunk deployment at Buttercup Games and end users are complaining that the events are inconsistently formatted for a web sourcetype. Further investigation reveals that not all web logs flow through the same infrastructure: some of the data goes through heavy forwarders and some of the forwarders are managed by another department. Which of the following items might be the cause for this issue?",
+        "question": "[Q23] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
-            "A. The search head may have different configurations than the indexers",
-            "B. The data inputs are not properly configured across all the forwarders",
-            "C. The indexers may have different configurations than the heavy forwrders",
-            "D. The forwarders managed by the other department are an older version than the rest"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "A customer has installed a 500GB Enterprise license. They also purchased and installed a 300GB, no enforcement license on the same license manager. How much data can the customer ingest before search is locked out?",
-        "choices": [
-            "A. 300GB. After this limit, search is locked out",
-            "B. 500GB. After this limit, search is locked out",
-            "C. 800GB. After this limit, search is locked out",
-            "D. Search is not locked out. Violations are still recorded"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "What does the deploy do in a Search Head Cluster (SHC)? (Select all that apply)",
-        "choices": [
-            "A. Distributes apps to SHC members",
-            "B. Bootstraps a clean Splunk install for a SHC",
-            "C. Distributes non-search related and manual configuration file changes",
-            "D. Distributes runtime knowledge object changes made by users across the SHC"
-        ],
-        "answer": [
-            "A",
-            "C"
-        ]
-    },
-    {
-        "question": "When using the props.conf LINE_BREAKER attribute to delimit multi-line events, the SHOULD_LINEMERGE attribute should be set to what?",
-        "choices": [
-            "A. Auto",
-            "B. None",
-            "C. True",
-            "D. False"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following should be included in a deployment plan?",
-        "choices": [
-            "A. Business continuity and disaster recovery plans",
-            "B. Current logging details and data source inventory",
-            "C. Current and future topology diagrams of the IT environments",
-            "D. A comprehensive list of stakeholders, either direct or indirect"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "A multi-site indexer cluster can be configured using which of the following? (Select all that apply.)",
-        "choices": [
-            "A. Via Splunk Web.",
-            "B. Directly edit SPLUNK_HOME/etc/system/local/server.conf",
-            "C. Run a splunk edit cluster-config command from the CLI.",
-            "D. Directly edit SPLUNK_HOME/etc/system/default/server.conf"
-        ],
-        "answer": [
-            "B",
-            "C"
-        ]
-    },
-    {
-        "question": "Which index-time props.conf attributes impact indexing performance? (Select all that apply.)",
-        "choices": [
-            "A. REPORT",
-            "B. LINE_BREAKER",
-            "C. ANNOTATE_PUNCT",
-            "D. SHOULD_LINEMERGE"
-        ],
-        "answer": [
-            "B",
-            "C",
-            "D"
-        ]
-    },
-    {
-        "question": "Which of the following are client filters available in serverclass.conf? (Select all that apply.)",
-        "choices": [
-            "A. DNS name",
-            "B. IP address",
-            "C. Splunk server role",
-            "D. Platform (machine type)"
-        ],
-        "answer": [
-            "A",
-            "B",
-            "D"
-        ]
-    },
-    {
-        "question": "What log file would you search to verify if you suspect there is a problem interpreting a regular expression in a monitor stanza?",
-        "choices": [
-            "A. btool.log",
-            "B. metrics.log",
-            "C. splunkd.log",
-            "D. tailing_processor.log"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which Splunk tool offers a health check for administrators to evaluate the health of their Splunk deployment?",
-        "choices": [
-            "A. btool",
-            "B. DiagGen",
-            "C. SPL Clinic",
-            "D. Monitoring Console"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "In a four site indexer cluster, which configuration stores two searchable copies at the origin site, one searchable copy at site2, and a total of four searchable copies?",
-        "choices": [
-            "A. site_search_factor = origin:2, site1:2, total:4",
-            "B. site_search_factor = origin:2, site2:1, total:4",
-            "C. site_replciation_factor = origin:2 site1:2, total:4",
-            "D. site_replciation_factor = origin:2, site2:1, total:4"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which Splunk Enterprise offering has its own license?",
-        "choices": [
-            "A. Splunk Cloud Forwarder",
-            "B. Splunk Heavy Forwarder",
-            "C. Splunk Universal Forwarder",
-            "D. Splunk Forwarder Management"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which component in the splunkd.log will log information related to bad event breaking?",
-        "choices": [
-            "A. Audittrail",
-            "B. EventBreaking",
-            "C. IndexingPipeline",
-            "D. AggregatorMiningProcessor"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which Splunk server role regulates the functioning of indexer cluster?",
-        "choices": [
-            "A. Indexer",
-            "B. Deployer",
-            "C. Manager Node",
-            "D. Monitoring Console"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "When adding or rejoining a member to a search head cluster, the following error is displayed: \"Error pulling configurations from the search head cluster captain; consider performing a destructive configuration resync on this search head cluster member\". What corrective action should be taken?",
-        "choices": [
-            "A. Restart the search head",
-            "B. Run the splunk apply shcluster-bundle command from the deployer",
-            "C. Run the clean raft command on all members of the search head cluster",
-            "D. Run the splunk resync shcluster-replicated-config command on this member"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following commands is used to clear the KV store?",
-        "choices": [
-            "A. splunk clean kvstore",
-            "B. splunk clear kvstore",
-            "C. splunk delete kvstore",
-            "D. splunk reinitialize kvstore"
+            "A. Setting the cluster search factor to N-1",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Decreasing the data model acceleration range"
         ],
         "answer": "A"
     },
     {
-        "question": "Indexing is slow and real-time search results are delayed in a Splunk environment with two indexers and one search head. There is ample CPU and memory available on the indexers. Which of the following is most likely to improve indexing performance?",
+        "question": "[Q24] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
-            "A. Increase the maximum number of hot buckets in indexes.conf",
-            "B. Increase the number of parallel ingestion pipelines in server.conf",
-            "C. Decrease the maximum size of the search pipelines in limits.conf",
-            "D. Decrease the maximum concurrent scheduled searches in limits.conf"
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Decreasing the data model acceleration range"
         ],
         "answer": "B"
     },
     {
-        "question": "The guidance Splunk gives for estimating size on for syslog data is 50% of original data size. How does this divide between files in the index?",
+        "question": "[Q25] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. rawdata is: 10%, tsidx is: 40%",
-            "B. rawdata is: 15%, tsidx is: 35%",
-            "C. rawdata is: 35%, tsidx is: 15%",
-            "D. rawdata is: 40%, tsidx is: 10%"
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
         ],
         "answer": "B"
     },
     {
-        "question": "A three-node search head cluster is skipping a large number of searches across time. What should be done to increase scheduled search capacity on the search head cluster?",
+        "question": "[Q26] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. Create a job server on the cluster.",
-            "B. Add another search head to the cluster.",
-            "C. server.conf captain_is_adhoc_searchhead = true.",
-            "D. Change limits.conf value for max_searches_per_cpu to a higher value."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "The frequency in which a deployment client contacts the deployment server is controlled by what?",
-        "choices": [
-            "A. polling_interval attribute in outputs.conf",
-            "B. phoneHomeIntervalInSecs attribute in outputs.conf",
-            "C. polling_interval attribute in deploymentclient.conf",
-            "D. phoneHomeIntervalInSecs attribute in deploymentclient.conf"
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the search factor in the cluster."
         ],
         "answer": "D"
     },
     {
-        "question": "To activate replication for an index in an indexer cluster, what attribute must be configured in indexes.conf on all peer nodes?",
+        "question": "[Q27] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. repFactor = 0",
-            "B. replicate = 0",
-            "C. repFactor = auto",
-            "D. replicate = auto"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following clarification steps should be taken if apps are not appearing on a deployment client? (Select all that apply.)",
-        "choices": [
-            "A. Check serverclass.conf of the deployment server",
-            "B. Check deploymentclient.conf of the deployment client",
-            "C. Check the content of SPLUNK_HOME/etc/apps of the deployment server",
-            "D. Search for relevant events in splunkd.log of the deployment server"
-        ],
-        "answer": [
-            "A",
-            "B",
-            "D"
-        ]
-    },
-    {
-        "question": "Which of the following security options must be explicitly configured? (i.e. which options are not enabled by default)?",
-        "choices": [
-            "A. Data encryption between Splunk Web and splunkd",
-            "B. Certificate authentication between forwarders and indexers",
-            "C. Certificate authentication between Splunk Web and search head",
-            "D. Data encryption for distributed search between search heads and indexers"
-        ],
-        "answer": [
-            "B",
-            "C"
-        ]
-    },
-    {
-        "question": "Which of the following artifacts are included in a Splunk diag file? (Select all that apply.)",
-        "choices": [
-            "A. OS settings",
-            "B. Internal logs",
-            "C. Customer data",
-            "D. Configuration files"
-        ],
-        "answer": [
-            "A",
-            "B",
-            "D"
-        ]
-    },
-    {
-        "question": "Which command will permanently decommission a peer node operating in an indexer cluster?",
-        "choices": [
-            "A. splunk stop -f",
-            "B. splunk offline -f",
-            "C. splunk offline --enforce-counts",
-            "D. splunk decommission --enforce counts"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which CLI command converts a Splunk instance to a license peer?",
-        "choices": [
-            "A. splunk add licenses",
-            "B. splunk list licenser-peers",
-            "C. splunk edit licenser-localpeer",
-            "D. splunk list licenser-localpeer"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Splunk Enterprise platform instrumentation refers to data that the Splunk Enterprise deployment logs in the _introspection index. Which of the following logs are included in this index? (Select all that apply.)",
-        "choices": [
-            "A. audit.log",
-            "B. metrics.log",
-            "C. disk_objects.log",
-            "D. resource_usage.log"
-        ],
-        "answer": [
-            "C",
-            "D"
-        ]
-    },
-    {
-        "question": "Which of the following can a Splunk diag contain?",
-        "choices": [
-            "A. Search history, Splunk users and their roles, running processes, indexed data",
-            "B. Server specs, current open connections, internal Splunk log files, index listings",
-            "C. KV store listings, internal Splunk log files, search peer bundles listings, indexed data",
-            "D. Splunk platform configuration details, Splunk users and their roles, current open connections, index listings"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following are true statements about Splunk indexer clustering?",
-        "choices": [
-            "A. All peer nodes must run exactly the same Splunk version",
-            "B. The manager node must run the same or a later Splunk version than search heads",
-            "C. The peer nodes must run the same or a later Splunk version than the manager node",
-            "D. The search head must run the same or a later Splunk version than the peer nodes"
-        ],
-        "answer": [
-            "A",
-            "B",
-            "D"
-        ]
-    },
-    {
-        "question": "A customer plans to ingest 600 GB of data per day into Splunk. They will have six concurrent users, and they also want high data availability and high search performance. The customer is concerned about cost and wants to spend the minimum amount on the hardware for Splunk. How many indexers are recommended for this deployment?",
-        "choices": [
-            "A. Two indexers not in a cluster, assuming users run many long searches",
-            "B. Three indexers not in a cluster, assuming a long data retention period",
-            "C. Two indexers cluster, assuming high data availability is the greatest priority",
-            "D. Two indexers clustered, assuming a high volume of saved/scheduled searches"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "To reduce the captain's work load in a search head cluster, what setting will prevent scheduled searches from running on the captain?",
-        "choices": [
-            "A. adhoc_searchhead = true (on all members)",
-            "B. adhoc_searchhead = true (on the current captain)",
-            "C. captain_is_adhoc_searchhead = true (on all members)",
-            "D. captain_is_adhoc_searchhead = true (on the current captain)"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "At which default interval does metrics.log generate a periodic report regarding license utilization?",
-        "choices": [
-            "A. 10 seconds",
-            "B. 30 seconds",
-            "C. 60 seconds",
-            "D. 300 seconds"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following is a good practice for a search head cluster deployer?",
-        "choices": [
-            "A. The deployer only distributes configurations to search head cluster members when they \"phone home\"",
-            "B. The deployer must be used to distribute non-replicable configurations to search head cluster members",
-            "C. The deployer must distribute configurations to search head cluster members to be valid configurations",
-            "D. The deployer only distributes configurations to search head cluster member with splunk apply shcluster-bundle"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "A new Splunk customer is using syslog to collect data from their network devices on port 514. What is the best practice for ingesting this data into Splunk?",
-        "choices": [
-            "A. Configure syslog to send the data to multiple Splunk indexers.",
-            "B. Use a Splunk indexer to collect a network input on port 514 directly.",
-            "C. Use a Splunk forwarder to collect the input on port 514 and forward the data.",
-            "D. Configure syslog to write logs and use a Splunk forwarder to collect the logs."
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
         ],
         "answer": "D"
     },
     {
-        "question": "Which Splunk internal index contains license-related events?",
+        "question": "[Q28] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
-            "A. _audit",
-            "B. _license",
-            "C. _internal",
-            "D. _introspection"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which of the following statements describe a Search Head Cluster (SHC) captain? (Select all that apply.)",
-        "choices": [
-            "A. Is the job scheduler for the entire SHC",
-            "B. Manages alert action suppressions (throttling)",
-            "C. Synchronizes the member list with the KV store primary",
-            "D. Replicates the SHC's knowledge bundle to the search peers"
-        ],
-        "answer": [
-            "A",
-            "B",
-            "C",
-            "D"
-        ]
-    },
-    {
-        "question": "Before users can use a KV store, an admin must create a collection. Where is a collection is defined?",
-        "choices": [
-            "A. kvstore.conf",
-            "B. collection.conf",
-            "C. collections.conf",
-            "D. kvcollections.conf"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which search will show all deployment client messages from the client (UF)?",
-        "choices": [
-            "A. index=_audit component=DC* host=<ds> | stats count by message",
-            "B. index=_audit component=DC* host=<uf> | stats count by message",
-            "C. index=_internal component=DC* host=<uf> | stats count by message",
-            "D. index=_internal component=DS* host=<ds> | stats count by message"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which search head cluster component is responsible for pushing knowledge bundles to search peers, replicating configuration changes to search head cluster members, and scheduling jobs across the search head cluster?",
-        "choices": [
-            "A. Manager",
-            "B. Captain",
-            "C. Deployer",
-            "D. Deployment server"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Configurations from the deployer are merged into which location on the search head cluster member?",
-        "choices": [
-            "A. SPLUNK_HOME/etc/system/local",
-            "B. SPLUNK_HOME/etc/apps/APP_HOME/local",
-            "C. SPLUNK_HOME/etc/apps/search/default",
-            "D. SPLUNK_HOME/etc/apps/APP_HOME/default"
+            "A. Setting the cluster replication factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster search factor to N-1"
         ],
         "answer": "D"
     },
     {
-        "question": "When Splunk indexes data in a non clustered environment, what kind of files does it create by default?",
+        "question": "[Q29] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
-            "A. Index and .tsidx files.",
-            "B. Rawdata and index files.",
-            "C. Compressed and .tsidx files.",
-            "D. Compressed and meta data files."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "How does IT Service Intelligence (ITSI) impact the planning of a Splunk deployment?",
-        "choices": [
-            "A. ITSI requires a dedicated deployment server",
-            "B. The amount of users using ITSI will not impact performance",
-            "C. ITSI in a Splunk deployment does not require additional hardware resources",
-            "D. Depending on the Key Performance Indicators that are being tracked, additional infrastructure may be needed"
+            "A. Setting the cluster replication factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster search factor to N-1"
         ],
         "answer": "D"
     },
     {
-        "question": "The KV store formed its own cluster within a SHC. What is the maximum number of SHC members KV store will forms?",
+        "question": "[Q30] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. 25",
-            "B. 50",
-            "C. 100",
-            "D. Unlimited"
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "In search head clustering, which of the following methods can you use to transfer captaincy to a different member? (Select all that apply.)",
-        "choices": [
-            "A. Use the Monitoring Console",
-            "B. Use the Search Head Clustering settings menu from Splunk Web on any member",
-            "C. Run the splunk transfer shcluster-captain command from the current captain",
-            "D. Run the splunk transfer shcluster-captain command from the member you like like to become the captain"
-        ],
-        "answer": [
-            "C",
-            "D"
-        ]
-    },
-    {
-        "question": "Which command is used for thawing the archive bucket?",
-        "choices": [
-            "A. Splunk collect",
-            "B. Splunk convert",
-            "C. Splunk rebuild",
-            "D. Splunk dbinspect"
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the replication factor in the cluster."
         ],
         "answer": "C"
     },
     {
-        "question": "A Splunk instance has the following settings in SPLUNK_HOME/etc/system/local/server.conf:",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "[clustering]",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "mode = manager",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "replication_factor = 2",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "pass4SymmKey = password123",
-        "choices": [],
-        "answer": null
-    },
-    {
-        "question": "Which of the following statements describe this Splunk instance? (Select all that apply.)",
+        "question": "[Q31] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
-            "A. This is a multi-site cluster",
-            "B. This cluster's search factor is 2",
-            "C. This Splunk instance needs to be restarted",
-            "D. This instance is missing the manager_uri attribute"
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Setting the cluster search factor to N-1",
+            "D. Increasing the number of buckets per index"
         ],
-        "answer": [
-            "B",
-            "C"
-        ]
+        "answer": "C"
     },
     {
-        "question": "Which of the following describe migration from single-site to multisite index replication?",
+        "question": "[Q32] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. A manager node is required at each site",
-            "B. Multisite policies apply to new data only",
-            "C. Single-site buckets instantly receive the multisite policies",
-            "D. Multisite total values should not exceed any single-site factors"
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q33] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
         ],
         "answer": "B"
     },
     {
-        "question": "What does setting site=site0 on all Search Head Cluster members do in a multi-site indexer cluster?",
+        "question": "[Q34] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
-            "A. Disables search site affinity",
-            "B. Sets all members to dynamic captaincy",
-            "C. Enables multisite search artifact replication",
-            "D. Enables automatic search site affinity discovery"
+            "A. Setting the cluster search factor to N-1",
+            "B. Decreasing the data model acceleration range",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Increasing the number of buckets per index"
         ],
         "answer": "A"
     },
     {
-        "question": "Which of the following is a way to exclude search artifacts when creating a diag?",
+        "question": "[Q35] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. SPLUNK_HOME/bin/splunk diag --exclude",
-            "B. SPLUNK_HOME/bin/splunk diag --debug --refresh",
-            "C. SPLUNK_HOME/bin/splunk diag --disables=dispatch",
-            "D. SPLUNK_HOME/bin/splunk diag --filter-searchstrings"
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
         ],
         "answer": "C"
     },
     {
-        "question": "Which of the following statements describe licensing in a clustered Splunk deployment? (Select all that apply.)",
+        "question": "[Q36] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. Free licenses do not support clustering",
-            "B. Replicated data does not count against licensing",
-            "C. Each cluster member requires its own clustering license",
-            "D. Cluster members must share the same license pool and license manager"
-        ],
-        "answer": [
-            "A",
-            "B",
-            "D"
-        ]
-    },
-    {
-        "question": "When planning a search head cluster, which of the following is true?",
-        "choices": [
-            "A. All search heads must use the same operating system",
-            "B. All search heads must be members of the cluster (no standalone search heads)",
-            "C. The search head captain must be assigned to the largest search head in the cluster",
-            "D. All indexers must belong to the underlying indexer cluster (no standalone indexers)"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "In which phase of the Splunk Enterprise data pipeline are indexed extraction configurations processed?",
-        "choices": [
-            "A. Input",
-            "B. Search",
-            "C. Parsing",
-            "D. Indexing"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Which server.conf attribute should be added to the manager node's server.conf when decommissioning a site in an indexer cluster?",
-        "choices": [
-            "A. site_mappings",
-            "B. available_sites",
-            "C. site_search_factor",
-            "D. site_replication_factor"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which tool(s) can be leveraged to diagnose connection problems between an indexer and forwarder? (Select all that apply.)",
-        "choices": [
-            "A. telnet",
-            "B. tcpdump",
-            "C. splunk btool",
-            "D. splunk btprobe"
-        ],
-        "answer": [
-            "A",
-            "B"
-        ]
-    },
-    {
-        "question": "A search head has successfully joined a single site indexer cluster. Which command is used to configure the same search head to join another indexer cluster?",
-        "choices": [
-            "A. splunk add cluster-config",
-            "B. splunk add cluster-manager",
-            "C. splunk edit cluster-config",
-            "D. splunk edit cluster-manager"
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
         ],
         "answer": "B"
     },
     {
-        "question": "To improve Splunk performance, parallelIngestionPipelines setting can be adjsuted on which of the following components in the Splunk architecture?",
+        "question": "[Q37] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. Indexers",
-            "B. Forwarders",
-            "C. Search head",
-            "D. Cluster manager"
-        ],
-        "answer": [
-            "A",
-            "B"
-        ]
-    },
-    {
-        "question": "When adding or decommissioning a member from a Search Head Cluster (SHC), what is the proper order of operations?",
-        "choices": [
-            "A. 1. Delete Splunk Enterprise, if it exists. 2. Install and initialize the instance. 3. Join the SHC",
-            "B. 1. Install and initialize the instance. 2. Delete Splunk Enterprise, if it exists. 3. Join the SHC",
-            "C. 1. Initialize cluster rebalance operation. 2. Remove manager node from cluster. 3. Trigger replication",
-            "D. 1. Trigger replication 2. Remove manager node from cluster. 3. Initialize cluster rebalance operation"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "When troubleshooting monitor inputs, which command checks the status of the tailed files?",
-        "choices": [
-            "A. splunk cmd btool inputs list | tail",
-            "B. splunk cmd btool check inputs layer",
-            "C. curl https://serverhost:8089/services/admin/inputstatus/TailingProcessor:FileStatus",
-            "D. curl https://serverhost:8089/services/admin/inputstatus/TailingProcessor:Tailstatus"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "When should multiple search pipelines be enabled?",
-        "choices": [
-            "A. Only is disk IOPS is at 800 or better",
-            "B. Only if there are fewer than twelve concurrent users",
-            "C. Only if running Splunk Enterprise version 6.6 or later",
-            "D. Only if CPU and memory resources are significantly under-utilized"
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the search factor in the cluster."
         ],
         "answer": "D"
     },
     {
-        "question": "Of the following types of files within an index bucket, which file type may consume the most disk?",
+        "question": "[Q38] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
-            "A. Rawdata",
-            "B. Bloom filter",
-            "C. Metadata (.data)",
-            "D. Inverted index (.tsidx)"
+            "A. Increasing the number of buckets per index",
+            "B. Decreasing the data model acceleration range",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Setting the cluster search factor to N-1"
         ],
         "answer": "D"
     },
     {
-        "question": "When converting from a single-site to a multi-site cluster, what happens to existing single-site clustered buckets?",
+        "question": "[Q39] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
         "choices": [
-            "A. They will continue to replicate within the origin site and age out based on existing policies",
-            "B. They will maintain replication as required according to the single-site policies, but never age out",
-            "C. They will be replicated across all peers in the multi-site cluster and ago out based on existing policies",
-            "D. They will stop replicating within the single-site and remain on the indexer they reside on an age out according the existing policies"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following should be done when installing Enterprise Security on a Search Head Cluster? (Select all that apply.)",
-        "choices": [
-            "A. Install Enterprise Security on the deployer",
-            "B. Install Enterprise Security on a staging instance",
-            "C. Copy the Enterprise Security configurations to the deployer",
-            "D. Use the deployer to deploy Enterprise Security to the cluster members"
-        ],
-        "answer": [
-            "A",
-            "D"
-        ]
-    },
-    {
-        "question": "Which of the following is an indexer clustering requirement?",
-        "choices": [
-            "A. Must use shared storage?",
-            "B. Must reside on a dedicated rack",
-            "C. Must have at least three members",
-            "D. Must share the same license pool"
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Setting the cluster search factor to N-1"
         ],
         "answer": "D"
     },
     {
-        "question": "What is the algorithm used to determine captaincy in a Splunk search head cluster?",
+        "question": "[Q40] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. Raft distributed consensus",
-            "B. Rapt distributed consesnsus",
-            "C. Rift distributed consensus",
-            "D. Round-robin distribution consensus"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "Which of the following statements about integrating with third-party systems is true? (Select all that apply.)",
-        "choices": [
-            "A. A Hadoop application can search data in Splunk",
-            "B. Splunk can search data in the Hadoop File System (HDFS)",
-            "C. You can use Splunk alerts to provision actions on a third-party system",
-            "D. You can forward data from Splunk forwarder to a third-party system without indexing it first"
-        ],
-        "answer": [
-            "B",
-            "C",
-            "D"
-        ]
-    },
-    {
-        "question": "As a best practice, where should the internal licensing logs be stored?",
-        "choices": [
-            "A. Indexing layer",
-            "B. License server",
-            "C. Deployment layer",
-            "D. Search head layer"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "How does the average run time of all searches related to the available CPU cores on the indexers?",
-        "choices": [
-            "A. Average run time is independent of the number of CPU cores on the indexers",
-            "B. Average run time decreases as the number of CPU cores in the indexers decreases",
-            "C. Average run time increases as the number of CPU cores on the indexers decreases",
-            "D. Average run time increases as the number of CPU copes on the indexers increases"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "Consider a use case involving firewall data. There is no Splunk-supported Technical Add-On, but the vendor has built one. What are the items that must be evaluated before installing the add-on? (Select all that apply.)",
-        "choices": [
-            "A. Identify number of scheduled or real-time searches",
-            "B. Validate if this Technical Add-On enables event data for a data model",
-            "C. Identify the maximum number of forwarders Technical Add-On can support",
-            "D. Verify if Technical Add-On needs to be installed onto both a search head or indexer"
-        ],
-        "answer": [
-            "A",
-            "B",
-            "D"
-        ]
-    },
-    {
-        "question": "When configuring a Splunk indexer cluster, what are the default values for replication and search factor?",
-        "choices": [
-            "A. replication_factor = 2 search_factor = 2",
-            "B. replication_factor = 2 search_factor = 3",
-            "C. replciation_factor = 3 search_factor = 2",
-            "D. replciation_factor = 3 search_factor = 3"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "A Splunk user successfully extracted an IP address into a field called src_ip. Their colleague cannot see that field in their search results with events known to have src_ip. Which of the following may explain the problem? (Select all that apply.)",
-        "choices": [
-            "A. The field was extracted as a private knowledge object",
-            "B. The events are tagged as communicate, but are missing the network tag",
-            "C. The Typing Queue, which does regular expressions replacements, is blocked",
-            "D. The colleague did not explicitly use the field in the search and the search was set to Fast Mode"
-        ],
-        "answer": [
-            "A",
-            "D"
-        ]
-    },
-    {
-        "question": "What is the default log size for Splunk internal logs?",
-        "choices": [
-            "A. 10MB",
-            "B. 20MB",
-            "C. 25MB",
-            "D. 30MB"
-        ],
-        "answer": "C"
-    },
-    {
-        "question": "What is a Splunk Job? (Select all that apply.)",
-        "choices": [
-            "A. A user-defined Splunk capability",
-            "B. Searches that are subjected to some usage quota",
-            "C. A search process kicked off via a report or an alert",
-            "D. A child OS process manifested from the splunkd process"
-        ],
-        "answer": [
-            "C",
-            "D"
-        ]
-    },
-    {
-        "question": "When Splunk is installed, where are the internal indexes stored by default?",
-        "choices": [
-            "A. SPLUNK_HOME/bin",
-            "B. SPLUNK_HOME/var/lib",
-            "C. SPLUNK_HOME/var/run",
-            "D. SPLUNK_HOME/etc/system/default"
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
         ],
         "answer": "B"
     },
     {
-        "question": "Which of the following options can improve reliability of syslog delivery to Splunk? (Select all that apply.)",
+        "question": "[Q41] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. Use TCP syslog",
-            "B. Configure UDP inputs on each Splunk indexer to receive data directly",
-            "C. Use a network load balancer to direct syslog traffic to active backend syslog lsiteners",
-            "D. Use one or more syslog servers to persist data with a Universal Forwarder to send the data to Splunk indexers"
-        ],
-        "answer": [
-            "A",
-            "D"
-        ]
-    },
-    {
-        "question": "What is the logical first step when starting a deployment plan?",
-        "choices": [
-            "A. Inventory the currently deployed logging infrastructure",
-            "B. Determine what apps and use cases will be implemented",
-            "C. Gather statistics on the expected adoption of Splunk for sizing",
-            "D. Collect the initial requirements for the deployment from all stakeholders"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following tasks should the architect perform when building a deployment plan? (Select all that apply.)",
-        "choices": [
-            "A. Use case checklist.",
-            "B. Install Splunk apps.",
-            "C. Inventory data sources.",
-            "D. Review network topology."
-        ],
-        "answer": [
-            "C",
-            "D"
-        ]
-    },
-    {
-        "question": "A data model can consist of what three types of datasets?",
-        "choices": [
-            "A. Pivot, searches, and events.",
-            "B. Pivot, events, and transactions.",
-            "C. Searches, transactions, and pivot.",
-            "D. Events, searches, and transactions."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "When is a GET workflow action needed?",
-        "choices": [
-            "A. To send field values to an external resource.",
-            "B. To retrieve information from an external resource.",
-            "C. To use field values to perform a secondary search.",
-            "D. To define how events flow from forwarders to indexes."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "Which of the following statements describe GET workflow actions?",
-        "choices": [
-            "A. GET workflow actions must be configured with POST arguments.",
-            "B. Configuration of GET workflow actions includes choosing a sourcetype.",
-            "C. Label names for GET workflow actions must include a field name surrounded by dollar signs.",
-            "D. GET workflow actions can be configured to open the URI link in the current window or in a new window."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following is true regarding Splunk Enterprise performance? (Select all that apply.)",
-        "choices": [
-            "A. Adding search peers increases the maximum size of search results",
-            "B. Adding RAM to an existing search head provides additional search capacity",
-            "C. Adding search peers increases the search throughput as search load increases",
-            "D. Adding search heads provides additional CPU cores to run more concurrent searches"
-        ],
-        "answer": [
-            "C",
-            "D"
-        ]
-    },
-    {
-        "question": "In an existing Splunk environment, the new index buckets that are created each day are about half the size of the incoming data. Within each bucket, about 30% of the space is used for rawdata and about 70% for index files.What additional information is needed to calculate the daily disk consumption, per indexer, if indexer clustering is implemented?",
-        "choices": [
-            "A. Total daily indexing volume, number of peer nodes, and number of accelerated searches.",
-            "B. Total daily indexing volume, number of peer nodes, replication factor, and search factor.",
-            "C. Total daily indexing volume, replication factor, search factor, and number of search heads.",
-            "D. Replication factor, search factor, number of accelerated searches, and total disk size across cluster."
-        ],
-        "answer": "B"
-    },
-    {
-        "question": "What is the minimum reference server specification for a Splunk indexer?",
-        "choices": [
-            "A. 12 CPU cores, 12GB RAM, 800 IOPS",
-            "B. 16 CPU cores, 16GB RAM, 800 IOPS",
-            "C. 24 CPU cores, 16GB RAM, 1200 IOPS",
-            "D. 28 CPU cores, 32GB RAM, 1200 IOPS"
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "To optimize the distribution of primary buckets; when does primary rebalancing automatically occur? (Select all that apply.)",
-        "choices": [
-            "A. Rolling restart completes.",
-            "B. Master node rejoins the cluster.",
-            "C. Captain joins or rejoins cluster.",
-            "D. A peer node joins or rejoins the cluster."
-        ],
-        "answer": [
-            "A",
-            "B",
-            "D"
-        ]
-    },
-    {
-        "question": "In the deployment planning process, when should a person identify who gets to see network data?",
-        "choices": [
-            "A. Deployment schedule",
-            "B. Topology diagramming",
-            "C. Data source inventory",
-            "D. Data policy definition"
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Which of the following is a best practice to maximize indexing performance?",
-        "choices": [
-            "A. Use automatic sourcetyping.",
-            "B. Use the Splunk default settings.",
-            "C. Not use pre-trained source types.",
-            "D. Minimize configuration generality."
-        ],
-        "answer": "D"
-    },
-    {
-        "question": "Splunk configuration parameter settings can differ between multiple .conf files of the same name contained within different apps. Which of the following directories has the highest precedence?",
-        "choices": [
-            "A. System local directory.",
-            "B. System default directory.",
-            "C. App local directories, in ASCII order.",
-            "D. App default directories, in ASCII order."
-        ],
-        "answer": "A"
-    },
-    {
-        "question": "In a distributed environment, knowledge object bundles are replicated from the search head to which location on the search peer(s)?",
-        "choices": [
-            "A. SPLUNK_HOME/var/lib/searchpeers",
-            "B. SPLUNK_HOME/var/log/searchpeers",
-            "C. SPLUNK_HOME/var/run/searchpeers",
-            "D. SPLUNK_HOME/var/spool/searchpeers"
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the replication factor in the cluster."
         ],
         "answer": "C"
     },
     {
-        "question": "Which two sections can be expanded using the Search Job Inspector?",
+        "question": "[Q42] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. Execution costs.",
-            "B. Saved search history.",
-            "C. Search job properties.",
-            "D. Optimization suggestions."
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
         ],
-        "answer": [
-            "A",
-            "C"
-        ]
+        "answer": "A"
     },
     {
-        "question": "Which of the following statements describe search head clustering? (Select all that apply.)",
+        "question": "[Q43] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. A deployer is required.",
-            "B. At least three search heads are needed.",
-            "C. Search heads must meet the high-performance reference server requirements.",
-            "D. The deployer must have sufficient CPU and network resources to process service requests and push configurations."
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
         ],
-        "answer": [
-            "A",
-            "B",
-            "D"
-        ]
+        "answer": "D"
     },
     {
-        "question": "Because Splunk indexing is read/write intensive, it is important to select the appropriate disk storage solution for each deployment. Which of the following statements is accurate about disk storage?",
+        "question": "[Q44] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
         "choices": [
-            "A. High performance SAN should never be used.",
-            "B. Enable NFS for storing hot and warm buckets.",
-            "C. The recommended RAID setup is RAID 10 (1 + 0).",
-            "D. Virtualized environments are usually preferred over bare metal for Splunk indexers."
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q45] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q46] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q47] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q48] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q49] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
         ],
         "answer": "C"
+    },
+    {
+        "question": "[Q50] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q51] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q52] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q53] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q54] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q55] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q56] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Setting the cluster search factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q57] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster search factor to N-1",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q58] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q59] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q60] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q61] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q62] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q63] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster search factor to N-1",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q64] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q65] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q66] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q67] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q68] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q69] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q70] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q71] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q72] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Decreasing the data model acceleration range",
+            "C. Increasing the number of buckets per index",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q73] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q74] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q75] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q76] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q77] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q78] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q79] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q80] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Decreasing the data model acceleration range",
+            "C. Increasing the number of buckets per index",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q81] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q82] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q83] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q84] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q85] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q86] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q87] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q88] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q89] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q90] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Setting the cluster search factor to N-1",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q91] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q92] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q93] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q94] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q95] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q96] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q97] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Decreasing the data model acceleration range",
+            "C. Increasing the number of buckets per index",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q98] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q99] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q100] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q101] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q102] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Setting the cluster search factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q103] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q104] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q105] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q106] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q107] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q108] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q109] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Decreasing the data model acceleration range",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q110] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q111] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Decreasing the data model acceleration range",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q112] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q113] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Decreasing the data model acceleration range",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q114] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q115] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q116] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q117] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q118] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q119] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the search factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q120] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q121] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q122] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Decreasing the data model acceleration range",
+            "C. Increasing the number of buckets per index",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q123] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q124] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Increasing the number of buckets per index",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q125] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q126] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q127] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q128] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q129] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q130] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q131] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q132] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q133] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q134] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q135] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Decreasing the data model acceleration range",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Setting the cluster search factor to N-1"
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q136] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q137] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q138] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster search factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q139] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
+    },
+    {
+        "question": "[Q140] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q141] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of CPUs on the indexers in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q142] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q143] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q144] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster replication factor to N-1",
+            "C. Setting the cluster search factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q145] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Decreasing the data model acceleration range",
+            "B. Setting the cluster search factor to N-1",
+            "C. Setting the cluster replication factor to N-1",
+            "D. Increasing the number of buckets per index"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q146] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Increasing the number of buckets per index",
+            "B. Setting the cluster search factor to N-1",
+            "C. Decreasing the data model acceleration range",
+            "D. Setting the cluster replication factor to N-1"
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q147] Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?",
+        "choices": [
+            "A. Setting the cluster replication factor to N-1",
+            "B. Increasing the number of buckets per index",
+            "C. Setting the cluster search factor to N-1",
+            "D. Decreasing the data model acceleration range"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "[Q148] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the replication factor in the cluster.",
+            "B. Increasing the search factor in the cluster.",
+            "C. Increasing the number of search heads in the cluster.",
+            "D. Increasing the number of CPUs on the indexers in the cluster."
+        ],
+        "answer": "B"
+    },
+    {
+        "question": "[Q149] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the replication factor in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the number of search heads in the cluster."
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "[Q150] Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?",
+        "choices": [
+            "A. Increasing the number of search heads in the cluster.",
+            "B. Increasing the number of CPUs on the indexers in the cluster.",
+            "C. Increasing the replication factor in the cluster.",
+            "D. Increasing the search factor in the cluster."
+        ],
+        "answer": "D"
     }
 ]

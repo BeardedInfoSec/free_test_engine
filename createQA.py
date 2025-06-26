@@ -1,64 +1,55 @@
 import json
 import os
+import re
 
 def txt_to_json(txt_file, json_file):
     result = []
     question = None
     choices = []
     answer = None
-    choice_stage = True
 
     with open(txt_file, 'r') as file:
+        block = []
         for line in file:
-            line = line.strip()
+            if line.strip() == "":
+                if block:
+                    result.append(parse_block(block))
+                    block = []
+            else:
+                block.append(line.strip())
+        if block:
+            result.append(parse_block(block))  # Last block
 
-            # If line is not a choice or answer, it's a new question
-            if not line.startswith(("A.", "B.", "C.", "D.")):
-                if question:
-                    # Append the previous question before starting a new one
-                    result.append({
-                        "question": question,
-                        "choices": choices,
-                        "answer": answer
-                    })
-                # Start a new question
-                question = line
-                choices = []
-                answer = None
-                choice_stage = True  # Set flag to start collecting choices
-
-            # If we are in the choices section and the line is a choice
-            elif line.startswith(("A.", "B.", "C.", "D.")) and choice_stage:
-                if len(choices) < 4:
-                    choices.append(line)
-                else:
-                    # Once 4 choices have been collected, the next "A." line should be an answer
-                    answer = line.split(".")[0]
-                    choice_stage = False  # Stop collecting choices, start collecting answers
-
-            # Handle multiple answers
-            elif not choice_stage:
-                if answer and isinstance(answer, str):
-                    answer = [answer]  # Convert to list if there's a second answer
-                if answer:
-                    answer.append(line.split(".")[0])
-
-        # Append the last question
-        if question:
-            result.append({
-                "question": question,
-                "choices": choices,
-                "answer": answer
-            })
-
-    # Ensure the folder "questions" exists
+    # Ensure the folder exists
     os.makedirs(os.path.dirname(json_file), exist_ok=True)
 
-    # Write the result to a JSON file
+    # Write JSON
     with open(json_file, 'w') as out_file:
         json.dump(result, out_file, indent=4)
+    print(f"Saved {len(result)} questions to {json_file}")
 
-# Call the function
-output = input('Enter the name of the output file without the extension: ')
-output_path = os.path.join('questions', output + '.json')
-txt_to_json('qa_badformat.txt', output_path)
+def parse_block(lines):
+    question_lines = []
+    choices = []
+    answer = None
+
+    for line in lines:
+        if re.match(r"^[A-Z]\.\s", line):  # Choice like "A. Something"
+            choices.append(line)
+        elif re.fullmatch(r"[A-Z](?:[, ]?[A-Z])*|True|False", line):  # Answer line
+            cleaned = line.replace(",", " ").split()
+            answer = cleaned if len(cleaned) > 1 else cleaned[0]
+        else:
+            question_lines.append(line)
+
+    question = " ".join(question_lines)
+    return {
+        "question": question,
+        "choices": choices,
+        "answer": answer
+    }
+
+# Run the script
+output = input("Enter the name of the output file (no extension): ")
+output_path = os.path.join("questions", output + ".json")
+txt_to_json("qa_badformat.txt", output_path)

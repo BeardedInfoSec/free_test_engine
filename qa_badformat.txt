@@ -1,786 +1,2991 @@
-Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses the requirement?
-A. Increasing the search factor in the cluster.
-B. Increasing the replication factor in the cluster.
-C. Increasing the number of search heads in the cluster.
-D. Increasing the number of CPUs on the indexers in the cluster.
-A. Increasing the search factor in the cluster.
+What are the key benefits of Multisite Indexer Clusters?
+A. Disaster Recovery
+B. Remote Storage
+C. Search affinity
+D. Reduced WAN traffic
+A C D
 
 
-Which of the following will cause the greatest reduction in disk size requirements for a cluster of N indexers running Splunk Enterprise Security?
-A. Setting the cluster search factor to N-1
-B. Increasing the number of buckets per index
-C. Decreasing the data model acceleration range
-D. Setting the cluster replication factor to N-1
-A. Setting the cluster search factor to N-1
+This Multisite Cluster Key Attribute controls how to distribute raw copies of data among the sites.
+
+A. multisite
+B. available_sites
+C. site_replication_factor
+D. site_search_factor
+C
 
 
-Search dashboards in the Monitoring Console indicate that the distributed deployment is approaching its capacity. Which of the following options will provide the most search performance improvement?
-A. Replace the indexer storage to solid state drives (SSD).
-B. Add more search heads and redistribute users based on the search type.
-C. Look for slow searches and reschedule them to run during an off-peak time.
-D. Add more search peers and make sure forwarders distribute data evenly across all indexers.
-D. Add more search peers and make sure forwarders distribute data evenly across all indexers
+The following example is not a valid configuration for site replication:
+
+origin:2, site1:2, site2:2, total:3
+
+True or False?
+True
 
 
-A Splunk architect has inherited the Splunk deployment at Buttercup Games and end users are complaining that the events are inconsistently formatted for a web sourcetype. Further investigation reveals that not all web logs flow through the same infrastructure: some of the data goes through heavy forwarders and some of the forwarders are managed by another department. Which of the following items might be the cause for this issue?
-A. The search head may have different configurations than the indexers
-B. The data inputs are not properly configured across all the forwarders
-C. The indexers may have different configurations than the heavy forwrders
-D. The forwarders managed by the other department are an older version than the rest
-C. The indexers may have different configurations than the heavy forwarders
+The following instances are required for a Multisite Indexer Cluster Deployment:
+
+A. One master node
+B. At least two peer nodes per site
+C. One or more search heads per site
+D. One forwarder per site
+A B
 
 
-A customer has installed a 500GB Enterprise license. They also purchased and installed a 300GB, no enforcement license on the same license manager. How much data can the customer ingest before search is locked out?
-A. 300GB. After this limit, search is locked out
-B. 500GB. After this limit, search is locked out
-C. 800GB. After this limit, search is locked out
-D. Search is not locked out. Violations are still recorded
-D. Search is not locked out. Violations are still recorded
+Not studied (343)
+You haven't studied these terms yet!
+
+Select these 343
+The Multisite Master Node configuration is stored in the following location:
+
+A. $SPLUNK_HOME/etc/master-apps/_cluster/default/indexes.conf
+B. $SPLUNK_HOME/etc/master-apps/local/server.conf
+C. $SPLUNK_HOME/etc/system/local/indexes.conf
+D. $SPLUNK_HOME/etc/system/local/server.conf
+D
 
 
-What does the deploy do in a Search Head Cluster (SHC)? (Select all that apply)
-A. Distributes apps to SHC members
-B. Bootstraps a clean Splunk install for a SHC
-C. Distributes non-search related and manual configuration file changes
-D. Distributes runtime knowledge object changes made by users across the SHC
-A. Distributes apps to SHC members
-C. Distributes non-search related and manual configuration file changes
+In a Multisite Cluster search heads can:
+
+A. Join the indexer cluster at any time
+B. Participate in multiple indexer clusters
+C. Run the master node role
+D. Combine searches across clustered and non-clustered search peers
+A B D
 
 
-When using the props.conf LINE_BREAKER attribute to delimit multi-line events, the SHOULD_LINEMERGE attribute should be set to what?
-A. Auto
-B. None
-C. True
-D. False
-D. False
+To enable a new multisite search head in Splunk CLI utilize the following command:
+
+A. splunk add cluster-config
+B. splunk edit cluster-config
+C. splunk add cluster-master
+D. splunk edit cluster-master
+B
 
 
-Which of the following should be included in a deployment plan?
-A. Business continuity and disaster recovery plans
-B. Current logging details and data source inventory
-C. Current and future topology diagrams of the IT environments
-D. A comprehensive list of stakeholders, either direct or indirect
-B. Current logging details and data source inventory
+In multisite mode, there is only one set of "primary" searchable buckets that respond to searches.
+
+True or False?
+False
 
 
-A multi-site indexer cluster can be configured using which of the following? (Select all that apply.)
-A. Via Splunk Web.
-B. Directly edit SPLUNK_HOME/etc/system/local/server.conf
-C. Run a splunk edit cluster-config command from the CLI.
-D. Directly edit SPLUNK_HOME/etc/system/default/server.conf
-B. Directly edit SPLUNK_HOME/etc/system/local/server.conf
-C. Run a splunk edit cluster-config command from the CLI
+To disable search affinity for a search head, set the search head's site value to:
+
+A. true
+B. disable
+C. false
+D. site0
+D
 
 
-Which index-time props.conf attributes impact indexing performance? (Select all that apply.)
-A. REPORT
-B. LINE_BREAKER
-C. ANNOTATE_PUNCT
-D. SHOULD_LINEMERGE
-B. LINE_BREAKER
-C. ANNOTATE_PUNCT
-D. SHOULD_LINEMERGE
+To set a specific site order when initiating a rolling restart in a multisite cluster you must utilize the Splunk command line.
+
+True or False?
+False
 
 
-Which of the following are client filters available in serverclass.conf? (Select all that apply.)
-A. DNS name
-B. IP address
-C. Splunk server role
-D. Platform (machine type)
-A. DNS name
-B. IP address
-D. Platform (machine type)
+When migrating from a single-site to multisite cluster:
+
+A. Ensure all cluster nodes are running the same Splunk version
+B. Remove the existing single-site replication factor
+C. Replace the single-site search factors with multisite factors
+D. Change search heads to multisite mode and restart
+A D
 
 
-What log file would you search to verify if you suspect there is a problem interpreting a regular expression in a monitor stanza?
-A. btool.log
-B. metrics.log
-C. splunkd.log
-D. tailing_processor.log
-C. splunkd.log
+After migrating to a Multisite cluster from a single-site configuration, the multisite policies apply only to new data and single-site buckets will age out by default.
+
+True or False?
+True
 
 
-Which Splunk tool offers a health check for administrators to evaluate the health of their Splunk deployment?
-A. btool
-B. DiagGen
-C. SPL Clinic
-D. Monitoring Console
-D. Monitoring Console
+In an indexer cluster, all peer nodes must use the same set of indexes.conf
+
+True or False?
+True
 
 
-In a four site indexer cluster, which configuration stores two searchable copies at the origin site, one searchable copy at site2, and a total of four searchable copies?
-A. site_search_factor = origin:2, site1:2, total:4
-B. site_search_factor = origin:2, site2:1, total:4
-C. site_replciation_factor = origin:2 site1:2, total:4
-D. site_replciation_factor = origin:2, site2:1, total:4
-B. site_search_factor = origin:2, site2:1, total:4
+For the Master-apps deployment, where do you stage the deployment bundles in SPLUNK_HOME/etc/master-apps ?
+
+A. Copy to <app-name> for common apps and copy to _cluster/local for standalone files
+B. Copy to <app-name> for standalone files and copy to _cluster/local for common apps
+C. None of the above
+A
 
 
-Which Splunk Enterprise offering has its own license?
-A. Splunk Cloud Forwarder
-B. Splunk Heavy Forwarder
-C. Splunk Universal Forwarder
-D. Splunk Forwarder Management
-C. Splunk Universal Forwarder
+This command is used to validate the bundle status and actions:
+
+splunk apply cluster-bundle [--skip-validation]
+
+True or False?
+False, you use splunk validate cluster-bundle [--check-restart] to validate bundle status.
 
 
-Which component in the splunkd.log will log information related to bad event breaking?
-A. Audittrail
-B. EventBreaking
-C. IndexingPipeline
-D. AggregatorMiningProcessor
-D. AggregatorMiningProcessor
+The following commands automatically invoke maintenance-mode:
+
+splunk apply cluster-bundle
+splunk rolling-restart
+
+True or False?
+True
 
 
-Which Splunk server role regulates the functioning of indexer cluster?
-A. Indexer
-B. Deployer
-C. Manager Node
-D. Monitoring Console
-C. Manager Node
+A Searchable Rolling Restart (SRR) _________
+
+A. Restarts peer nodes while maintaining the search availability.
+B. This requires all cluster nodes to be on splunk 7.1 or higher
+C. Takes a considerably long time to complete sine it restarts all nodes one at a time
+D. All of the above
+D
 
 
-When adding or rejoining a member to a search head cluster, the following error is displayed: "Error pulling configurations from the search head cluster captain; consider performing a destructive configuration resync on this search head cluster member". What corrective action should be taken?
-A. Restart the search head
-B. Run the splunk apply shcluster-bundle command from the deployer
-C. Run the clean raft command on all members of the search head cluster
-D. Run the splunk resync shcluster-replicated-config command on this member
-D. Run the splunk resync shcluster-replicated-config command on this member
+You can track the rolling restart using ____
+A. splunk show cluster-status
+B. Web UI
+C. splunk show cluster-status --verbose
+D. A&B
+E. B&C
+E
 
 
-Which of the following commands is used to clear the KV store?
-A. splunk clean kvstore
-B. splunk clear kvstore
-C. splunk delete kvstore
-D. splunk reinitialize kvstore
-A. splunk clean kvstore
+When you bring down a peer node temporarily using the splunk offline command, the master node delays the bucket fix up tasks in order to maintain a valid state. What is the default time duration for the peer node to come online?
+
+A. 90 secs
+B. 30 secs
+C. 60 secs
+D. None of the above
+C
 
 
-Indexing is slow and real-time search results are delayed in a Splunk environment with two indexers and one search head. There is ample CPU and memory available on the indexers. Which of the following is most likely to improve indexing performance?
-A. Increase the maximum number of hot buckets in indexes.conf
-B. Increase the number of parallel ingestion pipelines in server.conf
-C. Decrease the maximum size of the search pipelines in limits.conf
-D. Decrease the maximum concurrent scheduled searches in limits.conf
-B. Increase the number of parallel ingestion pipelines in server.conf
+The master does not keep peer node information after it has been de-commissioned using the following command:
+
+splunk offline --enforce-counts
+
+True or False?
+False
 
 
-The guidance Splunk gives for estimating size on for syslog data is 50% of original data size. How does this divide between files in the index?
-A. rawdata is: 10%, tsidx is: 40%
-B. rawdata is: 15%, tsidx is: 35%
-C. rawdata is: 35%, tsidx is: 15%
-D. rawdata is: 40%, tsidx is: 10%
-B. rawdata is: 15%, tsidx is: 35%
+What is a Bucket Fix-Up?
+
+A. The process of master node trying to meet the search and replication policies
+B. The process of peer nodes trying to match the search and meet the replication policies
+C. The Bucket fix up tasks are displayed in the Bucket status page
+D. All of the above
+A C
 
 
-A three-node search head cluster is skipping a large number of searches across time. What should be done to increase scheduled search capacity on the search head cluster?
-A. Create a job server on the cluster.
-B. Add another search head to the cluster.
-C. server.conf captain_is_adhoc_searchhead = true.
-D. Change limits.conf value for max_searches_per_cpu to a higher value.
-B. Add another search head to the cluster
+While primary rebalancing balances the search load across all peer nodes, it moves the searchable copies to different peer nodes.
+
+True or False?
+False
 
 
-The frequency in which a deployment client contacts the deployment server is controlled by what?
-A. polling_interval attribute in outputs.conf
-B. phoneHomeIntervalInSecs attribute in outputs.conf
-C. polling_interval attribute in deploymentclient.conf
-D. phoneHomeIntervalInSecs attribute in deploymentclient.conf
-D. phoneHomeIntervalInSecs attribute in deploymentclient.conf
+Primary rebalancing triggers automatically when:
+
+A. A peer nodes joins or rejoins the cluster
+B. Master node rejoins the cluster
+C. Rolling restart completes
+D. All of the above
+D
 
 
-To activate replication for an index in an indexer cluster, what attribute must be configured in indexes.conf on all peer nodes?
-A. repFactor = 0
-B. replicate = 0
-C. repFactor = auto
-D. replicate = auto
-C. repFactor = auto
+Uneven bucket distribution,
+
+A. Doesnʼt utilize the storage optimally and can cause higher load on certain peer nodes
+B. Can occur after adding new peer nodes, when forwarding data is skewed and after frequent bucket fixups due to outages
+C. A & B
+D. None of the above
+C
 
 
-Which of the following clarification steps should be taken if apps are not appearing on a deployment client? (Select all that apply.)
-A. Check serverclass.conf of the deployment server
-B. Check deploymentclient.conf of the deployment client
-C. Check the content of SPLUNK_HOME/etc/apps of the deployment server
-D. Search for relevant events in splunkd.log of the deployment server
-A. Check serverclass.conf of the deployment server
-B. Check deploymentclient.conf of the deployment client
-D. Search for relevant events in splunkd.log of the deployment server
+Data re-balancing operates on hot, warm and cold buckets.
+
+True or False?
+False
 
 
-Which of the following security options must be explicitly configured? (i.e. which options are not enabled by default)?
-A. Data encryption between Splunk Web and splunkd
-B. Certificate authentication between forwarders and indexers
-C. Certificate authentication between Splunk Web and search head
-D. Data encryption for distributed search between search heads and indexers
-B. Certificate authentication between forwarders and indexers
-C. Certificate authentication between Splunk Web and search head
+A user must have what capability to configure the MC?
+
+A. admin_all_objects
+B. all_admin_objects
+C. objects_admin
+D. admin_all
+A
 
 
-Which of the following artifacts are included in a Splunk diag file? (Select all that apply.)
-A. OS settings
-B. Internal logs
-C. Customer data
-D. Configuration files
-A. OS settings
-B. Internal logs
-D. Configuration files
+The minimum resources/settings required for an indexer is/are:
+(Select all that apply)
+
+A. 8 CPU cores
+B. 12 GB RAM
+C. 4 GB RAM
+D. 12 CPU cores
+E. 1 GB Ethernet NIC
+F. 64-bit Linux or Windows OS
+G. 800 IOPS storage system
+H. 256 KB Video Card
+B D E F G
 
 
-Which command will permanently decommission a peer node operating in an indexer cluster?
-A. splunk stop -f
-B. splunk offline -f
-C. splunk offline --enforce-counts
-D. splunk decommission --enforce counts
-C. splunk offline --enforce-count
+The minimum resources/settings required for a search head is/are:
+(Select all that apply)
+
+A. 16 CPU cores
+B. 12 GB RAM
+C. 4 GB RAM
+D. 12 CPU cores
+E. 1 GB Ethernet NIC
+F. 64-bit Linux or Windows OS
+G. 256 KB Video Card
+H. 2 X 10K RPM 300GB SAS drives - RAID 1
+A B E F H
 
 
-Which CLI command converts a Splunk instance to a license peer?
-A. splunk add licenses
-B. splunk list licenser-peers
-C. splunk edit licenser-localpeer
-D. splunk list licenser-localpeer
-C. splunk edit licenser-localpeer
+Ratio of indexers to search heads depend on the number of _____ and ______.
+
+A. Indexing volume per search head, Heavy Forwarders
+B. Concurrent users, indexing volume per node
+C. Forwarders, Cluster Masters
+D. Concurrent users, Admins
+B
 
 
-Splunk Enterprise platform instrumentation refers to data that the Splunk Enterprise deployment logs in the _introspection index. Which of the following logs are included in this index? (Select all that apply.)
+Splunk Clustering allows you to balance growth, speed of recovery and overall disk usage.
+
+True or False?
+True
+
+
+_____ Allocates license capacity and manages license usage of all cluster members.
+
+A. Master Node
+B. License Master
+C. Peer Node
+D. Search Head
+E. Deployment Server
+F. Deployer
+G. Monitoring Console
+B
+
+
+_____ regulates the function of an indexer cluster.
+
+A. Master Node
+B. License Master
+C. Peer Node
+D. Search Head
+E. Deployment Server
+F. Deployer
+G. Monitoring Console
+A
+
+
+_____ is an indexer that participates in an indexer cluster.
+
+A. Master Node
+B. License Master
+C. Peer Node
+D. Search Head
+E. Deployment Server
+F. Deployer
+G. Monitoring Console
+C
+
+
+_____ Centralized configuration manager for forwarders.
+
+A. Master Node
+B. License Master
+C. Peer Node
+D. Search Head
+E. Deployment Server
+F. Deployer
+G. Monitoring Console
+E
+
+
+_____ Distributes configurations to search head cluster members.
+
+A. Master Node
+B. License Master
+C. Peer Node
+D. Search Head
+E. Deployment Server
+F. Deployer
+G. Monitoring Console
+F
+
+
+_____ Allows admins to watch performance details regarding your Splunk environment.
+
+A. Master Node
+B. License Master
+C. Peer Node
+D. Search Head
+E. Deployment Server
+F. Deployer
+G. Monitoring Console
+G
+
+
+Splunk recommends that you dedicate a host for each user.
+
+True or False?
+False , a host for each role
+
+
+By default, every instance is a license slave.
+
+True or False?
+False , license master
+
+
+In terms of licensing, all cluster members must share: (Select all that apply)
+
+A. The same license app
+B. The same license pool
+C. The same licensing configuration
+D. The same license for Forwarders
+B C
+
+
+Replicated data and internal data counts against your license.
+
+True or False?
+False , Only incoming data
+
+
+You cannot use a free license for clustering.
+
+True or False?
+True
+
+
+To add a license to the license master, run:
+
+A. splunk add licenses {path to license file}
+B. splunk list licenser-slaves
+C. splunk edit licenser-localslave -master_uri https://host:8089
+D. splunk list licenser-localslave
+A
+
+
+To check the license slaves, run this on the master license server:
+
+A. splunk add licenses {path to license file}
+B. splunk list licenser-slaves
+C. splunk edit licenser-localslave -master_uri https://host:8089
+D. splunk list licenser-localslave
+B
+
+
+To switch to a license slave, run:
+A. splunk add licenses {path to license file}
+B. splunk list licenser-slaves
+C. splunk edit licenser-localslave -master_uri https://host:8089
+D. splunk list licenser-localslave
+C
+
+
+To check the configuration of a specific slave node, run:
+A. splunk add licenses {path to license file}
+B. splunk list licenser-slaves
+C. splunk edit licenser-localslave -master_uri https://host:8089
+D. splunk list licenser-localslave
+D
+
+
+High Availability (HA) is available on:
+
+A. Single-site indexer cluster
+B. Multi-site indexer cluster
+C. Both
+C
+
+
+Disaster Recovery (DR) is available on:
+
+A. Single-site indexer cluster
+B. Multi-site indexer cluster
+C. Both
+B
+
+
+Indexer replication and flexible replication policies are available on:
+
+A. Single-site indexer cluster
+B. Multi-site indexer cluster
+C. Both
+C
+
+
+Can withstand entire site failure:
+
+A. Single-site indexer cluster
+B. Multi-site indexer cluster
+C. Both
+B
+
+
+Active-passive or active-active configurations are supported on:
+
+A. Single-site indexer cluster
+B. Multi-site indexer cluster
+C. Both
+B
+
+
+Which one can use Smartstore storage?
+
+A. Single-site indexer cluster
+B. Multi-site indexer cluster
+C. Both
+C
+
+
+Which type of search head cluster allows Search affinity (site-aware search heads)?
+
+A. Single-site Search Head Cluster
+B. Multi-site Search Head Cluster
+C. Both
+B
+
+
+Forwarders are required to be configured for clustering?
+
+True or False?
+False
+
+
+Enable load balancing and indexer acknowledgement in _______.
+
+A. inputs.conf
+B. outputs.conf
+C. props.conf
+D. transforms.conf
+B
+
+
+When load balancing and index acknowledgement is enabled, any node or network failure causes a bucket to roll and triggers a fixup.
+
+True or False?
+True
+
+
+In a non-clustered environment, target indexer changes require restarting the indexers.
+
+True or False?
+False, it requires restarting the forwarders
+
+
+In a non-clustered environment, Splunk admins must track target server changes and update the forwarder ___________ settings manually.
+
+A. props.conf
+B. transforms.conf
+C. inputs.conf
+D. outputs.conf
+D
+
+
+Which of the following are true when using Index Discovery? (Select all that apply)
+
+A. Can be site-aware
+B. Can use weighted load balancing
+C. Minimizes the indexer restarts
+D. Scales well but harder to manage
+E. Reduces the load on DNS servers
+A B E
+
+
+When configuring indexer discovery for the master node, CLI is supported for enabling indexer discovery.
+
+True or False?
+False
+
+
+The _______ specifies the security key used to communicate between the master node and the forwarders.
+
+A. pass4SymmKey
+B. pass4symmkey
+C. PASS4SYMMKEY
+D. Pass4SymmKey
+A
+
+
+When configuring the indexer discovery for forwarders, if both manual and indexer discovery attributes are set, manual takes precedence.
+
+True or False?
+False, indexer discovery takes precedence.
+
+
+Indexer discovery by default is site-aware.
+
+True or False?
+False, not site-aware (site = site0)
+
+
+If you want a forwarder to be site-aware, assign a site-id in ________.
+[general]
+site = <site-id>
+
+A. props.conf
+B. transforms.conf
+C. server.conf
+D. indexes.conf
+C
+
+
+Regarding polling rate, the ______ determines a polling interval dynamically based on the number of connected ______ and the polling_rate.
+
+A. indexer, forwarders
+B. forwarder, indexers
+C. master, indexers
+D. master, forwarders
+D
+
+
+The polling_rate is a fixed factor that the master uses to calculate the polling interval. What is the default factor?
+
+A. 0
+B. 1
+C. 10
+D. 20
+C
+
+
+The default load balancing on the forwarder is based on _____.
+
+___________ forwarding alone cannot distribute data evenly across the peers.
+
+A. volume, Volume-based
+B. time, Time-based
+C. weight, Weighted-based
+B
+
+
+When using weighted load balancing with indexer discovery, the master can adjust the server list based on the peers' relative storage capabilities.
+
+Which of the following is used
+select peers with higher advertised capacity?
+
+A. selection_ratio = peer_capacity / cluster_wide_capacity
+B. selection_ratio = cluster_wide_capacity / peer_capacity
+C. peer_capacity = selection_ratio / cluster_wide_capacity
+D. cluster_wide_capacity = selection_ratio / peer_capacity
+A
+
+
+To enable volume-based data forwarding, set the following:
+autoLBVolume = <size_in_bytes> in _________
+
+EVENT_BREAKER_ENABLE = true (and associated attributes) in _________
+
+A. inputs.conf, transforms.conf
+B. inputs.conf, props.conf
+C. outputs.conf, transforms.conf
+D. outputs.conf, props.conf
+D
+
+
+The following command is used to configure forwarder site failover:
+splunk edit cluster-config -forwarder_site_failover <primary>:<forwarder>
+
+When this is run, it is configured on which server and which configuration file?
+
+A. It is configured on the forwarder and saved in the forwarder's server.conf.
+B. It is configured on the forwarder and saved in the forwarder's props.conf.
+C. It is configured on the master node and saved in the server.conf.
+D. It is configured on the master node and saved in the props.conf.
+C
+
+
+What are the 4 benefits of Search Head Clusters?
+
+A. Vertical Scaling, Search high availability, single point of failure, dedicated configuration bundle.
+
+B. Horizontal scaling, Search high availability, No single point of failure, Dedicated configuration bundle management.
+
+C. No benefits
+
+D. Horizontal scaling, Search high availability, No single point of failure, Non-Dedicated configuration bundle management.
+C
+
+
+Replication factor_______________.
+
+A. Applies only to search artifacts
+B. Applies only to cluster artifacts
+C. Applies only to deployer artifacts
+D. Applies only to member artifacts
+A
+
+
+Who maintains global knowledge of all search jobs?
+
+A. Member
+B. User
+C. Captain
+D. Admin
+C
+
+
+The Captain directs which member to contact to access search results.
+
+True or False?
+True
+
+
+The Captain is the only job scheduler.
+
+True or False?
+True
+
+
+Without SHC, a search head can defer and ______ search jobs.
+
+A. Pass
+B. Skip
+C. Contain
+D. Rename
+B
+
+
+What do you use when initializing members?
+
+A. TCP
+B. IP Config
+C. DNS
+D. Netstat
+C
+
+
+You can upgrade from an existing SH or a member of SH Pool?
+
+True or False?
+False
+
+
+When sharing Splunk Server roles, you would want to disable local indexing and forward everything.
+
+True or False?
+True
+
+
+When deploying a search head cluster, where is the SHC configuration located?
+
+A. SPLUNK_HOME/etc/system/local/server.conf
+B. SPLUNK_HOME/etc/system/server.conf
+C. SPLUNK_HOME/etc/local/server.conf
+D. SPLUNK_HOME/etc/system/local/log.conf
+A
+
+
+Splunk SmartStore is a method to separate your compute resources from your storage resources to allow you to scale your storage requirements without adding additional nodes as Splunk Classic would generally require for additional capacity.
+
+True or False?
+True
+
+
+The Splunk SmartStore's Cache Manager has the following responsibilities.
+(Select all that apply)
+
+A. Uploads warm buckets to remote S3 storage.
+B. Downloads buckets from a remote S3 storage on an as needed basis.
+C. Manages the replication factor of the remote S3 objects.
+D. Evicts buckets from local cache based on the bucket's age, search frequency, and other tunable criteria.
+A B D
+
+
+What is NOT supported when using SmartStore vs. Splunk Classic?
+(Select all that apply)
+
+A. TSIDX Reduction
+B. Data integrity
+C. Disabling bloom filters
+D. Custom paths as bloomHomePath, summaryHomePath, etc
+A B C D
+
+
+When using SmartStore, what is the minimum recommended sizing of the local disks for hot data?
+
+A. 60 Days HDD
+B. 30 Days SSD
+C. 180 Days SSD
+D. 15 Days SSD
+B
+
+
+Splunk SmartStore's Cache Manager manages the replication factor of the remote S3 objects?
+
+True or False?
+False
+
+
+When using SmartStore, what kinds of buckets exist? (Select all that apply)
+
+A. Warm
+B. Frozen
+C. Cold
+D. Hot
+A B D
+
+
+When using SmartStore, warm buckets roll directly to frozen.
+
+True or False?
+True
+
+
+How should a SmartStore index be deployed to a clustered index cluster?
+
+A. Manually updating ~SPLUNK_HOME/etc/system/local/indexes.conf
+
+B. ~SPLUNK_HOME/bin/splunk add smartstore index [indexname] [homepath] [coldpath] [remotepath]
+
+C. Using the _cluster app
+
+D. Splunk Web
+C
+
+
+Why MUST a coldPath be defined when using Splunk SmartStore?
+
+A. So the cold can bother Elsa. (it never bothered her anyway)
+
+B. For the data to be rolled over to cold when maxWarmDBCount is reached.
+
+C. For storage of the metadata of remote cold buckets
+
+D. In case of migrated indexes, also because of a bug in 7.3.0 where if it's not defined it may roll straight to frozen (POSSIBLE DATA RISK).
+D
+
+
+How can data retention be managed in SmartStore?
+(Select all that apply)
+
+A. maxGlobalDataSizeMB
+B. frozenTimePeriodInSecs
+C. maxWarmDBCount
+D. maxTotalDataSizeMB
+A B
+
+
+When SmartStore data is thawed, it gets replicated to the other nodes.
+
+True or False?
+False
+
+
+How often (by default) does cluster check for freeze candidates?
+
+A. Every 15 minutes.
+B. Every minute.
+C. Every 30 minutes.
+D. Every hour.
+A
+
+
+When using SmartStore, warm bucket's _raw data is "fixed up" when a peer node fails?
+
+True or False?
+False
+
+
+What type and When will SmartStore buckets be evicted?
+
+A. Only when commanded.
+
+B. Hot buckets will be evicted when the cache manager thinks the host is facing space constraints.
+
+C. Cached local warm buckets will be evicted when the cache manager thinks the host is facing space constraints.
+
+D. Cold buckets will be evicted When the cache manager thinks the host is facing space constraints
+C
+
+
+When using SmartStore, Hot buckets will never be evicted.
+
+True or False?
+True
+
+
+MC/DMC Supports monitoring of SmartStore Remote storage connectivity, cache hits and misses, buckets uploads and downloads, crash thrashing, migration process, and bootstrapping progress.
+
+True or False?
+True
+
+
+How many nodes are required to reach a voting majority?
+
+A. 7
+B. 5
+C. 3
+D. None of the above
+C
+
+
+When is a KV Store knowledge object used?
+
+A. Search time or Index time
+B. Only Index time
+C. Only Search time
+C
+
+
+What configuration file contains the key-value information?
+
+A. kv.conf
+B. kvstore.conf
+C. collection.conf
+D. collections.conf
+D
+
+
+By default, what is the maximum size of a knowledge bundle?
+
+A. 1GB
+B. 2GB
+C. 3GB
+D. 4GB
+B
+
+
+Which command is valid for backing up a local kvstore?
+
+A. $SPLUNK_HOME/bin/splunk backup kvstore -archiveName Archive27Jan2020 -collectionName ES501 -appName ITSI503
+
+B. $SPLUNK_HOME/bin/splunk backup kvstore -appName ITSI503 -collectionName ES501 -archiveName Archive27Jan2020
+
+C. Both A & B
+D. None of the above
+C
+
+
+Enabling KVStore on a SHC to search peers does the following?
+
+A. Uses the SHC raft to distribute/sync collection data
+B. Uses the KVStore to distribute a collection of CSV files
+C. Performs automatic lookups on the index tier
+D. Both A & B
+E. Both B & C
+E
+
+
+What configuration file contains lookup definitions?
+
+A. props.conf
+B. transforms.conf
+C. collections.conf
+D. None of the above
+B
+
+
+What is the maximum amount of members in a kvstore cluster?
+
+A. There is no limit
+B. 10
+C. 25
+D. 50
+D
+
+
+What port is used for kvstore replication?
+
+A. 8191
+B. 8181
+C. 8080
+D. 8089
+A
+
+
+What command is used to determine the state of the kvstore cluster?
+
+A. $SPLUNK_HOME/bin/splunk show kvstore-state
+B. $SPLUNK_HOME/bin/splunk show kvstore
+C. $SPLUNK_HOME/bin/splunk kvstore-status
+D. $SPLUNK_HOME/bin/splunk show kvstore-status
+D
+
+
+You can specify a specific source to sync from when using the resyn command in a kvstore cluster?
+
+True or False?
+True
+
+
+When enabling kvstore replication to indexers, the splunk admin must:
+
+A. Re-enable kvstore on each individual indexer in the server.conf
+B. Open the kvstore port on each individual indexer
+C. Enable automatic lookup with kvstore in collections.conf
+D. Add each member to the KVStore cluster
+C
+
+
+What log is contains data for kvstore operations?
+
+A. splunkd.log
+B. mongod.log
+C. metrics.log
+D. All of the above
+D
+
+
+Using the Monitoring Console, you can find out which member in the cluster is the primary?
+
+True or False?
+True
+
+
+For a Single-site Indexer Cluster, what are some rules/functions of the Master Node?
+
+A. There can only be one master node
+B. Controls and manages index replication
+C. Distributes app bundles to peer nodes
+D. Tells the search head which peers to search
+E. All of the above
+E
+
+
+For a Single-site Indexer Cluster, what are some rules/functions of the Peer nodes?
+
+A. Requires different pass4SymmKey's to increase security
+B. Replicate data to other peer nodes as instructed by the master
+C. Uses port 9200 for index replication communication
+D. Indexes data from inputs/forwarders
+E. B & D
+E
+
+
+For a Single-site Indexer Cluster, what are some rules/functions of the Search head?
+
+A. Required component of indexer cluster
+B. Works the same as any Splunk search head
+C. Relies on the master node for it's target search peers
+D. All of the above
+D
+
+
+Indexer Clustering is beneficial for data availability/fast recovery, easier overall administration, and ability to scale out indexing capacity, but an additional cost for data replication is applied.
+
+True or False?
+False , page#21
+
+
+Which of the following are things to consider when implementing an Index Cluster?
+(Select all that apply)
+
+A. Increased storage requirements
+B. Increased processing load
+C. Requires additional splunk enterprise instances
+D. Support for heterogeneous indexers (Same OS & Splunk versions)
+E. Requires cluster-specific deployment management
+A B C E
+
+
+What are the following must have requirements for an Indexer Cluster?
+A. Each node must run on it's own host
+
+B. The master node must run the same splunk enterprise version as the peer nodes and search heads, OR a max of 3 minor versions ahead.
+
+C. Search heads must run the same or later splunk enterprise version than the peer nodes
+
+D. All peer nodes must run the exact same splunk enterprise version
+
+E. All of the above
+E
+
+
+For an Indexer Cluster, what is the minimum IOPS a hard disk is required to sustain on each peer node?
+
+A. 10000
+B. 9000
+C. 800
+D. 700
+C
+
+
+For an Indexer Cluster Master Node, do not co-locate a deployment server on it for any reason.
+
+True or False?
+True
+
+
+Under certain limited circumstances, a Index Cluster Master Node can fulfill additional server roles:
+(Select all that apply)
+
+A. License Master
+B. Deployment Server
+C. Monitoring Console
+D. Deployer
+A C D
+
+
+You should co-locate a deployment server on the master node whenever possible.
+
+True or False?
+False, DO NOT co-locate a DS on the master node under ANY circumstances
+
+
+When hosting additional roles, the cluster node should be under the following limits:
+
+A. 30 peer nodes
+B. 10 indexes
+C. 100,000 buckets
+D. 10 search heads
+E. All of the above
+E
+
+
+In a Single-site indexer cluster, peer nodes copy buckets to other peer nodes (index replication), and the copied buckets may be searchable buckets or contain only _______.
+
+A. sourcetypes
+B. tsidx files
+C. rawdata
+D. metadata
+C
+
+
+In a Single-site indexer cluster, the Replication factor:
+(Select all that apply)
+
+A. Specifies how many total copies of rawdata the cluster should maintain
+B. Determines how quickly you can recover the search capability
+C. Sets the total failure tolerance level
+D. Specifies how many copies are searchable
+A C
+
+
+In a Single-site indexer cluster, the Search factor:
+(Select all that apply)
+
+A. Determines how quickly you can recover the search capability
+B. Specifies how many total copies of rawdata the cluster should maintain
+C. Specifies how many copies are searchable
+D. Sets the total failure tolerance level
+A C
+
+
+A searchable bucket contains both rawdata and index files when part of a Single-site index cluster search factor.
+
+True or False?
+True
+
+
+rawdata is counted as part of the replication factor in the search factor parameter.
+
+True or False?
+True
+
+
+______ authenticates communication between the cluster nodes.
+
+A. index_key
+B. shpassKey
+C. pass4SymmKey
+D. SymmKeypass
+C
+
+
+Which order should you enable clustering on Splunk instances?
+
+A. Peer nodes > Master node > Search heads
+B. Master node > Peer nodes > Search heads
+C. Search heads > Master node > Peer nodes
+B
+
+
+Which port# is for Management (splunkd)?
+
+A. 8089
+B. 9100
+C. 9997
+A
+
+
+Which port# is for Replication (replication port)?
+
+A. 8089
+B. 9100
+C. 9997
+B
+
+
+Which port# is for Data (receiving port)?
+
+A. 8089
+B. 9100
+C. 9997
+C
+
+
+If the master node is lost, the cluster fails.
+
+True or False?
+False , the cluster continues to operate.
+
+
+You cannot convert a peer node to a non-clustered indexer.
+
+True or False?
+True
+
+
+All SHC members do not share the same configuration baseline.
+
+True or False?
+False
+
+
+Which of the following are true statements about members in a Search Head Cluster?
+(Select all that apply)
+
+A. Members replicate changes from/to captain every 30 seconds (replication cycle)
+
+B. Members generate a snapshot every minute and purge old sets every hour
+
+C. Members resolve conflicts on pull (sync)
+D. All members keep a journal of changes in etc/system/replication/ops.json
+B C D
+
+
+Which of the following are true statements about Splunk Deployers?
+(Select all that apply)
+
+A. Can be shared with multiple SHC if the apps/configurations are exactly the same and uses
+the same secret
+
+B. Used to distribute apps and non-replicable files to deployment clients
+
+C. Must run on a non-search head member
+
+D. CLI configuration support
+A C
+
+
+In what folder is the deployer's stage apps (configuration bundles) stored?
+
+A. etc/shcluster-bundle
+B. etc/shcluster
+C. etc/shcluster-deploy
+D. etc/shclustering
+B
+
+
+The deployer deploys the app configuration to its members according to the push mode setting of each app.
+
+True or False?
+True
+
+
+The push mode options do apply to user bundles.
+
+True or False?
+False
+
+
+Bundles targeting local is sent to the captain.
+All others are sent to all members.
+
+True or False?
+True
+
+
+The push mode can apply at the system level or on a per app basis by configuring _______ stanza in ________.
+
+A. [shcluster], apps.conf
+B. [shclustering], apps.conf
+C. [shcluster], app.conf
+D. [shclustering], app.conf
+D
+
+
+The SHC members' existing configurations in local always take precedence over pushed configurations from a deployer.
+
+True or False?
+True
+
+
+By default, splunk apply shcluster-bundle always automatically triggers a rolling-restart.
+
+True or False?
+False
+
+
+To delete all the apps on SHC members previously distributed by the deployer, you can push an empty bundle. The app must be in __________ (check in app.conf).
+
+A. state=start
+B. state=stop
+C. state=enabled
+D. state=disabled
+C
+
+
+You CANNOT use deployment server to directly distribute apps to the peer nodes or SHC members.
+
+True or False?
+True
+
+
+You can use the Deployment Server to distribute apps to the ______ and ______ directories.
+
+A. master-app, shcluster
+B. master-app, shclustering
+C. master-apps, shclustering
+D. master-apps, shcluster
+D
+
+
+What are the two types of Search Head Cluster Captaincy that are designed to handle specific cases?
+
+A. Active captain
+B. Dynamic captain
+C. Stable captain
+D. Static captain
+B D
+
+
+You can control the captaincy of the SHC. If you are wanting to exclude a member, you set ______ in the server.conf file.
+
+A. preferred_captain = false
+B. active_captain = false
+C. dynamic_captain = false
+D. static_captain = false
+A
+
+
+When a non-preferred captain is chosen, the first available preferred captain member will request a captaincy transfer.
+
+True or False?
+True
+
+
+When transferring the captaincy to a preferred member, you run the following command from where?
+
+splunk transfer shcluster-captain -mgmt_uri <new_captain>
+
+A. Any member of the SHC
+B. From the CLI of the new captain
+C. From the CLI of the current captain
+D. Any splunk instance in the environment
+C
+
+
+Running a rolling restart on the SHC members does not invoke captaincy transfer.
+
+True or False?
+False
+
+
+From the following, which statements are true when adding a new Splunk instance to the Search Head members? (Select all that apply)
+
+A. SH cluster configuration consistency is derived from the journals.
+
+B. The ops.json file is fixed in size (configurable) and gets rolled.
+
+C. Every instance, including non-members, have the ops.json file.
+
+D. Members that have been down for a long time always can find the diverging point.
+A B
+
+
+When a new member joins the cluster it gets the deployed bundles, replicated configurations and artifacts from the deployer.
+
+True or False?
+False
+
+
+When removing/decommissioning a SH Cluster member, you can just run splunk stop.
+
+True or False?
+False
+
+
+All cluster members must be on the same version down to the maintenance level.
+
+True or False?
+True
+
+
+When performing a rolling upgrade on the SH cluster, it is necessary to upgrade the indexers at the same time.
+
+True or False?
+False
+
+
+By default, members report a heartbeat every ___ seconds and the captain marks a member as
+down after missing for ___ seconds.
+
+A. 10, 90
+B. 10, 60
+C. 5, 90
+D. 5, 60
+D
+
+
+If a member was down for a long period of time, it may not be able to find a baseline and a manual resync on the member is required.
+
+True or False?
+True
+
+
+MC node authenticates with remote nodes via which of the following methods?
+
+A. Search head cluster secret: SHC members
+B. Index cluster secret: master node only
+C. Auth token: dependent search peers
+D. All of the above
+A
+
+
+Splunk Troubleshooting approach includes the following steps: (Select all that apply)
+
+A. Submit a case
+B. Clarify the problem
+C. Solve the problem
+D. Schedule the problem
+E. Confirm the problem
+A B E
+
+
+When clarifying the problem, you should define the problem in one single statement and investigate one issue at a time. What are the facts that must be gathered? (Select all that apply)
+
+A. Environment - Splunk OS and Version
+B. Temperature surrounding the DataCenter
+C. Baseline - what's working and what's not
+D. Search term and time range
+E. What changed?
+F. Changes in executive, non-user level of employees
+A C D E
+
+
+What steps are required when confirming the problem? (Select all that apply)
+
+A. Type of issue - symptoms, common problems
+B. Type of person - emotional, smart, non-technical
+C. Type of Splunk tools to help diagnose problem
+D. Type of Windows to work with DB Connect
+E. Type of log channels to diagnose problem
+F. Manually verify problem - reproducible or intermittent
+A C E F
+
+
+In Splunk Problem classification, Core items include: (Select all that apply)
+
+A. Installation
+B. Dashboard/Views
+C. Crashes
+D. Search Peers
+E. OS Issues
+F. REST API/SDK
+A C E F
+
+
+In Splunk Problem classification, Performance items include: (Select all that apply)
+
+A. Usernames
+B. Expectations
+C. Tailgating
+D. Tuning
+E. Search Head Acceleration
+B D
+
+
+In Splunk Problem classification, Configuration items include: (Select all that apply)
+
+A. Inputs/Extractions
+B. Forwarding
+C. Search Peers
+D. Authentication
+E. Dashboard/Views
+A B C D
+
+
+In Splunk Problem classification, Search items include: (Select all that apply)
+
+A. OS Issues
+B. UI/Role
+C. Add-on/Apps
+D. Search Language
+E. Dashboard/Views
+B C D E
+
+
+Select the correct example of btool:
+
+A. splunk btool --diag outputs.conf tcp://9514
+B. btool inputs list --diag tcp://9514
+C. splunk btool outputs.conf --diag tcp://9514
+D. splunk btool inputs list --diag tcp://9514
+E. splunk outputs list -diag tcp://9514
+D
+
+
+Select the correct example of how to create a diag file:
+
+A. splunk create diag_file
+B. splunk edit diag
+C. splunk diag
+D. splunk user create diag
+E. splunk diag_file create
+C
+
+
+Which two lines will give you configurations in memory (NOT only on disk)? (Select all that apply)
+
+A. In CLI of indexer: splunk btool inputs list
+
+B. On browser: https://10.2.0.5:8089/services/data/inputs/tcp/raw
+
+C. In Search app: index=main sourcetype=splunkD.log inputs
+
+D. On browser: https://10.2.0.5:8000/inputs
+
+E. In Search app: | rest /services/data/inputs/tcp/raw | field - eai* | transpose
+B E
+
+
+Splunk internal logs (rolled by default at 25 MB in size) are in:
+
+A. SPLUNK_HOME/var/run
+B. SPLUNK_HOME/etc/log
+C. SPLUNK_HOME/bin/var/log
+D. SPLUNK_HOME/var/log
+E. SPLUNK_HOME/var/lagoon
+D
+
+
+The index retention period for _introspection is 14 days.
+
+True or False?
+True
+
+
+The index retention period for _internal is:
+
+A. 30 minutes
+B. 3 months
+C. 30 days
+D. 3 years
+C
+
+
+The index retention for _audit is 6 months.
+
+True or False?
+False , (6 years)
+
+
+The index retention for telemetry, if opted into, is:
+
+A. 2 months
+B. 22 days
+C. 300 years
+D. 2 years
+D
+
+
+Splunk platform internal logging levels are:
+(Select all that apply)
+
+A. DEBUG
+B. WARN
+C. ERROR
+D. INFO
+E. FATAL
+A B C D E
+
+
+To view and manage the log level of a particular channel: (Select all that apply)
+
+A. Update in Settings > Server Settings > Server Logging
+B. Update in Settings > Licensing
+C. Change is persistent when updating log level
+D. To make change permanent, edit local-log.cfg, which overrides log.cfg
+A D
+
+
+To set log channel via CLI:
+(Select all that apply)
+
+A. Run "splunk set log-level <channel> -level <level>
+B. Change is immediate AND persistent
+C. Change is immediate BUT NOT persistent
+D. To make it permanent, edit log-cmdline.cfg
+A C D
+
+
+splunkd.log records a "splunkd major processor" event.
+
+True or False?
+False , "splunkd child processor"
+
+
+Processor log channels are assigned to the component field.
+
+True or False?
+True
+
+
+To diagnose problems, filter on the process in question.
+
+True or False?
+False , filter on the component in question
+
+
+You may need to correlate the set of logs from multiple _____ and _____ .
+
+A. Instances, components
+B. Components, transforms
+C. Indexes, search heads
+D. Instances, Indexers
+A
+
+
+What is true of Splunk resource collection framework logs resource usage: (Select all that apply)
+
+A. Logs are indexed and count against the license at half the rate
+
+B. Introspection_generator_addon writes to SPLUNK_HOME/var/log/lib
+
+C. Introspection_generator_addon writes to SPLUNK_HOME/var/log/introspection
+
+D. Logs are indexed to _introspection
+A C D
+
+
+What is true of system configurations:
+(Select all that apply)
+
+A. REST endpoints provide snapshot data
+
+B. /services/server/local/inputs.conf provides OS configuration data
+
+C. /services/server/info provides system configurations
+
+D. System configurations include OS info, core count, server roles, etc.
+A C D
+
+
+In Splunk, /services/server/status/resource-usage provides: (Select all that apply)
+
+A. Index licenses
+B. CPU usage
+C. Memory usage
+D. Disk stats per host and per Splunk-process
+B C D
+
+
+In proactive Splunk component monitoring, Splunk........(Select all that apply)
+
+A. Checks /opt/splunk/bin/splunk/local/server.conf for the REST endpoint
+
+B. Checks /services/server/health/splunkd REST endpoint
+
+C. Records the status output to SPLUNK/HOME/var/log/splunk/health.log
+
+D. Records the status input to SPLUNK/HOME/var/lib/main/db
+B C
+
+
+What are the 4 common components in splunkd sourcetype:
+
+A. HeadHunter
+B. HttpListener
+C. PeriodicReapingTimeout
+D. TailReader
+E. TelemetryHandler
+B C D E
+
+
+What is true of alert actions in Splunk?
+(Select all that apply)
+A. You can configure a set of alert actions in 7.2+, a single action per typE.
+
+B. Full web GUI support
+
+C. No UI support, only configurable in health.conf
+
+D. Only master node can overwrite settings
+
+E. Each node can overwrite the settings
+A C E
+
+
+To manage and modify the health reporting options and their thresholds:
+(Select all that apply)
+
+A. Go to Settings > Licensing and update Thresholds
+B. Edit SPLUNK_HOME/etc/bin/local/server.conf
+C. Go to Settings > Health report manager and click Edit Thresholds
+D. Edit SPLUNK_HOME/etc/system/local/health.conf
+E. User needs the list_health capability
+F. User needs the edit_health capability
+C D E F
+
+
+The ability to enable/disable instrumentation is controlled by the:
+
+A. edit_config_viewer capability
+B. edit_telemetry_output capability
+C. edit_telescopic_settings capability
+D. edit_telemetry_settings capability
+D
+
+
+Collected data is anonymized License usage data is collected in Splunk Instrumentation.
+
+True or False?
+True
+
+
+A Splunk diag shows how the instance was configured up to the point the diag was run.
+
+True or False?
+True
+
+
+What is true of a Splunk diag: (Select all that apply)
+
+A. Gathers data based on OS Settings, internal logs and configuration files
+
+B. Produces a diag.log and a tar.gz file
+
+C. Produces customer (non-internal) indexed data in a searchable format
+
+D. Can server as a backup of the OS files, such as mounts and Redhat repos
+
+E. Should be run before and after to track update/upgrade differences of Splunk
+A B E
+
+
+Splunk diag can be created by:
+
+A. Setting up a new outputs.conf file on the instance to be monitored
+
+B. Running "splunk diag" on the CLI of the instance
+
+C. On the web GUI, navigating to Settings > Instrumentation > New Diag
+
+D. On CLI, typing splunk create new diag
+B C
+
+
+Diag blocks splunk.secret (etc/auth and etc/passwd) and any SSL certs in etc.
+
+True or False?
+True
+
+
+Where is splunk diag stored after creation and how long is it kept for? (Select 2)
+
+A. /bin/diag/logs
+B. SPLUNK_HOME/bin/logs
+C. SPLUNK_HOME/var/run/diags/
+D. 30 weeks
+E. 30 days
+C E
+
+
+The performance of the deployment server is dependent upon?
+
+A. Number of clients, size of apps, network speed
+B. Size of apps, number of clients, phone home interval, server resources
+C. Server resources, network speed, number of clients, number of apps
+D. Number of apps, size of apps, speed of storage, speed of network
+B
+
+
+The proactive Splunk component monitoring reports the health of TCP output.....
+
+A. When it is auto load balanced
+B. When all clients have phone'd home
+C. When all components are healthy
+D. When all components are unhealthy
+A
+
+
+What are two main tests recommended to check network connectivity?
+
+A. ping & netstat
+B. ping and screen
+C. tcpdump & netcat
+D. nc & netstat
+C
+
+
+What are the deployment server/client channels?
+
+A. TCPinputProc & DSManager
+B. DSManager & TCPoutputProc
+C. DServer & DS_DC_Common
+D. DeploymentServer & DSManager
+D
+
+
+When using btool, which .conf file would you look at to determine if the server matches the client?
+
+A. deploymentclient.conf
+B. serverclass.conf
+C. server.conf
+D. outputs.conf
+B
+
+
+All search heads and search peers in the environment must have a unique name.
+
+True or False?
+True
+
+
+Each command after a |in a query is a _______.
+
+A. search pipeline
+B. search command
+C. search processor
+D. search function
+C
+
+
+What does SPL stand for?
+
+A. Search Process Language
+B. Splunk Process Language
+C. Splunk Processing Language
+D. Search Processing Language
+D
+
+
+With SPL, what is the proper order for how processors are resolved?
+
+A. Outputs the results based on the processor category, receives events in batch and process them
+
+B. Receives events in batch, processes them, outputs the results based on the processor category
+
+C. Receives events in batch, outputs the results based on the processor category, processes them
+
+D. None of the above
+B
+
+
+Which of the following are best practices for search? (Select all that apply)
+
+A. Filter later
+B. Place streaming/remote commands before non-streaming commands
+C. Avoid using table, except at the very end
+D. Remove unnecessary data using fields
+B C D
+
+
+As part of your fact finding, you should "run" the problem search on example data with same permissions.
+
+True or False?
+True
+
+
+Regarding the 'Search Job Inspector', _________ can help you determine search processor performance.
+
+A. Execution costs
+B. Execution values
+C. Search job properties
+D. Search job attributes
+A
+
+
+Regarding the 'Search Job Inspector', you can investigate search errors with ______.
+
+A. searchhistory.log
+B. search_messages.log
+C. searches.log
+D. search.log
+D
+
+
+Job limits are defined as role restrictions in ___________.
+
+A. limits.conf
+B. authorizE.conf
+C. search.conf
+D. searchbnf.conf
+B
+
+
+When troubleshooting slow search problems, check resource usage and search processes in Job Inspector.
+
+True or False?
+False , (it is checked in Monitoring Console)
+
+
+Which of the following is true when troubleshooting no result problems?
+
+A. Use 'All Time'
+B. Double check the logic
+C. Verify data has been indexed
+D. B&C
+E. All the above
+D
+
+
+For event segmentation, the rules are defined in _______ and invoked in ________.
+
+A. segments.conf, props.conf
+B. segments.conf, transforms.conf
+C. segmenters.conf, props.conf
+D. segmenters.conf, transforms.conf
+C
+
+
+Which components are needed in Splunk to to provide the search function?
+
+A. Search peer
+B. Search Head
+C. License Slave
+D. Master Node
+A B
+
+
+The Parser component can apply to the following Splunk roles:
+
+A. Universal Forwarders
+B. Heavy Forwarders
+C. Indexers
+D. Search Heads
+B C D
+
+
+An indexing pipeline set pushes raw data linearly using processors and queues which are bounded by memory and whose activities are captured in metrics.log.
+
+True or False?
+True
+
+
+Metrics.log lines contain the field group="value" indicating the data type. Select all valid data types for a group in metrics.log.
+
+A. pipeline
+B. executes
+C. queue
+D. thruput
+A C D
+
+
+A blocked queue with lots of sendout activity is indicative of a problem with a pipeline.
+
+True or False?
+False
+
+
+What happens after data leaves the parsing queue? (Select all that apply.)
+
+A. Data is run through regex replacement exec pipelines.
+B. Data is run through utf8, linebreaker and header parsing pipelines.
+C. The readerin processor sends data out to the IndexerQueue.
+D. The sendout processor sends data out to the AggQueue.
+B D
+
+
+The merging pipeline performs the following functions:
+
+A. Identifies the event boundaries.
+B. Performs timestamp extractions.
+C. Performs regex and field extractions.
+D. Feeds data to the TypingQueue.
+A B D
+
+
+lastChanceIndex provides the ability to capture events destined to non-existent indexes and is set in:
+
+A. limits.conf
+B. transforms.conf
+C. indexes.conf
+D. inputs.conf
+C
+
+
+When using SPL to search metrics.log the source can be found in what index?
+
+A. _audit
+B. _internal
+C. main
+D. _introspection
+B
+
+
+When diagnosing Splunk and UF installation issues you must confirm the following:
+(Select all that apply)
+
+A. Correct package for correct processor and OS (32-bit/64-bit;MacOS/Linux/Windows)
+
+B. Installing user credentials (Access is Denied)
+
+C. Skill of installing user (Error ID: 10T)
+
+D. Upgrade Paths (if applicable)
+A B D
+
+
+The primary method for upgrading Splunk Enterprise is to:
+
+A. Install the new version into a new directory
+B. Install the new version onto a new disk
+C. Install the new version into the existing directory
+D. Install the new version onto a new server
+C
+
+
+Splunk operates with a a no-enforcement license since 6.5. Exceeding the daily license quota creates a:
+
+A. Violation
+B. Warning
+C. Software audit
+D. Search lock out
+B
+
+
+Where are Splunk licenses located in a clustered environment (assuming Indexer and LM is running on separate instances of Splunk Enterprise) ?
+
+A. On the Indexer $SPLUNK_HOME/etc/licenses/enterprise/*.lic
+
+B. On the License Master in $SPLUNK_HOME/etc/license/*.lic
+
+C. On the License Master in $SPLUNK_HOME/etc/licenses/enterprise/*.lic
+
+D. On the Indexer $SPLUNK_HOME/etc/LicenseMaster/*.lic
+C
+
+
+The once daily generated log available on the license master to troubleshoot license problems is named:
+
 A. audit.log
 B. metrics.log
-C. disk_objects.log
-D. resource_usage.log
-C. disk_objects.log
-D. resource_usage.log
+C. license.log
+D. license_usage.log
+D
 
 
-Which of the following can a Splunk diag contain?
-A. Search history, Splunk users and their roles, running processes, indexed data
-B. Server specs, current open connections, internal Splunk log files, index listings
-C. KV store listings, internal Splunk log files, search peer bundles listings, indexed data
-D. Splunk platform configuration details, Splunk users and their roles, current open connections, index listings
-B. Server specs, current open connections, internal Splunk log files, index listings
+Roles are defined in authentication.conf
+
+True or False?
+False
 
 
-Which of the following are true statements about Splunk indexer clustering?
-A. All peer nodes must run exactly the same Splunk version
-B. The manager node must run the same or a later Splunk version than search heads
-C. The peer nodes must run the same or a later Splunk version than the manager node
-D. The search head must run the same or a later Splunk version than the peer nodes
-A. All peer nodes must run exactly the same Splunk version
-B. The manager node must run the same or a later Splunk version than search heads
-D. The search head must run the same or a later Splunk version than the peer nodes
+A user who has authentication (LDAP) but not authorization (Roles) can log into Splunk?
+
+True or False?
+False
 
 
-A customer plans to ingest 600 GB of data per day into Splunk. They will have six concurrent users, and they also want high data availability and high search performance. The customer is concerned about cost and wants to spend the minimum amount on the hardware for Splunk. How many indexers are recommended for this deployment?
-A. Two indexers not in a cluster, assuming users run many long searches
-B. Three indexers not in a cluster, assuming a long data retention period
-C. Two indexers cluster, assuming high data availability is the greatest priority
-D. Two indexers clustered, assuming a high volume of saved/scheduled searches
-C. Two indexers clustered, assuming high availability is the greatest priority
+When a Splunk account is removed or deactivated, the following issues may occur:
+
+A. Splunk schedule cannot run a scheduled report of a non-existent owner.
+B. Splunk deletes the users corresponding knowledge objects.
+C. Dashboards look to be broken.
+D. Summary indexes have gaps.
+A C D
 
 
-To reduce the captain's work load in a search head cluster, what setting will prevent scheduled searches from running on the captain?
-A. adhoc_searchhead = true (on all members)
-B. adhoc_searchhead = true (on the current captain)
-C. captain_is_adhoc_searchhead = true (on all members)
-D. captain_is_adhoc_searchhead = true (on the current captain)
-C. captain_is_adhoc_searchhead = true (on all members)
+These methods can be used to detect orphaned knowledge objects:
+(Select all that apply)
+
+A. Review orphaned scheduled search notification in Messages.
+B. Run the Monitoring Console health check.
+C. Check splunkd.log on the search head for any authentication errors.
+D. Run CLI command show orphaned-ko
+A B C
 
 
-At which default interval does metrics.log generate a periodic report regarding license utilization?
-A. 10 seconds
-B. 30 seconds
-C. 60 seconds
-D. 300 seconds
-B. 30 seconds
+What should be explicitly specified during for Inputs during Index Time?
+
+A. Resource Utilization
+B. Host
+C. Timestamp
+D. Source
+E. Index
+F. Sourcetype
+G. All the Above
+B D E F
 
 
-Which of the following is a good practice for a search head cluster deployer?
-A. The deployer only distributes configurations to search head cluster members when they "phone home"
-B. The deployer must be used to distribute non-replicable configurations to search head cluster members
-C. The deployer must distribute configurations to search head cluster members to be valid configurations
-D. The deployer only distributes configurations to search head cluster member with splunk apply shcluster-bundle
-B. The deployer must be used to distribute non-replicable configurations to search head cluster members
+During the Parsing-phase pipeline, which of the following should be specified?
+(Select all that apply)
+
+A. Event Boundary
+B. Line Breaker
+C. TimeStamp
+D. Event Breaker
+A C
 
 
-A new Splunk customer is using syslog to collect data from their network devices on port 514. What is the best practice for ingesting this data into Splunk?
-A. Configure syslog to send the data to multiple Splunk indexers.
-B. Use a Splunk indexer to collect a network input on port 514 directly.
-C. Use a Splunk forwarder to collect the input on port 514 and forward the data.
-D. Configure syslog to write logs and use a Splunk forwarder to collect the logs.
-D. Configure syslog to write logs and use a Splunk forwarder to collect the logs
+To clarify Input Problems, look for the following:
+
+A. View source system
+
+B. Establish Expected vs. Observed Behavior
+
+C. Distribute Data Uniformly
+
+D. Enable Splunk Debugging
+A B D
 
 
-Which Splunk internal index contains license-related events?
-A. _audit
-B. _license
-C. _internal
-D. _introspection
-C. _internal
+It is Best Practice to roll the log file before enabling debugging when troubleshooting Input Problems.
+
+True or False?
+True
 
 
-Which of the following statements describe a Search Head Cluster (SHC) captain? (Select all that apply.)
-A. Is the job scheduler for the entire SHC
-B. Manages alert action suppressions (throttling)
-C. Synchronizes the member list with the KV store primary
-D. Replicates the SHC's knowledge bundle to the search peers
-A. Is the job scheduler for the entire SHC
-B. Manages alert action suppressions (throttling)
-C. Synchronizes the member list with the KV store primary
-D. Replicates the SHC's knowledge bundle to the search peers
+The notable Splunkd Input Log Channels are:
+(Select all that apply)
+
+A. Scripted Inputs
+B. Parsing Phase
+C. Forwarder Input
+D. Monitor Input
+E. Network Input
+A D E
 
 
-Before users can use a KV store, an admin must create a collection. Where is a collection is defined?
-A. kvstore.conf
-B. collection.conf
-C. collections.conf
-D. kvcollections.conf
-C. collections.conf
+For Input Log Channels, modifying the SPLUNK_HOME/etc/log-local.cfg is permanent and does not require the splunkd service to be restarted:
+
+True or False?
+False , the file requires splunkd to be restarted for changes to apply
 
 
-Which search will show all deployment client messages from the client (UF)?
-A. index=_audit component=DC* host=<ds> | stats count by message
-B. index=_audit component=DC* host=<uf> | stats count by message
-C. index=_internal component=DC* host=<uf> | stats count by message
-D. index=_internal component=DS* host=<ds> | stats count by message
-C. index=_internal component=DC* host=<uf> | stats count by message
+The Common Monitor Input Errors are:
+(Select all that apply)
+
+A. Lagging Input
+B. splunkd service stopped
+C. Permission Issue
+D. Network Problem
+E. Status of monitored files
+A C D E
 
 
-Which search head cluster component is responsible for pushing knowledge bundles to search peers, replicating configuration changes to search head cluster members, and scheduling jobs across the search head cluster?
-A. Manager
-B. Captain
-C. Deployer
-D. Deployment server
-B. Captain
+By Default, Splunk Performs first and last ____ bytes of a file to prevent the same from re-indexing:
+
+A. 256
+B. 128
+C. 512
+D. 1024
+A
 
 
-Configurations from the deployer are merged into which location on the search head cluster member?
-A. SPLUNK_HOME/etc/system/local
-B. SPLUNK_HOME/etc/apps/APP_HOME/local
-C. SPLUNK_HOME/etc/apps/search/default
-D. SPLUNK_HOME/etc/apps/APP_HOME/default
-D. SPLUNK_HOME/etc/apps/APP_HOME/default
+What does the CRC do by default?
+
+A. Allows the fishbucket to maintain the state for monitored files
+
+B. Helps Splunk to determine if the file has been read
+
+C. Runs CRC on every file it monitors during a startup
+
+D. All the Above
+D
 
 
-When Splunk indexes data in a non clustered environment, what kind of files does it create by default?
-A. Index and .tsidx files.
-B. Rawdata and index files.
-C. Compressed and .tsidx files.
-D. Compressed and meta data files.
-B. Rawdata and index files
+You can check the status of Monitored Files by utilizing what actions?
+(Select all that apply)
+
+A. REST Calls
+B. Viewing the log file
+C. btool inputs list —debug
+D. splunk list inputstatus
+A D
 
 
-How does IT Service Intelligence (ITSI) impact the planning of a Splunk deployment?
-A. ITSI requires a dedicated deployment server
-B. The amount of users using ITSI will not impact performance
-C. ITSI in a Splunk deployment does not require additional hardware resources
-D. Depending on the Key Performance Indicators that are being tracked, additional infrastructure may be needed
-D. Depending on the Key Performance Indicators that are being tracked, additional infrastructure may be needed
+When troubleshooting CRC Problems, what command should be used to check the fishbucket?
+
+A. SPLUNK_HOME/bin/splunk btool
+
+B. SPLUNK_HOME/bin/splunk cmd btprobe -h
+
+C. SPLUNK_HOME/bin/splunk btprobe -h
+
+D. SPLUNK_HOME/bin/splunk cmd btool
+B
 
 
-The KV store formed its own cluster within a SHC. What is the maximum number of SHC members KV store will forms?
-A. 25
-B. 50
-C. 100
-D. Unlimited
-B. 50
+To check for CRC index errors via search, which SPL should be ran to check for possible clues?
+
+A. index=main sourcetype=splunkd
+
+B. index=_internal sourcetype=splunkd
+
+C. index=main sourcetype=splunkd component=watchedfile
+
+D. index=_internal sourcetype=splunkd component=watchedfile
+D
 
 
-In search head clustering, which of the following methods can you use to transfer captaincy to a different member? (Select all that apply.)
-A. Use the Monitoring Console
-B. Use the Search Head Clustering settings menu from Splunk Web on any member
-C. Run the splunk transfer shcluster-captain command from the current captain
-D. Run the splunk transfer shcluster-captain command from the member you like like to become the captain
-C. Run the splunk transfer shcluster-captain command from the current captain
-D. Run the splunk transfer shcluster-captain command from the member you like like to become the captain
+If Splunk processes a file more than once, it can possibly lead to a license violation.
+
+True or False?
+True
 
 
-Which command is used for thawing the archive bucket?
-A. Splunk collect
-B. Splunk convert
-C. Splunk rebuild
-D. Splunk dbinspect
-C. Splunk rebuild
+The File Monitor Input Health Reports use which feature(s) to monitor its health status?
+(Select all that apply)
+
+A. feature:headreader
+B. feature:tailreader
+C. feature:batchreader
+D. All the Above
+B C
 
 
-A Splunk instance has the following settings in SPLUNK_HOME/etc/system/local/server.conf:
-[clustering]
-mode = manager
-replication_factor = 2
-pass4SymmKey = password123
-Which of the following statements describe this Splunk instance? (Select all that apply.)
-A. This is a multi-site cluster
-B. This cluster's search factor is 2
-C. This Splunk instance needs to be restarted
-D. This instance is missing the manager_uri attribute
-B. This cluster's search factor is 2
-C. This Splunk instance needs to be restarted
+While troubleshooting Network Input Errors and Fixes, what are the common problems to look for?
+(Select all that apply)
+
+A. Network Problems
+B. Routing Problems
+C. Reliability Problems
+D. Host Extraction Problems
+A B C D
 
 
-Which of the following describe migration from single-site to multisite index replication?
-A. A manager node is required at each site
-B. Multisite policies apply to new data only
-C. Single-site buckets instantly receive the multisite policies
-D. Multisite total values should not exceed any single-site factors
-B. Multisite policies apply to new data only
+The common problems for Scripted Input Errors and Fixes are:
+
+A. Permissions
+B. Wrong Directory Path
+C. Duplicate Data
+D. All the Above
+D
 
 
-What does setting site=site0 on all Search Head Cluster members do in a multi-site indexer cluster?
-A. Disables search site affinity
-B. Sets all members to dynamic captaincy
-C. Enables multisite search artifact replication
-D. Enables automatic search site affinity discovery
-A. Disables search site affinity
+Errors may arise during Windows Inputs if the AD monitor gathers and traverses too much data.
+
+True or False?
+True
 
 
-Which of the following is a way to exclude search artifacts when creating a diag?
-A. SPLUNK_HOME/bin/splunk diag --exclude
-B. SPLUNK_HOME/bin/splunk diag --debug --refresh
-C. SPLUNK_HOME/bin/splunk diag --disables=dispatch
-D. SPLUNK_HOME/bin/splunk diag --filter-searchstrings
-C. SPLUNK_HOME/bin/splunk diag --disable=dispatch
+To remediate a Windows Input Error, what problematic errors should you look for?
+
+A. Insufficient Privileges
+B. Remote Collection Disabled
+C. UF collection Limit
+D. All the Above
+D
 
 
-Which of the following statements describe licensing in a clustered Splunk deployment? (Select all that apply.)
-A. Free licenses do not support clustering
-B. Replicated data does not count against licensing
-C. Each cluster member requires its own clustering license
-D. Cluster members must share the same license pool and license manager
-A. Free licenses do not support clustering
-B. Replicated data does not count against licensing
-D. Cluster members must share the same license pool and license manager
+The listed options below are used to collect only recent log data for Windows Inputs:
+
+current_only=1
+start_from=newest
+
+True or False?
+True
 
 
-When planning a search head cluster, which of the following is true?
-A. All search heads must use the same operating system
-B. All search heads must be members of the cluster (no standalone search heads)
-C. The search head captain must be assigned to the largest search head in the cluster
-D. All indexers must belong to the underlying indexer cluster (no standalone indexers)
-A. All search heads must use the same operating system
+In Linux, the search job:
+(Select all that apply)
+
+A. starts 2 processes search-launcher and process-runner
+
+B. can isolate all the splunk-search processes with: ps-ef | grep search
+
+C. The main jon is the one using the system
+
+D. each job spins up a new splunkd service
+A B C
 
 
-In which phase of the Splunk Enterprise data pipeline are indexed extraction configurations processed?
-A. Input
-B. Search
-C. Parsing
-D. Indexing
-C. Parsing
+The SH generates and maintains the source bundle in $SPLUNK_HOME/var/run. The bundle is generated in the form of <servername>-<time>.bundle , or a delta bundle = <servername>-<oldTime><newTime>.delta
+
+True or False?
+True
 
 
-Which server.conf attribute should be added to the manager node's server.conf when decommissioning a site in an indexer cluster?
-A. site_mappings
-B. available_sites
-C. site_search_factor
-D. site_replication_factor
-A. site_mappings
+Replicated bundles are present in SPLUNK_HOME/var/run/searchpeers. The Search Head ......... ?
+
+A. Keeps N number of bundle generation per search head (5 by default)
+
+B. Currently-running searches use the bundle from the time they were started
+
+C. The no-longer-needed generation gets deleted periodically
+
+D. All the above
+D
 
 
-Which tool(s) can be leveraged to diagnose connection problems between an indexer and forwarder? (Select all that apply.)
-A. telnet
-B. tcpdump
-C. splunk btool
-D. splunk btprobe
-A. telnet
-B. tcpdump
+Blacklists made in replication are applied globally
+
+True or False?
+True
 
 
-A search head has successfully joined a single site indexer cluster. Which command is used to configure the same search head to join another indexer cluster?
-A. splunk add cluster-config
-B. splunk add cluster-manager
-C. splunk edit cluster-config
-D. splunk edit cluster-manager
-B. splunk add cluster-manager
+Splunk determines the concurrent search capacity based on the total number of CPUs. Splunk scheduler allocates and tracks the available capacity based on the settings in:
+
+A. [scheduler] stanza in server.conf
+
+B. [scheduler] stanza in limits.conf
+
+C. [scheduler] stanza in savedsearches.conf
+
+D. None of the above
+B
 
 
-To improve Splunk performance, parallelIngestionPipelines setting can be adjsuted on which of the following components in the Splunk architecture?
+Check the ______ logs to identity if a search has been skipped or differed.
+
+A. SplunkD.log on search peers
+
+B. Splunkd_access.log on search peers
+
+C. Remote_searches.log on search head
+
+D. Scheduler.log in search head
+D
+
+
+What are the splunk scheduling modes and priority?
+
+A. Real-time scheduling with realtime_schedule = 0
+
+B. Real-time scheduling with realtime_schedule = 1
+
+C. continuous scheduling realtime_schedule = 0
+
+D. continuous scheduling realtime_schedule = 1
+
+E. A&D
+F. B&C
+F
+
+
+Use splunk guardrails to prevent users from overloading SHs.
+
+True or False?
+True , Use options like Schedule priority and Schedule Window in the GUI. allows_skew in savedsearches.conf , assign user/role-based quotas in authorize.conf. Other work arounds are to add physical CPU cores and use Search Head Clustering.
+
+
+Splunk can crash if.....
+
+A. there is not enough memory
+B. due to the number of open files descriptors
+C. max user process limit
+D. Not enough disk space/ too many job artifacts
+E. All of the above
+D
+
+
+10. What are the notable logs to check for crashes?
+
+A. Check if crash*log exists
+B. Splunkd_stderr.log
+C. Audit.log, splunkd.log
+D. Metrics.log
+E. Web*.log
+F. All of the above
+F
+
+
+Keep all WLM definitions together and consistent on all nodes.
+
+True or False?
+True
+
+
+Which of the following statements are true regarding multisite indexer clusters?
+
+A. Each site has its own set of peer nodes, but they all use the same search heads
+B. Each site also obeys site-specific replication and search factor rules
+C. The cluster administrator defines the "sites"
+D. B&C
+E. All of the above
+F. None of the above
+D
+
+
+_________ controls and manages index replication, as well as distributes apps and configurations.
+
+A. Deployment Server
+B. Deployer Server
+C. Master Node
+D. Peer Nodes
+C
+
+
+Peer nodes index data from inputs/forwarders and replicates data to other peer nodes as instructed by the deployment server.
+
+True or False?
+False , (as instructed by Master Node)
+
+
+Multisite clusters offer two key benefits: Disaster Recovery and Search Affinity.
+
+True or False?
+True
+
+
+There can be only one Master Node, even in a multisite cluster.
+
+True or False?
+True
+
+
+Which of the following are true statements about how a master node manages an index cluster?
+
+A. Coordinates the replicating activities of the peer nodes
+B. Tells search heads where to find the data
+C. Orchestrates remedial activities if a peer becomes unavailable
+D. B&C
+E. All of the above
+E
+
+
+The cluster will continue to operate while the Master Node is offline.
+
+True or False?
+True
+
+
+Which of the following are true statements regarding Replication Factor (RF)? (Select all that apply)
+
+A. Specifies how many copies will be searchable
+B. Specifies how many total copies of rawdata the cluster can maintain
+C. Sets the total failure tolerance level
+D. Determines how quickly you can recover the search capability
+B C
+
+
+Which of the following are true statements regarding Search Factor (SF)? (Select all that apply)
+
+A. Specifies how many copies will be searchable
+B. Specifies how many total copies of rawdata the cluster can maintain
+C. Sets the total failure tolerance level
+D. Determines how quickly you can recover the search capability
+A D
+
+
+For indexer clustering, multisite mode requires at least __ peer nodes per site in multisite mode.
+
+A. 3
+B. 2
+C. 4
+D. 1
+B
+
+
+For indexer clustering, best practice for a single-site mode is to have at least _______ nodes as a minimum.
+
+A. RF+1
+B. RF+2
+C. SF+1
+D. SF+2
+A
+
+
+Regarding Remote Storage/SmartStore, hot buckets and warm buckets are stored remotely and retrieved using the cache manager.
+
+True or False?
+False
+
+
+Regarding SmartStore and index clustering, the indexer cluster can recover all of its warm bucket data even when the number of failed nodes equals or exceeds the replication factor.
+
+True or False?
+True
+
+
+All search heads in a cluster must have matching hardware specs.
+
+True or False?
+True
+
+
+You can run the same searches, view the same dashboards and access the same search results from any search head in a cluster.
+
+True or False?
+True
+
+
+For Search Head clustering, the requirements include at least ___ search heads and a _________.
+
+A. 2, deployment server
+B. 3, deployment server
+C. 2, deployer
+D. 3, deployer
+D
+
+
+Regarding Search Head clustering, the sizing guidelines for a ________ states that it must have sufficient CPU and network resources to service requests and to push configurations.
+
+A. Search head
+B. Deployment server
+C. Deployer server
+D. None of the above
+C
+
+
+For Search Head clustering, the summary indexes must be forwarded to the indexer tier.
+
+True or False?
+True
+
+
+Choose the Types of Integration:
+
+A. Apps from Splunkbase
+B. HDFS
+C. Re-forwarding data to other Apps after indexing occurs
+D. Alert Actions
+E. All of the above
+D
+
+
+What are two ways to send/move data to other systems via Splunk?
+(Select all that apply)
+
+A. TCP
+B. Email
+C. Copy/Paste
+D. Scheduled Searches
+E. All of the above
+A D
+
+
+When forwarding data to other systems via TCP, Splunk is unable to send raw text or syslog.
+
+True or False?
+False
+
+
+SDK's help to simplify code development for languages such as Python & C#.
+
+True or False?
+True
+
+
+Hadoop searches only work in _________ installs.
+
+A. Windows
+B. DOS
+C. Town OS by Fujitsu
+D. Linux
+D
+
+
+Scheduled searches leverage the functionality of Splunk alerts.
+
+True or False?
+True
+
+
+Splunk Analytics for Hadoop requires at least 2 Search Heads to access both Splunk index and HDFS.
+
+True or False?
+False
+
+
+Search Extensibility includes:
+(Select all that apply)
+
 A. Indexers
-B. Forwarders
-C. Search head
-D. Cluster manager
-A. Indexers
-B. Forwarders
-
-
-When adding or decommissioning a member from a Search Head Cluster (SHC), what is the proper order of operations?
-A. 1. Delete Splunk Enterprise, if it exists. 2. Install and initialize the instance. 3. Join the SHC
-B. 1. Install and initialize the instance. 2. Delete Splunk Enterprise, if it exists. 3. Join the SHC
-C. 1. Initialize cluster rebalance operation. 2. Remove manager node from cluster. 3. Trigger replication
-D. 1. Trigger replication 2. Remove manager node from cluster. 3. Initialize cluster rebalance operation
-A. 1. Delete Splunk Enterprise, if it exists. 2. Install and initialize the instance. 3. Join the SHC
-
-
-When troubleshooting monitor inputs, which command checks the status of the tailed files?
-A. splunk cmd btool inputs list | tail
-B. splunk cmd btool check inputs layer
-C. curl https://serverhost:8089/services/admin/inputstatus/TailingProcessor:FileStatus
-D. curl https://serverhost:8089/services/admin/inputstatus/TailingProcessor:Tailstatus
-C. curl https://serverhost:8089/services/admin/inputstatus/TailingProcessor:FileStatus
-
-
-When should multiple search pipelines be enabled?
-A. Only is disk IOPS is at 800 or better
-B. Only if there are fewer than twelve concurrent users
-C. Only if running Splunk Enterprise version 6.6 or later
-D. Only if CPU and memory resources are significantly under-utilized
-D. Only if CPU and memory resources are significantly under-utilized
-
-
-Of the following types of files within an index bucket, which file type may consume the most disk?
-A. Rawdata
-B. Bloom filter
-C. Metadata (.data)
-D. Inverted index (.tsidx)
-D. Inverted index (.tsidx)
-
-
-When converting from a single-site to a multi-site cluster, what happens to existing single-site clustered buckets?
-A. They will continue to replicate within the origin site and age out based on existing policies
-B. They will maintain replication as required according to the single-site policies, but never age out
-C. They will be replicated across all peers in the multi-site cluster and ago out based on existing policies
-D. They will stop replicating within the single-site and remain on the indexer they reside on an age out according the existing policies
-A. They will continue to replicate within the origin site and age out based on existing policies
-
-
-Which of the following should be done when installing Enterprise Security on a Search Head Cluster? (Select all that apply.)
-A. Install Enterprise Security on the deployer
-B. Install Enterprise Security on a staging instance
-C. Copy the Enterprise Security configurations to the deployer
-D. Use the deployer to deploy Enterprise Security to the cluster members
-A. Install Enterprise Security on the deployer
-D. Use the deployer the deploy Enterprise Security to the cluster members
-
-
-Which of the following is an indexer clustering requirement?
-A. Must use shared storage?
-B. Must reside on a dedicated rack
-C. Must have at least three members
-D. Must share the same license pool
-D. Must share the same license pool
-
-
-What is the algorithm used to determine captaincy in a Splunk search head cluster?
-A. Raft distributed consensus
-B. Rapt distributed consesnsus
-C. Rift distributed consensus
-D. Round-robin distribution consensus
-A. Raft distributed consensus
-
-
-Which of the following statements about integrating with third-party systems is true? (Select all that apply.)
-A. A Hadoop application can search data in Splunk
-B. Splunk can search data in the Hadoop File System (HDFS)
-C. You can use Splunk alerts to provision actions on a third-party system
-D. You can forward data from Splunk forwarder to a third-party system without indexing it first
-B. Splunk can search data in the Hadoop File System (HDFS)
-C. You can use Splunk alerts to provision actions on a third-party system
-D. You can forward data from Splunk forwarder to a third-party system without indexing it first
-
-
-As a best practice, where should the internal licensing logs be stored?
-A. Indexing layer
-B. License server
-C. Deployment layer
-D. Search head layer
-A. Indexing layer
-
-
-How does the average run time of all searches related to the available CPU cores on the indexers?
-A. Average run time is independent of the number of CPU cores on the indexers
-B. Average run time decreases as the number of CPU cores in the indexers decreases
-C. Average run time increases as the number of CPU cores on the indexers decreases
-D. Average run time increases as the number of CPU copes on the indexers increases
-C. Average run time increases as the number of CPU cores on the indexers decreases
-
-
-Consider a use case involving firewall data. There is no Splunk-supported Technical Add-On, but the vendor has built one. What are the items that must be evaluated before installing the add-on? (Select all that apply.)
-A. Identify number of scheduled or real-time searches
-B. Validate if this Technical Add-On enables event data for a data model
-C. Identify the maximum number of forwarders Technical Add-On can support
-D. Verify if Technical Add-On needs to be installed onto both a search head or indexer
-A. Identify number of scheduled or real-time searches
-B. Validate if this Technical Add-On enables event data for a data model
-D. Verify if Technical Add-On needs to be installed onto both a search head or indexer
-
-
-When configuring a Splunk indexer cluster, what are the default values for replication and search factor?
-A. replication_factor = 2 search_factor = 2
-B. replication_factor = 2 search_factor = 3
-C. replciation_factor = 3 search_factor = 2
-D. replciation_factor = 3 search_factor = 3
-C. replication_factor = 3 search_factor = 2
-
-
-A Splunk user successfully extracted an IP address into a field called src_ip. Their colleague cannot see that field in their search results with events known to have src_ip. Which of the following may explain the problem? (Select all that apply.)
-A. The field was extracted as a private knowledge object
-B. The events are tagged as communicate, but are missing the network tag
-C. The Typing Queue, which does regular expressions replacements, is blocked
-D. The colleague did not explicitly use the field in the search and the search was set to Fast Mode
-A. The field was extracted as a private knowledge object
-D. The colleague did not explicitly use the field in the search and the search was set to Fast Mode
-
-
-What is the default log size for Splunk internal logs?
-A. 10MB
-B. 20MB
-C. 25MB
-D. 30MB
-C. 25MB
-
-
-What is a Splunk Job? (Select all that apply.)
-A. A user-defined Splunk capability
-B. Searches that are subjected to some usage quota
-C. A search process kicked off via a report or an alert
-D. A child OS process manifested from the splunkd process
-C. A search process kicked off via a report or an alert
-D. A child OS process manifested from the splunkd process
-
-
-When Splunk is installed, where are the internal indexes stored by default?
-A. SPLUNK_HOME/bin
-B. SPLUNK_HOME/var/lib
-C. SPLUNK_HOME/var/run
-D. SPLUNK_HOME/etc/system/default
-B. SPLUNK_HOME/var/lib
-
-
-Which of the following options can improve reliability of syslog delivery to Splunk? (Select all that apply.)
-A. Use TCP syslog
-B. Configure UDP inputs on each Splunk indexer to receive data directly
-C. Use a network load balancer to direct syslog traffic to active backend syslog lsiteners
-D. Use one or more syslog servers to persist data with a Universal Forwarder to send the data to Splunk indexers
-A. Use TCP syslog
-D. Use one or more syslog servers to persist data with a Universal Forwarder to send the data to Splunk indexers
-
-
-What is the logical first step when starting a deployment plan?
-A. Inventory the currently deployed logging infrastructure
-B. Determine what apps and use cases will be implemented
-C. Gather statistics on the expected adoption of Splunk for sizing
-D. Collect the initial requirements for the deployment from all stakeholders
-D. Collect the initial requirements for the deployment from all stakeholders
-
-
-Which of the following tasks should the architect perform when building a deployment plan? (Select all that apply.)
-A. Use case checklist.
-B. Install Splunk apps.
-C. Inventory data sources.
-D. Review network topology.
-C. Inventory data sources.
-D. Review network topology.
-
-
-A data model can consist of what three types of datasets?
-A. Pivot, searches, and events.
-B. Pivot, events, and transactions.
-C. Searches, transactions, and pivot.
-D. Events, searches, and transactions.
-D. Events, searches, and transactions.
-
-
-When is a GET workflow action needed?
-A. To send field values to an external resource.
-B. To retrieve information from an external resource.
-C. To use field values to perform a secondary search.
-D. To define how events flow from forwarders to indexes.
-B. To retrieve information from an external resource.
-
-
-Which of the following statements describe GET workflow actions?
-A. GET workflow actions must be configured with POST arguments.
-B. Configuration of GET workflow actions includes choosing a sourcetype.
-C. Label names for GET workflow actions must include a field name surrounded by dollar signs.
-D. GET workflow actions can be configured to open the URI link in the current window or in a new window.
-D. GET workflow actions can be configured to open the URI link in the current window or in a new window.
-
-
-Which of the following is true regarding Splunk Enterprise performance? (Select all that apply.)
-A. Adding search peers increases the maximum size of search results
-B. Adding RAM to an existing search head provides additional search capacity
-C. Adding search peers increases the search throughput as search load increases
-D. Adding search heads provides additional CPU cores to run more concurrent searches
-C. Adding search peers increases the search throughput as search load increases
-D. Adding search heads provides additional CPU cores to run more concurrent searches
-
-
-In an existing Splunk environment, the new index buckets that are created each day are about half the size of the incoming data. Within each bucket, about 30% of the space is used for rawdata and about 70% for index files.What additional information is needed to calculate the daily disk consumption, per indexer, if indexer clustering is implemented?
-A. Total daily indexing volume, number of peer nodes, and number of accelerated searches.
-B. Total daily indexing volume, number of peer nodes, replication factor, and search factor.
-C. Total daily indexing volume, replication factor, search factor, and number of search heads.
-D. Replication factor, search factor, number of accelerated searches, and total disk size across cluster.
-B. Total daily indexing volume, number of peer nodes, replication factor, and search factor
-
-
-What is the minimum reference server specification for a Splunk indexer?
-A. 12 CPU cores, 12GB RAM, 800 IOPS
-B. 16 CPU cores, 16GB RAM, 800 IOPS
-C. 24 CPU cores, 16GB RAM, 1200 IOPS
-D. 28 CPU cores, 32GB RAM, 1200 IOPS
-A. 12 CPU cores, 12GB RAM, 800 IOPS
-
-
-To optimize the distribution of primary buckets; when does primary rebalancing automatically occur? (Select all that apply.)
-A. Rolling restart completes.
-B. Master node rejoins the cluster.
-C. Captain joins or rejoins cluster.
-D. A peer node joins or rejoins the cluster.
-A. Rolling restart completes.
-B. Master node rejoins the cluster.
-D. A peer node joins or rejoins the cluster.
-
-
-In the deployment planning process, when should a person identify who gets to see network data?
-A. Deployment schedule
-B. Topology diagramming
-C. Data source inventory
-D. Data policy definition
-D. Data policy definition
-
-
-Which of the following is a best practice to maximize indexing performance?
-A. Use automatic sourcetyping.
-B. Use the Splunk default settings.
-C. Not use pre-trained source types.
-D. Minimize configuration generality.
-D. Minimize configuration generality
-
-
-Splunk configuration parameter settings can differ between multiple .conf files of the same name contained within different apps. Which of the following directories has the highest precedence?
-A. System local directory.
-B. System default directory.
-C. App local directories, in ASCII order.
-D. App default directories, in ASCII order.
-A. System local directory.
-
-
-In a distributed environment, knowledge object bundles are replicated from the search head to which location on the search peer(s)?
-A. SPLUNK_HOME/var/lib/searchpeers
-B. SPLUNK_HOME/var/log/searchpeers
-C. SPLUNK_HOME/var/run/searchpeers
-D. SPLUNK_HOME/var/spool/searchpeers
-C. SPLUNK_HOME/var/run/searchpeers
-
-
-Which two sections can be expanded using the Search Job Inspector?
-A. Execution costs.
-B. Saved search history.
-C. Search job properties.
-D. Optimization suggestions.
-A. Execution costs.
-C. Search job properties.
-
-
-Which of the following statements describe search head clustering? (Select all that apply.)
-A. A deployer is required.
-B. At least three search heads are needed.
-C. Search heads must meet the high-performance reference server requirements.
-D. The deployer must have sufficient CPU and network resources to process service requests and push configurations.
-A. A deployer is required.
-B. At least three search heads are needed.
-D. The deployer must have sufficient CPU and network resources to process service requests and push configurations.
-
-
-Because Splunk indexing is read/write intensive, it is important to select the appropriate disk storage solution for each deployment. Which of the following statements is accurate about disk storage?
-A. High performance SAN should never be used.
-B. Enable NFS for storing hot and warm buckets.
-C. The recommended RAID setup is RAID 10 (1 + 0).
-D. Virtualized environments are usually preferred over bare metal for Splunk indexers.
-C. The recommended RAID setup is RAID 10 (1 + 0).
+B. Custom Search commands
+C. Workflow Actions
+D. Custom Navigation
+E. Universal Forwarders
+F. Scripted Inputs
+B C D F
 
+
+There are over 200 endpoints REST API can interact with in a Splunk instance.
+
+True or False?
+True
+
+
+The benefits of deferred processing on raw events until search time include:
+
+A. increase in indexing speed
+B. original data is persisted
+C. parsing problems require reloading
+D. system is resilient to change
+A B D
+
+
+Bad question type bad
+bad
+
+
+What two main files types are created when Splunk indexes data.
+
+A. rawdata
+B. meta
+C. bloom
+D. tsidx
+A D
+
+
+An efficient data structure that provides 100% certainty a search term in not in a bucket.
+
+A. Meta filters
+B. Bloom filters
+C. Bloom index
+D. Inverted index
+B
+
+
+What data structure maps keywords to their locations in the rawdata.
+
+A. Index filter
+B. Bloom index
+C. Meta index
+D. Inverted index
+D
+
+
+To save disk space and reduce bucket size you can enable tsidx reduction by setting attribute timePeriodInSecBeforeTsidxReduction in:
+
+A. indexes.conf
+B. props.conf
+C. limits.conf
+D. metrics.conf
+A
+
+
+To estimate Indexing input volume and data capacity utilize the following metrics:
+(Select all that apply)
+
+A. Verify raw log sizes
+B. Daily, peak, retained and future volume
+C. Total number of data sources
+D. Total number of hosts
+A B C D
+
+
+Syslog data is estimated to be 50% of it's original data size after compression divided between the index files in the following ratio:
+
+A. rawdata 35%, tsidx 15%
+B. rawdata 15%, tsidx 35%
+C. rawdata 40%, tsidx 10%
+D. rawdata 10%, tsidx 40%
+B
+
+
+Splunk apps are often chosen based on:
+
+A. Devices or technologies in the production environment
+B. Use cases
+C. Inputs
+D. Cost
+A B C
+
+
+All retention settings apply on a per-index basis and all data sources within an index should have the same retention.
+
+True or False?
+True
+
+
+In order to improve performance, high-volume data sources should be paired with a low-volume data source index.
+
+True or False?
+False
+
+
+Use a Heavy Forwarder when:
+
+A. Advanced event level routing is needed
+B. Filtering more than 80% of incoming events
+C. Anonymizing or masking data before forwarding to indexer
+D. Required by an app
+E. Required by a Modular input - HEC, DBX, CheckpointOPSEC LEA
+F. B & C
+G. All the Above
+G
+
+
+Forwarders automatically load balance over available indexers.
+
+True or False?
+True , AutoLB is enabled by default in Splunk 6.6 & newer. For Splunk 6.5 & older enable "forceTimebasedAutoLB" or set the EVENT_BREAKER_ENABLE = TRUE and EVENT_BREAKER = "....regex" in the sourcetype stanza.
+
+
+What is the default throughput setting for a UF? How do you evaluate the value? Name the .conf file that should be used in order to increase the value for high velocity sources.
+
+A. 256KBps, value=ratio of forwarders to indexers, server.conf
+B. 512KBps, value = ratio of indexers to forwarders, limits.conf
+C. 256KBps, value=ratio of forwarders to indexers, limits.conf,
+D. 512KBps, value=ratio of forwarders to indexers, server.conf
+C
+
+
+You should store configurations in $SPLUNK_HOME /etc/system/local on deployment clients.
+
+True or False?
+False , You should NOT store .conf files in /etc/system/local because system-level configurations on clients cannot be overwritten with a Deployment Server.
+
+
+You should build an install script/package for clients with only the files needed to contact the DS (basic installation + deploymentclient.conf), as clients will get the rest of the configuration information from the DS.
+
+True or False?
+True
+
+
+Deployer supports both push and pull mechanisms. Push apps to SH cluster members and Polled by new or restarted SH cluster members for updates.
+
+True or False?
+True
+
+
+You can use the deployment server to directly distribute apps to peer nodes or SHC members.
+
+True or False?
+False , Deployment Server is used to push apps to forwarders. Deployer is used to push apps to SHC cluster members.
+
+
+Use Health Check for a high-level summary of your system's performance.
+
+True or False?
+True
+
+
+For performance monitoring and tuning your splunk environment, you can improve performance by using limits.conf
+
+True or False?
+True , for example, You can set multiple search pipelines if you have unused CPU/memory resources using "batch_search_max_pipeline = 2" in [search] stanza.
+
+
+Some best practices for Bucket Limit Size are:
+
+A. Having small buckets & Having many buckets within the index cluster
+B. Increase bucket size from 750MB to 10GB
+C. Keep the # of buckets (source and replicas) under tested limits when using IDX clustering
+D. B&C
+E. None of the above
+C , while small buckets can be better for search, having large number of these buckets present a challenge with IDX clustering.
+
+Increase the bucket limit size to prevent high-volume indexes from bucket explosion.
+
+
+If the the punct field is being used, set the annotate_punct = false in props.conf
+
+True or False?
+False , DO NOT set the annotate_punct = false.
+
+If this is disabled, the punct field will no longer be available.
+
+Understand the use cases before turning off the punct field.
+
+
+line_breaker= in props.conf goes hand-in-hand with should_linemerge=
+
+True or False?
+True
+
+
+tz= in props.conf will automatically include the timezone of the UF.
+
+True or False?
+True , if you are not using the UF, it is important to include the timezone in your configs so that time is displayed properly.
+
+
+For improved search performance:
+(Select all that apply)
+
+A. Make sure the disk I/O is good. Increase CPU h/w if needed
+
+B. Add additional search peers (indexers)
+
+C. Analyze the resource consumption on both the indexer and search tier to diagnose slow searches
+
+D. Rebalance buckets (only available in indexer clustering)
+
+E. B & D
+F. All of the above
+F
+
+
+If an app contains large files that do not need to be shared with the indexers, then you can blacklist large lookup files.
+
+True or False?
+True
+
+
+Basic sizing considerations of your Splunk deployment should include:
+(Select all that apply)
+
+A. Amount of incoming and stored data.
+B. Number of concurrent users.
+C. Number and types of searches.
+D. The disk write speed of hard drives.
+A B C
+
+
+To get the most IOPS choose hard drives with:
+
+A. Data acceleration capability.
+B. High rotational speeds.
+C. Preinstalled indexes.
+D. Low average latency and seek times.
+B D
+
+
+The most suitable choice for hot and warm bucket storage are SAN and NAS disks.
+
+True or False?
+False
+
+
+The foundation for a solid Splunk deployment include:
+
+A. A high latency network.
+B. NTP for time synchronization.
+C. Turning on Transparent Hub Pages
+D. Decreasing Linux ulimit settings.
+B
+
+
+The minimum hardware requirements for an Indexer are 12 CPU cores at 2+ GHz and 12GB RAM.
+
+True or False?
+True
+
+
+The types of searches that can be invoked against data stored in Splunk include:
+(Select all that apply)
+
+A. Sparse
+B. Super-sparse
+C. Dense
+D. Rare
+A B C D
+
+
+To scale capacity, increase daily indexing volume and speed up searches add additional auto load balanced forwarders.
+
+True or False?
+False
+
+
+If indexer hardware is being underutilized you can configure multiple pipeline sets in server.conf by increasing the parallelIngestionPipelines attribute.
+
+True or False?
+True
+
+
+Disk storage is primarily determined by the following factors:
+(Select all that apply)
+
+A. Size of all indexes.
+B. OS and configuration files.
+C. Indexer clustering replication.
+D. Report acceleration and summary indexing.
+A B C D
+
+
+The minimum hardware requirements for a Search Head are 16 CPU cores at 2+ GHz, 12GB RAM and 2 x 300GB, 8,000 RPM SAS hard disks in RAID 1 configuration.
+
+True or False?
+False
+
+
+The recommendation for a Splunk environment with 22 concurrent users, ingesting 1.5 TB of data a day would be:
+
+A. 1 SH, 8 indexers
+B. 2 SH, 12 Indexers
+C. 3 SH, 21 Indexers
+D. 4 SH, 4 Indexers
+B
+
+
+You can virtualize any Splunk instance if you meet the minimum resource requirements however you should expect virtualization to reduce performance by 10-15%.
+
+True or False?
+True
+
+
+The distributed Monitoring Console should run a dedicated server following the reference guidelines for search heads while never being used as a production search head.
+
+True or False?
+True
+
+
+By default, report accelerations can use an unlimited amount of space and are available to both the power user and user roles.
+
+True or False?
+True
+
+
+The amount of space that a data model acceleration takes up on disk is related to:
+
+A. The number of events you are collecting.
+B. The summary range you have chosen.
+C. The sized-based retention attribute set in indexes.conf.
+D. The last time the acceleration was accessed.
+A B C
+
+
+Which role is responsible in facilitating discussions and documentation to obtain funding for potential infrastructure expansion?
+
+A. Admin
+B. Program Manager
+C. Architect & Admin
+D. Architect
+B
+
+
+The Admin role is responsible for Capacity Planning.
+
+True or False?
+False
+
+
+Which role is needed for deploying Splunk to new environments?
+
+A. Admin
+B. Architect & Admin
+C. Program Manager
+D. Architect
+D
+
+
+Select the role(s) that is responsible for the management of Splunk Deployments:
+
+A. Architect
+B. Admin
+C. Architect & Admin
+D. All the Above
+D
+
+
+The Splunk Deployment Problem Management responsibility belongs to this role:
+
+A. Architect
+B. Admin
+C. Program Manager
+D. Architect & Admin
+B
+
+
+The responsible party during the implementation of High Availability/Disaster Recovery is:
+
+A. Architect
+B. Admin
+C. Program Manager
+D. Architect & Admin
+A
+
+
+The ____ role Documents installation steps, support procedures, backup and recovery etc.
+
+A. Architect
+B. Admin
+C. Program Manager
+D. Architect & Admin
+A
+
+
+The ______ works with prospective Splunk teams or users to discuss problems and business domains in identifying the opportunity to utilize Splunk.
+
+A. Architect
+B. Admin
+C. Program Manager
+D. Architect & Admin
+A
+
+
+The Deployment Scaling plan creates a solid foundation for:
+
+A. Scaling deployments as they evolve
+B. Automating SPL search
+C. Creating realtime Dashboards
+D. Implementing large enterprise deployments
+A D
+
+
+Select what should be included in a deployment plan:
+(Select all that apply)
+
+A. Deployment Goals
+B. User Roles
+
+C. Data Source Inventory and Data Policy Definition
+
+D. Splunk Deployment topology and Current Topology Diagrams
+
+E. Suggested Splunk Apps
+F. Education / Training Plan
+G. Deployment Schedule
+A B C D E F G
+
+
+During the Splunk Deployment Process of Planning and Building, Splunk Admin Training along with Hardware Procurement is recommended.
+
+True or False?
+True
+
+
+During the Splunk Deployment Process of Data Acquisition, having the Infrastructure Build Complete is required?
+
+True or False?
+False , Infrastructure Build Complete is recommended in the Infrastructure Splunk Deployment Process
+
+
+During the Deployment Process of User planning and roll out for Use Case and Staffing, select all of the recommended tasks:
+
+A. Forwarder Allocation
+B. Role User Based Training
+C. Identify data Sources
+D. Validate Data Sources
+E. Administrator and Architect Tasks
+B E
+
+
+"Identify requirements" is the first step in the Splunk deployment.
+
+True or False?
+True
+
+
+Before Architecting a Splunk environment, select all of the raw materials needing during the beginning of the deployment:
+
+A. Goals
+B. Users
+C. Current Environment
+D. Network Collection
+E. Expected daily data ingestion
+F. Data Sources
+G. Host Collection
+A B C E F
+
+
+When architecting a Splunk environment what are the current overall IT topologies:
+(Select all that apply)
+
+A. Location of users
+B. Out of Network
+C. Number and type of servers
+D. Network Zones
+E. Data Centers
+F. Point-to-Point
+A C D E
+
+
+When obtaining a Network Diagram, a Splunk Architect should verify if there are security restrictions in the DataCenter and Network Zones.
+
+True or False?
+True
+
+
+It Is recommended to request information about the network bandwidth among the DataCenter and Network Zones.
+True or False?
+True
+
+
+List the General Requirements to make note of before Architecting a Splunk Environment:(Select all that apply)
+
+A. Security Restrictions
+B. Regulatory Rules
+C. Infrastructure Planning
+D. High Availability or Disaster Recovery Plan
+A B D
+
+
+While Architecting a new Environment, what are the recommended actions you should consider during the implementation of Data Sources?
+
+A. Location of Data
+B. Data Policy — retention of data
+C. Handout
+D. Data Source Inventory — amount of data generated
+B C D
