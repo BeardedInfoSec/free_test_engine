@@ -528,8 +528,8 @@
             "C. [searchGroup:Paris] default = false servers = server1:9997, server2:9997",
             "D. [distributedSearch:Paris] default = false servers = server1:8089; server2:8089"
         ],
-        "answer": "D",
-        "explanation": "NOTE: the marked answer appears incorrect — distsearch.conf uses comma-separated servers, not semicolons. The correct stanza name is [distributedSearch:<name>] (ruling out the [searchGroup:...] options) and peers use management port 8089, so option A ([distributedSearch:Paris] ... servers = server1, server2) is the valid form; option D is identical but uses an invalid semicolon separator. Per the provided key the answer is D, but A is the technically valid distributed search group.",
+        "answer": "A",
+        "explanation": "Distributed search groups are defined in distsearch.conf with the stanza [distributedSearch:<name>] and a comma-separated servers list, e.g. servers = server1, server2. Option A uses the correct stanza name and comma separation. B and C use the invalid stanza [searchGroup:...], and D uses the correct stanza but separates the servers with a semicolon instead of a comma, which is not valid.",
         "resources": [
             "https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Configuredistributedsearch"
         ]
@@ -1138,8 +1138,8 @@
             "C. Resilience from indexer failure.",
             "D. Resilience from search head failure."
         ],
-        "answer": "D",
-        "explanation": "NOTE: the marked answer appears questionable — a single distributed search head does not by itself provide resilience from search head failure (that requires a search head cluster). Distributed search's core benefit is that peers run searches in parallel (option B). The provided key is D (resilience from search head failure), but the technically correct benefit of basic distributed search is parallel execution across peers.",
+        "answer": "B",
+        "explanation": "The core benefit of distributed search is that the search peers (indexers) run the search in parallel; the search head fans the query out across many peers and aggregates the results, improving performance. Sequential execution (A) would be slower, not a benefit. Resilience from indexer failure (C) comes from index replication/clustering, and resilience from search head failure (D) requires a search head cluster - neither is provided by distributed search itself.",
         "resources": [
             "https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatisdistributedsearch"
         ]

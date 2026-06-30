@@ -1488,8 +1488,8 @@ window.QUESTION_BANKS = {
         "C. [searchGroup:Paris] default = false servers = server1:9997, server2:9997",
         "D. [distributedSearch:Paris] default = false servers = server1:8089; server2:8089"
       ],
-      "answer": "D",
-      "explanation": "NOTE: the marked answer appears incorrect — distsearch.conf uses comma-separated servers, not semicolons. The correct stanza name is [distributedSearch:<name>] (ruling out the [searchGroup:...] options) and peers use management port 8089, so option A ([distributedSearch:Paris] ... servers = server1, server2) is the valid form; option D is identical but uses an invalid semicolon separator. Per the provided key the answer is D, but A is the technically valid distributed search group.",
+      "answer": "A",
+      "explanation": "Distributed search groups are defined in distsearch.conf with the stanza [distributedSearch:<name>] and a comma-separated servers list, e.g. servers = server1, server2. Option A uses the correct stanza name and comma separation. B and C use the invalid stanza [searchGroup:...], and D uses the correct stanza but separates the servers with a semicolon instead of a comma, which is not valid.",
       "resources": [
         "https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Configuredistributedsearch"
       ]
@@ -2098,8 +2098,8 @@ window.QUESTION_BANKS = {
         "C. Resilience from indexer failure.",
         "D. Resilience from search head failure."
       ],
-      "answer": "D",
-      "explanation": "NOTE: the marked answer appears questionable — a single distributed search head does not by itself provide resilience from search head failure (that requires a search head cluster). Distributed search's core benefit is that peers run searches in parallel (option B). The provided key is D (resilience from search head failure), but the technically correct benefit of basic distributed search is parallel execution across peers.",
+      "answer": "B",
+      "explanation": "The core benefit of distributed search is that the search peers (indexers) run the search in parallel; the search head fans the query out across many peers and aggregates the results, improving performance. Sequential execution (A) would be slower, not a benefit. Resilience from indexer failure (C) comes from index replication/clustering, and resilience from search head failure (D) requires a search head cluster - neither is provided by distributed search itself.",
       "resources": [
         "https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatisdistributedsearch"
       ]
@@ -2909,8 +2909,8 @@ window.QUESTION_BANKS = {
         "C. When most of the data needs filtering.",
         "D. When data comes directly from a LDAP server."
       ],
-      "answer": "C",
-      "explanation": "A Universal Forwarder (UF) is the lightweight choice; it collects and forwards raw data with minimal processing. A Heavy Forwarder (HF) runs the full parsing pipeline and is required when you must transform data at the edge. NOTE: the marked answer appears incorrect - filtering/routing and masking (anonymizing/SEDCMD) are parsing-pipeline operations that require a Heavy Forwarder, so 'When most of the data needs filtering' (C) actually describes an HF use case, not a UF one. A UF is the right choice for high-velocity sources or simple forwarding where no parsing-time transformation is needed; database (DB Connect) and LDAP inputs are modular inputs that also require an HF.",
+      "answer": "D",
+      "explanation": "Use a Universal Forwarder when data only needs to be collected and forwarded with minimal processing. Masking (B) and filtering/routing (C) are parse-time operations that require a Heavy Forwarder, and reading directly from a database (A) requires an add-on such as DB Connect that runs on a Heavy Forwarder. Collecting data directly from an LDAP source (D) needs no parsing pipeline, so a lightweight Universal Forwarder is appropriate.",
       "resources": [
         "https://docs.splunk.com/Documentation/Forwarder/9.4.0/Forwarder/Typesofforwarders"
       ]
