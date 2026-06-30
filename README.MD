@@ -1,11 +1,22 @@
 # Free Test Engine
 
-A self-contained study engine for **Splunk certification** practice questions, with two ways to study from the same question banks:
+A polished, **browser-based study app** for **Splunk certification** practice — modern UI, multiple-choice + multi-answer questions, mastery tracking, timed exams, and per-question explanations with links to the official docs.
 
-- 🖥️ **Web Flashcard Trainer** — a polished, browser-based app (no install, no server). Just open an HTML file.
-- ⌨️ **Python CLI** — a terminal quiz/test runner.
+No install, no server, no build step: **just open an HTML file in your browser.** (A small command-line version is also included — see [below](#command-line-version-optional).)
 
-Both read the same JSON question format, so you can use whichever fits your workflow.
+## Screenshots
+
+**Learn mode** — work through a bank with a progress sidebar, mastery stats, and a question navigator:
+
+![Learn mode](docs/screenshot-learn.png)
+
+**Instant feedback** — the correct answer, your pick, an explanation, mastery progress, and reference links:
+
+![Answer feedback](docs/screenshot-feedback.png)
+
+**Timed practice exam** — scored with a full per-question results breakdown and links for everything you missed:
+
+![Test results](docs/screenshot-results.png)
 
 ---
 
@@ -13,14 +24,13 @@ Both read the same JSON question format, so you can use whichever fits your work
 
 - [Features](#features)
 - [Quick Start](#quick-start)
-  - [Web Flashcard Trainer](#web-flashcard-trainer)
-  - [Python CLI](#python-cli)
 - [Question Banks](#question-banks)
 - [Study Modes](#study-modes)
 - [The Mastery System](#the-mastery-system)
 - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [Adding Your Own Questions](#adding-your-own-questions)
 - [Question Format](#question-format)
+- [Command-line Version (optional)](#command-line-version-optional)
 - [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
 - [Disclaimer](#disclaimer)
@@ -36,40 +46,28 @@ Both read the same JSON question format, so you can use whichever fits your work
 - **Per-question explanations + resource links** to official Splunk docs.
 - **Progress saved automatically** in your browser (`localStorage`) — close the tab and pick up where you left off.
 - **Timed practice exams** with a per-question results breakdown.
-- **No backend, no build step, no dependencies** for the web app — it runs entirely from local files.
+- **No backend, no build step, no dependencies** — the web app runs entirely from local files.
 
 ---
 
 ## Quick Start
 
-### Web Flashcard Trainer
-
-1. Download or clone the repo.
-2. Open **`Arch_Study_tool.html`** in any modern browser (double-click it).
+1. Download or clone the repo:
+   ```bash
+   git clone https://github.com/BeardedInfoSec/free_test_engine
+   ```
+2. Open **`Arch_Study_tool.html`** in any modern browser (just double-click it).
 3. Pick a certification from the **Question bank** dropdown and start studying.
 
-That's it — the question banks are bundled and load automatically. Your progress is saved in the browser.
+That's it — the question banks are bundled and load automatically, and your progress is saved in the browser.
 
-> No web server is required. The app loads its banks from a generated `flashcards/question-banks.js` so it works directly from `file://`.
-
-### Python CLI
-
-Requires Python 3.
-
-```bash
-git clone https://github.com/BeardedInfoSec/free_test_engine
-cd free_test_engine
-pip install -r requirements.txt
-python quiz_app.py
-```
-
-You'll be prompted to pick a question set, then a mode (quiz / test / reset).
+> No web server is required. The app loads its banks from a generated `flashcards/question-banks.js` file so it works directly from `file://`.
 
 ---
 
 ## Question Banks
 
-Questions are organized by Splunk certification. The web app presents one bank per certification:
+Questions are organized by Splunk certification. The app presents one bank per certification:
 
 | Bank | Certification | Questions |
 |------|---------------|-----------|
@@ -135,12 +133,12 @@ Questions are color-coded in the navigator and stats panel:
 
 You can study any subject — just supply questions in the [JSON format](#question-format).
 
-**Option A — load a file in the web app:** click **Upload your own** in the sidebar (or drag a `.json` file onto it).
+**Option A — load a file in the app:** click **Upload your own** in the sidebar (or drag a `.json` file onto it).
 
 **Option B — add a bundled bank:**
 
 1. Drop your `myband.json` into `questions/`.
-2. Regenerate the bundle so the web app picks it up:
+2. Regenerate the bundle so the app picks it up:
    ```bash
    python build_banks.py
    ```
@@ -182,11 +180,24 @@ Each bank is a JSON array of question objects:
 
 ---
 
+## Command-line Version (optional)
+
+A terminal quiz/test runner (`quiz_app.py`) is included for those who prefer the CLI. It reads the same `questions/*.json` banks.
+
+```bash
+pip install -r requirements.txt   # just colorama, for colored output
+python quiz_app.py
+```
+
+You'll be prompted to pick a question set, then a mode (quiz / test / reset). The web app is the primary, fuller-featured interface; the CLI is a lightweight alternative.
+
+---
+
 ## Project Structure
 
 ```
 free_test_engine/
-├── Arch_Study_tool.html      # Web app entry point (open this)
+├── Arch_Study_tool.html      # ⭐ Web app entry point (open this)
 ├── flashcards/
 │   ├── app.js                # Web app logic
 │   ├── styles.css            # Web app styling
@@ -197,12 +208,12 @@ free_test_engine/
 │   ├── admin1003.json
 │   ├── 2002_practice_test.json
 │   └── 2002_quiz_{1,2,3}.json
-├── quiz_app.py               # Python CLI quiz/test runner
+├── build_banks.py            # Bundles questions/ into flashcards/question-banks.js
 ├── createQA.py               # Plain-text → JSON converter
 ├── extract_docx.py           # Udemy .docx export → JSON converter
-├── build_banks.py            # Bundles questions/ into flashcards/question-banks.js
-├── requirements.txt          # Python deps (colorama, for the CLI)
-└── README.MD
+├── quiz_app.py               # Optional command-line quiz/test runner
+├── requirements.txt          # Python deps (colorama, for the CLI only)
+└── docs/                     # README screenshots
 ```
 
 ---
@@ -211,7 +222,7 @@ free_test_engine/
 
 - The **web app** is plain HTML/CSS/JavaScript with no framework and no network calls. Question banks are bundled into a JavaScript file (`question-banks.js`) at build time so the app works offline from `file://` — browsers block `fetch()` of local files, but a `<script>` include works fine.
 - **Progress** (per-question status, attempts, mastery streak) is stored in the browser's `localStorage`, keyed by question text. **Reset Progress** clears it.
-- The **CLI** uses [`colorama`](https://pypi.org/project/colorama/) for colored terminal output and logs correct/incorrect answers under `results/`.
+- The optional **CLI** uses [`colorama`](https://pypi.org/project/colorama/) for colored terminal output. The Python scripts (`build_banks.py`, `createQA.py`, `extract_docx.py`) are build/authoring tools, not required to use the web app.
 
 ---
 
