@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flashcard Trainer</title>
+  <link rel="stylesheet" href="flashcards/styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">🧠</div>
+        <div class="brand-text">
+          <h1>Flashcard Trainer</h1>
+          <span>Study &amp; exam prep</span>
+        </div>
+      </div>
+
+      <div class="bank-picker">
+        <label class="bank-label" for="bankSelect">Question bank</label>
+        <select id="bankSelect"></select>
+      </div>
+
+      <label class="upload" id="dropZone">
+        <input type="file" id="questionFileInput" accept=".json" hidden />
+        <span class="upload-icon">⬆</span>
+        <span class="upload-text">Upload your own</span>
+        <span class="upload-hint" id="bankName">Drop a .json file or click</span>
+      </label>
+
+      <nav class="modes">
+        <button class="mode-btn" onclick="startLearn()"><span class="ico">📖</span> Learn <kbd>L</kbd></button>
+        <button class="mode-btn" onclick="startTest()"><span class="ico">⏱️</span> Test <kbd>T</kbd></button>
+        <button class="mode-btn" onclick="startSmartStudy()"><span class="ico">✨</span> Smart Study <kbd>S</kbd></button>
+        <button class="mode-btn" onclick="retryMissed()"><span class="ico">🔁</span> Retry Missed <kbd>R</kbd></button>
+        <button class="mode-btn finish" onclick="finishTest()" id="finishBtn" style="display:none"><span class="ico">✅</span> Finish Test <kbd>F</kbd></button>
+      </nav>
+
+      <div class="stats-panel" id="statsPanel"></div>
+
+      <div class="nav-section">
+        <div class="nav-title" id="navTitle">Questions</div>
+        <div class="nav-filters" id="navFilters">
+          <button class="nav-filter active" data-filter="all">All</button>
+          <button class="nav-filter" data-filter="incorrect">Missed</button>
+          <button class="nav-filter" data-filter="flagged">Flagged</button>
+        </div>
+        <div class="question-nav" id="questionNav"></div>
+      </div>
+
+      <button class="reset-btn" onclick="resetProgress()">Reset Progress</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="progress-wrap">
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+          <span class="progress-label" id="progressLabel"></span>
+        </div>
+        <div class="stats">
+          <div class="timer" id="timer"></div>
+          <div class="score" id="score"></div>
+        </div>
+      </header>
+
+      <section class="card" id="card">
+        <div class="question" id="question">Loading question bank…</div>
+        <div class="choices" id="choices"></div>
+        <div class="explanation" id="explanation"></div>
+        <div class="card-footer">
+          <label class="flag"><input type="checkbox" id="flagCheck" onchange="toggleFlag()"> <span>⚑ Flag question</span></label>
+          <div class="nav-buttons">
+            <button onclick="prevQuestion()">← Back</button>
+            <button onclick="nextQuestion()">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-view" id="resultsView" style="display:none"></section>
+
+      <footer class="shortcuts">
+        <kbd>A</kbd>–<kbd>D</kbd> answer · <kbd>←</kbd> <kbd>→</kbd> navigate · <kbd>Space</kbd> next · <kbd>Enter</kbd> submit · <kbd>L</kbd> <kbd>T</kbd> <kbd>S</kbd> <kbd>R</kbd> modes
+      </footer>
+    </main>
+  </div>
+
+  <script src="flashcards/question-banks.js"></script>
+  <script src="flashcards/app.js"></script>
+</body>
+</html>

@@ -62,3 +62,42 @@ The test randomly selects 65 questions from the question pool by default.
 You pass if you score higher than 75%; otherwise, you need to try again.
 ### Reset Progress
 Clears the logs of correct and incorrect answers, allowing you to start fresh.
+
+## Multi-Answer Questions
+Both the terminal and web apps support questions with more than one correct
+answer. Set `"answer"` to a list, e.g. `"answer": ["A", "C", "D"]`. In the
+terminal, type all letters (order/spacing don't matter, e.g. `ACD` or `a, c, d`);
+an answer is only marked correct if the selected letters match exactly. In the
+web app, multi-answer questions show selectable choices plus a **Submit Answer**
+button (or press Enter).
+
+Questions may also include an optional `"explanation"` string and a
+`"resources"` array of reference URLs; both are shown in the web app's
+Learn/Smart modes.
+
+## Web Flashcard Trainer
+A browser-based study tool — no install or server required. Just open
+**`Arch_Study_tool.html`** (in the project root) in any browser. The bundled
+question banks load automatically; pick one from the **Question bank** dropdown,
+or upload your own JSON file. Progress is saved per question in the browser's
+localStorage. (Assets live in `flashcards/`; the HTML loads them from there.)
+
+Modes (with keyboard shortcuts):
+- **Learn (L)** — study with immediate feedback, explanations, and resource links.
+- **Test (T)** — timed 85-question exam; answers are scored at the end and do
+  not affect your saved Learn progress.
+- **Smart Study (S)** — adaptive flashcards mixing missed and new questions.
+- **Retry Missed (R)** — re-quiz only the questions you got wrong.
+- Answer with **A/B/C/D**, navigate with **arrow keys / Space**, **Reset Progress** to clear everything.
+
+### Adding / regenerating banks
+The web app reads bundled banks from `flashcards/question-banks.js`, which is
+generated from every `questions/*.json` (plus `flashcards/questions.json`) by:
+
+```
+python build_banks.py
+```
+
+Run it whenever you add or change a bank. To extract banks from the Udemy
+practice-test `.docx` exports, run `python extract_docx.py` (writes the
+`questions/2002_*.json` files), then re-run `build_banks.py`.

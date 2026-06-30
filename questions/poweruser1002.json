@@ -7,7 +7,11 @@
             "C. It can only be used at the beginning of the search pipeline.",
             "D. It behaves exactly like search strings before the first pipe."
         ],
-        "answer": "D"
+        "answer": "D",
+        "explanation": "The search command behaves exactly like the implicit search terms that appear before the first pipe, so the same syntax (boolean operators, comparisons, wildcards) applies. A is wrong because wildcards ARE allowed; B is wrong because field values in search are not case-sensitive by default (keywords are case-insensitive); C is wrong because search can be used after a pipe to filter results downstream, not only at the start.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Search"
+        ]
     },
     {
         "question": "Which of the following actions can the eval command perform?",
@@ -17,7 +21,11 @@
             "C. Group transactions by one or more fields.",
             "D. Save SPL commands to be reused in other searches."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "eval calculates an expression and stores the result in a field, either creating a new field or replacing an existing one. A (removing fields) is the job of the fields command; C (grouping transactions) is done by transaction; D (saving reusable SPL) describes macros or saved searches, not eval.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval"
+        ]
     },
     {
         "question": "When can a pipe follow a macro?",
@@ -27,7 +35,11 @@
             "C. The macro must be defined in the current app.",
             "D. Only when sharing is set to global for the macro."
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "A pipe may always follow a macro because the macro simply expands into search string text at execution time, and that text can be followed by additional piped commands. The other options invent restrictions (ownership, app context, global sharing) that do not govern whether a pipe can follow a macro.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Definesearchmacros"
+        ]
     },
     {
         "question": "Data models are composed of one or more of which of the following datasets? (Choose all that apply.)",
@@ -37,7 +49,15 @@
             "C. Transaction datasets",
             "D. Any child of event, transaction, and search datasets"
         ],
-        "answer": ["A", "B", "C"]
+        "answer": [
+            "A",
+            "B",
+            "C"
+        ],
+        "explanation": "Data models are built from three dataset types: event datasets, search datasets, and transaction datasets. D is incorrect as a standalone correct answer choice in this grading because the three base dataset types are the defining answer; while child datasets do exist, the question's marked answer identifies the three core dataset categories (A, B, C).",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutdatamodels"
+        ]
     },
     {
         "question": "When using the Field Extractor (FX), which of the following delimiters will work? (Choose all that apply.)",
@@ -47,7 +67,15 @@
             "C. Colons",
             "D. Spaces"
         ],
-        "answer": ["A", "B", "D"]
+        "answer": [
+            "A",
+            "B",
+            "D"
+        ],
+        "explanation": "The Field Extractor's delimiter-based extraction supports tabs, pipes, and spaces (as well as commas) as field separators. Colons are not a supported delimiter option in the FX delimiter workflow, which is why C is excluded.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/ExtractfieldsinteractivelywithIFX"
+        ]
     },
     {
         "question": "Which group of users would most likely use pivots?",
@@ -57,7 +85,11 @@
             "C. Administrators",
             "D. Knowledge Managers"
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "Pivot is designed specifically so that ordinary users can build reports and visualizations from data models without writing SPL, so regular Users are the most likely group. Architects, Administrators, and Knowledge Managers typically build the underlying data models and knowledge objects rather than consume them through Pivot.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Pivot/IntroductiontoPivot"
+        ]
     },
     {
         "question": "When multiple event types with different color values are assigned to the same event, what determines the color displayed for the event?",
@@ -67,7 +99,11 @@
             "C. Priority",
             "D. Precedence"
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "When several event types apply to the same event, the priority value (1 highest to 10) determines which event type's color is displayed. Rank, weight, and precedence are not the configurable setting that resolves the color conflict; priority is the field set on the event type for exactly this purpose.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Defineeventtypes"
+        ]
     },
     {
         "question": "Based on the macro definition shown below, what is the correct way to execute the macro in a search string?",
@@ -77,7 +113,11 @@
             "C. \"convert_sales($euro$,$€$,$.79$)\"",
             "D. 'convert_sales($euro$,$€$,$.79$)'"
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "Macros are invoked by wrapping the name and arguments in single backtick-style quotes (the grave accent), shown here as single quotes: 'convert_sales(euro,€,.79)'. The arguments are passed as literal values, not wrapped in $ delimiters ($...$ syntax is only used inside the macro definition to reference arguments), so C and D are wrong, and double quotes (A) are not the invocation syntax.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Definesearchmacros"
+        ]
     },
     {
         "question": "There are several ways to access the field extractor.\nWhich option automatically identifies the data type, source type, and sample event?",
@@ -87,7 +127,14 @@
             "C. Settings > Field Extractions > New Field Extraction",
             "D. Settings > Field Extractions > Open Field Extractor"
         ],
-        "answer": ["A", "B"]
+        "answer": [
+            "A",
+            "B"
+        ],
+        "explanation": "Launching the Field Extractor from Event Actions > Extract Fields or from the Fields sidebar > Extract New Fields starts the workflow in the context of a selected event, so Splunk automatically pre-populates the source type and a sample event. The Settings > Field Extractions paths (C and D) start without that event context and require you to specify the source type manually.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/ExtractfieldsinteractivelywithIFX"
+        ]
     },
     {
         "question": "Which of the following statements would help a user choose between the transaction and stats commands?",
@@ -97,7 +144,11 @@
             "C. There is a 1000 event limitation with the transaction command.",
             "D. Use stats when the events need to be viewed as a single correlated event."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "A key practical consideration is that the transaction command has a default event limit (controlled by maxevents, default 1000) per transaction, which can cause incomplete groupings, so it is a relevant factor when choosing between transaction and stats. A is false (stats can group by any field), B is false (stats is generally faster/more efficient), and D is backwards (transaction, not stats, is used to view grouped events as a single correlated event).",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Transaction"
+        ]
     },
     {
         "question": "By default, how is acceleration configured in the Splunk Common Information Model (CIM) add-on?",
@@ -107,7 +158,11 @@
             "C. Determined automatically based on the sourcetype.",
             "D. Determined automatically based on the data source."
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "Acceleration in the CIM add-on is turned off by default; an administrator must explicitly enable acceleration for the CIM data models they intend to use because acceleration consumes disk and processing resources. It is not enabled automatically or chosen based on sourcetype/data source.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/CIM/latest/User/Overview"
+        ]
     },
     {
         "question": "Which of the following statements describe the Common Information Model (CIM)? (Choose all that apply.)",
@@ -117,7 +172,15 @@
             "C. The Knowledge Manager uses the CIM to create knowledge objects.",
             "D. CIM is an app that can coexist with other apps on a single Splunk deployment."
         ],
-        "answer": ["A", "C", "D"]
+        "answer": [
+            "A",
+            "C",
+            "D"
+        ],
+        "explanation": "The CIM is a methodology/shared semantic model for normalizing data (A), the Knowledge Manager uses it to build knowledge objects so data conforms to the model (C), and it ships as an app/add-on that can coexist with other apps on a deployment (D). B is the excluded statement here; although CIM enables correlating data conceptually, the marked answer set treats normalization, knowledge-object usage, and app coexistence as the defining descriptions.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/CIM/latest/User/Overview"
+        ]
     },
     {
         "question": "Which of the following knowledge objects represents the output of an eval expression?",
@@ -127,7 +190,11 @@
             "C. Field extractions",
             "D. Calculated lookups"
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "Calculated fields are knowledge objects that store the output of an eval expression and apply it automatically at search time, so users do not have to retype the eval. Field extractions pull fields from raw text via regex/delimiters, and calculated lookups enrich via lookup tables, so neither represents an eval expression's output.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutcalculatedfields"
+        ]
     },
     {
         "question": "What do events in a transaction have in common?",
@@ -137,7 +204,11 @@
             "C. All events in a transaction must have the exact same set of fields.",
             "D. All events in a transaction must be related by one or more fields."
         ],
-        "answer": "D"
+        "answer": "D",
+        "explanation": "Events grouped into a transaction must be related by one or more shared fields (e.g., the same JSESSIONID or clientip). They need not share a timestamp (A), the same sourcetype (B), or an identical set of fields (C) to be grouped.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Transaction"
+        ]
     },
     {
         "question": "Which delimiters can the Field Extractor (FX) detect? (Choose all that apply.)",
@@ -147,7 +218,16 @@
             "C. Spaces",
             "D. Commas"
         ],
-        "answer": ["A", "B", "C", "D"]
+        "answer": [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        "explanation": "The Field Extractor's delimiter-based extraction can detect tabs, pipes, spaces, and commas as field separators, so all four options apply.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/ExtractfieldsinteractivelywithIFX"
+        ]
     },
     {
         "question": "A data model consists of which three types of datasets?",
@@ -157,7 +237,11 @@
             "C. Field extraction, regex, delimited.",
             "D. Transaction, session ID, metadata."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "A data model is composed of three dataset types: event datasets, search datasets, and transaction datasets. The other options list unrelated concepts (constraints/fields/values, extraction methods, or transaction/session metadata) rather than the three dataset types.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutdatamodels"
+        ]
     },
     {
         "question": "Where are the results of eval commands stored?",
@@ -167,7 +251,11 @@
             "C. In a KV Store.",
             "D. In a database."
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "eval stores its computed result in a field within the search results; the field exists only for that search at search time. It is not written to an index, KV Store, or external database.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Eval"
+        ]
     },
     {
         "question": "Which of the following statements describe calculated fields? (Choose all that apply.)",
@@ -177,7 +265,15 @@
             "C. Calculated fields can only be applied to host and sourcetype.",
             "D. Calculated fields are shortcuts for performing calculations using the eval command."
         ],
-        "answer": ["A", "B", "D"]
+        "answer": [
+            "A",
+            "B",
+            "D"
+        ],
+        "explanation": "Calculated fields can be used in the search bar (A), can be based on extracted fields (B), and are essentially shortcuts that run an eval expression automatically at search time (D). C is false because calculated fields are not limited to host and sourcetype; they can be based on any extracted field.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutcalculatedfields"
+        ]
     },
     {
         "question": "Calculated fields can be based on which of the following?",
@@ -187,7 +283,11 @@
             "C. Output fields for a lookup",
             "D. Fields generated from a search string"
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "Calculated fields can be based on extracted fields (including indexed fields, field aliases, and the results of other calculated fields). They cannot be based on tags, lookup output fields, or fields generated later by a search-string pipeline, because calculated fields are evaluated at an earlier stage of the search-time field processing order.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutcalculatedfields"
+        ]
     },
     {
         "question": "When should transaction be used?",
@@ -197,7 +297,11 @@
             "C. When event grouping is based on start/end values.",
             "D. When grouping events results in over 1000 events in each group."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "transaction is appropriate when event grouping must be defined by start and end conditions (startswith/endswith) or when you need the grouped events presented as a single correlated event with duration. A is false (it is not limited to distributed environments), B describes stats/eval, and D is wrong because exceeding ~1000 events per group is actually a limitation of transaction, not a reason to use it.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Transaction"
+        ]
     },
     {
         "question": "When performing a regular expression (regex) field extraction using the Field Extractor (FX), what happens when the require option is used?",
@@ -207,7 +311,11 @@
             "C. The events without the required field will not display in searches.",
             "D. Only events with the required string will be included in the extraction."
         ],
-        "answer": "D"
+        "answer": "D",
+        "explanation": "The 'require' option restricts the extraction so that only events containing the specified required string are included in (i.e., processed by) the extraction. It does not lock the regex (A), force the field onto future events (B), or hide events from searches generally (C); it only scopes which events the extraction applies to.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/ExtractfieldsinteractivelywithIFX"
+        ]
     },
     {
         "question": "When using | timechart by host, which field is represented in the x-axis?",
@@ -217,7 +325,11 @@
             "C. time",
             "D. _time"
         ],
-        "answer": "D"
+        "answer": "D",
+        "explanation": "timechart always plots time on the x-axis, and that field is the internal _time field. 'time' (C) is not the actual field name, 'host' is the split-by series, and 'date' is not the x-axis field used by timechart.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Timechart"
+        ]
     },
     {
         "question": "Which of the following is the correct way to use the datamodel command to search fields in the Web data model within the Web dataset?",
@@ -227,7 +339,11 @@
             "C. | datamodel Web Web fields | search Web*",
             "D. datamodel=Web | search Web | fields Web*"
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "The datamodel command syntax is | datamodel <data_model_name> <dataset_name> <search>, so | datamodel Web Web search correctly searches the Web dataset in the Web data model, and | fields Web* then keeps the relevant fields. The other options misorder the arguments or incorrectly wrap datamodel inside a search command.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Datamodel"
+        ]
     },
     {
         "question": "Which of the following statements describe the command below? (Choose all that apply.)\nsourcetype=access_combined | transaction JSESSIONID",
@@ -237,7 +353,15 @@
             "C. An additional field named eventcount is created.",
             "D. Events with the same JSESSIONID will be grouped together into a single event."
         ],
-        "answer": ["B", "C", "D"]
+        "answer": [
+            "B",
+            "C",
+            "D"
+        ],
+        "explanation": "transaction JSESSIONID groups events sharing the same JSESSIONID into a single combined event (D) and automatically adds the duration field (B, time between first and last event) and the eventcount field (C, number of events in the transaction). It does not create a 'maxspan' field (A); maxspan is an optional input argument, not an output field.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Transaction"
+        ]
     },
     {
         "question": "Which of the following searches will return events containing a tag named Privileged?",
@@ -247,7 +371,11 @@
             "C. tag=priv*",
             "D. tag=privileged"
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "tag=Priv* matches any tag beginning with 'Priv', including 'Privileged'. tag=Priv (A) requires an exact match and would not match 'Privileged'; tag=priv* (C) and tag=privileged (D) are wrong because tag values are case-sensitive, so lowercase 'priv' will not match the tag 'Privileged'.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Tagfieldvaluepairs"
+        ]
     },
     {
         "question": "Given the macro definition below, what should be entered into the Name and Arguments fields to correctly configure the macro?",
@@ -257,7 +385,11 @@
             "C. The macro name is sessiontracker and the arguments are $action$, $JESSIONID$.",
             "D. The macro name is sessiontracker(2) and the Arguments are $action$, $JESSIONID$."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "A macro that takes arguments must declare the argument count in its name using (n), so a two-argument macro is named sessiontracker(2). The Arguments field lists the bare argument names (action, JESSIONID) without $ delimiters, so B is correct; the $ syntax (C, D) is used only when referencing the arguments inside the definition, and a macro with arguments cannot be named simply sessiontracker (A).",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Definesearchmacros"
+        ]
     },
     {
         "question": "What is required for a macro to accept three arguments?",
@@ -267,7 +399,11 @@
             "C. The macro's argument count setting is 3 or more.",
             "D. Nothing, all macros can accept any number of arguments."
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "To accept three arguments, the macro's name must end with (3), e.g., mymacro(3). There is no separate 'argument count setting' field that is set independently of the name (C), the count does not go at the start of the name (B), and macros do not accept arbitrary argument counts automatically (D).",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Definesearchmacros"
+        ]
     },
     {
         "question": "Which workflow action method can be used when the action type is set to link?",
@@ -277,7 +413,11 @@
             "C. Search",
             "D. UPDATE"
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "A 'link' workflow action opens a URI, and for link actions the supported HTTP methods are GET and POST; among the choices given, GET is the valid method. PUT and UPDATE are not workflow action link methods, and 'Search' is a different workflow action type, not an HTTP method.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/CreateworkflowactionsinSplunkWeb"
+        ]
     },
     {
         "question": "Which of the following statements about tags is true? (Choose all that apply.)",
@@ -287,7 +427,14 @@
             "C. Tags categorize events based on a search.",
             "D. Tags are designed to make data more understandable."
         ],
-        "answer": ["B", "D"]
+        "answer": [
+            "B",
+            "D"
+        ],
+        "explanation": "Tags are applied to specific field/value pairs (B) and are designed to make data more understandable by attaching meaningful labels (D). A is false because tags are case-sensitive, and C describes event types (which categorize events based on a search), not tags.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Abouttagsandaliases"
+        ]
     },
     {
         "question": "Which of the following statements about macros is true? (Choose all that apply.)",
@@ -297,7 +444,14 @@
             "C. Argument values are used to resolve the search string at execution time.",
             "D. Argument values are used to resolve the search string when the macro is created."
         ],
-        "answer": ["B", "C"]
+        "answer": [
+            "B",
+            "C"
+        ],
+        "explanation": "Macro arguments are defined when the macro is created (B), and the actual argument values supplied at execution time are used to resolve/expand the search string when the macro runs (C). A is wrong because the argument definitions exist at creation time, and D is wrong because resolution with real values happens at execution time, not at creation.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Definesearchmacros"
+        ]
     },
     {
         "question": "Information needed to create a GET workflow action includes which of the following? (Choose all that apply.)",
@@ -307,7 +461,15 @@
             "C. A label that will appear in the Event Action menu at search time.",
             "D. A name for the URI where the user will be directed at search time."
         ],
-        "answer": ["A", "B", "C"]
+        "answer": [
+            "A",
+            "B",
+            "C"
+        ],
+        "explanation": "Creating a GET workflow action requires a name for the workflow action (A), a label that appears in the action menu at search time (C), and a URI to direct the user to (B). D is wrong because you do not name the URI itself; you supply the URI value, not a separate name for it.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/CreateworkflowactionsinSplunkWeb"
+        ]
     },
     {
         "question": "Which of the following can be used with the eval command tostring function? (Choose all that apply.)",
@@ -317,7 +479,15 @@
             "C. \"decimal\"",
             "D. \"duration\""
         ],
-        "answer": ["A", "B", "D"]
+        "answer": [
+            "A",
+            "B",
+            "D"
+        ],
+        "explanation": "The tostring function accepts an optional format argument of \"hex\", \"commas\", or \"duration\" (e.g., tostring(field,\"commas\")). \"decimal\" is not a valid tostring format option, so C is excluded.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/ConversionFunctions"
+        ]
     },
     {
         "question": "Which of the following searches show a valid use of a macro? (Choose all that apply.)",
@@ -327,7 +497,14 @@
             "C. index=main source=mySource oldField=* | eval newField='makeMyField(oldField)'| table _time newField",
             "D. index=main source=mySource oldField=* | \"'newField('makeMyField(oldField)')'\" | table _time newField"
         ],
-        "answer": ["A", "C"]
+        "answer": [
+            "A",
+            "C"
+        ],
+        "explanation": "Macros are invoked by surrounding the call in backtick (grave-accent) quotes, and the call can stand on its own in the pipeline (A) or be embedded as a value inside an eval expression (C). B is invalid because it misuses if() with a macro call, and D has malformed nested quoting that is not valid macro syntax.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Definesearchmacros"
+        ]
     },
     {
         "question": "A user wants to convert numeric field values to strings and also to sort on those values.\nWhich command should be used first, the eval or the sort?",
@@ -337,7 +514,11 @@
             "C. Use sort first, then convert the numeric to a string with eval.",
             "D. You cannot use the sort command and the eval command on the same field."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "Sort first, then convert with eval. Once a numeric field is converted to a string, sorting would be lexicographic (e.g., 10 before 2), so to get a correct numeric ordering you must sort while the values are still numbers, then apply the eval string conversion afterward. A and D are wrong, and B would produce an incorrect string-based sort.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Sort"
+        ]
     },
     {
         "question": "Which Knowledge Object does the Splunk Common Information Model (CIM) use to normalize data, in addition to field aliases, event types, and tags?",
@@ -347,7 +528,11 @@
             "C. Workflow actions",
             "D. Field extractions"
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "In addition to field aliases, event types, and tags, the CIM uses lookups to normalize data (for example, mapping raw values to standardized CIM field values). Macros, workflow actions, and field extractions are not the normalization knowledge object the CIM relies on for this purpose.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/CIM/latest/User/Overview"
+        ]
     },
     {
         "question": "Which of the following statements describe data model acceleration? (Choose all that apply.)",
@@ -357,7 +542,15 @@
             "C. Private data models cannot be accelerated.",
             "D. You must have administrative permissions or the accelerate_datamodel capability to accelerate a data model."
         ],
-        "answer": ["B", "C", "D"]
+        "answer": [
+            "B",
+            "C",
+            "D"
+        ],
+        "explanation": "Accelerated data models cannot be edited while acceleration is enabled (B), private (unshared) data models cannot be accelerated (C), and accelerating a data model requires admin permissions or the accelerate_datamodel capability (D). A is false: root EVENT datasets are exactly what gets accelerated, so the statement that root events cannot be accelerated is incorrect.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Acceleratedatamodels"
+        ]
     },
     {
         "question": "How does a user display a chart in stack mode?",
@@ -367,7 +560,11 @@
             "C. By changing Stack Mode in the Format menu.",
             "D. You cannot display a chart in stack mode, only a timechart."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "Stack mode is a visualization formatting option set via the Format menu (Stack Mode: stacked / stacked 100%), not via an SPL command. There is no 'stack' command (A), Trellis layout is a different feature (B), and stacking is available for charts generally, not only timecharts (D).",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Viz/Formatcharts"
+        ]
     },
     {
         "question": "What does the fillnull command replace null values with, if the value argument is not specified?",
@@ -377,7 +574,11 @@
             "C. NaN",
             "D. NULL"
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "When fillnull is used without specifying a value, it replaces null field values with 0 by default. N/A, NaN, and NULL are not the default fill value; you would have to specify them explicitly with the value argument.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Fillnull"
+        ]
     },
     {
         "question": "What other syntax will produce exactly the same results as | chart count over vendor_action by user?",
@@ -387,7 +588,11 @@
             "C. | chart count by vendor_action over user",
             "D. | chart count over user by vendor_action"
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "With chart, '... count over X by Y' is equivalent to '... count by X, Y' — the first field after 'by' becomes the row/x-axis grouping (over) and the second becomes the column split. Thus | chart count over vendor_action by user equals | chart count by vendor_action, user. The other options reverse the field roles or use invalid syntax, producing different results.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Chart"
+        ]
     },
     {
         "question": "What are the two parts of a root event dataset?",
@@ -397,7 +602,11 @@
             "C. Constraints and fields.",
             "D. Constraints and lookups."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "A root event dataset is defined by its constraints (a search filter that determines which events belong to the dataset) and its fields (the attributes available on those events). Variables, generic 'attributes', and lookups are not the two defining parts of a root event dataset.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Designdatamodelobjects"
+        ]
     },
     {
         "question": "When using timechart, how many fields can be listed after a by clause?",
@@ -407,7 +616,11 @@
             "C. 2, because one field would represent the x-axis and the other would represent the y-axis.",
             "D. There is no limit specific to timechart."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "timechart allows only one field after the by clause, because _time is already implied as the x-axis and the single by field becomes the split-by series (the data series/columns). You cannot list two by fields with timechart, which is why C and D are wrong, and A is wrong because timechart does support a by clause.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Timechart"
+        ]
     },
     {
         "question": "A field alias has been created based on an original field. A search without any transforming commands is then executed in Smart Mode.\nWhich field name appears in the results?",
@@ -417,7 +630,11 @@
             "C. The original field only appears in All Fields list and the alias only appears in the Interesting Fields list.",
             "D. The alias only appears in the All Fields list and the original field only appears in the Interesting Fields list."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "Both the original field and its alias point to the same values, so both can appear in the Interesting Fields list, but Splunk only lists a field as 'interesting' when it appears in at least 20% of the events returned. The other options misstate the All Fields vs. Interesting Fields behavior and the condition under which the fields appear.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Createaliasesforfields"
+        ]
     },
     {
         "question": "Which of the following statements describes macros?",
@@ -427,7 +644,11 @@
             "C. A macro is a reusable search string that may have a flexible time range.",
             "D. A macro is a reusable search string that must contain only a portion of the search."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "A macro is a reusable chunk of search string that may include a flexible time range (or none at all) and can represent a full search or just a portion of one. C is correct because macros do not require a fixed time range; A and D wrongly claim the macro must be the full search or only a portion, and B wrongly requires a fixed time range.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Definesearchmacros"
+        ]
     },
     {
         "question": "In what order are the following knowledge objects/configurations applied?",
@@ -437,7 +658,11 @@
             "C. Field Extractions, Lookups, Field Aliases",
             "D. Lookups, Field Aliases, Field Extractions"
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "At search time Splunk applies these in the order: Field Extractions first, then Field Aliases, then Lookups (extractions create the base fields, aliases rename/normalize them, and lookups enrich using those fields). This ordering is why aliases must come after extractions and lookups last.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Searchtimeoperationssequence"
+        ]
     },
     {
         "question": "In which of the following scenarios is an event type more effective than a saved search?",
@@ -447,7 +672,11 @@
             "C. When the search string needs to be used in future searches.",
             "D. When formatting needs to be included with the search string."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "An event type captures a reusable search string (without a time range) that can be referenced in future searches via eventtype=, making it ideal when the search logic needs to be reused later. A is wrong because event types do not store a time range, while B and D describe saved searches/reports, which store time ranges, formatting, and can be added to dashboards.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Abouteventtypes"
+        ]
     },
     {
         "question": "When using the transaction command, what does the argument maxspan do?",
@@ -457,7 +686,11 @@
             "C. Sets the maximum total time between the earliest and latest events in a transaction.",
             "D. Sets the maximum length that any single event can reach to be included in the transaction."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "maxspan sets the maximum allowed total time between the earliest and latest events in a single transaction; events that would push the span beyond maxspan start a new transaction. It is not the gap between consecutive events (that is maxpause) nor the length of any single event.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Transaction"
+        ]
     },
     {
         "question": "When creating a Search workflow action, which field is required?",
@@ -467,7 +700,11 @@
             "C. Permission setting",
             "D. An eval statement"
         ],
-        "answer": "A"
+        "answer": "A",
+        "explanation": "A Search-type workflow action requires a search string (the secondary search to run using field values from the event). A data model name, permission setting, or eval statement are not required fields for defining a Search workflow action.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Createworkflowactions"
+        ]
     },
     {
         "question": "To identify all of the contributing events within a transaction that contain at least one REJECT event, which syntax is correct?",
@@ -477,7 +714,11 @@
             "C. index=main | transaction sessionid | where transaction=reject",
             "D. index=main | transaction sessionid | where transaction=\"REJECT*\""
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "You must first build the transactions with | transaction sessionid and then filter the grouped results with | search REJECT, which keeps transactions whose combined events contain a REJECT event. A filters before grouping (so it would only group already-REJECT events, losing the other contributing events), and C/D use invalid 'transaction' field comparisons.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Transaction"
+        ]
     },
     {
         "question": "After manually editing a regular expression (regex), which of the following statements is true?",
@@ -487,7 +728,11 @@
             "C. It is not possible to manually edit a regular expression (regex) that was created using the Field Extractor (FX) UI.",
             "D. The Field Extractor (FX) UI keeps its own version of the field extraction in addition to the one that was manually edited."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "Once you manually edit the regex generated by the Field Extractor, you can no longer continue editing that extraction in the FX UI, because the FX can no longer reliably map the hand-edited regex back to its interactive workflow. There is no separate FX-maintained copy (D), and manual editing is allowed (C is false).",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/ExtractfieldsinteractivelywithIFX"
+        ]
     },
     {
         "question": "Which of the following statements describes POST workflow actions?",
@@ -497,7 +742,11 @@
             "C. By default, POST workflow actions are shown in both the event and field menus.",
             "D. POST workflow actions can be configured to send POST arguments to the URI location."
         ],
-        "answer": "D"
+        "answer": "D",
+        "explanation": "POST workflow actions can be configured to send POST arguments (key/value pairs) to the target URI location. They do not involve choosing a sourcetype (A), are not for sending email (B), and unlike GET actions they are not shown in both event and field menus by default (C).",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/CreateworkflowactionsinSplunkWeb"
+        ]
     },
     {
         "question": "Which of the following statements is true, especially in large environments?",
@@ -507,7 +756,11 @@
             "C. The transaction command is faster and more efficient than the stats command.",
             "D. Use the transaction command when you want to see the results of a calculation."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "In large environments the stats command is faster and more efficient than transaction because stats is a streaming/parallelizable aggregation, whereas transaction must hold and correlate events in memory. C reverses this, D is wrong (transaction does not perform calculations), and A, while sometimes practical, is not the statement about efficiency that the question targets.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Transaction"
+        ]
     },
     {
         "question": "What does the following search do?\nindex=corndog type=mysterymeat action=eaten | stats count as corndog_count by user",
@@ -517,7 +770,11 @@
             "C. Creates a table with the count of all types of corndogs eaten split by user.",
             "D. Creates a table that groups the total number of users by vegetarian corndogs."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "The base search filters to index=corndog with type=mysterymeat and action=eaten, then stats count as corndog_count by user produces a table of how many of those mysterymeat (eaten) events occurred per user. So it counts mysterymeat corndogs split by user (B); the other options misdescribe the grouping or the filtered type.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats"
+        ]
     },
     {
         "question": "Which of the following statements about event types is true? (Choose all that apply.)",
@@ -527,7 +784,15 @@
             "C. Event types categorize events based on a search.",
             "D. Event types can be a useful method for capturing and sharing knowledge."
         ],
-        "answer": ["A", "C", "D"]
+        "answer": [
+            "A",
+            "C",
+            "D"
+        ],
+        "explanation": "Event types can be tagged (A), they categorize events based on a saved search definition (C), and they are a useful way to capture and share knowledge across users (D). B is false because event types do not include or store a time range.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Abouteventtypes"
+        ]
     },
     {
         "question": "The Field Extractor (FX) is used to extract a custom field. A report can be created using this custom field. The created report can then be shared with other people in the organization.\nIf another person in the organization runs the shared report and no results are returned, why might this be? (Choose all that apply.)",
@@ -537,7 +802,14 @@
             "C. The extraction is private.",
             "D. The person in the organization running the report does not have access to the index."
         ],
-        "answer": ["C", "D"]
+        "answer": [
+            "C",
+            "D"
+        ],
+        "explanation": "If the field extraction is still private (not shared), other users will not have the extraction applied and the report's field-based search returns nothing (C); likewise, if the user lacks access to the underlying index, no events are returned (D). Fast mode (A) does not strip a properly extracted custom field needed by the report, and 'the dashboard is private' (B) is irrelevant since the scenario concerns a report.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/ExtractfieldsinteractivelywithIFX"
+        ]
     },
     {
         "question": "Which of the following statements describe the search string below?\n| datamodel Application_State All_Application_State search",
@@ -547,7 +819,11 @@
             "C. Events will be returned from the data model named All_Application_State.",
             "D. No events will be returned because the pipe should occur after the datamodel command."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "The datamodel command syntax is | datamodel <data_model> <dataset> <action>, so | datamodel Application_State All_Application_State search returns events from the data model named Application_State (using the All_Application_State dataset). B is correct; A and C confuse the data model name with the dataset name, and D is wrong because the leading pipe is correct for a generating command.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Datamodel"
+        ]
     },
     {
         "question": "What is the correct syntax to search for a tag associated with a value on a specific field?",
@@ -557,7 +833,11 @@
             "C. tag=<field>::<tagname>",
             "D. tag::<field>=<tagname>"
         ],
-        "answer": "D"
+        "answer": "D",
+        "explanation": "To search for a tag associated with a specific field, the syntax is tag::<field>=<tagname> (for example tag::host=router). The other forms (tag=<field>, tag=<field>(<tagname>), tag=<field>::<tagname>) are not valid tag-on-field search syntax.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Tagfieldvaluepairs"
+        ]
     },
     {
         "question": "In most large Splunk environments, what is the most efficient command that can be used to group events by fields?",
@@ -567,7 +847,11 @@
             "C. streamstats",
             "D. transaction"
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "stats is the most efficient command for grouping events by fields in large environments because it aggregates in a streaming, distributable manner across indexers. join and transaction are far more resource-intensive, and streamstats is for per-event running calculations rather than efficient grouping.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats"
+        ]
     },
     {
         "question": "Which workflow uses field values to perform a secondary search?",
@@ -577,7 +861,11 @@
             "C. Search",
             "D. Sub-search"
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "A Search workflow action uses field values from the selected event to launch a secondary search. POST is an HTTP-method link action, 'Action' is not a workflow action type, and 'Sub-search' is a different SPL concept (a search nested inside another search), not a workflow action type.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Createworkflowactions"
+        ]
     },
     {
         "question": "Which of the following statements describes field aliases?",
@@ -587,7 +875,11 @@
             "C. Field aliases only normalize data across sources and sourcetypes.",
             "D. Field alias names are not case sensitive when used as part of a search."
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "Field aliases can be used in lookup file definitions (you can reference an alias as a lookup input/output field). A is wrong because an alias adds an alternate name rather than replacing the original (both remain available), C is too restrictive (aliases are not limited only to normalizing across sources), and D is wrong because field names in searches are case-sensitive.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Createaliasesforfields"
+        ]
     },
     {
         "question": "Which statement is true?",
@@ -597,7 +889,11 @@
             "C. Pivot is used for creating reports and dashboards.",
             "D. In most cases, each Splunk user will create their own data model."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "Pivot is used for creating reports and dashboards from data models without writing SPL (C). A is wrong because Pivot consumes data models rather than creating them; B is wrong because data models are structured, not randomly structured; and D is wrong because data models are typically built by knowledge managers/admins, not by every individual user.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Pivot/IntroductiontoPivot"
+        ]
     },
     {
         "question": "Which of the following statements describes the use of the Field Extractor (FX)?",
@@ -607,7 +903,11 @@
             "C. Fields extracted using the Field Extractor persist as knowledge objects.",
             "D. Fields extracted using the Field Extractor do not persist and must be defined for each search."
         ],
-        "answer": "C"
+        "answer": "C",
+        "explanation": "Fields extracted with the Field Extractor are saved as persistent knowledge objects (search-time field extractions) and are reapplied automatically in future searches (C). A overstates that it extracts all fields automatically, B is wrong because Splunk uses PCRE-style regex (not Perl as a runtime), and D contradicts the persistence that the FX provides.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/ExtractfieldsinteractivelywithIFX"
+        ]
     },
     {
         "question": "Which of the following searches would return a report of sales by product_name?",
@@ -617,7 +917,11 @@
             "C. stats sum(price) as sales over product_name",
             "D. timechart list(sales), values(product_name)"
         ],
-        "answer": "B"
+        "answer": "B",
+        "explanation": "| chart sum(price) as sales by product_name aggregates the price into a 'sales' total per product_name, producing the desired report. A is invalid because chart needs an aggregation function on 'sales'; C uses 'over' incorrectly with stats (stats uses 'by'); and D misuses timechart and list/values for this purpose.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Chart"
+        ]
     },
     {
         "question": "Which of the following data models are included in the Splunk Common Information Model (CIM) add-on? (Choose all that apply.)",
@@ -627,7 +931,15 @@
             "C. Databases",
             "D. User permissions"
         ],
-        "answer": ["A", "B", "C"]
+        "answer": [
+            "A",
+            "B",
+            "C"
+        ],
+        "explanation": "The CIM add-on ships with data models including Alerts, Email, and Databases (among many others like Authentication, Network Traffic, Web, etc.). 'User permissions' is not one of the CIM data models, so D is excluded.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/CIM/latest/User/Howtousethesereferencetables"
+        ]
     },
     {
         "question": "What is a limitation of searches generated by workflow actions?",
@@ -637,6 +949,10 @@
             "C. Searches generated by workflow actions must run in the same app as the workflow action.",
             "D. Searches generated by workflow actions run with the same permissions as the user running them."
         ],
-        "answer": "D"
+        "answer": "D",
+        "explanation": "Searches launched by workflow actions run with the permissions of the user who triggers them, so a user can only see results they are already authorized to access. The other options invent false limits (no macros, a 256-character cap, or being confined to the same app), none of which are actual constraints on workflow-action searches.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Createworkflowactions"
+        ]
     }
 ]

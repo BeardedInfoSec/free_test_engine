@@ -1,0 +1,375 @@
+[
+    {
+        "question": "Which search will show all deployment client messages from the client (UF)?",
+        "choices": [
+            "A. index=_audit component=DC* host= | stats count by message",
+            "B. index=_internal component= DC* host= | stats count by message",
+            "C. index=_audit component=DC* host= | stats count by message",
+            "D. index=_internal component=DS* host= | stats count by message"
+        ],
+        "answer": "B",
+        "explanation": "The index=_internal component=DC* host= search will show all deployment client messages from the universal forwarder. The component field indicates the type of Splunk component that generated the message, and the host field indicates the host name of the machine that sent the message",
+        "resources": []
+    },
+    {
+        "question": "Which component in the splunkd.log will log information related to bad event breaking?",
+        "choices": [
+            "A. AuditTrail",
+            "B. EventBreaking",
+            "C. IndexingPipeline",
+            "D. AggregatorMiningProcessor"
+        ],
+        "answer": "D",
+        "explanation": "The AggregatorMiningProcessor is the parsing-pipeline component responsible for event aggregation/breaking, so it logs the WARN messages about bad event breaking, such as 'Breaking event because limit of 256 (MAX_EVENTS) has been exceeded'. EventBreaking is not the splunkd.log component name for these warnings, IndexingPipeline is a broader pipeline label rather than the specific processor, and AuditTrail concerns audit logging of user/system activity.",
+        "resources": [
+            "https://community.splunk.com/t5/Getting-Data-In/Error-in-splunkd-log-Breaking-event-because-limit-of-256-has/td-p/116070",
+            "https://docs.splunk.com/Documentation/Splunk/9.4.2/Data/Resolvedataqualityissues"
+        ]
+    },
+    {
+        "question": "Where can files be placed in a configuration bundle on a search peer that will persist after a new configuration bundle has been deployed?",
+        "choices": [
+            "A. In the $SPLUNK _HOME/etc/master-apps//local folder.",
+            "B. In the $SPLUNK _HOME/etc/slave-apps//local folder.",
+            "C. Nowhere; the entire configuration bundle is overwritten with each push.",
+            "D. In the $SPLUNK_HOME/etc/slave-apps/_cluster/local folder."
+        ],
+        "answer": "D",
+        "explanation": "The manager node only pushes the contents of subdirectories under manager-apps. It will not push any standalone files directly under manager-apps. For example, it will not push the standalone file /manager-apps/file1. Therefore, be sure to place any standalone configuration files in the /_cluster/local subdirectory.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/Updatepeerconfigurations"
+        ]
+    },
+    {
+        "question": "Which of the following resources should be collected to gather requirements for a Splunk deployment? (select all that apply)",
+        "choices": [
+            "A. Data sources",
+            "B. Which users can access data",
+            "C. Current log storage device mapping",
+            "D. Use cases"
+        ],
+        "answer": [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        "explanation": "All are corrections options as explained below -\nUnderstanding which users can access data is crucial for designing the appropriate access controls and permissions within a Splunk deployment. This information helps in determining who should have access to which data sources and what level of access they require.\nKnowing the current log storage device mapping is essential for planning the storage architecture of a Splunk deployment. It helps in determining where the data is currently stored, how it is structured, and how it can be efficiently ingested into Splunk for analysis.\nUse cases provide valuable insights into the specific requirements and goals of the Splunk deployment. By understanding the use cases, such as security monitoring, troubleshooting, or compliance reporting, the deployment can be tailored to meet the specific needs of the organization.\nIdentifying the data sources that need to be collected and analyzed in Splunk is fundamental for designing the data ingestion process. Knowing the types of data sources, their formats, and their locations helps in configuring data inputs and ensuring that all relevant data is captured for analysis.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/InheritedDeployment/Deploymenttopology"
+        ]
+    },
+    {
+        "question": "What problem does a static captain address for a search head cluster?",
+        "choices": [
+            "A. Faster raft elections and captain replacement when the captain fails.",
+            "B. Increased search head cluster resiliency in case the dynamic captain fails.",
+            "C. Recovery of a search head cluster that could not reach consensus.",
+            "D. Prevents network interruption from stopping communication between two sites."
+        ],
+        "answer": "C",
+        "explanation": "If a cluster loses the majority of its members, therefore, it cannot elect a captain and cannot continue to function. You can work around this situation by reconfiguring the cluster to use a static captain in place of the dynamic captain.\nA static captain does not change over time. Unlike a dynamic captain, the cluster does not conduct an election to select the static captain. Instead, you designate a member as the static captain, and that member remains the captain until you designate another member as captain.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/Staticcaptain"
+        ]
+    },
+    {
+        "question": "The current IT environment is required when planning a Splunk deployment. What information should the topology include? (select all that apply)",
+        "choices": [
+            "A. Location of data centers.",
+            "B. The type of hardware being used for network servers.",
+            "C. Authentication system(s) in place.",
+            "D. Security restrictions between sites."
+        ],
+        "answer": [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        "explanation": "All given options are correct as explained below -\nThe location of data centers is crucial information to include in the Splunk deployment topology as it helps determine the physical proximity of data sources to the Splunk indexers, which can impact data ingestion and search performance.\nAuthentication systems play a vital role in securing access to the Splunk environment. Including information about the authentication system(s) in place helps ensure proper access control and user authentication within the Splunk deployment.\nSecurity restrictions between sites are essential to consider in the Splunk deployment topology as they can impact data transfer, communication, and access control between different sites or network segments. Understanding these restrictions is crucial for designing a secure and efficient deployment.\nIncluding information about the type of hardware being used for network servers is important in the Splunk deployment topology as it helps determine the hardware resources available for indexing, searching, and processing data within the Splunk environment. This information is critical for capacity planning and performance optimization.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/InheritedDeployment/Deploymenttopology"
+        ]
+    },
+    {
+        "question": "Which of the following statements describe a Search Head Cluster (SHC) captain? (select all that apply)",
+        "choices": [
+            "A. Is the job scheduler for the entire SHC.",
+            "B. Synchronizes the member list with the KV store primary.",
+            "C. Replicates the SHC's knowledge bundle to the search peers.",
+            "D. Manages alert action suppressions (throttling)."
+        ],
+        "answer": [
+            "A",
+            "C",
+            "D"
+        ],
+        "explanation": "Role of the captain\nThe captain is a cluster member and in that capacity it performs the search activities typical of any cluster member, servicing both ad hoc and scheduled searches. If necessary, you can limit the captain's search activities so that it performs only ad hoc searches and not scheduled searches.\nThe captain also coordinates activities among all cluster members. Its responsibilities include:\nScheduling jobs. It assigns jobs to members, including itself, based on relative current loads.\nCoordinating alerts and alert suppressions across the cluster. The captain tracks each alert but the member running an initiating search fires it.\nPushing the knowledge bundle to search peers.\nCoordinating artifact replication. The captain ensures that search artifacts get replicated as necessary to fulfill the replication factor.\nReplicating configuration updates. The captain replicates any runtime changes to knowledge objects on one cluster member to all other members. This includes, for example, changes or additions to saved searches, lookup tables, and dashboards.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/SHCarchitecture#:~:text=The%20search%20heads%20are%20known,activities%20among%20all%20the%20members."
+        ]
+    },
+    {
+        "question": "How many cluster managers are required for a multisite indexer cluster?",
+        "choices": [
+            "A. Two for the entire cluster.",
+            "B. Two for each site.",
+            "C. One for each site.",
+            "D. One for the entire cluster."
+        ],
+        "answer": "D",
+        "explanation": "Multisite cluster nodes\nMultisite and single-site nodes share these characteristics:\nClusters have three types of nodes: manager, peers, and search heads.\nEach cluster has exactly one manager node.\nThe cluster can have multiple peer nodes and search heads.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/Multisitearchitecture"
+        ]
+    },
+    {
+        "question": "Which indexes.conf attribute would prevent an index from participating in an indexer cluster?",
+        "choices": [
+            "A. repFactor = auto",
+            "B. available_sites = none",
+            "C. site_mappings = default_mapping",
+            "D. repFactor = 0"
+        ],
+        "answer": "D",
+        "explanation": "When you add a new index stanza, you must set the repFactor attribute to \"auto\". This causes the index's data to be replicated to other peers in the cluster.\nNote: By default, repFactor is set to 0, which means that the index will not be replicated. For clustered indexes, you must set it to \"auto\".\nThe only valid values for repFactor are 0 and \"auto\".",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/Configurethepeerindexes"
+        ]
+    },
+    {
+        "question": "Other than high availability, which of the following is a benefit of search head clustering?",
+        "choices": [
+            "A. Input settings are synchronized between search heads.",
+            "B. Fewer network ports are required to be opened between search heads.",
+            "C. Allows indexers to maintain multiple searchable copies of all data.",
+            "D. Automatic replication of user knowledge objects."
+        ],
+        "answer": "D",
+        "explanation": "The cluster replicates search artifacts and makes them available to all members. If a search head goes down, you can run the same set of searches and access the same set of search results from any other search head in the cluster.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/AboutSHC"
+        ]
+    },
+    {
+        "question": "A customer has a Splunk Enterprise deployment and wants to collect data from universal forwarders. What is the best step to secure log traffic?",
+        "choices": [
+            "A. Use the Splunk provided SSL certificates to encrypt data between the forwarders and indexers.",
+            "B. Ensure all forwarder traffic is routed through a web application firewall (WAF).",
+            "C. Create signed SSL certificates and use them to encrypt data between the search heads and indexers.",
+            "D. Create signed SSL certificates and use them to encrypt data between the forwarders and indexers."
+        ],
+        "answer": "D",
+        "explanation": "The best step to secure log traffic between Universal Forwarders (UFs) and the Splunk Enterprise deployment is to enable SSL/TLS encryption for data transmission. This ensures that the log data is securely encrypted while being sent from the UFs to the receiving Splunk indexers. For better security create your own signed SSL certificates to use for it.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Security/ConfigureSplunkforwardingtousesignedcertificates"
+        ]
+    },
+    {
+        "question": "Where in the Job Inspector can details be found to help determine where performance is affected?",
+        "choices": [
+            "A. Execution Costs > Components",
+            "B. Search Job Properties > runtime",
+            "C. Job Details Dashboard > Total Events Matched",
+            "D. Search Job Properties > runDuration"
+        ],
+        "answer": "A",
+        "explanation": "In the Search Job Inspector, the 'Execution costs' section breaks down each processing component (for example command.search.index, command.search.rawdata, dispatch.evaluate) with the time and number of invocations each consumed, making it the place to identify where a search spends its time. The Search Job Properties fields runDuration and runtime give only a total elapsed time without a component breakdown, and Total Events Matched is a volume metric rather than a performance diagnostic.",
+        "resources": [
+            "https://www.splunk.com/en_us/blog/tips-and-tricks/splunk-clara-fication-job-inspector.html#:~:text=There%20are%20important%20details%20in,by%20taking%20the%20scanCount%2FrunDuration.",
+            "https://www.splunk.com/en_us/blog/tips-and-tricks/splunk-clara-fication-job-inspector.html"
+        ]
+    },
+    {
+        "question": "What are the minimum supported requirements to run a search head cluster (SHC)?",
+        "choices": [
+            "A. Three search heads and a deployer.",
+            "B. Two search heads and a deployment server.",
+            "C. Two search heads and a deployer.",
+            "D. Three search heads, a deployer, and a deployment server."
+        ],
+        "answer": "A",
+        "explanation": "Required number of instances\nThe cluster must contain at a minimum the number of members needed to fulfill both of these requirements:\nThree members, so that the cluster can continue to function if one member goes down.\nYou need a Splunk Enterprise instance that functions as the deployer. The deployer updates member configurations.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/SHCsystemrequirements"
+        ]
+    },
+    {
+        "question": "What is this search trying to determine? index=_internal sourcetype=splunkd (\"pipelines finished\" OR \"My GUID\" ) | transaction startswith=\"My GUID\" endswith=\"pipelines finished\" keepevicted=true keeporphans=true | search closed_txn=0",
+        "choices": [
+            "A. Total indexing volume",
+            "B. splunkd crash",
+            "C. Failed user logon",
+            "D. Missing input source"
+        ],
+        "answer": "B",
+        "explanation": "Transactions that fulfill both the \"startswith\" and \"endswith\" condition are marked as successful by having the field \"closed_txn\" set to 1, where transactions that fail to fulfill one or both of these conditions are marked as unsuccessful by having the field \"closed_txn\" set to 0. Hence, \"closed_txn=0\" is to find out the transactions which were initiated but not completed. That will help you to determine the transactions led to splunkd crash.",
+        "resources": [
+            "https://community.splunk.com/t5/Splunk-Search/How-can-I-report-on-incomplete-transactions/m-p/24960"
+        ]
+    },
+    {
+        "question": "Which of the following are possible causes of a crash in Splunk? (select all that apply)",
+        "choices": [
+            "A. Incorrect ulimit settings.",
+            "B. Insufficient memory.",
+            "C. Insufficient disk IOPS.",
+            "D. Running out of disk space."
+        ],
+        "answer": [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        "explanation": "All four are recognized causes of Splunk crashes or instability. Incorrect ulimit settings (too-low open-file or process limits) can cause splunkd to fail; insufficient memory can trigger out-of-memory kills; insufficient disk IOPS starves the indexing/search pipelines and can lead to queue blockages and instability; and running out of disk space stops Splunk from writing buckets and logs, which can crash or halt the process. Splunk's own crash-troubleshooting guidance lists OS resource limits, memory, disk performance, and disk capacity among the common root causes.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Troubleshooting/Troubleshootingeneral",
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Installation/Systemrequirements"
+        ]
+    },
+    {
+        "question": "Which of the following is true regarding Splunk Enterprise performance? (select all that apply)",
+        "choices": [
+            "A. Adding search peers increases the search throughput as search load increases.",
+            "B. Adding RAM to an existing search heads provides additional search capacity.",
+            "C. Adding search heads provides additional CPU cores to run more concurrent searches.",
+            "D. Adding search peers increases the maximum size of search results."
+        ],
+        "answer": [
+            "A",
+            "C"
+        ],
+        "explanation": "Adding search heads provides additional CPU cores to run more concurrent searches. Adding indexers helps scale with the increased search load and concurrency that comes from adding search heads. Adding RAM to your existing machines helps with concurrent searches but does not give you additional search capacity.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Capacity/HowsavedsearchesaffectSplunkEnterpriseperformance"
+        ]
+    },
+    {
+        "question": "How does IT Service Intelligence (ITSI) impact the planning of a Splunk deployment?",
+        "choices": [
+            "A. ITSI in a Splunk deployment does not require additional hardware resources.",
+            "B. The amount of users using ITSI will not impact performance.",
+            "C. Depending on the Key Performance Indicators that are being tracked, additional infrastructure may be needed.",
+            "D. ITSI requires a dedicated deployment server."
+        ],
+        "answer": "C",
+        "explanation": "ITSI works by way of KPI collection through searches against information stored within the Splunk Enterprise environment. ITSI production deployments might require additional hardware, depending on several factors, including the existing unused capacity of the environment, the number of concurrent KPI searches, the version of Splunk Enterprise in production, and other performance considerations specific to each deployment.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/ITSI/4.19.1/Install/Plan#Hardware_requirements"
+        ]
+    },
+    {
+        "question": "Which of the following is a benefit of using SmartStore?",
+        "choices": [
+            "A. Cluster Manager is no longer required.",
+            "B. Automatic selection of replication and search factors.",
+            "C. Separating storage from compute.",
+            "D. Knowledge Object replication."
+        ],
+        "answer": "C",
+        "explanation": "SmartStore advantages\nSmartStore offers several advantages to the deployment's indexing tier:\nReduced storage cost. Your deployment can take advantage of the economy of remote object stores, instead of relying on costly local storage.\nAccess to high availability and data resiliency features available through remote object stores.\nThe ability to scale compute and storage resources separately, thus ensuring that you use resources efficiently.\nSimple and flexible configuration with per-index settings.\nA bootstrapping capability that allows a new cluster or standalone indexer to inherit data from an old cluster or standalone indexer.\nSmartStore offers additional advantages specific to deployments of indexer clusters:\nFast recovery from peer failure and fast data rebalancing, requiring only metadata fixups for warm data.\nLower overall storage requirements, as the system maintains only a single permanent copy of each warm bucket.\nFull recovery of warm buckets even when the number of peer nodes that goes down is greater than or equal to the replication factor.\nGlobal size-based data retention.\nSimplified upgrades.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/AboutSmartStore"
+        ]
+    },
+    {
+        "question": "Splunk Enterprise platform instrumentation refers to data that the Splunk Enterprise deployment logs in the_introspection index. Which of the following logs are included in this index? (select all that apply)",
+        "choices": [
+            "A. audit.log",
+            "B. resource_usage.log",
+            "C. metrics.log",
+            "D. disk_objects.log"
+        ],
+        "answer": [
+            "B",
+            "D"
+        ],
+        "explanation": "The introspection files contain data about:\nOperating system resource usage for Splunk Enterprise processes, broken down by process.\nOperating system resource usage for the entire host (i.e., all system and user processes).\nDisk object data.\nKV store performance data.\nWhere is this data written?\nEvents are written to two log files in $SPLUNK_HOME/var/log/introspection.\nThe two log files are disk_objects.log and resource_usage.log",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Troubleshooting/Abouttheplatforminstrumentationframework"
+        ]
+    },
+    {
+        "question": "Indexing is slow in a Splunk environment with two indexers and one search head. There is ample CPU and memory available on the indexers. Which of the following is most likely to improve indexing performance?",
+        "choices": [
+            "A. Increase the number of parallel ingestion pipelines in inputs.conf",
+            "B. Increase the number of parallel ingestion pipelines in server.conf",
+            "C. Increase the maximum number of hot buckets in server.conf",
+            "D. Increase the maximum number of hot buckets in indexes.conf"
+        ],
+        "answer": "B",
+        "explanation": "The parallelization settings are designed to improve the performance of specific components in Splunk Enterprise. The parallelization features are intended for customers with excess CPU cores and I/O capacity to leverage their hardware for improved performance across the indexing tier. You can use these settings to allocate CPU resources to the most common uses for your Splunk platform environment, tuning the indexers to meet that demand.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Capacity/Parallelization",
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/Pipelinesets"
+        ]
+    },
+    {
+        "question": "Splunk Enterprise performs a cyclic redundancy check (CRC) against the first and last bytes to prevent the same file from being re-indexed if it is rotated or renamed. What is the number of bytes sampled by default?",
+        "choices": [
+            "A. 128",
+            "B. 64",
+            "C. 512",
+            "D. 256"
+        ],
+        "answer": "D",
+        "explanation": "crcSalt =\n* Use this setting to force the input to consume files that have matching CRCs,\nor cyclic redundancy checks.\n* By default, the input only performs CRC checks against the first 256\nbytes of a file. This behavior prevents the input from indexing the same\nfile twice, even though you might have renamed it, as with rolling log\nfiles, for example. Because the CRC is based on only the first\nfew lines of the file, it is possible for legitimately different files\nto have matching CRCs, particularly if they have identical headers.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Admin/Inputsconf"
+        ]
+    },
+    {
+        "question": "Which of the following is a minimum search head specification for a distributed Splunk environment?",
+        "choices": [
+            "A. An x86 32-bit chip architecture.",
+            "B. 128 GB RAM.",
+            "C. Two physical CPU cores, or four vCPU at 2Ghz or greater speed per core.",
+            "D. A 1Gb Ethernet NIC, optional 2nd NIC for a management network."
+        ],
+        "answer": "D",
+        "explanation": "Minimum search head specification\nAn x86 64-bit chip architecture.\n16 physical CPU cores, or 32 vCPU at 2 GHz or greater speed per core.\n12 GB RAM.\nA 1 Gb Ethernet NIC, optional second NIC for a management network.\nA 64-bit Linux or Windows distribution.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Capacity/Referencehardware#:~:text=Minimum%20search%20head%20specification,x86%2064%2Dbit%20chip%20architecture."
+        ]
+    },
+    {
+        "question": "What is a recommended way to improve search performance?",
+        "choices": [
+            "A. Filter as much as possible in the initial search.",
+            "B. Use the shortest query possible.",
+            "C. Leverage the NOT expression to limit returned results.",
+            "D. Use non-streaming commands as early as possible."
+        ],
+        "answer": "A",
+        "explanation": "Best Practices\nUse the | tstats Command:\nReplace search commands with | tstats when possible, as it directly queries metadata and is faster.\nFilter Data Early:\nUse specific index and sourcetype filters at the start of your search, e.g., index=web_logs sourcetype=access_combined.\nTime Range Restriction:\nNarrow down the time range to reduce the volume of data being searched.\nAvoid Wildcards:\nAvoid starting with wildcards in field values (e.g., host=*server is slower than host=webserver1).\nOptimize Subsearches:\nLimit subsearch results with commands like | head or | fields.",
+        "resources": []
+    },
+    {
+        "question": "When is a collected diag package in the diag server deleted by default?",
+        "choices": [
+            "A. Never; delete it manually.",
+            "B. After 30 days",
+            "C. After 7 days",
+            "D. At midnight"
+        ],
+        "answer": "A",
+        "explanation": "The diagnostic file generated using the splunk diag command remains stored on the server indefinitely and is not automatically deleted. To remove it, you must manually delete the file.",
+        "resources": []
+    },
+    {
+        "question": "What command will decommission a search peer from an indexer cluster?",
+        "choices": [
+            "A. splunk disablepeer --enforce-counts",
+            "B. splunk offline --enforce-counts",
+            "C. splunk decommission --enforce-counts",
+            "D. splunk remove cluster-peers --enforce-counts"
+        ],
+        "answer": "B",
+        "explanation": "There are two versions of the splunk offline command that correspond to the typical use cases:\nsplunk offline. Used to take a peer down temporarily for maintenance operations. Also known as the \"fast offline\" command.\nsplunk offline --enforce-counts. Used to remove a peer permanently from the cluster. Also known as the \"enforce-counts offline\" command.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/Takeapeeroffline"
+        ]
+    }
+]
