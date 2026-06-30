@@ -8,7 +8,7 @@ def txt_to_json(txt_file, json_file):
     choices = []
     answer = None
 
-    with open(txt_file, 'r') as file:
+    with open(txt_file, 'r', encoding='utf-8') as file:
         block = []
         for line in file:
             if line.strip() == "":
@@ -20,12 +20,22 @@ def txt_to_json(txt_file, json_file):
         if block:
             result.append(parse_block(block))  # Last block
 
+    # Warn about blocks that didn't parse cleanly so they aren't silently shipped.
+    missing_answer = [q['question'] for q in result if not q['answer']]
+    missing_choices = [q['question'] for q in result if not q['choices']]
+    if missing_answer:
+        print(f"WARNING: {len(missing_answer)} question(s) have no detected answer:")
+        for q in missing_answer:
+            print(f"  - {q[:80]}")
+    if missing_choices:
+        print(f"WARNING: {len(missing_choices)} question(s) have no detected choices.")
+
     # Ensure the folder exists
     os.makedirs(os.path.dirname(json_file), exist_ok=True)
 
     # Write JSON
-    with open(json_file, 'w') as out_file:
-        json.dump(result, out_file, indent=4)
+    with open(json_file, 'w', encoding='utf-8') as out_file:
+        json.dump(result, out_file, indent=4, ensure_ascii=False)
     print(f"Saved {len(result)} questions to {json_file}")
 
 def parse_block(lines):

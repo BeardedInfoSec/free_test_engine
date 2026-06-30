@@ -1,0 +1,794 @@
+[
+  {
+    "index": 0,
+    "question_prefix": "Which setting in indexes.conf allows data retention to be c",
+    "explanation": "frozenTimePeriodInSecs sets the maximum age (in seconds) of data in an index; once a bucket's newest event exceeds this age the bucket rolls to frozen (deleted or archived). This is the time-based retention control. maxDaysToKeep, moveToFrozenAfter, and maxDataRetentionTime are not valid indexes.conf attributes.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Indexesconf"]
+  },
+  {
+    "index": 1,
+    "question_prefix": "The universal forwarder has which capabilities when sending",
+    "explanation": "The universal forwarder (UF) can compress its outbound feed (compressed=true in outputs.conf) and supports indexer acknowledgement (useACK) to confirm receipt of data. The UF cannot send alerts (it has no search capability) and does not obfuscate/mask data, since data masking requires parsing, which the UF does not perform.",
+    "resources": ["https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Typesofforwarders"]
+  },
+  {
+    "index": 2,
+    "question_prefix": "In case of a conflict between a whitelist and a blacklist in",
+    "explanation": "For monitor inputs, when a file matches both a whitelist and a blacklist, the blacklist wins and the file is excluded. Splunk evaluates exclusions as the stronger rule, so the file is not monitored.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Whitelistorblacklistspecificincomingdata"]
+  },
+  {
+    "index": 3,
+    "question_prefix": "In which Splunk configuration is the SEDCMD used?",
+    "explanation": "SEDCMD is an index-time, sed-style substitution setting defined in props.conf, used to modify raw data (e.g. masking) before indexing. It is not valid in inputs.conf, indexes.conf, or transforms.conf.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Anonymizedata"]
+  },
+  {
+    "index": 4,
+    "question_prefix": "Which of the following are supported configuration methods t",
+    "explanation": "Inputs on a forwarder can be added via the CLI (splunk add monitor), by directly editing inputs.conf, or by pushing an app containing inputs.conf through Forwarder Management (deployment server). There is no forwarder.conf file, so editing it is not a valid method.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Monitorfilesanddirectories"]
+  },
+  {
+    "index": 5,
+    "question_prefix": "Which parent directory contains the configuration files in S",
+    "explanation": "All Splunk configuration files live under $SPLUNK_HOME/etc (e.g. etc/system, etc/apps, etc/users). $SPLUNK_HOME/var holds indexed data and logs, there is no etc-level conf directory, and default is only a subdirectory within apps/system, not the parent.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Wheretofindtheconfigurationfiles"]
+  },
+  {
+    "index": 6,
+    "question_prefix": "Which forwarder type can parse data prior to forwarding?",
+    "explanation": "A heavy forwarder is a full Splunk Enterprise instance with parsing enabled, so it breaks data into events, applies props/transforms, and can route/filter before forwarding. A universal forwarder only does input-phase work and forwards largely unparsed data; \"Heaviest\" and \"Hyper\" forwarders are not real Splunk components.",
+    "resources": ["https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Typesofforwarders"]
+  },
+  {
+    "index": 7,
+    "question_prefix": "Which Splunk component consolidates the individual results a",
+    "explanation": "In a distributed search, the search head dispatches the search to indexers (search peers), then consolidates the partial results they return and prepares the final reports. Indexers/search peers only return their portion of results; forwarders do not search.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatisdistributedsearch"]
+  },
+  {
+    "index": 8,
+    "question_prefix": "Which Splunk component distributes apps and certain other co",
+    "explanation": "The deployer distributes apps and configuration updates to search head cluster (SHC) members. The deployment server manages forwarders, not SHC members, and the cluster master/manager handles indexer cluster peers, not search heads.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/PropagateSHCconfigurationchanges"]
+  },
+  {
+    "index": 9,
+    "question_prefix": "Where should apps be located on the deployment server that t",
+    "explanation": "Apps to be distributed by the deployment server are placed in $SPLUNK_HOME/etc/deployment-apps. etc/apps is the local apps directory for that instance, and etc/master-apps is for the indexer cluster manager, not the deployment server.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Deploymentserverarchitecture"]
+  },
+  {
+    "index": 10,
+    "question_prefix": "This file has been manually created on a universal forwarder",
+    "explanation": "The deployment server overwrites the app's local directory on the client with its own version, so the deployed inputs.conf (monitoring /var/log/maillog) replaces the manually created one. The original [monitor:///var/log/messages] stanza is gone once the deployed app is applied, so only /var/log/maillog is monitored.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver"]
+  },
+  {
+    "index": 11,
+    "question_prefix": "In which phase of the index time process does the license me",
+    "explanation": "License metering occurs in the indexing phase, when raw data is written to disk and counted against the daily license volume. The input and parsing phases happen earlier; \"Licensing phase\" is not a phase of the data pipeline.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Deploy/Datapipeline"]
+  },
+  {
+    "index": 12,
+    "question_prefix": "You update a props.conf file while Splunk is running. You do",
+    "explanation": "btool reads configuration from disk (not the running splunkd memory), so it shows the on-disk merged props.conf settings, and the --debug flag prepends the file path each setting came from. It does not reflect the running-in-memory config or the state at startup, so the answer is the on-disk values plus source file paths.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Troubleshooting/Usebtooltotroubleshootconfigurations"]
+  },
+  {
+    "index": 13,
+    "question_prefix": "When running the command shown below, what is the default pa",
+    "explanation": "The splunk set deploy-poll command writes deploymentclient.conf to $SPLUNK_HOME/etc/system/local, the standard location for instance-level config changes made via the CLI. The default directory is read-only/shipped config, and the others are not where CLI writes this file.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Configuredeploymentclients"]
+  },
+  {
+    "index": 14,
+    "question_prefix": "The priority of layered Splunk configuration files depends o",
+    "explanation": "Configuration file precedence is determined by the file's context (global vs. app/user) and, within that, by directory priority and ASCII order of app/directory names. It is not based on owner, an arbitrary weight, or creation time.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Wheretofindtheconfigurationfiles"]
+  },
+  {
+    "index": 15,
+    "question_prefix": "When configuring monitor inputs with whitelists or blacklist",
+    "explanation": "Whitelist and blacklist filtering for monitor inputs uses regular expressions applied to the file path. Slash notation, \"irregular expressions,\" and wildcard-only matching are not the supported method (note the path itself can use ... and * wildcards, but list filtering is regex-based).",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Whitelistorblacklistspecificincomingdata"]
+  },
+  {
+    "index": 16,
+    "question_prefix": "What is required when adding a native user to Splunk?",
+    "explanation": "Creating a native Splunk user requires at minimum a username and a password. Full Name and Default app are optional fields that can be left blank.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Aboutusersandroles"]
+  },
+  {
+    "index": 17,
+    "question_prefix": "What are the minimum required settings when creating a netwo",
+    "explanation": "A network (TCP/UDP) input minimally requires the protocol and the port number, e.g. [tcp://9997]. IP/location/username are optional or not applicable; only protocol and port are strictly required.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Monitornetworkports"]
+  },
+  {
+    "index": 18,
+    "question_prefix": "Which Splunk component requires a Forwarder license?",
+    "explanation": "A heavy forwarder is a full Splunk Enterprise instance running in forwarding mode; enabling the free Forwarder license disables indexing/search so it qualifies as a forwarder. The universal forwarder ships with its own built-in forwarder license (it does not need to be applied), and \"Heaviest forwarder\" is not a real component.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/TypesofSplunklicenses"]
+  },
+  {
+    "index": 19,
+    "question_prefix": "Which optional configuration setting in inputs.conf allows y",
+    "explanation": "_TCP_ROUTING is the per-input setting in inputs.conf that selectively forwards data from a stanza to a specific tcpout target group defined in outputs.conf. The other options (_INDEXER_LIST, _INDEXER_GROUP, _INDEXER_ROUTING) are not valid Splunk settings.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Forwarding/Routeandfilterdatad"]
+  },
+  {
+    "index": 20,
+    "question_prefix": "To set up a network input in Splunk, what needs to be specif",
+    "explanation": "A network input is defined by the network protocol (TCP or UDP) and a port number to listen on. A file path applies to monitor inputs, and username/password or MAC address are not part of a network input definition.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Monitornetworkports"]
+  },
+  {
+    "index": 21,
+    "question_prefix": "Which Splunk forwarder type allows parsing of data before fo",
+    "explanation": "The heavy forwarder is a full Splunk Enterprise instance that parses data (event breaking, timestamping, transforms) before forwarding. The universal forwarder forwards unparsed data; \"Parsing\" and \"Advanced\" forwarders are not real types.",
+    "resources": ["https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Typesofforwarders"]
+  },
+  {
+    "index": 22,
+    "question_prefix": "Which of the following statements describe deployment manage",
+    "explanation": "Deployment management requires an Enterprise license and is responsible for pushing apps (configurations) to forwarders/clients. It is not the only way to manage forwarders (you can still configure them locally), and it cannot restart the host operating system.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver"]
+  },
+  {
+    "index": 23,
+    "question_prefix": "During search time, which directory of configuration files h",
+    "explanation": "For knowledge-object (search-time) precedence, the app's local directory ($SPLUNK_HOME/etc/apps/app1/local) wins over system/local and the default directories in the current app context. While user-context (etc/users) can override at search time when in that user's context, among these choices the app local directory is the highest-precedence applicable answer; system/default is always lowest.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Wheretofindtheconfigurationfiles"]
+  },
+  {
+    "index": 24,
+    "question_prefix": "Within props.conf, which stanzas are valid for data modifica",
+    "explanation": "props.conf stanzas are keyed by host::, source::, or sourcetype, which is how settings are scoped to incoming data. \"Server\" is not a valid props.conf stanza type.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Propsconf"]
+  },
+  {
+    "index": 25,
+    "question_prefix": "What is the correct order of steps in Duo Multifactor Authen",
+    "explanation": "With Duo MFA layered on Splunk authentication, the flow is: request login, check authentication/group mapping (primary auth), authentication granted, then the Duo MFA second factor, then create the user session and log into Splunk. The other sequences place Duo or SAML steps out of order.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/ConfigureSplunkSAMLwithDuoMFA"]
+  },
+  {
+    "index": 26,
+    "question_prefix": "Where can scripts for scripted inputs reside on the host fil",
+    "explanation": "Scripted-input scripts may reside in $SPLUNK_HOME/bin/scripts, $SPLUNK_HOME/etc/system/bin, or $SPLUNK_HOME/etc/apps/<your_app>/bin. $SPLUNK_HOME/etc/apps/bin (without an app name) is not a valid location.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/AdvancedDev/ScriptSetup"]
+  },
+  {
+    "index": 27,
+    "question_prefix": "How does the Monitoring Console monitor forwarders?",
+    "explanation": "The Monitoring Console tracks forwarders using their internal logs (e.g. metrics.log) that the forwarders themselves forward to the indexers; the MC then builds a forwarder asset table from that _internal data. It does not pull logs directly, use a special add-on, or rely on the deployment server to forward the logs.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DMC/Configureforwardermonitoring"]
+  },
+  {
+    "index": 28,
+    "question_prefix": "What options are available when creating custom roles?",
+    "explanation": "Custom roles let you restrict search terms (srchFilter), limit the number of concurrent search jobs (and disk quota), and allow/restrict which indexes the role can search. There is no \"whitelist search terms\" capability; restriction is done via filters, not whitelisting.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Addandeditroles"]
+  },
+  {
+    "index": 29,
+    "question_prefix": "Which of the following are supported options when configurin",
+    "explanation": "Optional network input settings include metadata override (host/source/sourcetype), sender filtering options (accept/deny by host), and network input queues using memory or persistent queues. \"Quantum queues\" and \"receiver filtering\"/\"output queues\" are incorrect terms here.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Monitornetworkports"]
+  },
+  {
+    "index": 30,
+    "question_prefix": "What is the default character encoding used by Splunk during",
+    "explanation": "During the input phase Splunk processes incoming data as UTF-8 by default (other encodings can be set with CHARSET). UTF-16, EBCDIC, and ISO 8859 are not the default.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Configurecharactersetencoding"]
+  },
+  {
+    "index": 31,
+    "question_prefix": "Which of the following enables compression for universal for",
+    "explanation": "Compression is enabled with compressed=true under the [tcpout] (or output group) stanza in outputs.conf, as in option B. Forwarding to indexers uses TCP not UDP, there is no CLI \"enable compression\" command, and the attribute is compressed (not compression/decompression).",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Outputsconf"]
+  },
+  {
+    "index": 32,
+    "question_prefix": "User role inheritance allows what to be inherited from the p",
+    "explanation": "When a role inherits from a parent role it gains the parent's capabilities and index access (and the most permissive of overlapping resource limits). It does not inherit \"parents\" themselves as a property, and search history belongs to individual users, not roles.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Addandeditroles"]
+  },
+  {
+    "index": 33,
+    "question_prefix": "Which of the following statements apply to directory inputs?",
+    "explanation": "A directory (monitor) input recursively traverses the directory tree and consumes all discovered text/log files. Compressed files are actually NOT ignored by default (Splunk can decompress and index them), and newly added files are picked up automatically without a restart, so B and D are false.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Monitorfilesanddirectories"]
+  },
+  {
+    "index": 34,
+    "question_prefix": "How would you configure your distsearch.conf to allow you to",
+    "explanation": "Distributed search groups in distsearch.conf use [distributedSearch:<group>] stanzas with the splunkd management port (8089) and comma-separated servers; a default [distributedSearch] section lists all peers. Option C is the only one with correct stanza names, valid 8089 ports, and comma separators (D uses semicolons and bad ports).",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Configuredistributedsearch"]
+  },
+  {
+    "index": 35,
+    "question_prefix": "Which of the following is a valid distributed search group?",
+    "explanation": "NOTE: the marked answer appears incorrect — distsearch.conf uses comma-separated servers, not semicolons. The correct stanza name is [distributedSearch:<name>] (ruling out the [searchGroup:...] options) and peers use management port 8089, so option A ([distributedSearch:Paris] ... servers = server1, server2) is the valid form; option D is identical but uses an invalid semicolon separator. Per the provided key the answer is D, but A is the technically valid distributed search group.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Configuredistributedsearch"]
+  },
+  {
+    "index": 36,
+    "question_prefix": "Local user accounts created in Splunk store passwords in whi",
+    "explanation": "Native Splunk user credentials (hashed passwords) are stored in $SPLUNK_HOME/etc/passwd. The other paths (etc/authentication, etc/users/passwd.conf, etc/users/authentication.conf) are not where local passwords live.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Aboutusersandroles"]
+  },
+  {
+    "index": 37,
+    "question_prefix": "For single line event sourcetypes, it is most efficient to s",
+    "explanation": "For single-line events, set SHOULD_LINEMERGE = false so Splunk does not try to merge multiple lines into one event, which is faster and avoids incorrect merging. Setting it True is for multiline events; it does not take a regex or newline value.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Propsconf"]
+  },
+  {
+    "index": 38,
+    "question_prefix": "Which Splunk component does a search head primarily communic",
+    "explanation": "A search head primarily communicates with indexers (search peers), dispatching searches to them and collecting results. Forwarders send data to indexers (not to search heads), and the cluster master/deployment server serve management roles, not the primary search path.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatisdistributedsearch"]
+  },
+  {
+    "index": 39,
+    "question_prefix": "Which layers are involved in Splunk configuration file layer",
+    "explanation": "Configuration layering operates across global (system), app, and user contexts. There is no \"forwarder context\" in the configuration precedence model.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Wheretofindtheconfigurationfiles"]
+  },
+  {
+    "index": 40,
+    "question_prefix": "Which of the following are methods for adding inputs in Splu",
+    "explanation": "Inputs can be added via the CLI, Splunk Web, or by editing inputs.conf directly. There is no monitor.conf file; monitor inputs are configured in inputs.conf.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Monitorfilesanddirectories"]
+  },
+  {
+    "index": 41,
+    "question_prefix": "Which of the following authentication types requires scripti",
+    "explanation": "RADIUS authentication in Splunk is implemented through the scripted authentication framework (a custom auth script), so it requires scripting. LDAP and SAML are natively supported configuration options, and ADFS is reached via SAML.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Setupuserauthenticationwithexternalsystems"]
+  },
+  {
+    "index": 42,
+    "question_prefix": "Which option accurately describes the purpose of the HTTP Ev",
+    "explanation": "HEC is a token-based HTTP/HTTPS input that is secure and scalable and lets applications send data directly to Splunk without deploying forwarders. It does not require forwarders and is not agent-based or insecure.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector"]
+  },
+  {
+    "index": 43,
+    "question_prefix": "What is the difference between the two wildcards ... and * fo",
+    "explanation": "In monitor stanza paths, * matches anything within a single path segment (it does not cross directory boundaries), while ... recurses through subdirectories. So C correctly states * is segment-scoped and ... recurses; D reverses them.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Specifyinputpathswithwildcards"]
+  },
+  {
+    "index": 44,
+    "question_prefix": "What type of data is counted against the Enterprise license",
+    "explanation": "Metrics data is metered at no more than 150 bytes per metrics event against the license, regardless of the event's actual size. This special low rate is unique to metrics; ordinary event data is counted by raw byte volume.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Metrics/Overview"]
+  },
+  {
+    "index": 45,
+    "question_prefix": "Which valid bucket types are searchable?",
+    "explanation": "Hot, warm, and cold buckets are all online and searchable. Frozen buckets are not searchable because frozen data is either deleted or archived out of the index and must be thawed before it can be searched.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/HowSplunkstoresindexes"]
+  },
+  {
+    "index": 46,
+    "question_prefix": "How do you remove missing forwarders from the Monitoring Con",
+    "explanation": "Missing/decommissioned forwarders are cleared from the Monitoring Console by rebuilding the forwarder asset table, which re-derives the forwarder list from current _internal data. Restarting Splunk, rescanning, or reloading the deployment server does not purge the stale assets.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DMC/Configureforwardermonitoring"]
+  },
+  {
+    "index": 47,
+    "question_prefix": "Which Splunk indexer operating system platform is supported",
+    "explanation": "Forwarding is cross-platform: a Windows universal forwarder can send data to an indexer running on any supported OS (Linux, Windows, etc.). There is no requirement that the indexer match the forwarder's OS.",
+    "resources": ["https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Forwarderdeploymenttopologies"]
+  },
+  {
+    "index": 48,
+    "question_prefix": "What are the required stanza attributes when configuring the",
+    "explanation": "To manipulate or remove events with transforms.conf you need REGEX (what to match), DEST_KEY (which field/key to write to, e.g. _raw or queue), and FORMAT (the replacement output). \"DEST\", \"SRC_KEY\", and \"FORMATTING\" are not the correct required attribute names.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Transformsconf"]
+  },
+  {
+    "index": 49,
+    "question_prefix": "Which of the following indexes come pre-configured with Splu",
+    "explanation": "_internal and _thefishbucket are default pre-configured indexes shipped with Splunk Enterprise. \"_licence\" (misspelled; the real one is _telemetry/_internal-related) and \"_external\" are not default indexes.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Aboutmanagingindexes"]
+  },
+  {
+    "index": 50,
+    "question_prefix": "How often does Splunk recheck the LDAP server?",
+    "explanation": "Splunk queries the LDAP server to authenticate and refresh group membership each time a user logs in. It does not poll on a fixed 5-minute schedule, only at restart, or via an \"LDAP_refresh\" setting.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/SetupuserauthenticationwithLDAP"]
+  },
+  {
+    "index": 51,
+    "question_prefix": "Where are license files stored?",
+    "explanation": "Splunk license files are stored in $SPLUNK_HOME/etc/licenses. The other paths (etc/secure, etc/system, etc/apps/licenses) are not the license location.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Manageyourlicenses"]
+  },
+  {
+    "index": 52,
+    "question_prefix": "In which scenario would a Splunk Administrator want to enabl",
+    "explanation": "Data integrity control computes hashes of index data so you can verify that the indexed data has not been tampered with, supporting auditing/legal requirements. It does not check hot bucket open state, config files, or user passwords.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Dataintegritycontrol"]
+  },
+  {
+    "index": 53,
+    "question_prefix": "Which Splunk component performs indexing and responds to sea",
+    "explanation": "A search peer is an indexer that both indexes data and responds to search requests dispatched from a search head. Forwarders don't index, the license master meters licensing, and \"search head cluster\" is a group of search heads, not the indexing component.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatisdistributedsearch"]
+  },
+  {
+    "index": 54,
+    "question_prefix": "When deploying apps, which attribute in the forwarder manage",
+    "explanation": "A server class maps deployment clients to the set of apps they should install; it is the grouping that ties clients to apps in Forwarder Management/serverclass.conf. \"App Class,\" \"Client Class,\" and \"Forwarder Class\" are not the correct terms.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Deploymentserverarchitecture"]
+  },
+  {
+    "index": 55,
+    "question_prefix": "In this sourcetype definition the MAX_TIMESTAMP_LOOKAHEAD is",
+    "explanation": "MAX_TIMESTAMP_LOOKAHEAD tells Splunk how many characters into the event (after TIME_PREFIX) to scan for the timestamp. The timestamp \"2018-04-13 13:42:41.214 -0500\" is about 29 characters, so 30 is the smallest value that safely covers it; 20 (or less) would truncate before the timezone is read.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Propsconf"]
+  },
+  {
+    "index": 56,
+    "question_prefix": "Which of the following are required when defining an index i",
+    "explanation": "An index definition requires homePath (hot/warm), coldPath (cold), and thawedPath (for thawed/restored buckets). frozenPath is not required, because frozen data is deleted by default unless you explicitly configure coldToFrozenDir/Script.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Configureindexstoragesize"]
+  },
+  {
+    "index": 57,
+    "question_prefix": "Which of the following apply to how distributed search works",
+    "explanation": "In distributed search the search head dispatches the search to the peers, the peers run their portion in parallel and return results, and the search head consolidates them and prepares reports. Search peers do not pull data from forwarders; forwarders push data to indexers during ingestion, which is separate from the search flow.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatisdistributedsearch"]
+  },
+  {
+    "index": 58,
+    "question_prefix": "What hardware attribute would you need to be changed to incr",
+    "explanation": "Concurrent search capacity (ad-hoc + scheduled) on a search head is governed by CPU cores; the default max_searches_per_cpu and base limits scale with the number of CPUs. Adding disk, memory, or NICs does not directly raise the concurrent search ceiling.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Limitsconf"]
+  },
+  {
+    "index": 59,
+    "question_prefix": "With authentication methods are natively supported within Sp",
+    "explanation": "Splunk Enterprise natively supports LDAP, SAML, and RADIUS (RADIUS via the scripted-auth framework that ships with Splunk). Duo MFA is layered on top of an existing auth method (e.g. SAML) rather than being a standalone native authentication backend.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Setupuserauthenticationwithexternalsystems"]
+  },
+  {
+    "index": 60,
+    "question_prefix": "Which configuration files are used to transform raw data ing",
+    "explanation": "Raw-data transformation at index time is configured with props.conf (which applies the rules per host/source/sourcetype) and transforms.conf (which defines the regex/transform logic). inputs.conf defines inputs, and there is no rawdata.conf.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Anonymizedata"]
+  },
+  {
+    "index": 61,
+    "question_prefix": "What conf file needs to be edited to set up distributed sear",
+    "explanation": "Distributed search groups are defined in distsearch.conf using [distributedSearch:<group>] stanzas. \"distibutedsearch.conf\" is a misspelling, and props.conf/search.conf are unrelated to search-group definitions.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Configuredistributedsearch"]
+  },
+  {
+    "index": 62,
+    "question_prefix": "After configuring a universal forwarder to communicate with",
+    "explanation": "The forwarder forwards its own internal logs to _internal, so searching index=_internal on the indexer (filtering by the forwarder host) confirms a successful connection. main/test/summary would not reliably show forwarder connectivity diagnostics.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Forwarding/Enableforwardingonaninstance"]
+  },
+  {
+    "index": 63,
+    "question_prefix": "Which of the following are available input methods when addi",
+    "explanation": "When adding a file input in Splunk Web you can choose \"Index Once\" (one-time upload/oneshot) or \"Continuously Monitor.\" \"Monitor interval\" and \"On-demand monitor\" are not the offered options.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Monitorfilesanddirectories"]
+  },
+  {
+    "index": 64,
+    "question_prefix": "Which is a valid stanza for a network input?",
+    "explanation": "A valid network input uses [tcp://...] or [udp://...] with connection_host set to a valid value (dns, ip, or none); option D uses [tcp://...:10001] with connection_host = dns, which is valid. A uses an invalid \"connection\" key, B uses an invalid \"any://\" scheme, and C uses connection_host = web which is not a valid value.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Inputsconf"]
+  },
+  {
+    "index": 65,
+    "question_prefix": "Which additional component is required for a search head clu",
+    "explanation": "A search head cluster requires a deployer to push apps and configuration bundles to the cluster members. The cluster master is for indexer clusters; the Monitoring/Management Console is not a required SHC component.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/SHCarchitecture"]
+  },
+  {
+    "index": 66,
+    "question_prefix": "When are knowledge bundles distributed to search peers?",
+    "explanation": "The search head sends the knowledge bundle (replicated bundle) to the search peers when a distributed search is initiated, so the peers have the needed knowledge objects to run the search. It is not tied to login, restart, or simply adding a peer.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatsearchheadssend"]
+  },
+  {
+    "index": 67,
+    "question_prefix": "Assume a file is being monitored and the data was incorrectl",
+    "explanation": "Splunk tracks file read positions (checkpoints) in the _thefishbucket index. To force a monitored file to be reindexed from the start, you must reset/clean the fishbucket so the input checkpoint is cleared. _audit, _checkpoint, and _introspection are not where file checkpoints live.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Aboutmanagingindexes"]
+  },
+  {
+    "index": 68,
+    "question_prefix": "If an update is made to an attribute in inputs.conf on a uni",
+    "explanation": "The fishbucket (file read checkpoints) lives on the forwarder that reads the file, so to reindex the data you must reset the fishbucket on the forwarder. The indexer, search head, and deployment server do not hold that input's checkpoint state.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Aboutmanagingindexes"]
+  },
+  {
+    "index": 69,
+    "question_prefix": "How can native authentication be disabled in Splunk?",
+    "explanation": "Creating an empty $SPLUNK_HOME/etc/passwd file disables native (local) Splunk authentication while leaving external auth (e.g. LDAP) in effect. Removing the file does not disable native auth (Splunk recreates it), and the splunk-launch.conf/authentication.conf options listed are not valid settings for this.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Aboutusersandroles"]
+  },
+  {
+    "index": 70,
+    "question_prefix": "The volume of data from collecting log files from 50 Linux s",
+    "explanation": "Best practice for many forwarders and multiple indexers needs: indexers, a search head, a deployment server (to manage the forwarder configs), a license master (to centralize licensing across indexers), and universal forwarders on the endpoints. A heavy forwarder is not required for simply collecting Linux/Windows logs, so option D over-provisions.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Capacity/Referencehardware"]
+  },
+  {
+    "index": 71,
+    "question_prefix": "Which of the following configuration files are used with a u",
+    "explanation": "A universal forwarder uses inputs.conf (to define what data to collect) and outputs.conf (to define where to forward it). There is no monitor.conf or forwarder.conf.",
+    "resources": ["https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Configuretheuniversalforwarder"]
+  },
+  {
+    "index": 72,
+    "question_prefix": "On the deployment server, administrators can map clients to",
+    "explanation": "In serverclass.conf client filtering, the blacklist takes precedence over the whitelist, so an explicitly blacklisted client is excluded even if it also matches the whitelist. Wildcards are supported, and machine-type filters are applied after (not before) the whitelist/blacklist.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Filterclients"]
+  },
+  {
+    "index": 73,
+    "question_prefix": "Which configuration file would be used to forward the Splunk",
+    "explanation": "Forwarding behavior (where to send data, including the instance's own internal logs) is configured in outputs.conf with a tcpout target. props.conf/inputs.conf/collections.conf do not control forwarding destinations.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Forwarding/Forwarddatatothird-partysystemsd"]
+  },
+  {
+    "index": 74,
+    "question_prefix": "When configuring HTTP Event Collector (HEC) input, how would",
+    "explanation": "To confirm HEC events were actually indexed, you enable indexer acknowledgment, which lets the sender verify (via an ack id on a dedicated channel) that the data was indexed rather than just received. The other options are not the HEC mechanism for confirming indexing.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/AboutHECIDXAck"]
+  },
+  {
+    "index": 75,
+    "question_prefix": "What is the valid option for a [monitor] stanza in inputs.co",
+    "explanation": "ignoreOlderThan is a valid [monitor] stanza setting that tells Splunk to skip files whose modtime is older than a specified age. \"enabled\", \"datasource\", and \"server_name\" are not valid monitor input settings.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Inputsconf"]
+  },
+  {
+    "index": 76,
+    "question_prefix": "Which of the following is a benefit of distributed search?",
+    "explanation": "NOTE: the marked answer appears questionable — a single distributed search head does not by itself provide resilience from search head failure (that requires a search head cluster). Distributed search's core benefit is that peers run searches in parallel (option B). The provided key is D (resilience from search head failure), but the technically correct benefit of basic distributed search is parallel execution across peers.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatisdistributedsearch"]
+  },
+  {
+    "index": 77,
+    "question_prefix": "The CLI command splunk add forward-server indexer:<receiving",
+    "explanation": "splunk add forward-server writes the receiving indexer target into outputs.conf (a tcpout stanza), which defines where the instance forwards data. It does not modify inputs.conf, indexes.conf, or a servers.conf.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Forwarding/Deployaforwarder"]
+  },
+  {
+    "index": 78,
+    "question_prefix": "The Splunk administrator wants to ensure data is distributed",
+    "explanation": "The splunk_server field identifies which indexer (server) each event came from, so grouping by splunk_server shows how data is distributed across indexers. host is the originating data source, and index/linecount do not indicate which indexer stored the data.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Usedefaultfields"]
+  },
+  {
+    "index": 79,
+    "question_prefix": "Social Security Numbers (PII) data is found in log events",
+    "explanation": "Index-time masking via a transform uses transforms.conf with REGEX, FORMAT, and DEST_KEY = _raw, so option D (transforms.conf with REGEX/FORMAT/DEST_KEY) is correct. Options using \"REX\" instead of REGEX are invalid, and the props.conf options are wrong because the regex transform itself must be defined in transforms.conf (referenced from props.conf).",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Anonymizedata"]
+  },
+  {
+    "index": 80,
+    "question_prefix": "Where are deployment server apps mapped to clients?",
+    "explanation": "Apps are mapped to deployment clients through server classes, configured on the Server Classes tab of Forwarder Management or directly in serverclass.conf. The other tab/file names (clientapps.conf, deploymentclient.conf for mapping, Client Applications tab) are incorrect.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Deploymentserverarchitecture"]
+  },
+  {
+    "index": 81,
+    "question_prefix": "Which Splunk configuration file is used to enable data integ",
+    "explanation": "Data integrity control is enabled per index with enableDataIntegrityControl in indexes.conf. props.conf, global.conf, and a data_integrity.conf are not where it is configured.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Dataintegritycontrol"]
+  },
+  {
+    "index": 82,
+    "question_prefix": "An admin is running the latest version of Splunk with a 500",
+    "explanation": "Indexing all 10 TB in a single 24-hour window generates only one license warning (one day over quota); since a violation requires 5 warnings in a rolling 30 days, a single huge day is the safest way to avoid a violation. Spreading the data over many days would exceed the daily quota repeatedly and accumulate multiple warnings, leading to a violation.",
+    "resources": ["https://help.splunk.com/en/splunk-enterprise/administer/admin-manual/9.4/manage-splunk-licenses/about-license-violations"]
+  },
+  {
+    "index": 83,
+    "question_prefix": "After how many warnings within a rolling 30-day period will",
+    "explanation": "On an enforced Enterprise license, you are placed in violation after 5 warnings within a rolling 30-day period (i.e. the 5th warning triggers it), at which point searching is disabled while indexing continues. Fewer than 5 warnings keeps you out of violation.",
+    "resources": ["https://help.splunk.com/en/splunk-enterprise/administer/admin-manual/9.4/manage-splunk-licenses/about-license-violations"]
+  },
+  {
+    "index": 84,
+    "question_prefix": "Who provides the Application Secret, Integration, and Secret",
+    "explanation": "The Duo Administrator (via the Duo Admin Panel) provides the Integration key, Secret key, Application Secret (akey), and API Hostname used to configure Duo MFA in Splunk. LDAP/SAML admins and the nonexistent \"Trio Administrator\" do not supply these Duo-specific values.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/ConfigureSplunkSAMLwithDuoMFA"]
+  },
+  {
+    "index": 85,
+    "question_prefix": "When does a warm bucket roll over to a cold bucket?",
+    "explanation": "A warm bucket rolls to cold when the maximum number of warm buckets (maxWarmDBCount) is exceeded; the oldest warm bucket is moved to the cold path. It is not driven by restart, warm bucket age, or warm bucket size.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/HowSplunkstoresindexes"]
+  },
+  {
+    "index": 86,
+    "question_prefix": "In a distributed environment, which Splunk component is used",
+    "explanation": "The deployment server distributes apps and configurations to other instances (primarily forwarders/deployment clients). The deployer serves search head cluster members specifically, while indexers and forwarders are not the distribution mechanism; among these general choices the deployment server is correct.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver"]
+  },
+  {
+    "index": 87,
+    "question_prefix": "How is a remote monitor input distributed to forwarders?",
+    "explanation": "Monitor inputs are pushed to forwarders as an app (a deployment app containing inputs.conf) via the deployment server. There is no \"forward.conf\" or \"monitor.conf\" file or \"forwarder monitor profile\" distribution mechanism.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver"]
+  },
+  {
+    "index": 88,
+    "question_prefix": "How is data handled by Splunk during the input phase of the",
+    "explanation": "In the input phase Splunk handles incoming data as undifferentiated streams (tagged with metadata like host/source/sourcetype) before any event breaking. Breaking into events happens in the parsing phase, writing to disk happens in indexing, and license metering occurs at indexing.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Deploy/Datapipeline"]
+  },
+  {
+    "index": 89,
+    "question_prefix": "Which option on the Add Data menu is most useful for testing",
+    "explanation": "The Upload option (one-time file upload) is ideal for testing ingestion/sourcetype parsing without creating a persistent monitor input or inputs.conf entry. Monitor and Forward create ongoing inputs; there is no Download option.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Howdoyouwanttoadddata"]
+  },
+  {
+    "index": 90,
+    "question_prefix": "An organization wants to collect Windows performance data fr",
+    "explanation": "When you cannot install Splunk software on the target hosts, you use Windows Remote Inputs via WMI to remotely collect Windows performance and event data agentlessly. Local host/network monitoring requires an installed forwarder, and a metrics index is a storage type, not a remote collection method.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/MonitorWMIdata"]
+  },
+  {
+    "index": 91,
+    "question_prefix": "Which of the following must be done to define user permissio",
+    "explanation": "With LDAP, you define permissions by mapping LDAP groups to Splunk roles (Map Groups), so members of a group inherit the mapped role. You do not map individual users for permissions, and \"Map LDAP Inheritance\" / \"Map LDAP to Active Directory\" are not Splunk steps.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/SetupuserauthenticationwithLDAP"]
+  },
+  {
+    "index": 92,
+    "question_prefix": "In which phase do indexed extractions in props.conf occur?",
+    "explanation": "Indexed extractions (e.g. INDEXED_EXTRACTIONS for structured data like CSV/JSON) are written into the index, so they occur in the indexing phase of the pipeline. They are not search-time, and although props is parsed earlier, the structured field extraction is applied at index time. (On a forwarder these are done at input/parsing on that node, but in the pipeline model they are an index-time extraction.)",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Extractfieldsfromfileswithstructureddata"]
+  },
+  {
+    "index": 93,
+    "question_prefix": "Which of the following statements describes how distributed",
+    "explanation": "In distributed search the search head dispatches searches to the search peers (indexers), which run them and return results. Forwarders push (not pull) data, search heads do not store searchable data, and result replication within an indexer cluster is about data availability, not how search works.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/DistSearch/Whatisdistributedsearch"]
+  },
+  {
+    "index": 94,
+    "question_prefix": "Which feature in Splunk allows Event Breaking, Timestamp ext",
+    "explanation": "Data preview (in Add Data) lets you validate event breaking, timestamp extraction, and other props.conf settings interactively through the UI before committing the input. Apps, Search, and Forwarder inputs do not provide this preview validation.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Previewyourdata"]
+  },
+  {
+    "index": 95,
+    "question_prefix": "Which of the following statements accurately describes using",
+    "explanation": "When you enable SSL on the forwarder-to-indexer feed, Splunk automatically compresses the data by default, so you do not need to separately set compressed=true. SSL does encrypt the channel (and protects the cert password is not the relevant point here), and compression is not something the receiver must explicitly turn on for SSL.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/AboutsecuringdatafromforwardersTLS"]
+  },
+  {
+    "index": 96,
+    "question_prefix": "Which feature of Splunk's role configuration can be used to",
+    "explanation": "Role inheritance lets a role include the capabilities and resource access of one or more parent roles, which is how you aggregate roles for groups of users. \"Linked roles,\" \"Grantable roles,\" and \"Role federation\" are not the Splunk mechanism (grantable_roles exists but is for token/SAML grant scoping, not general aggregation).",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Addandeditroles"]
+  },
+  {
+    "index": 97,
+    "question_prefix": "Which of the following is the use case for the deployment se",
+    "explanation": "The deployment server's use case is updating configuration and distributing apps to processing components, primarily forwarders. It is not for workload management, automating forwarder software upgrades on endpoints, or orchestrating containerized deployments.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver"]
+  },
+  {
+    "index": 98,
+    "question_prefix": "When running a real-time search, search results are pulled f",
+    "explanation": "Real-time search results are pulled from the search peers (indexers), which stream matching events as they arrive. Heavy forwarders and search heads are not where the indexed/real-time data is stored and served from.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Search/Aboutrealtimesearches"]
+  },
+  {
+    "index": 99,
+    "question_prefix": "Using SEDCMD in props.conf allows raw data to be modified",
+    "explanation": "To produce AcctID=xxx5309, the sed substitution must drop the first three digits and keep the captured last four (\\1), prefixed with xxx: s/AcctID=\\d{3}(\\d{4})/AcctID=xxx\\1/g (option D). Option C places \\1 before xxx (wrong order), and A/B either target VendorID or drop the captured digits entirely.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Anonymizedata"]
+  },
+  {
+    "index": 100,
+    "question_prefix": "Which of the following accurately describes HTTP Event Colle",
+    "explanation": "HEC indexer acknowledgment requires the client to supply a separate channel (the X-Splunk-Request-Channel) so the server can track and return ack ids per channel. It is configured differently from the forwarder useACK in-flight mechanism, is enabled per token (not just globally), and the ack status is queried by the client, not simply stored server-side as the durable record.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/AboutHECIDXAck"]
+  },
+  {
+    "index": 101,
+    "question_prefix": "Which of the following is accurate regarding the input phase",
+    "explanation": "In the input phase Splunk fine-tunes/sets initial metadata (host, source, sourcetype) and applies character-set handling, but the key distinguishing answer here is fine-tuning metadata. Breaking into events and event-level transformations occur in the parsing phase, not input.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Deploy/Datapipeline"]
+  },
+  {
+    "index": 102,
+    "question_prefix": "When indexing a data source, which fields are considered met",
+    "explanation": "The default metadata fields assigned at index time are sourcetype, source, and host. _raw is the event text (not metadata), and time is the _time field which is parsed, so the metadata trio is sourcetype/source/host.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Aboutdefaultfields"]
+  },
+  {
+    "index": 103,
+    "question_prefix": "What is the default value of LINE_BREAKER?",
+    "explanation": "The default LINE_BREAKER is ([\\r\\n]+) — one or more carriage returns/newlines, with the captured group defining where the break occurs. The other regexes are not the documented default.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Propsconf"]
+  },
+  {
+    "index": 104,
+    "question_prefix": "Which of the following monitor inputs stanza headers would m",
+    "explanation": "[monitor:///var/log/.../secure.*] uses ... to recurse through all subdirectories under /var/log and * to match any extension on files starting with secure, so it matches files in www1, www, www/logs, and www2. The other stanzas are pinned to a single directory or exact filename and miss most of the listed paths.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Specifyinputpathswithwildcards"]
+  },
+  {
+    "index": 105,
+    "question_prefix": "An index stores its data in buckets. Which default directori",
+    "explanation": "By default Splunk stores buckets in db (hot/warm, under homePath) and colddb (cold, under coldPath). \"bucketdb\" and \"frozendb\" are not the default bucket directory names (frozen data is deleted or archived, not kept in a frozendb).",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/HowSplunkstoresindexes"]
+  },
+  {
+    "index": 106,
+    "question_prefix": "After automatic load balancing is enabled on a forwarder, th",
+    "explanation": "autoLBFrequency (in outputs.conf) sets the time interval, in seconds, after which the forwarder switches to another indexer in the load-balanced group. channelTTL, connectionTimeout, and secsInFailureInterval control other behaviors, not the LB switch interval.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Forwarding/Setuploadbalancingd"]
+  },
+  {
+    "index": 107,
+    "question_prefix": "A log file contains 193 days worth of timestamped events. Wh",
+    "explanation": "ignoreOlderThan = 45d tells the monitor input to skip files whose modification time is older than 45 days, effectively collecting recent data and ignoring older content. followTail/includeNewerThan are not the correct settings, and \"ignore = 45d\" is not valid.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Inputsconf"]
+  },
+  {
+    "index": 108,
+    "question_prefix": "After an Enterprise Trial license expires, it will automatic",
+    "explanation": "The Enterprise Trial license is valid for 60 days, after which it converts to the Free license. 90, 7, and 14 days are incorrect.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/TypesofSplunklicenses"]
+  },
+  {
+    "index": 109,
+    "question_prefix": "Consider a company with a Splunk distributed environment in",
+    "explanation": "Adding a dedicated search head for the Compliance team isolates their knowledge objects/reports so other users cannot see them (knowledge objects are scoped to the search head where they are created). Indexers, deployment servers, and universal forwarders do not provide this knowledge-object isolation.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Manageknowledgeobjectpermissions"]
+  },
+  {
+    "index": 110,
+    "question_prefix": "Which of the following is an appropriate description of a de",
+    "explanation": "A deployment server manages remote Splunk instances, requires an Enterprise license, sends configurations packaged as apps, and can automatically restart the remote Splunk instances (splunkd) after deploying. Option B captures all of this; the others get the license, restart capability, or scope wrong.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver"]
+  },
+  {
+    "index": 111,
+    "question_prefix": "Which Splunk forwarder has a built-in license?",
+    "explanation": "The universal forwarder ships with its own built-in forwarder license, so no separate license needs to be applied. A heavy forwarder uses a Splunk Enterprise instance and must have the forwarder license enabled; \"Light\" and \"Cloud\" forwarders are not current built-in-licensed components.",
+    "resources": ["https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Abouttheuniversalforwarder"]
+  },
+  {
+    "index": 112,
+    "question_prefix": "What happens when the same username exists in Splunk as well",
+    "explanation": "When a username exists both natively and in LDAP, the local Splunk (native) account takes precedence for that login. LDAP does not override the native account, and neither account is automatically deleted.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/SetupuserauthenticationwithLDAP"]
+  },
+  {
+    "index": 113,
+    "question_prefix": "Which of the following applies only to Splunk index data int",
+    "explanation": "Index data integrity control specifically hashes the raw data in the index (the rawdata slices and per-bucket hash files) so tampering can be detected. Lookup tables, summary indexes, and data model acceleration are not what integrity control protects.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Dataintegritycontrol"]
+  },
+  {
+    "index": 114,
+    "question_prefix": "Which of the following types of data count against the licen",
+    "explanation": "Windows internal logs ingested as ordinary event data count against the daily license quota. Replicated (cluster) data, splunkd/_internal logs, and summary index data do not count against the license.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Howlicensingworks"]
+  },
+  {
+    "index": 115,
+    "question_prefix": "Which default Splunk role could be assigned to provide users",
+    "explanation": "The power role can create/edit saved searches and alerts and edit shared (globally permissioned) objects, but cannot create custom roles (that is an admin capability). The user role is too limited (cannot edit shared objects), and admin can create roles, so power fits exactly.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/Aboutdefaultrolesandcapabilities"]
+  },
+  {
+    "index": 116,
+    "question_prefix": "When Splunk is integrated with LDAP, which attribute can be",
+    "explanation": "For an LDAP user, the Default app is one of the few attributes you can set within Splunk, since username, password, and group membership are managed by LDAP. You cannot change the LDAP group, password, or username from the Splunk UI.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Security/SetupuserauthenticationwithLDAP"]
+  },
+  {
+    "index": 117,
+    "question_prefix": "Using the CLI on the forwarder, how could the current forwar",
+    "explanation": "splunk list forward-server shows the configured (and active/inactive) receiving indexers the forwarder sends to. \"splunk list forward-indexer\" is not a valid command, and the btool commands list server.conf/indexes.conf rather than the forward-server targets.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Forwarding/Deployaforwarder"]
+  },
+  {
+    "index": 118,
+    "question_prefix": "Which artifact is required in the request header when creati",
+    "explanation": "Sending data to HEC requires the HEC token in the Authorization request header (Authorization: Splunk <token>), which authenticates and routes the event. ackID is only used with indexer acknowledgment responses; Manifest and Host name are not required header artifacts.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/FormateventsforHTTPEventCollector"]
+  },
+  {
+    "index": 119,
+    "question_prefix": "All search-time field extractions should be specified on whi",
+    "explanation": "Search-time field extractions are applied when searches run, so they should be configured on the search head. The deployment server, universal forwarder, and indexer are not where search-time extractions belong (the indexer applies them only when it acts as a search peer, but they are authored/specified on the search head).",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Aboutfields"]
+  },
+  {
+    "index": 120,
+    "question_prefix": "In addition to single, non-clustered Splunk instances, what",
+    "explanation": "The deployment server pushes apps to universal forwarders (deployment clients) in addition to other single non-clustered instances. It does not push to Splunk Cloud, Linux package managers, or Windows via WMI.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver"]
+  },
+  {
+    "index": 121,
+    "question_prefix": "What is the command to reset the fishbucket for one source?",
+    "explanation": "To reset the checkpoint for a single source you use btprobe against the fishbucket private DB: splunk cmd btprobe -d $SPLUNK_HOME/var/lib/splunk/fishbucket/splunk_private_db --file <path> --reset. The other commands either delete the entire fishbucket, target a nonexistent index, or are invalid.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Aboutmanagingindexes"]
+  },
+  {
+    "index": 122,
+    "question_prefix": "Which setting allows the configuration of Splunk to allow ev",
+    "explanation": "SHOULD_LINEMERGE = true enables merging multiple lines into a single (multiline) event, which is how you let events span more than one line. SHOULD_LINEMERGE = false keeps each line a separate event; BREAK_ONLY_BEFORE settings only refine merging behavior when line merging is on.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Propsconf"]
+  },
+  {
+    "index": 123,
+    "question_prefix": "In this example, if useACK is set to true and the maxQueueSi",
+    "explanation": "When useACK=true, the forwarder creates a wait queue that is three times the maxQueueSize. With maxQueueSize=7MB, the wait queue is 3 x 7MB = 21MB.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Outputsconf"]
+  },
+  {
+    "index": 124,
+    "question_prefix": "Which of the following are reasons to create separate indexe",
+    "explanation": "Common reasons to create separate indexes are differing data retention requirements and access control, since permissions and retention are set per index. Increasing the number of users and \"file organization\" are not valid drivers for separate indexes.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Setupmultipleindexes"]
+  },
+  {
+    "index": 125,
+    "question_prefix": "Which network input option provides durable file-system buff",
+    "explanation": "persistentQueueSize configures a persistent (on-disk) queue that buffers input data to the file system, mitigating loss during network outages or splunkd restarts. queueSize is the in-memory queue, and diskQueueSize/durableQueueSize are not the correct attribute names.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Usepersistentqueues"]
+  },
+  {
+    "index": 126,
+    "question_prefix": "A new forwarder has been installed with a manually created d",
+    "explanation": "After manually creating deploymentclient.conf, you must restart Splunk on the forwarder so it reads the config and begins phoning home to the deployment server. There is no Forwarder Management toggle to enable a client, and restarting the deployment server or merely waiting will not pick up the new file without the forwarder reading it.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Updating/Configuredeploymentclients"]
+  },
+  {
+    "index": 127,
+    "question_prefix": "When using a directory monitor input, specific source type c",
+    "explanation": "Source type assignment for files/sources within a monitored directory is overridden in props.conf (per-source or per-source-type stanzas), which lets you selectively assign sourcetypes. sourcetypes.conf is not a real config file, and transforms.conf/outputs.conf do not set sourcetype overrides for inputs.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Data/Specifysourcetypesfordata"]
+  },
+  {
+    "index": 128,
+    "question_prefix": "When using license pools, volume allocations apply to which",
+    "explanation": "License volume is consumed by indexing, so license pool allocations apply to indexers (the components that index and meter data). Indexes, heavy forwarders, and search heads are not what the pool volume is allocated to.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Admin/Createlicensepools"]
+  },
+  {
+    "index": 129,
+    "question_prefix": "Which forwarder is recommended by Splunk to use in a product",
+    "explanation": "Splunk recommends the universal forwarder for production data collection because it is lightweight, efficient, and purpose-built for forwarding. Heavy forwarders are only used when parsing/routing is needed; the lightweight forwarder is deprecated, and \"SSL forwarder\" is not a forwarder type.",
+    "resources": ["https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Abouttheuniversalforwarder"]
+  },
+  {
+    "index": 130,
+    "question_prefix": "Which of the following Splunk components require a separate i",
+    "explanation": "The universal forwarder is distributed as its own separate, lightweight installation package (splunkforwarder), distinct from full Splunk Enterprise. The deployment server, license master, and heavy forwarder are all roles configured within the standard Splunk Enterprise installation, not separate packages.",
+    "resources": ["https://docs.splunk.com/Documentation/Forwarder/latest/Forwarder/Installanixuniversalforwarder"]
+  },
+  {
+    "index": 131,
+    "question_prefix": "Which data pipeline phase is the last opportunity for defini",
+    "explanation": "Event boundaries (line breaking/line merging) are determined during the parsing phase, which is the last point where event boundaries can be defined. The input phase precedes parsing, and by the indexing/search phases the events are already formed.",
+    "resources": ["https://docs.splunk.com/Documentation/Splunk/latest/Deploy/Datapipeline"]
+  }
+]

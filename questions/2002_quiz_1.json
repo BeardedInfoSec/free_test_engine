@@ -1,0 +1,364 @@
+[
+    {
+        "question": "A search head has successfully joined a single site indexer cluster. Which command is used to configure the same search head to join another indexer cluster?",
+        "choices": [
+            "A. splunk edit cluster-master",
+            "B. splunk add cluster-config",
+            "C. splunk add cluster-master",
+            "D. splunk edit cluster-config"
+        ],
+        "answer": "C",
+        "explanation": "You can configure a search head to search across multiple indexer clusters. Configure the search head for one of the clusters in the usual way and then proceed with adding another cluster.\nFor example, to add the search head to a cluster whose manager node is located at https://10.160.31.200:8089, run this command:\nsplunk add cluster-manager https://10.160.31.200:8089 -secret your_key\nPS - The term \"manager node\" replaces the term \"master node\"",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/latest/Indexer/Configuremulti-clustersearch?_gl=1*axpd09*_gcl_au*MzI0OTYzMTM1LjE3MzYwNzIxMjQ.*FPAU*MzI0OTYzMTM1LjE3MzYwNzIxMjQ.*_ga*MTM2MzMwNzI0My4xNzM2MDcyMTIz*_ga_5EPM2P39FV*MTczNjMwNDAxNS40LjEuMTczNjMwNDc0My4wLjAuMTAyMTE1Mjc5MQ..*_fplc*c3pSVUliMkQyRnVYeDBteEVRejg4RHdoNjFQajdFbkxiMUxnT21RYzVGbHZwZXE2aHNEenlUUm9QdGglMkZGVkxaRlFqRFlkVm1CMHA5Q0FPSHNTVzFLandHbktNR3dMYXo3dnN5WWFuYUo5Z05JM3AxNjJOZVB0R0U1TUpBYnclM0QlM0Q.",
+            "https://docs.splunk.com/Splexicon:Managernode"
+        ]
+    },
+    {
+        "question": "When planning a search head cluster, which of the following is true?",
+        "choices": [
+            "A. All search heads must be members of the cluster (no standalone search heads).",
+            "B. All search heads must use the same operating system.",
+            "C. The search head captain must be assigned to the largest search head in the cluster.",
+            "D. All indexers must belong to the underlying indexer cluster (no standalone indexers)."
+        ],
+        "answer": "B",
+        "explanation": "Summary of key requirements\nThese are the main issues to note regarding provisioning of cluster members:\nEach member must run on its own machine or virtual machine, and all machines must run the same operating system and version.\nAll members must run on the same version of Splunk Enterprise.\nAll members must be connected over a high-speed network.\nFor high availability search, you must deploy at least three members.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/SHCsystemrequirements"
+        ]
+    },
+    {
+        "question": "Of the following types of files within an index bucket, which file type may consume the most disk?",
+        "choices": [
+            "A. Rawdata",
+            "B. Metadata (.data)",
+            "C. Bloom filter",
+            "D. Inverted index (.tsidx)"
+        ],
+        "answer": "D",
+        "explanation": "The correct answer is inverted index (.tsidx). This allows fast full text searches and required for searchable buckets. Typically, the rawdata file is 15% the size of the pre-indexed data, and the TSIDX files are approximately 35% of the size of the pre-indexed data. When you combine the two file sizes, the rawdata and TSIDX represent approximately 50% of pre-indexed data volume.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Capacity/Estimateyourstoragerequirements"
+        ]
+    },
+    {
+        "question": "Which of the following is a valid use case that a search head cluster addresses?",
+        "choices": [
+            "A. Provide redundancy in the event a search peer fails.",
+            "B. Knowledge Object replication",
+            "C. Increased Search Factor (SF)",
+            "D. Search affinity"
+        ],
+        "answer": "B",
+        "explanation": "Search Head Clustering in Splunk addresses the following key requirements:\nHigh Availability (HA): Ensures that users can access the search functionality even if one or more search heads fail.\nLoad Balancing: Distributes search and user activity across multiple search head cluster members, improving performance and preventing overload on a single search head.\nConsistency of Knowledge Objects: Provides seamless replication and synchronization of knowledge objects (e.g., saved searches, dashboards, alerts) across all cluster members, ensuring a consistent user experience regardless of which search head is accessed.\nScalability: Allows organizations to add more search heads to handle an increasing number of users or search workloads.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/SHCarchitecture"
+        ]
+    },
+    {
+        "question": "At which default interval does metrics.log generate a periodic report regarding license utilization?",
+        "choices": [
+            "A. 300 seconds",
+            "B. 30 seconds",
+            "C. 10 seconds",
+            "D. 60 seconds"
+        ],
+        "answer": "B",
+        "explanation": "The metrics.log file is a sampling of the top ten items in each category in 30-second intervals, based on the size of _raw.\nLet me tell you the trick here, For any timing question for metrics.log, you may blindly select 30 seconds be it at license utilization or anything else.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.3.2/Troubleshooting/Aboutmetricslog",
+            "https://docs.splunk.com/Documentation/Splunk/9.3.2/Troubleshooting/WhatSplunklogsaboutitself"
+        ]
+    },
+    {
+        "question": "Which index-time props.conf attributes impact indexing performance? (select all that apply)",
+        "choices": [
+            "A. REPORT",
+            "B. ANNOTATE_PUNCT",
+            "C. SHOULD_LINEMERGE",
+            "D. LINE_BREAKER"
+        ],
+        "answer": [
+            "C",
+            "D"
+        ],
+        "explanation": "SHOULD_LINEMERGE and LINE_BREAKER are index-time (parsing) settings that control how the incoming stream is broken into events, so they directly affect indexing performance - SHOULD_LINEMERGE in particular invokes the more costly line-merging logic. REPORT is a search-time field-extraction directive and does not affect indexing throughput. ANNOTATE_PUNCT only controls creation of the punct field and has negligible performance impact by comparison.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Admin/Propsconf"
+        ]
+    },
+    {
+        "question": "Which of the following should be included in a deployment plan?",
+        "choices": [
+            "A. Current and future topology diagrams of the IT environment.",
+            "B. Business continuity and disaster recovery plans.",
+            "C. Current logging details and data source inventory.",
+            "D. A comprehensive list of stakeholders, either direct or indirect."
+        ],
+        "answer": "C",
+        "explanation": "This is a somewhat tricky question, and you may find yourself unsure due to the nature of the options provided. While all the options might eventually come into play, this is a multiple-choice question, and you must select only one correct answer. In this case, the correct answer is Option 2. To initiate the deployment plan, it is essential to first understand the current logging and data source mechanisms.",
+        "resources": []
+    },
+    {
+        "question": "Which of the following data sources are used for the Monitoring Console dashboards? (select all that apply)",
+        "choices": [
+            "A. metrics.log",
+            "B. Splunk diag",
+            "C. REST API calls",
+            "D. Splunk btool"
+        ],
+        "answer": [
+            "A",
+            "C"
+        ],
+        "explanation": "The Monitoring Console dashboards use data from Splunk Enterprise's internal log files such as metrics.log, as well as data available from Splunk Enterprise platform instrumentation.\nSplunk btool is to validate configs while Splunk diag is to generate diag of your installation hence, those aren't correct.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DMC/DMCoverview"
+        ]
+    },
+    {
+        "question": "When determining where a Splunk forwarder is trying to send data, which of the following searches can provide assistance?",
+        "choices": [
+            "A. index=_internal sourcetype=splunkd metrics destHost | dedup destHost",
+            "B. index=_internal sourcetype=splunkd metrics inputHost | dedup inputHost",
+            "C. index=_internal sourcetype=internal metrics destHost | dedup destHost",
+            "D. index=_metrics sourcetype=splunkd metrics destHost | dedup destHost"
+        ],
+        "answer": "A",
+        "explanation": "To identify the destination indexers a Splunk forwarder is attempting to send data to, execute the search: index=_internal sourcetype=splunkd metrics destHost | dedup destHost. This query leverages the internal Splunk logs (index=_internal), specifically the metrics log events generated by forwarders, and focuses on the destHost field, which captures the destination hosts (typically indexers). The dedup command ensures that only unique entries for each destination host are displayed, providing a concise list of all indexers the forwarder is currently communicating with or attempting to reach.",
+        "resources": [
+            "https://community.splunk.com/t5/Deployment-Architecture/How-to-identify-a-list-of-forwarders-sending-data-to-a-single/m-p/106010"
+        ]
+    },
+    {
+        "question": "In a distributed environment, knowledge object bundles are replicated from the search head to which location on the search peer(s)?",
+        "choices": [
+            "A. SPLUNK_HOME/var/spool/searchpeers",
+            "B. SPLUNK_HOME/var/lib/searchpeers",
+            "C. SPLUNK_HOME/var/log/searchpeers",
+            "D. SPLUNK_HOME/var/run/searchpeers"
+        ],
+        "answer": "D",
+        "explanation": "As part of the distributed search process, the search head periodically distributes its knowledge bundle to its search peers. This process is known as knowledge bundle replication.\nLocation of the knowledge bundle\nOn the search head, the knowledge bundles resides under the $SPLUNK_HOME/var/run directory. The bundles have the extension .bundle for full bundles or .delta for delta bundles. They are tar files, so you can run tar tvf against them to see the contents.\nDuring replication, the knowledge bundle gets distributed to the SPLUNK_HOME/var/run/searchpeers directory on each search peer. Because the knowledge bundle reside in a different location on the search peers than on the search head, search scripts must not hardcode paths to resources.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/Knowledgebundlereplication"
+        ]
+    },
+    {
+        "question": "To activate replication for an index in an indexer cluster, what attribute must be configured in indexes.conf on all peer nodes?",
+        "choices": [
+            "A. replicate = auto",
+            "B. repFactor = 0",
+            "C. replicate = 0",
+            "D. repFactor = auto"
+        ],
+        "answer": "D",
+        "explanation": "By default, repFactor is set to 0, which means that the index will not be replicated. For clustered indexes, you must set it to \"auto\".",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/Configurethepeerindexes"
+        ]
+    },
+    {
+        "question": "Which of the following is a valid way to determine if a new bundle push will trigger a rolling restart?",
+        "choices": [
+            "A. splunk show cluster-bundle-status",
+            "B. splunk validate cluster-bundle --check-restart",
+            "C. splunk apply cluster-bundle --validate-bundle",
+            "D. splunk apply cluster-bundle"
+        ],
+        "answer": "B",
+        "explanation": "In order to check for restart, splunk validate cluster-bundle --check-restart",
+        "resources": []
+    },
+    {
+        "question": "To reduce the captain’s workload in a search head cluster, what setting will prevent scheduled searches from running on the captain?",
+        "choices": [
+            "A. captain_is_adhoc_searchhead = true (on the current captain)",
+            "B. adhoc_searchhead = true (on all members)",
+            "C. captain_is_adhoc_searchhead = true (on all members)",
+            "D. adhoc_searchhead = true (on the current captain)"
+        ],
+        "answer": "C",
+        "explanation": "To designate the captain as an ad hoc search head, set the captain_is_adhoc_searchhead attribute in server.conf on each member.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/Adhocclustermember"
+        ]
+    },
+    {
+        "question": "Stakeholders have identified high availability for searchable data as their top priority. Which of the following best addresses this requirement?",
+        "choices": [
+            "A. Increasing the search factor in the cluster.",
+            "B. Increasing the number of search heads in the cluster.",
+            "C. Increasing the number of CPUs on the indexers in the cluster.",
+            "D. Increasing the replication factor in the cluster."
+        ],
+        "answer": "A",
+        "explanation": "The stakeholder is concerned about the high availability of searchable data; hence, increasing SF in the cluster will address the requirement. Increasing RF will have multiple copies of raw data that will take time to create an inverted index (.tsidx) to make it searchable if there is a node failure.",
+        "resources": []
+    },
+    {
+        "question": "How can internal logging levels in a Splunk environment be changed to troubleshoot an issue? (select all that apply)",
+        "choices": [
+            "A. Use Splunk Web.",
+            "B. Use the Monitoring Console (MC).",
+            "C. Edit log-local. cfg.",
+            "D. Use Splunk command line."
+        ],
+        "answer": [
+            "A",
+            "C",
+            "D"
+        ],
+        "explanation": "Splunk provides various internal logging levels that help diagnose an issue within your Splunk environment. The DEBUG logging can be enabled using the below methods -\n1. Using Splunk Web -\nSettings > Server settings > Server logging\n2. Using CLI -\nsplunk set log-level -level\n3. By creating log-local.cfg inside $SPLUNK_HOME/etc/, this will override log.cfg",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Troubleshooting/Enabledebuglogging"
+        ]
+    },
+    {
+        "question": "The Splunk admin has added a monitoring stanza to monitor /var/log in the app on the deployment server, and it has been deployed to the appropriate Universal Forwarders (UFs). However, the data from this new input is not being forwarded to Splunk, even though the other previously configured inputs are working fine.",
+        "choices": [
+            "A. outputs.conf missing in UFs",
+            "B. He didn't add splunkd restart in serverclass",
+            "C. Splunk Indexers not accepting data",
+            "D. SSL not configured"
+        ],
+        "answer": "B",
+        "explanation": "When you make changes to a Splunk Enterprise instance by manually editing the configuration files, you might need to restart Splunk Enterprise for the changes to take effect.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Admin/Configurationfilechangesthatrequirerestart#:~:text=Any%20user%20and%20role%20changes,reload%20the%20changes%20without%20restarting.)"
+        ]
+    },
+    {
+        "question": "Which of the following options can improve reliability of syslog delivery to Splunk? (Select all that apply.)",
+        "choices": [
+            "A. Use TCP syslog.",
+            "B. Use a network load balancer to direct syslog traffic to active backend syslog listeners.",
+            "C. Configure UDP inputs on each Splunk indexer to receive data directly.",
+            "D. Use one or more syslog servers to persist data with a Universal Forwarder to send the data to Splunk indexers."
+        ],
+        "answer": [
+            "A",
+            "D"
+        ],
+        "explanation": "TCP: Offers a reliable connection-oriented service, ensuring that messages are received in order and without loss. While TCP reduces the risk of lost messages, it introduces more overhead and complexity due to connection management.\nUDP: Traditionally, syslog used UDP for its simplicity and low overhead. UDP does not guarantee delivery, making it faster but less reliable. In high-volume environments, this can lead to lost messages. UDP may be more commonly used in the same subnet solutions.\nHere is the widely used solution by customers -\nRsyslog or Syslog NG combined with Universal forwarder (UF)/heavy forwarder (HF): Use a Splunk UF or HF to monitor and ingest files written out by a syslog server, such as rsyslog or syslog-ng. This solution is widely used by customers with existing syslog infrastructure.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/SVA/current/Architectures/Syslog"
+        ]
+    },
+    {
+        "question": "Which of the following server. conf stanzas indicates the Indexer Discovery feature has not been fully configured (restart pending) on the Master Node?",
+        "choices": [
+            "A. Option D",
+            "B. Option A",
+            "C. Option C",
+            "D. Option B"
+        ],
+        "answer": "C",
+        "explanation": "Indexer discovery streamlines the process of connecting forwarders to peer nodes in indexer clusters. Each forwarder queries the manager node for a list of all peer nodes in the cluster. It then uses load balancing to forward data to the set of peer nodes.\nOption B and D show the configuration of indexer clustering while option A has the encrypted pass4SymmKey hence, those aren't correct.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/indexerdiscovery"
+        ]
+    },
+    {
+        "question": "The KV store forms its own cluster within a SHC. What is the maximum number of SHC members KV store will form?",
+        "choices": [
+            "A. 100",
+            "B. Unlimited",
+            "C. 25",
+            "D. 50"
+        ],
+        "answer": "D",
+        "explanation": "The KV store forms its own cluster within a SHC. The maximum number of SHC members KV store will form is 50. The KV store cluster is a subset of the SHC members that are responsible for replicating and storing the KV store data. The KV store cluster can have up to 50 members, but only 20 of them can be active at any given time. The other members are standby members that can take over if an active member fails. The KV store cluster cannot have more than 50 members, nor can it have an unlimited number of members. The KV store cluster cannot have 25 or 100 members, because these numbers are not multiples of 5, which is the minimum replication factor for the KV store cluster",
+        "resources": []
+    },
+    {
+        "question": "Which instance can not share functionality with the deployer?",
+        "choices": [
+            "A. Monitoring Console (MC)",
+            "B. Search head cluster member",
+            "C. License master",
+            "D. Master node"
+        ],
+        "answer": "B",
+        "explanation": "If you have a deployment server that is servicing only a small number of deployment clients (no more than 50), you can run the deployer on the same instance as the deployment server.\nIf you are running an indexer cluster, you might be able to run the deployer on the same instance as the indexer cluster's manager node.\nIf you have a monitoring console, you can run the deployer on the same instance as the console.\nYou can run the deployer on the same instance as a license manager.\nYou can run the deployer on a dedicated Splunk Enterprise instance.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/DistSearch/SHCsystemrequirements#Deployer_requirements"
+        ]
+    },
+    {
+        "question": "When troubleshooting monitor inputs, which command checks the status of the tailed files?",
+        "choices": [
+            "A. curl https://serverhost:8089/services/admin/inputstatus/TailingProcessor:FileStatus",
+            "B. curl https://serverhost:8089/services/admin/inputstatus/TailingProcessor:Tailstatus",
+            "C. splunk cmd btool inputs list | tail",
+            "D. splunk cmd btool check inputs layer"
+        ],
+        "answer": "A",
+        "explanation": "You can use the FileStatus Representational State Transfer (REST) endpoint to get the status of your tailed files.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Data/Troubleshoottheinputprocess"
+        ]
+    },
+    {
+        "question": "Which of the following statements describe converting a non-clustered indexer to a cluster peer node? (select all that apply)",
+        "choices": [
+            "A. Apps must be deleted from $SPLUNK_HOME/ etc/master-apps.",
+            "B. Apps must be re-distributed via $SPLUNK_HOME/etc/master-apps.",
+            "C. Existing buckets are not replicated.",
+            "D. Only new data coming into this peer is replicated."
+        ],
+        "answer": [
+            "B",
+            "C"
+        ],
+        "explanation": "You can begin eliminating incorrect options here. Option 3 mentions deleting apps from the $SPLUNK_HOME/etc/master-apps directory, which is unnecessary when adding a new peer to an indexer cluster. All apps deployed through the cluster manager (formerly cluster master) are automatically placed in the $SPLUNK_HOME/etc/peer-apps directory on the indexer peers. Similarly, Option 4 incorrectly states that only new data received by the newly added peer will be replicated. In reality, data received by all peers in the cluster is subject to replication, ensuring high availability and redundancy across the entire cluster.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Indexer/Migratenon-clusteredindexerstoaclusteredenvironment"
+        ]
+    },
+    {
+        "question": "Which index does Splunk use to record user activities?",
+        "choices": [
+            "A. _audit",
+            "B. _telemetry",
+            "C. _kvstore",
+            "D. _internal"
+        ],
+        "answer": "A",
+        "explanation": "To monitor user activities in Splunk, you can leverage the _audit index",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Security/AuditSplunkactivity#:~:text=The%20Splunk%20platform%20stores%20audit,events%20like%20any%20other%20event.",
+            "https://community.splunk.com/t5/Getting-Data-In/Is-it-possible-to-Monitor-Splunk-User-activity/m-p/61991"
+        ]
+    },
+    {
+        "question": "What is the minimum reference server specification for a Splunk search head?",
+        "choices": [
+            "A. 24 CPU cores, 16GB RAM, 1200 IOPS",
+            "B. 12 CPU cores, 12GB RAM, 800 IOPS",
+            "C. 16 CPU cores, 16GB RAM, 800 IOPS",
+            "D. 16 CPU cores, 12GB RAM, 800 IOPS"
+        ],
+        "answer": "D",
+        "explanation": "Minimum search head specification\nAn x86 64-bit chip architecture.\n16 physical CPU cores, or 32 vCPU at 2 GHz or greater speed per core.\n12 GB RAM.\nA 1 Gb Ethernet NIC, optional second NIC for a management network.\nA 64-bit Linux or Windows distribution.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Capacity/Referencehardware#:~:text=Minimum%20search%20head%20specification&text=16%20physical%20CPU%20cores%2C%20or,or%20greater%20speed%20per%20core."
+        ]
+    },
+    {
+        "question": "When implementing KV Store Collections in a search head cluster, which of the following considerations is true?",
+        "choices": [
+            "A. The KV Store Primary coordinates with the search head cluster captain when collection content changes.",
+            "B. The KV Store Collection will not allow for changes to content if there are more than 50 search heads in the cluster.",
+            "C. The search head cluster captain is also the KV Store Primary when collection content changes.",
+            "D. Each search head in the cluster independently updates its KV store collection when collection content changes."
+        ],
+        "answer": "A",
+        "explanation": "In a search head cluster the KV Store forms its own cluster with a KV Store primary, a role separate from the SHC captain. When collection content changes, the KV Store primary coordinates with the search head cluster captain so the update replicates consistently to all members. The KV Store primary and SHC captain are not necessarily the same node (ruling out C), members do not each update independently (ruling out D), and the 50-member limit applies to KV Store cluster size, not to whether content changes are permitted.",
+        "resources": [
+            "https://docs.splunk.com/Documentation/Splunk/9.1.2/Admin/AboutKVstore",
+            "https://docs.splunk.com/Documentation/Splunk/9.4.0/Admin/AboutKVstore"
+        ]
+    }
+]

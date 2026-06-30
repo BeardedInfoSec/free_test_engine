@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import re
 import time
 from colorama import Fore, Style, init
 
@@ -12,12 +13,23 @@ def clear_terminal():
     os.system(command)
 
 def load_questions(filename):
-    with open(filename, 'r') as file:
+    with open(filename, 'r', encoding='utf-8') as file:
         return json.load(file)
+
+def is_answer_correct(user_answer, correct_answer):
+    """Compare the letters a user typed against the expected answer(s).
+
+    Works for both single-answer (str) and multi-answer (list) questions by
+    comparing the *set* of selected letters, so order and stray characters
+    don't matter and partial/over-selection is rejected.
+    """
+    selected = set(re.findall(r"[A-Z]", user_answer.upper()))
+    expected = {correct_answer} if isinstance(correct_answer, str) else set(correct_answer)
+    return selected == expected
 
 def log_question(question, choices, correct, folder, filename):
     os.makedirs(folder, exist_ok=True)
-    with open(os.path.join(folder, filename), 'a') as file:
+    with open(os.path.join(folder, filename), 'a', encoding='utf-8') as file:
         file.write(f"Question: {question}\n")
         for choice in choices:
             file.write(f"{choice}\n")
@@ -25,12 +37,12 @@ def log_question(question, choices, correct, folder, filename):
 
 def save_correct_questions(correct_questions_set, filename):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
-    with open(filename, 'w') as file:
+    with open(filename, 'w', encoding='utf-8') as file:
         json.dump(list(correct_questions_set), file)
 
 def load_correct_questions(filename):
     if os.path.exists(filename):
-        with open(filename, 'r') as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             return set(json.load(file))
     return set()
 
@@ -55,10 +67,7 @@ def ask_question(question, choices, correct_answer, result_folder):
     if user_answer == 'Q!':
         return 'q!'
 
-    if isinstance(correct_answer, list):
-        correct = all(ans in user_answer for ans in correct_answer)
-    else:
-        correct = user_answer == correct_answer
+    correct = is_answer_correct(user_answer, correct_answer)
 
     if correct:
         print(Fore.GREEN + "Correct!")
@@ -72,11 +81,12 @@ def ask_question(question, choices, correct_answer, result_folder):
     return correct
 
 def run_quiz(questions, result_folder, correct_questions_set, correct_questions_file, batch_size=15):
-    correct_count = 0
     incorrect_questions = []
 
     for i in range(0, len(questions), batch_size):
         batch = questions[i:i + batch_size]
+        correct_count = 0
+        answered_count = 0
         for question_data in batch:
             question, choices, correct_answer = question_data['question'], question_data['choices'], question_data['answer']
             if question in correct_questions_set:
@@ -84,6 +94,7 @@ def run_quiz(questions, result_folder, correct_questions_set, correct_questions_
             result = ask_question(question, choices, correct_answer, result_folder)
             if result == 'q!':
                 return 'q!'
+            answered_count += 1
             if result:
                 correct_count += 1
                 correct_questions_set.add(question)
@@ -91,12 +102,13 @@ def run_quiz(questions, result_folder, correct_questions_set, correct_questions_
             else:
                 incorrect_questions.append(question_data)
 
-        total_questions = len(batch)
-        incorrect_count = total_questions - correct_count
+        if answered_count == 0:
+            continue
+
+        incorrect_count = answered_count - correct_count
         print(Fore.CYAN + f"\nBatch Results: {correct_count} correct, {incorrect_count} incorrect.")
-        percentage = (correct_count / total_questions) * 100
+        percentage = (correct_count / answered_count) * 100
         print(Fore.CYAN + f"Percentage: {percentage:.2f}%\n")
-        correct_count = 0
 
         time.sleep(5)
 
@@ -113,7 +125,11 @@ def reset_progress(result_folder, correct_questions_set, correct_questions_file)
     print(Fore.GREEN + "Progress has been reset.")
 
 def select_question_set():
-    question_sets = os.listdir('questions')
+    question_sets = sorted(f for f in os.listdir('questions') if f.lower().endswith('.json'))
+    if not question_sets:
+        print(Fore.RED + "No question sets found in the 'questions' folder.")
+        time.sleep(2)
+        return None
     index = 0
 
     while True:
