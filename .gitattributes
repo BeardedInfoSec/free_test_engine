@@ -1,0 +1,11 @@
+# Keep GitHub's language stats focused on the actual web app source.
+# Generated bundle — not hand-written.
+flashcards/question-banks.js linguist-generated=true
+
+# Question banks and raw source text are data, not code.
+questions/**/*.json linguist-detectable=false
+flashcards/questions.json linguist-detectable=false
+qa_badformat.txt linguist-detectable=false
+
+# Python files are build/authoring tools and the optional CLI, not the main app.
+*.py linguist-detectable=false
